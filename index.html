@@ -8,81 +8,176 @@
   :root{
     --gold:#F4A93C; --teal:#3C7E87; --grey-dark:#BFBFBF; --grey-light:#F2F2F2;
     --sep:#7FB3D5; --txt:#1c1c1c; --live:#e74c3c;
+    --esp-red:#C60B1E; --esp-yellow:#FFC400;
   }
   *{box-sizing:border-box;}
-  body{margin:0; background:#e9eef1; color:var(--txt);
+  html{overflow-x:hidden;}
+  body{margin:0; background:#e9eef1; color:var(--txt); overflow-x:hidden;
     font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
     -webkit-font-smoothing:antialiased;}
-  .wrap{max-width:780px; margin:0 auto; padding:18px 14px 60px;}
+  .wrap{max-width:780px; margin:0 auto; padding:16px 12px 60px;}
+
+  /* Header: LIVE siempre a la derecha, incluso en mobile portrait */
   header.top{display:flex; align-items:center; justify-content:space-between;
-    gap:12px; flex-wrap:wrap; margin-bottom:12px;}
-  h1{font-size:1.3rem; margin:0; font-weight:800;}
-  .sub{font-size:.78rem; color:#5a6b72; margin-top:2px;}
-  .status{font-size:.76rem; color:#5a6b72; text-align:right; line-height:1.45;}
-  .status b{color:var(--teal);}
+    gap:10px; flex-wrap:nowrap; margin-bottom:12px;}
+  header.top > div:first-child{min-width:0;}
+  h1{font-size:1.25rem; margin:0; font-weight:800; line-height:1.1;}
+  .sub{font-size:.74rem; color:#5a6b72; margin-top:2px;}
+  .status{font-size:.72rem; color:#5a6b72; text-align:right; line-height:1.4;
+    flex-shrink:1; min-width:0;}
+  #meta{display:inline-block;}
   .live-dot{display:inline-block; width:8px; height:8px; border-radius:50%;
-    background:#2ecc71; margin-right:5px; animation:pulse 1.6s infinite;}
+    background:#2ecc71; margin-right:4px; animation:pulse 1.6s infinite;}
   @keyframes pulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
-  .tabs{display:flex; gap:6px; margin-bottom:14px;}
-  .tab{flex:1; text-align:center; padding:11px; border-radius:8px 8px 0 0;
+
+  .tabs{display:flex; gap:5px; margin-bottom:14px;}
+  .tab{flex:1; text-align:center; padding:10px 6px; border-radius:8px 8px 0 0;
     background:#cdd8dd; color:#33484f; font-weight:700; cursor:pointer;
-    border:none; font-size:.95rem; transition:background .15s;}
+    border:none; font-size:.85rem; transition:background .15s; min-width:0;}
   .tab.active{background:var(--teal); color:#fff;}
   .panel{display:none;} .panel.active{display:block;}
-  table{width:100%; border-collapse:collapse; box-shadow:0 4px 18px rgba(0,0,0,.12);
-    border-radius:6px; overflow:hidden;}
+
+  /* ---- Clasificacion (compacta: caben mas posiciones) ---- */
+  table{width:100%; table-layout:fixed; border-collapse:collapse;
+    box-shadow:0 4px 18px rgba(0,0,0,.12); border-radius:6px; overflow:hidden;}
+  tbody td.player{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
   thead th{background:var(--teal); color:#fff; font-weight:800; text-align:center;
-    padding:15px 10px; font-size:1.02rem;}
-  tbody td{padding:13px 10px; font-size:1.4rem; text-align:center;
-    border-bottom:3px solid var(--sep);}
-  tbody td.pos{width:84px; font-weight:600;}
-  tbody td.player{font-weight:600;}
-  tbody td.pts{width:150px; font-weight:800;}
-  tr.rank-1 td{background:var(--gold); color:#fff; font-size:1.65rem;}
-  tr.rank-1 td.player{font-weight:500;}
+    padding:11px 8px; font-size:.92rem;}
+  tbody td{padding:8px 9px; font-size:1.1rem; text-align:center;
+    border-bottom:2px solid var(--sep);}
+  tbody td.pos{width:74px; font-weight:600;}
+  tbody td.player{font-weight:600; text-align:left; padding-left:14px;}
+  tbody td.pts{width:104px; font-weight:800;}
+  tr.rank-1 td{background:var(--gold); color:#fff; font-size:1.22rem;}
+  tr.rank-1 td.player{font-weight:600;}
   tr.rank-2 td, tr.rank-3 td{background:var(--teal); color:#fff;}
   tr.rest-even td{background:var(--grey-dark);}
   tr.rest-odd td{background:var(--grey-light);}
+  /* Farolillo rojo (ultimo): muy destacado */
+  tr.rank-last td{background:linear-gradient(90deg,#8e0e0e,#c0392b); color:#fff;
+    font-size:1.18rem; font-weight:800;}
+  tr.rank-last td.player{letter-spacing:.3px;}
+  .lantern{display:inline-block; animation:swing 1.8s ease-in-out infinite;
+    transform-origin:top center;}
+  @keyframes swing{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
+  .arrow{font-size:.78rem; font-weight:800; margin-right:5px;}
+  .a-up{color:#16a34a;} .a-down{color:#dc2626;} .a-same{color:#9aa7ad;}
+  tr.rank-1 .a-up,tr.rank-2 .a-up,tr.rank-3 .a-up,tr.rank-last .a-up{color:#b6f5c8;}
+  tr.rank-1 .a-down,tr.rank-2 .a-down,tr.rank-3 .a-down,tr.rank-last .a-down{color:#ffc9c9;}
   tbody tr.clik{cursor:pointer; transition:filter .12s;}
   tbody tr.clik:hover{filter:brightness(1.04);}
-  tr.detail td{padding:0; background:#fff; border-bottom:3px solid var(--sep);}
-  .detail-inner{padding:13px 18px; display:grid; grid-template-columns:1fr 1fr;
-    gap:5px 26px; font-size:.84rem;}
+  tr.detail td{padding:0; background:#fff; border-bottom:2px solid var(--sep);}
+  .detail-inner{padding:12px 16px; display:grid; grid-template-columns:1fr 1fr;
+    gap:4px 22px; font-size:.8rem;}
   .detail-inner .row{display:flex; justify-content:space-between;
     border-bottom:1px dotted #cfd8dc; padding:3px 0;}
   .detail-inner .row.zero{opacity:.42;}
   .detail-inner .val{font-weight:700; color:var(--teal);}
-  .round-h{margin:16px 2px 6px; font-size:.8rem; font-weight:800; color:#5a6b72;
+
+  /* ---- Partidos ---- */
+  .round-h{margin:16px 2px 6px; font-size:.78rem; font-weight:800; color:#5a6b72;
     text-transform:uppercase; letter-spacing:.6px;}
   .match{background:#fff; border-radius:8px; margin-bottom:7px; overflow:hidden;
     box-shadow:0 1px 4px rgba(0,0,0,.08); border-left:5px solid transparent;}
   .match.final{border-left-color:#9aa7ad;}
   .match.live{border-left-color:var(--live); box-shadow:0 0 0 2px var(--live);}
   .match.focus{box-shadow:0 0 0 3px var(--teal);}
-  .match-row{display:flex; align-items:center; gap:10px; padding:11px 13px; cursor:pointer;}
-  .m-time{width:96px; font-size:.72rem; color:#7a888e; line-height:1.3; flex-shrink:0;}
-  .m-teams{flex:1; display:flex; align-items:center; justify-content:center;
-    gap:10px; font-size:1rem; font-weight:600;}
-  .m-teams .h{flex:1; text-align:right;} .m-teams .a{flex:1; text-align:left;}
-  .m-score{min-width:54px; text-align:center; font-weight:800; font-size:1.15rem;
-    background:#eef3f5; border-radius:6px; padding:3px 6px;}
-  .m-badge{width:84px; text-align:center; font-size:.66rem; font-weight:800;
-    text-transform:uppercase; letter-spacing:.4px; flex-shrink:0;}
+  .match-row{display:flex; align-items:center; gap:7px; padding:9px 10px; cursor:pointer;}
+  .m-time{width:62px; font-size:.64rem; color:#7a888e; line-height:1.25; flex-shrink:0;}
+  .m-teams{flex:1; min-width:0; display:flex; align-items:center; justify-content:center;
+    gap:7px; font-size:.86rem; font-weight:600;}
+  .m-teams .h,.m-teams .a{flex:1; min-width:0; overflow-wrap:anywhere; line-height:1.15;}
+  .m-teams .h{text-align:right;} .m-teams .a{text-align:left;}
+  .m-score{min-width:46px; text-align:center; font-weight:800; font-size:1rem;
+    background:#eef3f5; border-radius:6px; padding:3px 5px; flex-shrink:0;}
+  .m-badge{width:66px; text-align:center; font-size:.56rem; font-weight:800;
+    text-transform:uppercase; letter-spacing:0; flex-shrink:0;}
   .b-live{color:var(--live);} .b-final{color:#7a888e;} .b-pre{color:#9aa7ad;}
   .blink{animation:pulse 1.1s infinite;}
-  .m-detail{padding:4px 13px 13px; border-top:1px solid #eef3f5;}
-  .pred{display:flex; align-items:center; gap:10px; padding:6px 4px;
-    border-bottom:1px dotted #e3e9eb; font-size:.9rem;}
-  .pred .pn{flex:1; font-weight:600;}
-  .pred .pp{width:60px; text-align:center; color:#445; font-weight:700;}
-  .pred .px{width:42px; text-align:right; font-weight:800;}
+  .m-detail{padding:4px 12px 12px; border-top:1px solid #eef3f5;}
+  .pred{display:flex; align-items:center; gap:10px; padding:5px 4px;
+    border-bottom:1px dotted #e3e9eb; font-size:.86rem;}
+  .pred .pn{flex:1; min-width:0; font-weight:600; overflow-wrap:anywhere;}
+  .pred .pp{width:54px; text-align:center; color:#445; font-weight:700; flex-shrink:0;}
+  .pred .px{width:40px; text-align:right; font-weight:800; flex-shrink:0;}
   .pts-pos{color:#1e8e4e;} .pts-zero{color:#b0b8bc;}
-  .hint{font-size:.72rem; color:#9aa7ad; padding:6px 4px 0;}
+  .hint{font-size:.7rem; color:#9aa7ad; padding:6px 4px 2px;}
+
+  /* ---- Cabecera La Roja (countdown) ---- */
+  .roja{background:linear-gradient(135deg,var(--esp-red) 0%,#a3091a 45%,var(--esp-yellow) 46%,#e0a800 100%);
+    border-radius:12px; padding:14px 14px 12px; margin-bottom:14px; color:#fff;
+    box-shadow:0 4px 14px rgba(198,11,30,.35); position:relative; overflow:hidden;}
+  .roja-top{display:flex; align-items:center; gap:8px; font-weight:800; font-size:.95rem;
+    text-shadow:0 1px 2px rgba(0,0,0,.35);}
+  .roja-match{margin-top:6px; font-size:1.05rem; font-weight:800;
+    text-shadow:0 1px 2px rgba(0,0,0,.4);}
+  .roja-cd{display:flex; gap:8px; margin-top:9px;}
+  .cd-box{background:rgba(0,0,0,.28); border-radius:8px; padding:6px 0; flex:1;
+    text-align:center;}
+  .cd-num{font-size:1.5rem; font-weight:800; line-height:1;}
+  .cd-lab{font-size:.58rem; text-transform:uppercase; letter-spacing:.5px; opacity:.9;}
+  .roja-loc{margin-top:9px; font-size:.8rem; font-weight:700;
+    text-shadow:0 1px 2px rgba(0,0,0,.4);}
+  .flag{display:inline-block; animation:wave 1.6s ease-in-out infinite;}
+  .flag:nth-child(2){animation-delay:.2s}
+  @keyframes wave{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-2px)}}
+  .jersey{display:inline-block; animation:bounce 1.4s ease-in-out infinite;}
+  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+  /* ---- Premios (bota / balon) ---- */
+  .pcard{background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.08);
+    padding:14px 16px; margin-bottom:16px;}
+  .pcard h3{margin:0 0 4px; font-size:1.05rem;}
+  .pcard .psub{font-size:.72rem; color:#9aa7ad; margin-bottom:10px;}
+  .lead{display:flex; align-items:center; gap:10px; padding:7px 2px;
+    border-bottom:1px dotted #e3e9eb; font-size:.95rem;}
+  .lead .lr{width:30px; font-weight:800; color:#7a888e; text-align:center; flex-shrink:0;}
+  .lead .ln{flex:1; min-width:0; font-weight:600; overflow-wrap:anywhere;}
+  .lead .lt{font-size:.75rem; color:#7a888e; margin-left:6px; font-weight:500;}
+  .lead .lv{font-weight:800; color:var(--teal); flex-shrink:0;}
+  .lead.top1 .lr{color:var(--gold); font-size:1.1rem;}
+  .lead.top2 .lr{color:#9aa7ad;} .lead.top3 .lr{color:#cd7f32;}
+
+  /* ---- Intro Farolillo Rojo ---- */
+  #intro{position:fixed; inset:0; z-index:50; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:14px;
+    background:radial-gradient(circle at 50% 38%,#3a0d0d,#160404 75%); color:#fff;
+    transition:opacity .6s ease; cursor:pointer;}
+  #intro.hide{opacity:0; pointer-events:none;}
+  #intro .big{font-size:5.5rem; transform-origin:top center;
+    animation:swing 1.6s ease-in-out infinite; filter:drop-shadow(0 6px 14px rgba(255,80,80,.5));}
+  #intro .it-h{font-size:.95rem; letter-spacing:3px; text-transform:uppercase;
+    color:#ff9b9b; font-weight:800;}
+  #intro .it-name{font-size:2.4rem; font-weight:900; animation:pop .6s ease both .25s;}
+  #intro .it-x{font-size:.72rem; color:#a06a6a; margin-top:10px;}
+  @keyframes pop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+
   footer{margin-top:18px; text-align:center; font-size:.72rem; color:#8a99a0;}
-  .empty{padding:36px; text-align:center; color:#8a99a0;}
+  .empty{padding:30px; text-align:center; color:#8a99a0;}
+
+  @media (max-width:520px){
+    .wrap{padding:14px 9px 50px;}
+    h1{font-size:1.08rem;}
+    tbody td{font-size:1rem; padding:7px 6px;}
+    tr.rank-1 td{font-size:1.08rem;}
+    tbody td.player{padding-left:9px;}
+    tbody td.pos{width:62px;} tbody td.pts{width:84px;}
+    .detail-inner{grid-template-columns:1fr;}
+    .m-teams{font-size:.8rem; gap:5px;}
+    .m-time{width:54px; font-size:.6rem;}
+    .m-badge{width:58px; font-size:.5rem;}
+    .cd-num{font-size:1.25rem;}
+  }
 </style>
 </head>
 <body>
+<div id="intro">
+  <div class="big">🏮</div>
+  <div class="it-h">Farolillo Rojo</div>
+  <div class="it-name" id="intro-name">…</div>
+  <div class="it-x">(toca para entrar)</div>
+</div>
+
 <div class="wrap">
   <header class="top">
     <div>
@@ -94,235 +189,219 @@
       <span id="meta">cargando…</span>
     </div>
   </header>
+
   <div class="tabs">
     <button class="tab active" data-tab="principal">Clasificación</button>
     <button class="tab" data-tab="partidos">Partidos</button>
+    <button class="tab" data-tab="premios">🥇 Bota/Balón</button>
   </div>
+
   <section class="panel active" id="panel-principal">
     <table>
       <thead><tr>
-        <th style="width:84px">Pos</th><th>Jugador</th>
-        <th style="width:150px">Puntos Totales</th>
+        <th style="width:74px">Pos</th><th style="text-align:left;padding-left:14px">Jugador</th>
+        <th style="width:104px">Puntos</th>
       </tr></thead>
       <tbody id="tbody"><tr><td colspan="3" class="empty">Cargando…</td></tr></tbody>
     </table>
     <footer id="next"></footer>
   </section>
+
   <section class="panel" id="panel-partidos">
+    <div id="roja"></div>
     <div id="matches"><div class="empty">Cargando partidos…</div></div>
+  </section>
+
+  <section class="panel" id="panel-premios">
+    <div class="pcard">
+      <h3>👟 Bota de Oro — Máximos goleadores</h3>
+      <div class="psub">Datos en vivo de ESPN · World Cup 2026</div>
+      <div id="scorers"><div class="empty">Cargando goleadores…</div></div>
+    </div>
+    <div class="pcard">
+      <h3>🏅 Balón de Oro — Mejor jugador</h3>
+      <div class="psub">Favoritos de las casas de apuestas (el oficial se decide al final)</div>
+      <div id="ballon"></div>
+    </div>
   </section>
 </div>
 
 <script>
-/* ====== DATOS EMBEBIDOS (pronósticos + estructura). Inyectados al construir. */
 window.PORRA = {"dateRange": "20260611-20260720", "koOrder": ["r32", "r16", "qf", "sf", "third", "final"], "blockLabels": {"grupos_partidos": "Grupos · partidos", "grupos_posiciones": "Grupos · posiciones", "grupos_clasif": "Grupos · clasificados a 1/16", "r32_partidos": "1/16 · partidos", "r32_clasif": "1/16 · clasificados a 1/8", "r16_partidos": "1/8 · partidos", "r16_clasif": "1/8 · clasificados a 1/4", "qf_partidos": "1/4 · partidos", "qf_clasif": "1/4 · clasificados a 1/2", "sf_partidos": "1/2 · partidos", "sf_clasif_3y4": "1/2 · clasificados a 3er/4o", "sf_clasif_final": "1/2 · clasificados a Final", "third_partido": "3er/4o puesto", "final_partido": "Final", "premios": "Premios (campeon, botas, balones)"}, "weights": {"group": [1, 3, 3], "r32": [1, 3, 3], "r16": [1, 3, 3], "qf": [1, 3, 3], "sf": [1, 3, 3], "third": [5, 10, 10], "final": [5, 10, 10]}, "posPts": 3, "qualif": {"r32": 3, "r16": 6, "qf": 12, "sf": 20, "third": 30, "final": 45}, "awardPts": {"champion": 50, "runnerup": 50, "third_place": 50, "boot_gold": 15, "boot_silver": 15, "boot_bronze": 15, "ball_gold": 15, "ball_silver": 15, "ball_bronze": 15}, "teamMap": {"algeria": "Algeria", "argentina": "Argentina", "australia": "Australia", "austria": "Austria", "belgium": "Belgium", "bosniaandherzegovina": "Bosnia and Herzegovina", "brazil": "Brazil", "canada": "Canada", "capeverde": "Cape Verde", "colombia": "Colombia", "croatia": "Croatia", "curacao": "Curaçao", "czechrepublic": "Czech Republic", "drcongo": "DR Congo", "ecuador": "Ecuador", "egypt": "Egypt", "england": "England", "france": "France", "germany": "Germany", "ghana": "Ghana", "haiti": "Haiti", "iran": "Iran", "iraq": "Iraq", "ivorycoast": "Ivory Coast", "japan": "Japan", "jordan": "Jordan", "mexico": "Mexico", "morocco": "Morocco", "netherlands": "Netherlands", "newzealand": "New Zealand", "norway": "Norway", "panama": "Panama", "paraguay": "Paraguay", "portugal": "Portugal", "qatar": "Qatar", "saudiarabia": "Saudi Arabia", "scotland": "Scotland", "senegal": "Senegal", "southafrica": "South Africa", "southkorea": "South Korea", "spain": "Spain", "sweden": "Sweden", "switzerland": "Switzerland", "tunisia": "Tunisia", "turkey": "Turkey", "unitedstates": "United States", "uruguay": "Uruguay", "uzbekistan": "Uzbekistan", "sudafrica": "South Africa", "coreadelsur": "South Korea", "republicacheca": "Czech Republic", "bosniayherzegovina": "Bosnia and Herzegovina", "catar": "Qatar", "suiza": "Switzerland", "brasil": "Brazil", "marruecos": "Morocco", "escocia": "Scotland", "estadosunidos": "United States", "turquia": "Turkey", "alemania": "Germany", "curazao": "Curaçao", "costademarfil": "Ivory Coast", "paisesbajos": "Netherlands", "japon": "Japan", "suecia": "Sweden", "tunez": "Tunisia", "belgica": "Belgium", "egipto": "Egypt", "nuevazelanda": "New Zealand", "espana": "Spain", "caboverde": "Cape Verde", "arabiasaudita": "Saudi Arabia", "francia": "France", "irak": "Iraq", "noruega": "Norway", "argelia": "Algeria", "jordania": "Jordan", "rdcongo": "DR Congo", "inglaterra": "England", "croacia": "Croatia", "bosniaherzegovina": "Bosnia and Herzegovina", "cotedivoire": "Ivory Coast", "korearepublic": "South Korea", "czechia": "Czech Republic", "turkiye": "Turkey", "congodr": "DR Congo", "iriran": "Iran", "usa": "United States"}, "groupSlots": {"Mexico|South Africa": {"key": "GA-1", "home": "Mexico", "away": "South Africa", "group": "A"}, "Czech Republic|South Korea": {"key": "GA-2", "home": "South Korea", "away": "Czech Republic", "group": "A"}, "Czech Republic|South Africa": {"key": "GA-3", "home": "Czech Republic", "away": "South Africa", "group": "A"}, "Mexico|South Korea": {"key": "GA-4", "home": "Mexico", "away": "South Korea", "group": "A"}, "Czech Republic|Mexico": {"key": "GA-5", "home": "Czech Republic", "away": "Mexico", "group": "A"}, "South Africa|South Korea": {"key": "GA-6", "home": "South Africa", "away": "South Korea", "group": "A"}, "Bosnia and Herzegovina|Canada": {"key": "GB-1", "home": "Canada", "away": "Bosnia and Herzegovina", "group": "B"}, "Qatar|Switzerland": {"key": "GB-2", "home": "Qatar", "away": "Switzerland", "group": "B"}, "Bosnia and Herzegovina|Switzerland": {"key": "GB-3", "home": "Switzerland", "away": "Bosnia and Herzegovina", "group": "B"}, "Canada|Qatar": {"key": "GB-4", "home": "Canada", "away": "Qatar", "group": "B"}, "Canada|Switzerland": {"key": "GB-5", "home": "Switzerland", "away": "Canada", "group": "B"}, "Bosnia and Herzegovina|Qatar": {"key": "GB-6", "home": "Bosnia and Herzegovina", "away": "Qatar", "group": "B"}, "Brazil|Morocco": {"key": "GC-1", "home": "Brazil", "away": "Morocco", "group": "C"}, "Haiti|Scotland": {"key": "GC-2", "home": "Haiti", "away": "Scotland", "group": "C"}, "Morocco|Scotland": {"key": "GC-3", "home": "Scotland", "away": "Morocco", "group": "C"}, "Brazil|Haiti": {"key": "GC-4", "home": "Brazil", "away": "Haiti", "group": "C"}, "Brazil|Scotland": {"key": "GC-5", "home": "Scotland", "away": "Brazil", "group": "C"}, "Haiti|Morocco": {"key": "GC-6", "home": "Morocco", "away": "Haiti", "group": "C"}, "Paraguay|United States": {"key": "GD-1", "home": "United States", "away": "Paraguay", "group": "D"}, "Australia|Turkey": {"key": "GD-2", "home": "Australia", "away": "Turkey", "group": "D"}, "Australia|United States": {"key": "GD-3", "home": "United States", "away": "Australia", "group": "D"}, "Paraguay|Turkey": {"key": "GD-4", "home": "Turkey", "away": "Paraguay", "group": "D"}, "Turkey|United States": {"key": "GD-5", "home": "Turkey", "away": "United States", "group": "D"}, "Australia|Paraguay": {"key": "GD-6", "home": "Paraguay", "away": "Australia", "group": "D"}, "Curaçao|Germany": {"key": "GE-1", "home": "Germany", "away": "Curaçao", "group": "E"}, "Ecuador|Ivory Coast": {"key": "GE-2", "home": "Ivory Coast", "away": "Ecuador", "group": "E"}, "Germany|Ivory Coast": {"key": "GE-3", "home": "Germany", "away": "Ivory Coast", "group": "E"}, "Curaçao|Ecuador": {"key": "GE-4", "home": "Ecuador", "away": "Curaçao", "group": "E"}, "Curaçao|Ivory Coast": {"key": "GE-5", "home": "Curaçao", "away": "Ivory Coast", "group": "E"}, "Ecuador|Germany": {"key": "GE-6", "home": "Ecuador", "away": "Germany", "group": "E"}, "Japan|Netherlands": {"key": "GF-1", "home": "Netherlands", "away": "Japan", "group": "F"}, "Sweden|Tunisia": {"key": "GF-2", "home": "Sweden", "away": "Tunisia", "group": "F"}, "Netherlands|Sweden": {"key": "GF-3", "home": "Netherlands", "away": "Sweden", "group": "F"}, "Japan|Tunisia": {"key": "GF-4", "home": "Tunisia", "away": "Japan", "group": "F"}, "Japan|Sweden": {"key": "GF-5", "home": "Japan", "away": "Sweden", "group": "F"}, "Netherlands|Tunisia": {"key": "GF-6", "home": "Tunisia", "away": "Netherlands", "group": "F"}, "Belgium|Egypt": {"key": "GG-1", "home": "Belgium", "away": "Egypt", "group": "G"}, "Iran|New Zealand": {"key": "GG-2", "home": "Iran", "away": "New Zealand", "group": "G"}, "Belgium|Iran": {"key": "GG-3", "home": "Belgium", "away": "Iran", "group": "G"}, "Egypt|New Zealand": {"key": "GG-4", "home": "New Zealand", "away": "Egypt", "group": "G"}, "Egypt|Iran": {"key": "GG-5", "home": "Egypt", "away": "Iran", "group": "G"}, "Belgium|New Zealand": {"key": "GG-6", "home": "New Zealand", "away": "Belgium", "group": "G"}, "Cape Verde|Spain": {"key": "GH-1", "home": "Spain", "away": "Cape Verde", "group": "H"}, "Saudi Arabia|Uruguay": {"key": "GH-2", "home": "Saudi Arabia", "away": "Uruguay", "group": "H"}, "Saudi Arabia|Spain": {"key": "GH-3", "home": "Spain", "away": "Saudi Arabia", "group": "H"}, "Cape Verde|Uruguay": {"key": "GH-4", "home": "Uruguay", "away": "Cape Verde", "group": "H"}, "Cape Verde|Saudi Arabia": {"key": "GH-5", "home": "Cape Verde", "away": "Saudi Arabia", "group": "H"}, "Spain|Uruguay": {"key": "GH-6", "home": "Uruguay", "away": "Spain", "group": "H"}, "France|Senegal": {"key": "GI-1", "home": "France", "away": "Senegal", "group": "I"}, "Iraq|Norway": {"key": "GI-2", "home": "Iraq", "away": "Norway", "group": "I"}, "France|Iraq": {"key": "GI-3", "home": "France", "away": "Iraq", "group": "I"}, "Norway|Senegal": {"key": "GI-4", "home": "Norway", "away": "Senegal", "group": "I"}, "France|Norway": {"key": "GI-5", "home": "Norway", "away": "France", "group": "I"}, "Iraq|Senegal": {"key": "GI-6", "home": "Senegal", "away": "Iraq", "group": "I"}, "Algeria|Argentina": {"key": "GJ-1", "home": "Argentina", "away": "Algeria", "group": "J"}, "Austria|Jordan": {"key": "GJ-2", "home": "Austria", "away": "Jordan", "group": "J"}, "Argentina|Austria": {"key": "GJ-3", "home": "Argentina", "away": "Austria", "group": "J"}, "Algeria|Jordan": {"key": "GJ-4", "home": "Jordan", "away": "Algeria", "group": "J"}, "Algeria|Austria": {"key": "GJ-5", "home": "Algeria", "away": "Austria", "group": "J"}, "Argentina|Jordan": {"key": "GJ-6", "home": "Jordan", "away": "Argentina", "group": "J"}, "DR Congo|Portugal": {"key": "GK-1", "home": "Portugal", "away": "DR Congo", "group": "K"}, "Colombia|Uzbekistan": {"key": "GK-2", "home": "Uzbekistan", "away": "Colombia", "group": "K"}, "Portugal|Uzbekistan": {"key": "GK-3", "home": "Portugal", "away": "Uzbekistan", "group": "K"}, "Colombia|DR Congo": {"key": "GK-4", "home": "Colombia", "away": "DR Congo", "group": "K"}, "Colombia|Portugal": {"key": "GK-5", "home": "Colombia", "away": "Portugal", "group": "K"}, "DR Congo|Uzbekistan": {"key": "GK-6", "home": "DR Congo", "away": "Uzbekistan", "group": "K"}, "Croatia|England": {"key": "GL-1", "home": "England", "away": "Croatia", "group": "L"}, "Ghana|Panama": {"key": "GL-2", "home": "Ghana", "away": "Panama", "group": "L"}, "England|Ghana": {"key": "GL-3", "home": "England", "away": "Ghana", "group": "L"}, "Croatia|Panama": {"key": "GL-4", "home": "Panama", "away": "Croatia", "group": "L"}, "England|Panama": {"key": "GL-5", "home": "Panama", "away": "England", "group": "L"}, "Croatia|Ghana": {"key": "GL-6", "home": "Croatia", "away": "Ghana", "group": "L"}}, "groupByLetter": {"A": ["GA-1", "GA-2", "GA-3", "GA-4", "GA-5", "GA-6"], "B": ["GB-1", "GB-2", "GB-3", "GB-4", "GB-5", "GB-6"], "C": ["GC-1", "GC-2", "GC-3", "GC-4", "GC-5", "GC-6"], "D": ["GD-1", "GD-2", "GD-3", "GD-4", "GD-5", "GD-6"], "E": ["GE-1", "GE-2", "GE-3", "GE-4", "GE-5", "GE-6"], "F": ["GF-1", "GF-2", "GF-3", "GF-4", "GF-5", "GF-6"], "G": ["GG-1", "GG-2", "GG-3", "GG-4", "GG-5", "GG-6"], "H": ["GH-1", "GH-2", "GH-3", "GH-4", "GH-5", "GH-6"], "I": ["GI-1", "GI-2", "GI-3", "GI-4", "GI-5", "GI-6"], "J": ["GJ-1", "GJ-2", "GJ-3", "GJ-4", "GJ-5", "GJ-6"], "K": ["GK-1", "GK-2", "GK-3", "GK-4", "GK-5", "GK-6"], "L": ["GL-1", "GL-2", "GL-3", "GL-4", "GL-5", "GL-6"]}, "koWindows": {"r32": ["2026-06-28", "2026-07-03"], "r16": ["2026-07-04", "2026-07-07"], "qf": ["2026-07-09", "2026-07-11"], "sf": ["2026-07-14", "2026-07-15"], "third": ["2026-07-18", "2026-07-18"], "final": ["2026-07-19", "2026-07-19"]}, "koSlots": {"r32": [{"key": "R32-101", "kickoff": "2026-06-28T15:00:00"}, {"key": "R32-102", "kickoff": "2026-06-29T13:00:00"}, {"key": "R32-103", "kickoff": "2026-06-29T16:30:00"}, {"key": "R32-104", "kickoff": "2026-06-29T21:00:00"}, {"key": "R32-105", "kickoff": "2026-06-30T13:00:00"}, {"key": "R32-106", "kickoff": "2026-06-30T17:00:00"}, {"key": "R32-107", "kickoff": "2026-06-30T21:00:00"}, {"key": "R32-108", "kickoff": "2026-07-01T12:00:00"}, {"key": "R32-109", "kickoff": "2026-07-01T16:00:00"}, {"key": "R32-110", "kickoff": "2026-07-01T20:00:00"}, {"key": "R32-111", "kickoff": "2026-07-02T15:00:00"}, {"key": "R32-112", "kickoff": "2026-07-02T19:00:00"}, {"key": "R32-113", "kickoff": "2026-07-02T23:00:00"}, {"key": "R32-114", "kickoff": "2026-07-03T14:00:00"}, {"key": "R32-115", "kickoff": "2026-07-03T18:00:00"}, {"key": "R32-116", "kickoff": "2026-07-03T21:30:00"}], "r16": [{"key": "R16-120", "kickoff": "2026-07-04T13:00:00"}, {"key": "R16-121", "kickoff": "2026-07-04T17:00:00"}, {"key": "R16-122", "kickoff": "2026-07-05T16:00:00"}, {"key": "R16-123", "kickoff": "2026-07-05T20:00:00"}, {"key": "R16-124", "kickoff": "2026-07-06T15:00:00"}, {"key": "R16-125", "kickoff": "2026-07-06T20:00:00"}, {"key": "R16-126", "kickoff": "2026-07-07T12:00:00"}, {"key": "R16-127", "kickoff": "2026-07-07T16:00:00"}], "qf": [{"key": "QF-131", "kickoff": "2026-07-09T16:00:00"}, {"key": "QF-132", "kickoff": "2026-07-10T15:00:00"}, {"key": "QF-133", "kickoff": "2026-07-11T17:00:00"}, {"key": "QF-134", "kickoff": "2026-07-11T21:00:00"}], "sf": [{"key": "SF-138", "kickoff": "2026-07-14T15:00:00"}, {"key": "SF-139", "kickoff": "2026-07-15T15:00:00"}], "third": [{"key": "THIRD-143", "kickoff": "2026-07-18T17:00:00"}], "final": [{"key": "FINAL-147", "kickoff": "2026-07-19T15:00:00"}]}, "fixtures": [{"key": "GA-1", "kind": "grupos", "group": "A", "home": "Mexico", "away": "South Africa", "kickoff": "2026-06-11T15:00:00"}, {"key": "GA-2", "kind": "grupos", "group": "A", "home": "South Korea", "away": "Czech Republic", "kickoff": "2026-06-11T22:00:00"}, {"key": "GB-1", "kind": "grupos", "group": "B", "home": "Canada", "away": "Bosnia and Herzegovina", "kickoff": "2026-06-12T15:00:00"}, {"key": "GD-1", "kind": "grupos", "group": "D", "home": "United States", "away": "Paraguay", "kickoff": "2026-06-12T21:00:00"}, {"key": "GB-2", "kind": "grupos", "group": "B", "home": "Qatar", "away": "Switzerland", "kickoff": "2026-06-13T15:00:00"}, {"key": "GC-1", "kind": "grupos", "group": "C", "home": "Brazil", "away": "Morocco", "kickoff": "2026-06-13T18:00:00"}, {"key": "GC-2", "kind": "grupos", "group": "C", "home": "Haiti", "away": "Scotland", "kickoff": "2026-06-13T21:00:00"}, {"key": "GD-2", "kind": "grupos", "group": "D", "home": "Australia", "away": "Turkey", "kickoff": "2026-06-14T00:00:00"}, {"key": "GE-1", "kind": "grupos", "group": "E", "home": "Germany", "away": "Curaçao", "kickoff": "2026-06-14T13:00:00"}, {"key": "GF-1", "kind": "grupos", "group": "F", "home": "Netherlands", "away": "Japan", "kickoff": "2026-06-14T16:00:00"}, {"key": "GE-2", "kind": "grupos", "group": "E", "home": "Ivory Coast", "away": "Ecuador", "kickoff": "2026-06-14T19:00:00"}, {"key": "GF-2", "kind": "grupos", "group": "F", "home": "Sweden", "away": "Tunisia", "kickoff": "2026-06-14T22:00:00"}, {"key": "GH-1", "kind": "grupos", "group": "H", "home": "Spain", "away": "Cape Verde", "kickoff": "2026-06-15T12:00:00"}, {"key": "GG-1", "kind": "grupos", "group": "G", "home": "Belgium", "away": "Egypt", "kickoff": "2026-06-15T15:00:00"}, {"key": "GH-2", "kind": "grupos", "group": "H", "home": "Saudi Arabia", "away": "Uruguay", "kickoff": "2026-06-15T18:00:00"}, {"key": "GG-2", "kind": "grupos", "group": "G", "home": "Iran", "away": "New Zealand", "kickoff": "2026-06-15T21:00:00"}, {"key": "GI-1", "kind": "grupos", "group": "I", "home": "France", "away": "Senegal", "kickoff": "2026-06-16T15:00:00"}, {"key": "GI-2", "kind": "grupos", "group": "I", "home": "Iraq", "away": "Norway", "kickoff": "2026-06-16T18:00:00"}, {"key": "GJ-1", "kind": "grupos", "group": "J", "home": "Argentina", "away": "Algeria", "kickoff": "2026-06-16T21:00:00"}, {"key": "GJ-2", "kind": "grupos", "group": "J", "home": "Austria", "away": "Jordan", "kickoff": "2026-06-17T00:00:00"}, {"key": "GK-1", "kind": "grupos", "group": "K", "home": "Portugal", "away": "DR Congo", "kickoff": "2026-06-17T13:00:00"}, {"key": "GL-1", "kind": "grupos", "group": "L", "home": "England", "away": "Croatia", "kickoff": "2026-06-17T16:00:00"}, {"key": "GL-2", "kind": "grupos", "group": "L", "home": "Ghana", "away": "Panama", "kickoff": "2026-06-17T19:00:00"}, {"key": "GK-2", "kind": "grupos", "group": "K", "home": "Uzbekistan", "away": "Colombia", "kickoff": "2026-06-17T22:00:00"}, {"key": "GA-3", "kind": "grupos", "group": "A", "home": "Czech Republic", "away": "South Africa", "kickoff": "2026-06-18T12:00:00"}, {"key": "GB-3", "kind": "grupos", "group": "B", "home": "Switzerland", "away": "Bosnia and Herzegovina", "kickoff": "2026-06-18T15:00:00"}, {"key": "GB-4", "kind": "grupos", "group": "B", "home": "Canada", "away": "Qatar", "kickoff": "2026-06-18T18:00:00"}, {"key": "GA-4", "kind": "grupos", "group": "A", "home": "Mexico", "away": "South Korea", "kickoff": "2026-06-18T21:00:00"}, {"key": "GD-3", "kind": "grupos", "group": "D", "home": "United States", "away": "Australia", "kickoff": "2026-06-19T15:00:00"}, {"key": "GC-3", "kind": "grupos", "group": "C", "home": "Scotland", "away": "Morocco", "kickoff": "2026-06-19T18:00:00"}, {"key": "GC-4", "kind": "grupos", "group": "C", "home": "Brazil", "away": "Haiti", "kickoff": "2026-06-19T20:30:00"}, {"key": "GD-4", "kind": "grupos", "group": "D", "home": "Turkey", "away": "Paraguay", "kickoff": "2026-06-19T23:00:00"}, {"key": "GF-3", "kind": "grupos", "group": "F", "home": "Netherlands", "away": "Sweden", "kickoff": "2026-06-20T13:00:00"}, {"key": "GE-3", "kind": "grupos", "group": "E", "home": "Germany", "away": "Ivory Coast", "kickoff": "2026-06-20T16:00:00"}, {"key": "GE-4", "kind": "grupos", "group": "E", "home": "Ecuador", "away": "Curaçao", "kickoff": "2026-06-20T20:00:00"}, {"key": "GF-4", "kind": "grupos", "group": "F", "home": "Tunisia", "away": "Japan", "kickoff": "2026-06-21T00:00:00"}, {"key": "GH-3", "kind": "grupos", "group": "H", "home": "Spain", "away": "Saudi Arabia", "kickoff": "2026-06-21T12:00:00"}, {"key": "GG-3", "kind": "grupos", "group": "G", "home": "Belgium", "away": "Iran", "kickoff": "2026-06-21T15:00:00"}, {"key": "GH-4", "kind": "grupos", "group": "H", "home": "Uruguay", "away": "Cape Verde", "kickoff": "2026-06-21T18:00:00"}, {"key": "GG-4", "kind": "grupos", "group": "G", "home": "New Zealand", "away": "Egypt", "kickoff": "2026-06-21T21:00:00"}, {"key": "GJ-3", "kind": "grupos", "group": "J", "home": "Argentina", "away": "Austria", "kickoff": "2026-06-22T13:00:00"}, {"key": "GI-3", "kind": "grupos", "group": "I", "home": "France", "away": "Iraq", "kickoff": "2026-06-22T17:00:00"}, {"key": "GI-4", "kind": "grupos", "group": "I", "home": "Norway", "away": "Senegal", "kickoff": "2026-06-22T20:00:00"}, {"key": "GJ-4", "kind": "grupos", "group": "J", "home": "Jordan", "away": "Algeria", "kickoff": "2026-06-22T23:00:00"}, {"key": "GK-3", "kind": "grupos", "group": "K", "home": "Portugal", "away": "Uzbekistan", "kickoff": "2026-06-23T13:00:00"}, {"key": "GL-3", "kind": "grupos", "group": "L", "home": "England", "away": "Ghana", "kickoff": "2026-06-23T16:00:00"}, {"key": "GL-4", "kind": "grupos", "group": "L", "home": "Panama", "away": "Croatia", "kickoff": "2026-06-23T19:00:00"}, {"key": "GK-4", "kind": "grupos", "group": "K", "home": "Colombia", "away": "DR Congo", "kickoff": "2026-06-23T22:00:00"}, {"key": "GB-5", "kind": "grupos", "group": "B", "home": "Switzerland", "away": "Canada", "kickoff": "2026-06-24T15:00:00"}, {"key": "GB-6", "kind": "grupos", "group": "B", "home": "Bosnia and Herzegovina", "away": "Qatar", "kickoff": "2026-06-24T15:00:00"}, {"key": "GC-5", "kind": "grupos", "group": "C", "home": "Scotland", "away": "Brazil", "kickoff": "2026-06-24T18:00:00"}, {"key": "GC-6", "kind": "grupos", "group": "C", "home": "Morocco", "away": "Haiti", "kickoff": "2026-06-24T18:00:00"}, {"key": "GA-5", "kind": "grupos", "group": "A", "home": "Czech Republic", "away": "Mexico", "kickoff": "2026-06-24T21:00:00"}, {"key": "GA-6", "kind": "grupos", "group": "A", "home": "South Africa", "away": "South Korea", "kickoff": "2026-06-24T21:00:00"}, {"key": "GE-5", "kind": "grupos", "group": "E", "home": "Curaçao", "away": "Ivory Coast", "kickoff": "2026-06-25T16:00:00"}, {"key": "GE-6", "kind": "grupos", "group": "E", "home": "Ecuador", "away": "Germany", "kickoff": "2026-06-25T16:00:00"}, {"key": "GF-5", "kind": "grupos", "group": "F", "home": "Japan", "away": "Sweden", "kickoff": "2026-06-25T19:00:00"}, {"key": "GF-6", "kind": "grupos", "group": "F", "home": "Tunisia", "away": "Netherlands", "kickoff": "2026-06-25T19:00:00"}, {"key": "GD-5", "kind": "grupos", "group": "D", "home": "Turkey", "away": "United States", "kickoff": "2026-06-25T22:00:00"}, {"key": "GD-6", "kind": "grupos", "group": "D", "home": "Paraguay", "away": "Australia", "kickoff": "2026-06-25T22:00:00"}, {"key": "GI-5", "kind": "grupos", "group": "I", "home": "Norway", "away": "France", "kickoff": "2026-06-26T15:00:00"}, {"key": "GI-6", "kind": "grupos", "group": "I", "home": "Senegal", "away": "Iraq", "kickoff": "2026-06-26T15:00:00"}, {"key": "GH-5", "kind": "grupos", "group": "H", "home": "Cape Verde", "away": "Saudi Arabia", "kickoff": "2026-06-26T20:00:00"}, {"key": "GH-6", "kind": "grupos", "group": "H", "home": "Uruguay", "away": "Spain", "kickoff": "2026-06-26T20:00:00"}, {"key": "GG-5", "kind": "grupos", "group": "G", "home": "Egypt", "away": "Iran", "kickoff": "2026-06-26T23:00:00"}, {"key": "GG-6", "kind": "grupos", "group": "G", "home": "New Zealand", "away": "Belgium", "kickoff": "2026-06-26T23:00:00"}, {"key": "GL-5", "kind": "grupos", "group": "L", "home": "Panama", "away": "England", "kickoff": "2026-06-27T17:00:00"}, {"key": "GL-6", "kind": "grupos", "group": "L", "home": "Croatia", "away": "Ghana", "kickoff": "2026-06-27T17:00:00"}, {"key": "GK-5", "kind": "grupos", "group": "K", "home": "Colombia", "away": "Portugal", "kickoff": "2026-06-27T19:30:00"}, {"key": "GK-6", "kind": "grupos", "group": "K", "home": "DR Congo", "away": "Uzbekistan", "kickoff": "2026-06-27T19:30:00"}, {"key": "GJ-5", "kind": "grupos", "group": "J", "home": "Algeria", "away": "Austria", "kickoff": "2026-06-27T22:00:00"}, {"key": "GJ-6", "kind": "grupos", "group": "J", "home": "Jordan", "away": "Argentina", "kickoff": "2026-06-27T22:00:00"}, {"key": "R32-101", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-06-28T15:00:00"}, {"key": "R32-102", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-06-29T13:00:00"}, {"key": "R32-103", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-06-29T16:30:00"}, {"key": "R32-104", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-06-29T21:00:00"}, {"key": "R32-105", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-06-30T13:00:00"}, {"key": "R32-106", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-06-30T17:00:00"}, {"key": "R32-107", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-06-30T21:00:00"}, {"key": "R32-108", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-07-01T12:00:00"}, {"key": "R32-109", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-07-01T16:00:00"}, {"key": "R32-110", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-07-01T20:00:00"}, {"key": "R32-111", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-07-02T15:00:00"}, {"key": "R32-112", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-07-02T19:00:00"}, {"key": "R32-113", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-07-02T23:00:00"}, {"key": "R32-114", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-07-03T14:00:00"}, {"key": "R32-115", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-07-03T18:00:00"}, {"key": "R32-116", "kind": "r32", "group": null, "home": null, "away": null, "kickoff": "2026-07-03T21:30:00"}, {"key": "R16-120", "kind": "r16", "group": null, "home": null, "away": null, "kickoff": "2026-07-04T13:00:00"}, {"key": "R16-121", "kind": "r16", "group": null, "home": null, "away": null, "kickoff": "2026-07-04T17:00:00"}, {"key": "R16-122", "kind": "r16", "group": null, "home": null, "away": null, "kickoff": "2026-07-05T16:00:00"}, {"key": "R16-123", "kind": "r16", "group": null, "home": null, "away": null, "kickoff": "2026-07-05T20:00:00"}, {"key": "R16-124", "kind": "r16", "group": null, "home": null, "away": null, "kickoff": "2026-07-06T15:00:00"}, {"key": "R16-125", "kind": "r16", "group": null, "home": null, "away": null, "kickoff": "2026-07-06T20:00:00"}, {"key": "R16-126", "kind": "r16", "group": null, "home": null, "away": null, "kickoff": "2026-07-07T12:00:00"}, {"key": "R16-127", "kind": "r16", "group": null, "home": null, "away": null, "kickoff": "2026-07-07T16:00:00"}, {"key": "QF-131", "kind": "qf", "group": null, "home": null, "away": null, "kickoff": "2026-07-09T16:00:00"}, {"key": "QF-132", "kind": "qf", "group": null, "home": null, "away": null, "kickoff": "2026-07-10T15:00:00"}, {"key": "QF-133", "kind": "qf", "group": null, "home": null, "away": null, "kickoff": "2026-07-11T17:00:00"}, {"key": "QF-134", "kind": "qf", "group": null, "home": null, "away": null, "kickoff": "2026-07-11T21:00:00"}, {"key": "SF-138", "kind": "sf", "group": null, "home": null, "away": null, "kickoff": "2026-07-14T15:00:00"}, {"key": "SF-139", "kind": "sf", "group": null, "home": null, "away": null, "kickoff": "2026-07-15T15:00:00"}, {"key": "THIRD-143", "kind": "third", "group": null, "home": null, "away": null, "kickoff": "2026-07-18T17:00:00"}, {"key": "FINAL-147", "kind": "final", "group": null, "home": null, "away": null, "kickoff": "2026-07-19T15:00:00"}], "participants": [{"name": "Lagen", "matches": {"GA-1": [2, 0, "Mexico", "South Africa"], "GA-2": [1, 1, "South Korea", "Czech Republic"], "GB-1": [1, 0, "Canada", "Bosnia and Herzegovina"], "GB-2": [0, 2, "Qatar", "Switzerland"], "GC-1": [2, 1, "Brazil", "Morocco"], "GC-2": [0, 2, "Haiti", "Scotland"], "GD-1": [1, 0, "United States", "Paraguay"], "GD-2": [0, 1, "Australia", "Turkey"], "GE-1": [4, 0, "Germany", "Curaçao"], "GE-2": [0, 1, "Ivory Coast", "Ecuador"], "GF-1": [2, 0, "Netherlands", "Japan"], "GF-2": [1, 0, "Sweden", "Tunisia"], "GG-1": [2, 1, "Belgium", "Egypt"], "GG-2": [2, 0, "Iran", "New Zealand"], "GH-1": [3, 0, "Spain", "Cape Verde"], "GH-2": [0, 2, "Saudi Arabia", "Uruguay"], "GI-1": [3, 0, "France", "Senegal"], "GI-2": [0, 2, "Iraq", "Norway"], "GJ-1": [2, 0, "Argentina", "Algeria"], "GJ-2": [2, 0, "Austria", "Jordan"], "GK-1": [2, 0, "Portugal", "DR Congo"], "GK-2": [0, 2, "Uzbekistan", "Colombia"], "GL-1": [2, 1, "England", "Croatia"], "GL-2": [1, 0, "Ghana", "Panama"], "GA-3": [1, 0, "Czech Republic", "South Africa"], "GA-4": [1, 0, "Mexico", "South Korea"], "GB-3": [1, 0, "Switzerland", "Bosnia and Herzegovina"], "GB-4": [2, 0, "Canada", "Qatar"], "GC-3": [0, 2, "Scotland", "Morocco"], "GC-4": [3, 0, "Brazil", "Haiti"], "GD-3": [1, 0, "United States", "Australia"], "GD-4": [2, 1, "Turkey", "Paraguay"], "GE-3": [2, 0, "Germany", "Ivory Coast"], "GE-4": [2, 0, "Ecuador", "Curaçao"], "GF-3": [2, 1, "Netherlands", "Sweden"], "GF-4": [0, 1, "Tunisia", "Japan"], "GG-3": [2, 0, "Belgium", "Iran"], "GG-4": [0, 2, "New Zealand", "Egypt"], "GH-3": [3, 0, "Spain", "Saudi Arabia"], "GH-4": [2, 0, "Uruguay", "Cape Verde"], "GI-3": [3, 0, "France", "Iraq"], "GI-4": [1, 0, "Norway", "Senegal"], "GJ-3": [2, 1, "Argentina", "Austria"], "GJ-4": [0, 2, "Jordan", "Algeria"], "GK-3": [2, 0, "Portugal", "Uzbekistan"], "GK-4": [1, 0, "Colombia", "DR Congo"], "GL-3": [2, 0, "England", "Ghana"], "GL-4": [0, 1, "Panama", "Croatia"], "GA-5": [0, 1, "Czech Republic", "Mexico"], "GA-6": [1, 2, "South Africa", "South Korea"], "GB-5": [2, 1, "Switzerland", "Canada"], "GB-6": [1, 0, "Bosnia and Herzegovina", "Qatar"], "GC-5": [0, 3, "Scotland", "Brazil"], "GC-6": [2, 0, "Morocco", "Haiti"], "GD-5": [1, 1, "Turkey", "United States"], "GD-6": [1, 1, "Paraguay", "Australia"], "GE-5": [0, 2, "Curaçao", "Ivory Coast"], "GE-6": [1, 2, "Ecuador", "Germany"], "GF-5": [1, 1, "Japan", "Sweden"], "GF-6": [0, 2, "Tunisia", "Netherlands"], "GG-5": [1, 0, "Egypt", "Iran"], "GG-6": [0, 2, "New Zealand", "Belgium"], "GH-5": [1, 2, "Cape Verde", "Saudi Arabia"], "GH-6": [1, 2, "Uruguay", "Spain"], "GI-5": [1, 2, "Norway", "France"], "GI-6": [2, 0, "Senegal", "Iraq"], "GJ-5": [1, 1, "Algeria", "Austria"], "GJ-6": [0, 2, "Jordan", "Argentina"], "GK-5": [1, 1, "Colombia", "Portugal"], "GK-6": [1, 1, "DR Congo", "Uzbekistan"], "GL-5": [0, 2, "Panama", "England"], "GL-6": [1, 1, "Croatia", "Ghana"], "R32-101": [1, 2, "South Korea", "Canada"], "R32-102": [3, 0, "Brazil", "Sweden"], "R32-103": [2, 1, "Germany", "Japan"], "R32-104": [2, 1, "Netherlands", "Morocco"], "R32-105": [1, 2, "Ecuador", "Norway"], "R32-106": [2, 0, "France", "Iran"], "R32-107": [2, 1, "Mexico", "Ivory Coast"], "R32-108": [2, 1, "England", "Senegal"], "R32-109": [2, 0, "Belgium", "Czech Republic"], "R32-110": [2, 1, "Turkey", "Bosnia and Herzegovina"], "R32-111": [3, 1, "Spain", "Austria"], "R32-112": [1, 1, "Colombia", "Croatia"], "R32-113": [2, 1, "Switzerland", "Algeria"], "R32-114": [1, 1, "United States", "Egypt"], "R32-115": [2, 1, "Argentina", "Uruguay"], "R32-116": [2, 0, "Portugal", "Ghana"], "R16-120": [1, 2, "Canada", "Netherlands"], "R16-121": [1, 2, "Germany", "France"], "R16-122": [2, 0, "Brazil", "Norway"], "R16-123": [0, 2, "Mexico", "England"], "R16-124": [0, 2, "Croatia", "Spain"], "R16-125": [1, 2, "Turkey", "Belgium"], "R16-126": [3, 0, "Argentina", "United States"], "R16-127": [1, 2, "Switzerland", "Portugal"], "QF-131": [2, 1, "France", "Netherlands"], "QF-132": [3, 1, "Spain", "Belgium"], "QF-133": [2, 1, "Brazil", "England"], "QF-134": [2, 1, "Argentina", "Portugal"], "SF-138": [1, 2, "France", "Spain"], "SF-139": [1, 2, "Brazil", "Argentina"], "THIRD-143": [1, 2, "France", "Brazil"], "FINAL-147": [2, 1, "Spain", "Argentina"]}, "positions": {"A-1": "Mexico", "A-2": "South Korea", "A-3": "Czech Republic", "A-4": "South Africa", "B-1": "Switzerland", "B-2": "Canada", "B-3": "Bosnia and Herzegovina", "B-4": "Qatar", "C-1": "Brazil", "C-2": "Morocco", "C-3": "Scotland", "C-4": "Haiti", "D-1": "Turkey", "D-2": "United States", "D-3": "Paraguay", "D-4": "Australia", "E-1": "Germany", "E-2": "Ecuador", "E-3": "Ivory Coast", "E-4": "Curaçao", "F-1": "Netherlands", "F-2": "Sweden", "F-3": "Japan", "F-4": "Tunisia", "G-1": "Belgium", "G-2": "Egypt", "G-3": "Iran", "G-4": "New Zealand", "H-1": "Spain", "H-2": "Uruguay", "H-3": "Saudi Arabia", "H-4": "Cape Verde", "I-1": "France", "I-2": "Norway", "I-3": "Senegal", "I-4": "Iraq", "J-1": "Argentina", "J-2": "Austria", "J-3": "Algeria", "J-4": "Jordan", "K-1": "Portugal", "K-2": "Colombia", "K-3": "DR Congo", "K-4": "Uzbekistan", "L-1": "England", "L-2": "Croatia", "L-3": "Ghana", "L-4": "Panama"}, "reached": {"r32": ["Algeria", "Argentina", "Austria", "Belgium", "Bosnia and Herzegovina", "Brazil", "Canada", "Colombia", "Croatia", "Czech Republic", "Ecuador", "Egypt", "England", "France", "Germany", "Ghana", "Iran", "Ivory Coast", "Japan", "Mexico", "Morocco", "Netherlands", "Norway", "Portugal", "Senegal", "South Korea", "Spain", "Sweden", "Switzerland", "Turkey", "United States", "Uruguay"], "r16": ["Argentina", "Belgium", "Brazil", "Canada", "Croatia", "England", "France", "Germany", "Mexico", "Netherlands", "Norway", "Portugal", "Spain", "Switzerland", "Turkey", "United States"], "qf": ["Argentina", "Belgium", "Brazil", "England", "France", "Netherlands", "Portugal", "Spain"], "sf": ["Argentina", "Brazil", "France", "Spain"], "third": ["Brazil", "France"], "final": ["Argentina", "Spain"]}, "awards": {"champion": "Spain", "runnerup": "Argentina", "third_place": "Brazil", "boot_gold": "Mbape", "boot_silver": "Messi", "boot_bronze": "Lamine", "ball_gold": "Pedri", "ball_silver": "Lamine", "ball_bronze": "Messi"}}, {"name": "Quimnot", "matches": {"GA-1": [2, 0, "Mexico", "South Africa"], "GA-2": [1, 1, "South Korea", "Czech Republic"], "GB-1": [1, 1, "Canada", "Bosnia and Herzegovina"], "GB-2": [0, 2, "Qatar", "Switzerland"], "GC-1": [4, 2, "Brazil", "Morocco"], "GC-2": [0, 2, "Haiti", "Scotland"], "GD-1": [2, 1, "United States", "Paraguay"], "GD-2": [0, 2, "Australia", "Turkey"], "GE-1": [5, 0, "Germany", "Curaçao"], "GE-2": [1, 2, "Ivory Coast", "Ecuador"], "GF-1": [2, 1, "Netherlands", "Japan"], "GF-2": [1, 1, "Sweden", "Tunisia"], "GG-1": [1, 2, "Belgium", "Egypt"], "GG-2": [1, 0, "Iran", "New Zealand"], "GH-1": [3, 0, "Spain", "Cape Verde"], "GH-2": [0, 2, "Saudi Arabia", "Uruguay"], "GI-1": [2, 0, "France", "Senegal"], "GI-2": [0, 3, "Iraq", "Norway"], "GJ-1": [3, 0, "Argentina", "Algeria"], "GJ-2": [2, 0, "Austria", "Jordan"], "GK-1": [4, 0, "Portugal", "DR Congo"], "GK-2": [0, 2, "Uzbekistan", "Colombia"], "GL-1": [2, 0, "England", "Croatia"], "GL-2": [1, 1, "Ghana", "Panama"], "GA-3": [2, 0, "Czech Republic", "South Africa"], "GA-4": [2, 1, "Mexico", "South Korea"], "GB-3": [2, 0, "Switzerland", "Bosnia and Herzegovina"], "GB-4": [2, 0, "Canada", "Qatar"], "GC-3": [0, 1, "Scotland", "Morocco"], "GC-4": [6, 0, "Brazil", "Haiti"], "GD-3": [3, 0, "United States", "Australia"], "GD-4": [2, 1, "Turkey", "Paraguay"], "GE-3": [2, 1, "Germany", "Ivory Coast"], "GE-4": [3, 0, "Ecuador", "Curaçao"], "GF-3": [3, 0, "Netherlands", "Sweden"], "GF-4": [0, 1, "Tunisia", "Japan"], "GG-3": [2, 1, "Belgium", "Iran"], "GG-4": [1, 3, "New Zealand", "Egypt"], "GH-3": [4, 0, "Spain", "Saudi Arabia"], "GH-4": [2, 0, "Uruguay", "Cape Verde"], "GI-3": [4, 0, "France", "Iraq"], "GI-4": [2, 1, "Norway", "Senegal"], "GJ-3": [2, 1, "Argentina", "Austria"], "GJ-4": [0, 2, "Jordan", "Algeria"], "GK-3": [3, 0, "Portugal", "Uzbekistan"], "GK-4": [2, 1, "Colombia", "DR Congo"], "GL-3": [3, 0, "England", "Ghana"], "GL-4": [0, 2, "Panama", "Croatia"], "GA-5": [1, 1, "Czech Republic", "Mexico"], "GA-6": [0, 2, "South Africa", "South Korea"], "GB-5": [1, 1, "Switzerland", "Canada"], "GB-6": [2, 1, "Bosnia and Herzegovina", "Qatar"], "GC-5": [0, 2, "Scotland", "Brazil"], "GC-6": [3, 0, "Morocco", "Haiti"], "GD-5": [1, 1, "Turkey", "United States"], "GD-6": [2, 0, "Paraguay", "Australia"], "GE-5": [1, 2, "Curaçao", "Ivory Coast"], "GE-6": [1, 1, "Ecuador", "Germany"], "GF-5": [2, 1, "Japan", "Sweden"], "GF-6": [0, 2, "Tunisia", "Netherlands"], "GG-5": [2, 0, "Egypt", "Iran"], "GG-6": [0, 3, "New Zealand", "Belgium"], "GH-5": [1, 1, "Cape Verde", "Saudi Arabia"], "GH-6": [1, 2, "Uruguay", "Spain"], "GI-5": [2, 2, "Norway", "France"], "GI-6": [2, 0, "Senegal", "Iraq"], "GJ-5": [1, 2, "Algeria", "Austria"], "GJ-6": [0, 3, "Jordan", "Argentina"], "GK-5": [1, 1, "Colombia", "Portugal"], "GK-6": [1, 2, "DR Congo", "Uzbekistan"], "GL-5": [0, 2, "Panama", "England"], "GL-6": [1, 0, "Croatia", "Ghana"], "R32-101": [1, 2, "Czech Republic", "Canada"], "R32-102": [3, 1, "Brazil", "Japan"], "R32-103": [3, 0, "Germany", "Scotland"], "R32-104": [2, 1, "Netherlands", "Morocco"], "R32-105": [2, 1, "Ecuador", "Norway"], "R32-106": [3, 0, "France", "Paraguay"], "R32-107": [2, 1, "Mexico", "Ivory Coast"], "R32-108": [2, 0, "England", "Algeria"], "R32-109": [1, 0, "Egypt", "South Korea"], "R32-110": [2, 1, "United States", "Bosnia and Herzegovina"], "R32-111": [3, 1, "Spain", "Austria"], "R32-112": [2, 1, "Colombia", "Croatia"], "R32-113": [2, 0, "Switzerland", "Iran"], "R32-114": [2, 2, "Turkey", "Belgium"], "R32-115": [2, 1, "Argentina", "Uruguay"], "R32-116": [3, 1, "Portugal", "Senegal"], "R16-120": [1, 2, "Canada", "Netherlands"], "R16-121": [1, 2, "Germany", "France"], "R16-122": [3, 1, "Brazil", "Ecuador"], "R16-123": [1, 2, "Mexico", "England"], "R16-124": [0, 2, "Colombia", "Spain"], "R16-125": [2, 1, "United States", "Egypt"], "R16-126": [2, 0, "Argentina", "Belgium"], "R16-127": [1, 2, "Switzerland", "Portugal"], "QF-131": [2, 1, "France", "Netherlands"], "QF-132": [3, 1, "Spain", "United States"], "QF-133": [2, 1, "Brazil", "England"], "QF-134": [2, 1, "Argentina", "Portugal"], "SF-138": [1, 2, "France", "Spain"], "SF-139": [2, 1, "Brazil", "Argentina"], "THIRD-143": [2, 1, "France", "Argentina"], "FINAL-147": [2, 1, "Spain", "Brazil"]}, "positions": {"A-1": "Mexico", "A-2": "Czech Republic", "A-3": "South Korea", "A-4": "South Africa", "B-1": "Switzerland", "B-2": "Canada", "B-3": "Bosnia and Herzegovina", "B-4": "Qatar", "C-1": "Brazil", "C-2": "Morocco", "C-3": "Scotland", "C-4": "Haiti", "D-1": "United States", "D-2": "Turkey", "D-3": "Paraguay", "D-4": "Australia", "E-1": "Germany", "E-2": "Ecuador", "E-3": "Ivory Coast", "E-4": "Curaçao", "F-1": "Netherlands", "F-2": "Japan", "F-3": "Tunisia", "F-4": "Sweden", "G-1": "Egypt", "G-2": "Belgium", "G-3": "Iran", "G-4": "New Zealand", "H-1": "Spain", "H-2": "Uruguay", "H-3": "Cape Verde", "H-4": "Saudi Arabia", "I-1": "France", "I-2": "Norway", "I-3": "Senegal", "I-4": "Iraq", "J-1": "Argentina", "J-2": "Austria", "J-3": "Algeria", "J-4": "Jordan", "K-1": "Portugal", "K-2": "Colombia", "K-3": "Uzbekistan", "K-4": "DR Congo", "L-1": "England", "L-2": "Croatia", "L-3": "Ghana", "L-4": "Panama"}, "reached": {"r32": ["Algeria", "Argentina", "Austria", "Belgium", "Bosnia and Herzegovina", "Brazil", "Canada", "Colombia", "Croatia", "Czech Republic", "Ecuador", "Egypt", "England", "France", "Germany", "Iran", "Ivory Coast", "Japan", "Mexico", "Morocco", "Netherlands", "Norway", "Paraguay", "Portugal", "Scotland", "Senegal", "South Korea", "Spain", "Switzerland", "Turkey", "United States", "Uruguay"], "r16": ["Argentina", "Belgium", "Brazil", "Canada", "Colombia", "Ecuador", "Egypt", "England", "France", "Germany", "Mexico", "Netherlands", "Portugal", "Spain", "Switzerland", "United States"], "qf": ["Argentina", "Brazil", "England", "France", "Netherlands", "Portugal", "Spain", "United States"], "sf": ["Argentina", "Brazil", "France", "Spain"], "third": ["Argentina", "France"], "final": ["Brazil", "Spain"]}, "awards": {"champion": "Spain", "runnerup": "Brazil", "third_place": "France", "boot_gold": "Raphinha", "boot_silver": "Kylian Mbappé", "boot_bronze": "Lamine Yamal", "ball_gold": "Lamine Yamal", "ball_silver": "Raphinha", "ball_bronze": "Lionel Messi"}}, {"name": "Guille", "matches": {"GA-1": [1, 0, "Mexico", "South Africa"], "GA-2": [1, 1, "South Korea", "Czech Republic"], "GB-1": [1, 0, "Canada", "Bosnia and Herzegovina"], "GB-2": [0, 2, "Qatar", "Switzerland"], "GC-1": [3, 0, "Brazil", "Morocco"], "GC-2": [0, 1, "Haiti", "Scotland"], "GD-1": [1, 1, "United States", "Paraguay"], "GD-2": [0, 1, "Australia", "Turkey"], "GE-1": [2, 0, "Germany", "Curaçao"], "GE-2": [2, 0, "Ivory Coast", "Ecuador"], "GF-1": [1, 0, "Netherlands", "Japan"], "GF-2": [1, 0, "Sweden", "Tunisia"], "GG-1": [1, 1, "Belgium", "Egypt"], "GG-2": [1, 0, "Iran", "New Zealand"], "GH-1": [2, 0, "Spain", "Cape Verde"], "GH-2": [0, 1, "Saudi Arabia", "Uruguay"], "GI-1": [2, 0, "France", "Senegal"], "GI-2": [0, 1, "Iraq", "Norway"], "GJ-1": [1, 0, "Argentina", "Algeria"], "GJ-2": [1, 1, "Austria", "Jordan"], "GK-1": [2, 1, "Portugal", "DR Congo"], "GK-2": [0, 1, "Uzbekistan", "Colombia"], "GL-1": [1, 0, "England", "Croatia"], "GL-2": [0, 0, "Ghana", "Panama"], "GA-3": [0, 0, "Czech Republic", "South Africa"], "GA-4": [2, 1, "Mexico", "South Korea"], "GB-3": [0, 0, "Switzerland", "Bosnia and Herzegovina"], "GB-4": [2, 1, "Canada", "Qatar"], "GC-3": [0, 1, "Scotland", "Morocco"], "GC-4": [2, 0, "Brazil", "Haiti"], "GD-3": [1, 0, "United States", "Australia"], "GD-4": [0, 2, "Turkey", "Paraguay"], "GE-3": [1, 0, "Germany", "Ivory Coast"], "GE-4": [2, 1, "Ecuador", "Curaçao"], "GF-3": [1, 1, "Netherlands", "Sweden"], "GF-4": [0, 1, "Tunisia", "Japan"], "GG-3": [2, 0, "Belgium", "Iran"], "GG-4": [0, 1, "New Zealand", "Egypt"], "GH-3": [2, 0, "Spain", "Saudi Arabia"], "GH-4": [3, 1, "Uruguay", "Cape Verde"], "GI-3": [2, 0, "France", "Iraq"], "GI-4": [0, 2, "Norway", "Senegal"], "GJ-3": [2, 1, "Argentina", "Austria"], "GJ-4": [0, 1, "Jordan", "Algeria"], "GK-3": [1, 0, "Portugal", "Uzbekistan"], "GK-4": [1, 1, "Colombia", "DR Congo"], "GL-3": [2, 1, "England", "Ghana"], "GL-4": [0, 2, "Panama", "Croatia"], "GA-5": [1, 1, "Czech Republic", "Mexico"], "GA-6": [0, 1, "South Africa", "South Korea"], "GB-5": [1, 1, "Switzerland", "Canada"], "GB-6": [1, 0, "Bosnia and Herzegovina", "Qatar"], "GC-5": [0, 1, "Scotland", "Brazil"], "GC-6": [2, 0, "Morocco", "Haiti"], "GD-5": [2, 1, "Turkey", "United States"], "GD-6": [1, 0, "Paraguay", "Australia"], "GE-5": [0, 1, "Curaçao", "Ivory Coast"], "GE-6": [0, 1, "Ecuador", "Germany"], "GF-5": [0, 1, "Japan", "Sweden"], "GF-6": [0, 2, "Tunisia", "Netherlands"], "GG-5": [1, 1, "Egypt", "Iran"], "GG-6": [0, 2, "New Zealand", "Belgium"], "GH-5": [1, 1, "Cape Verde", "Saudi Arabia"], "GH-6": [1, 2, "Uruguay", "Spain"], "GI-5": [1, 1, "Norway", "France"], "GI-6": [2, 0, "Senegal", "Iraq"], "GJ-5": [1, 1, "Algeria", "Austria"], "GJ-6": [0, 0, "Jordan", "Argentina"], "GK-5": [1, 1, "Colombia", "Portugal"], "GK-6": [1, 0, "DR Congo", "Uzbekistan"], "GL-5": [1, 3, "Panama", "England"], "GL-6": [1, 1, "Croatia", "Ghana"], "R32-101": [0, 1, "South Korea", "Switzerland"], "R32-102": [2, 1, "Brazil", "Sweden"], "R32-103": [2, 0, "Germany", "United States"], "R32-104": [1, 1, "Netherlands", "Morocco"], "R32-105": [0, 2, "Ivory Coast", "Senegal"], "R32-106": [2, 0, "France", "Japan"], "R32-107": [1, 0, "Mexico", "Scotland"], "R32-108": [2, 0, "England", "DR Congo"], "R32-109": [1, 1, "Belgium", "Czech Republic"], "R32-110": [0, 0, "Paraguay", "Bosnia and Herzegovina"], "R32-111": [2, 0, "Spain", "Algeria"], "R32-112": [0, 1, "Colombia", "Croatia"], "R32-113": [0, 0, "Canada", "Iran"], "R32-114": [0, 1, "Turkey", "Egypt"], "R32-115": [1, 0, "Argentina", "Uruguay"], "R32-116": [2, 0, "Portugal", "Norway"], "R16-120": [0, 0, "Switzerland", "Morocco"], "R16-121": [1, 0, "Germany", "France"], "R16-122": [1, 0, "Brazil", "Senegal"], "R16-123": [1, 2, "Mexico", "England"], "R16-124": [1, 2, "Croatia", "Spain"], "R16-125": [1, 1, "Paraguay", "Belgium"], "R16-126": [1, 1, "Argentina", "Egypt"], "R16-127": [0, 1, "Canada", "Portugal"], "QF-131": [1, 0, "Germany", "Morocco"], "QF-132": [2, 0, "Spain", "Belgium"], "QF-133": [3, 1, "Brazil", "England"], "QF-134": [0, 1, "Argentina", "Portugal"], "SF-138": [0, 1, "Germany", "Spain"], "SF-139": [1, 0, "Brazil", "Portugal"], "THIRD-143": [0, 2, "Germany", "Portugal"], "FINAL-147": [1, 0, "Spain", "Brazil"]}, "positions": {"A-1": "Mexico", "A-2": "South Korea", "A-3": "Czech Republic", "A-4": "South Africa", "B-1": "Canada", "B-2": "Switzerland", "B-3": "Bosnia and Herzegovina", "B-4": "Qatar", "C-1": "Brazil", "C-2": "Morocco", "C-3": "Scotland", "C-4": "Haiti", "D-1": "Paraguay", "D-2": "Turkey", "D-3": "United States", "D-4": "Australia", "E-1": "Germany", "E-2": "Ivory Coast", "E-3": "Ecuador", "E-4": "Curaçao", "F-1": "Netherlands", "F-2": "Sweden", "F-3": "Japan", "F-4": "Tunisia", "G-1": "Belgium", "G-2": "Egypt", "G-3": "Iran", "G-4": "New Zealand", "H-1": "Spain", "H-2": "Uruguay", "H-3": "Saudi Arabia", "H-4": "Cape Verde", "I-1": "France", "I-2": "Senegal", "I-3": "Norway", "I-4": "Iraq", "J-1": "Argentina", "J-2": "Algeria", "J-3": "Austria", "J-4": "Jordan", "K-1": "Portugal", "K-2": "Colombia", "K-3": "DR Congo", "K-4": "Uzbekistan", "L-1": "England", "L-2": "Croatia", "L-3": "Ghana", "L-4": "Panama"}, "reached": {"r32": ["Algeria", "Argentina", "Belgium", "Bosnia and Herzegovina", "Brazil", "Canada", "Colombia", "Croatia", "Czech Republic", "DR Congo", "Egypt", "England", "France", "Germany", "Iran", "Ivory Coast", "Japan", "Mexico", "Morocco", "Netherlands", "Norway", "Paraguay", "Portugal", "Scotland", "Senegal", "South Korea", "Spain", "Sweden", "Switzerland", "Turkey", "United States", "Uruguay"], "r16": ["Argentina", "Belgium", "Brazil", "Canada", "Croatia", "Egypt", "England", "France", "Germany", "Mexico", "Morocco", "Paraguay", "Portugal", "Senegal", "Spain", "Switzerland"], "qf": ["Argentina", "Belgium", "Brazil", "England", "Germany", "Morocco", "Portugal", "Spain"], "sf": ["Brazil", "Germany", "Portugal", "Spain"], "third": ["Germany", "Portugal"], "final": ["Brazil", "Spain"]}, "awards": {"champion": "Spain", "runnerup": "Brazil", "third_place": "Portugal", "boot_gold": "Raphinha", "boot_silver": "Cristiano Ronaldo", "boot_bronze": "Ferran Torres", "ball_gold": "Lamine Yamal", "ball_silver": "Vinicius Jr", "ball_bronze": "Pedri"}}, {"name": "Abete", "matches": {"GA-1": [2, 0, "Mexico", "South Africa"], "GA-2": [1, 1, "South Korea", "Czech Republic"], "GB-1": [0, 0, "Canada", "Bosnia and Herzegovina"], "GB-2": [0, 3, "Qatar", "Switzerland"], "GC-1": [1, 1, "Brazil", "Morocco"], "GC-2": [0, 2, "Haiti", "Scotland"], "GD-1": [1, 0, "United States", "Paraguay"], "GD-2": [1, 2, "Australia", "Turkey"], "GE-1": [3, 0, "Germany", "Curaçao"], "GE-2": [2, 0, "Ivory Coast", "Ecuador"], "GF-1": [2, 1, "Netherlands", "Japan"], "GF-2": [1, 0, "Sweden", "Tunisia"], "GG-1": [2, 1, "Belgium", "Egypt"], "GG-2": [1, 1, "Iran", "New Zealand"], "GH-1": [2, 0, "Spain", "Cape Verde"], "GH-2": [1, 2, "Saudi Arabia", "Uruguay"], "GI-1": [2, 0, "France", "Senegal"], "GI-2": [0, 2, "Iraq", "Norway"], "GJ-1": [2, 0, "Argentina", "Algeria"], "GJ-2": [1, 0, "Austria", "Jordan"], "GK-1": [2, 0, "Portugal", "DR Congo"], "GK-2": [0, 2, "Uzbekistan", "Colombia"], "GL-1": [2, 1, "England", "Croatia"], "GL-2": [1, 0, "Ghana", "Panama"], "GA-3": [1, 0, "Czech Republic", "South Africa"], "GA-4": [1, 1, "Mexico", "South Korea"], "GB-3": [1, 1, "Switzerland", "Bosnia and Herzegovina"], "GB-4": [2, 0, "Canada", "Qatar"], "GC-3": [1, 2, "Scotland", "Morocco"], "GC-4": [3, 0, "Brazil", "Haiti"], "GD-3": [1, 1, "United States", "Australia"], "GD-4": [1, 1, "Turkey", "Paraguay"], "GE-3": [2, 1, "Germany", "Ivory Coast"], "GE-4": [2, 0, "Ecuador", "Curaçao"], "GF-3": [1, 0, "Netherlands", "Sweden"], "GF-4": [1, 2, "Tunisia", "Japan"], "GG-3": [1, 0, "Belgium", "Iran"], "GG-4": [0, 2, "New Zealand", "Egypt"], "GH-3": [2, 1, "Spain", "Saudi Arabia"], "GH-4": [3, 0, "Uruguay", "Cape Verde"], "GI-3": [2, 0, "France", "Iraq"], "GI-4": [2, 1, "Norway", "Senegal"], "GJ-3": [2, 0, "Argentina", "Austria"], "GJ-4": [0, 1, "Jordan", "Algeria"], "GK-3": [2, 0, "Portugal", "Uzbekistan"], "GK-4": [1, 0, "Colombia", "DR Congo"], "GL-3": [2, 1, "England", "Ghana"], "GL-4": [0, 2, "Panama", "Croatia"], "GA-5": [1, 0, "Czech Republic", "Mexico"], "GA-6": [0, 1, "South Africa", "South Korea"], "GB-5": [2, 1, "Switzerland", "Canada"], "GB-6": [2, 0, "Bosnia and Herzegovina", "Qatar"], "GC-5": [1, 2, "Scotland", "Brazil"], "GC-6": [3, 0, "Morocco", "Haiti"], "GD-5": [2, 1, "Turkey", "United States"], "GD-6": [1, 0, "Paraguay", "Australia"], "GE-5": [0, 2, "Curaçao", "Ivory Coast"], "GE-6": [1, 2, "Ecuador", "Germany"], "GF-5": [1, 1, "Japan", "Sweden"], "GF-6": [0, 2, "Tunisia", "Netherlands"], "GG-5": [1, 0, "Egypt", "Iran"], "GG-6": [0, 2, "New Zealand", "Belgium"], "GH-5": [0, 1, "Cape Verde", "Saudi Arabia"], "GH-6": [1, 2, "Uruguay", "Spain"], "GI-5": [1, 2, "Norway", "France"], "GI-6": [2, 0, "Senegal", "Iraq"], "GJ-5": [1, 1, "Algeria", "Austria"], "GJ-6": [0, 2, "Jordan", "Argentina"], "GK-5": [0, 2, "Colombia", "Portugal"], "GK-6": [0, 0, "DR Congo", "Uzbekistan"], "GL-5": [0, 2, "Panama", "England"], "GL-6": [1, 2, "Croatia", "Ghana"], "R32-101": [1, 0, "South Korea", "Bosnia and Herzegovina"], "R32-102": [2, 1, "Brazil", "Japan"], "R32-103": [2, 0, "Germany", "Paraguay"], "R32-104": [2, 1, "Netherlands", "Morocco"], "R32-105": [0, 1, "Ivory Coast", "Norway"], "R32-106": [2, 1, "France", "Sweden"], "R32-107": [0, 1, "Czech Republic", "Scotland"], "R32-108": [2, 0, "England", "Saudi Arabia"], "R32-109": [1, 0, "Belgium", "Mexico"], "R32-110": [1, 0, "Turkey", "Canada"], "R32-111": [2, 0, "Spain", "Algeria"], "R32-112": [0, 1, "Colombia", "Ghana"], "R32-113": [2, 1, "Switzerland", "Austria"], "R32-114": [0, 1, "United States", "Egypt"], "R32-115": [2, 1, "Argentina", "Uruguay"], "R32-116": [2, 0, "Portugal", "Croatia"], "R16-120": [0, 2, "South Korea", "Netherlands"], "R16-121": [1, 2, "Germany", "France"], "R16-122": [1, 0, "Brazil", "Norway"], "R16-123": [1, 2, "Scotland", "England"], "R16-124": [1, 2, "Ghana", "Spain"], "R16-125": [0, 1, "Turkey", "Belgium"], "R16-126": [2, 0, "Argentina", "Egypt"], "R16-127": [0, 1, "Switzerland", "Portugal"], "QF-131": [2, 1, "France", "Netherlands"], "QF-132": [1, 0, "Spain", "Belgium"], "QF-133": [1, 2, "Brazil", "England"], "QF-134": [0, 1, "Argentina", "Portugal"], "SF-138": [2, 0, "France", "Spain"], "SF-139": [0, 1, "England", "Portugal"], "THIRD-143": [2, 1, "Spain", "England"], "FINAL-147": [1, 2, "France", "Portugal"]}, "positions": {"A-1": "Czech Republic", "A-2": "South Korea", "A-3": "Mexico", "A-4": "South Africa", "B-1": "Switzerland", "B-2": "Bosnia and Herzegovina", "B-3": "Canada", "B-4": "Qatar", "C-1": "Brazil", "C-2": "Morocco", "C-3": "Scotland", "C-4": "Haiti", "D-1": "Turkey", "D-2": "United States", "D-3": "Paraguay", "D-4": "Australia", "E-1": "Germany", "E-2": "Ivory Coast", "E-3": "Ecuador", "E-4": "Curaçao", "F-1": "Netherlands", "F-2": "Japan", "F-3": "Sweden", "F-4": "Tunisia", "G-1": "Belgium", "G-2": "Egypt", "G-3": "Iran", "G-4": "New Zealand", "H-1": "Spain", "H-2": "Uruguay", "H-3": "Saudi Arabia", "H-4": "Cape Verde", "I-1": "France", "I-2": "Norway", "I-3": "Senegal", "I-4": "Iraq", "J-1": "Argentina", "J-2": "Algeria", "J-3": "Austria", "J-4": "Jordan", "K-1": "Portugal", "K-2": "Colombia", "K-3": "DR Congo", "K-4": "Uzbekistan", "L-1": "England", "L-2": "Ghana", "L-3": "Croatia", "L-4": "Panama"}, "reached": {"r32": ["Algeria", "Argentina", "Austria", "Belgium", "Bosnia and Herzegovina", "Brazil", "Canada", "Colombia", "Croatia", "Czech Republic", "Egypt", "England", "France", "Germany", "Ghana", "Ivory Coast", "Japan", "Mexico", "Morocco", "Netherlands", "Norway", "Paraguay", "Portugal", "Saudi Arabia", "Scotland", "South Korea", "Spain", "Sweden", "Switzerland", "Turkey", "United States", "Uruguay"], "r16": ["Argentina", "Belgium", "Brazil", "Egypt", "England", "France", "Germany", "Ghana", "Netherlands", "Norway", "Portugal", "Scotland", "South Korea", "Spain", "Switzerland", "Turkey"], "qf": ["Argentina", "Belgium", "Brazil", "England", "France", "Netherlands", "Portugal", "Spain"], "sf": ["England", "France", "Portugal", "Spain"], "third": ["England", "Spain"], "final": ["France", "Portugal"]}, "awards": {"champion": "Portugal", "runnerup": "France", "third_place": "Spain", "boot_gold": "Mbappe", "boot_silver": "Kane", "boot_bronze": "Cristiano Ronaldo", "ball_gold": "Mbappe", "ball_silver": "Pedri", "ball_bronze": "Vinicius Jr"}}, {"name": "Carrillo", "matches": {"GA-1": [2, 0, "Mexico", "South Africa"], "GA-2": [0, 0, "South Korea", "Czech Republic"], "GB-1": [0, 1, "Canada", "Bosnia and Herzegovina"], "GB-2": [0, 2, "Qatar", "Switzerland"], "GC-1": [2, 2, "Brazil", "Morocco"], "GC-2": [0, 2, "Haiti", "Scotland"], "GD-1": [0, 0, "United States", "Paraguay"], "GD-2": [1, 3, "Australia", "Turkey"], "GE-1": [4, 0, "Germany", "Curaçao"], "GE-2": [2, 3, "Ivory Coast", "Ecuador"], "GF-1": [1, 1, "Netherlands", "Japan"], "GF-2": [1, 1, "Sweden", "Tunisia"], "GG-1": [1, 1, "Belgium", "Egypt"], "GG-2": [0, 0, "Iran", "New Zealand"], "GH-1": [5, 0, "Spain", "Cape Verde"], "GH-2": [1, 1, "Saudi Arabia", "Uruguay"], "GI-1": [3, 1, "France", "Senegal"], "GI-2": [1, 4, "Iraq", "Norway"], "GJ-1": [1, 0, "Argentina", "Algeria"], "GJ-2": [3, 1, "Austria", "Jordan"], "GK-1": [6, 0, "Portugal", "DR Congo"], "GK-2": [0, 1, "Uzbekistan", "Colombia"], "GL-1": [1, 0, "England", "Croatia"], "GL-2": [0, 0, "Ghana", "Panama"], "GA-3": [1, 0, "Czech Republic", "South Africa"], "GA-4": [2, 1, "Mexico", "South Korea"], "GB-3": [1, 1, "Switzerland", "Bosnia and Herzegovina"], "GB-4": [1, 0, "Canada", "Qatar"], "GC-3": [0, 1, "Scotland", "Morocco"], "GC-4": [5, 0, "Brazil", "Haiti"], "GD-3": [2, 2, "United States", "Australia"], "GD-4": [2, 0, "Turkey", "Paraguay"], "GE-3": [2, 0, "Germany", "Ivory Coast"], "GE-4": [3, 0, "Ecuador", "Curaçao"], "GF-3": [2, 1, "Netherlands", "Sweden"], "GF-4": [1, 1, "Tunisia", "Japan"], "GG-3": [2, 0, "Belgium", "Iran"], "GG-4": [1, 3, "New Zealand", "Egypt"], "GH-3": [3, 1, "Spain", "Saudi Arabia"], "GH-4": [4, 0, "Uruguay", "Cape Verde"], "GI-3": [5, 0, "France", "Iraq"], "GI-4": [3, 2, "Norway", "Senegal"], "GJ-3": [0, 0, "Argentina", "Austria"], "GJ-4": [0, 2, "Jordan", "Algeria"], "GK-3": [3, 0, "Portugal", "Uzbekistan"], "GK-4": [2, 1, "Colombia", "DR Congo"], "GL-3": [2, 1, "England", "Ghana"], "GL-4": [0, 3, "Panama", "Croatia"], "GA-5": [0, 0, "Czech Republic", "Mexico"], "GA-6": [1, 1, "South Africa", "South Korea"], "GB-5": [1, 1, "Switzerland", "Canada"], "GB-6": [3, 0, "Bosnia and Herzegovina", "Qatar"], "GC-5": [1, 2, "Scotland", "Brazil"], "GC-6": [3, 0, "Morocco", "Haiti"], "GD-5": [3, 1, "Turkey", "United States"], "GD-6": [3, 1, "Paraguay", "Australia"], "GE-5": [0, 2, "Curaçao", "Ivory Coast"], "GE-6": [1, 1, "Ecuador", "Germany"], "GF-5": [0, 0, "Japan", "Sweden"], "GF-6": [1, 1, "Tunisia", "Netherlands"], "GG-5": [2, 1, "Egypt", "Iran"], "GG-6": [1, 3, "New Zealand", "Belgium"], "GH-5": [1, 3, "Cape Verde", "Saudi Arabia"], "GH-6": [1, 1, "Uruguay", "Spain"], "GI-5": [2, 2, "Norway", "France"], "GI-6": [2, 0, "Senegal", "Iraq"], "GJ-5": [0, 1, "Algeria", "Austria"], "GJ-6": [0, 3, "Jordan", "Argentina"], "GK-5": [1, 2, "Colombia", "Portugal"], "GK-6": [1, 1, "DR Congo", "Uzbekistan"], "GL-5": [0, 3, "Panama", "England"], "GL-6": [2, 0, "Croatia", "Ghana"], "R32-101": [1, 2, "Czech Republic", "Switzerland"], "R32-102": [3, 1, "Brazil", "Tunisia"], "R32-103": [2, 1, "Germany", "Scotland"], "R32-104": [2, 2, "Netherlands", "Morocco"], "R32-105": [2, 2, "Ecuador", "Norway"], "R32-106": [3, 2, "France", "Japan"], "R32-107": [3, 0, "Mexico", "Saudi Arabia"], "R32-108": [2, 1, "England", "Senegal"], "R32-109": [1, 1, "Belgium", "South Korea"], "R32-110": [2, 0, "Turkey", "Canada"], "R32-111": [3, 1, "Spain", "Austria"], "R32-112": [3, 2, "Colombia", "Croatia"], "R32-113": [1, 0, "Bosnia and Herzegovina", "Algeria"], "R32-114": [1, 0, "Paraguay", "Egypt"], "R32-115": [0, 1, "Argentina", "Uruguay"], "R32-116": [4, 1, "Portugal", "Ivory Coast"], "R16-120": [1, 1, "Switzerland", "Morocco"], "R16-121": [1, 3, "Germany", "France"], "R16-122": [1, 1, "Brazil", "Norway"], "R16-123": [2, 3, "Mexico", "England"], "R16-124": [0, 1, "Colombia", "Spain"], "R16-125": [2, 0, "Turkey", "South Korea"], "R16-126": [1, 1, "Uruguay", "Paraguay"], "R16-127": [0, 3, "Bosnia and Herzegovina", "Portugal"], "QF-131": [1, 1, "France", "Switzerland"], "QF-132": [1, 1, "Spain", "Turkey"], "QF-133": [1, 2, "Brazil", "England"], "QF-134": [0, 1, "Paraguay", "Portugal"], "SF-138": [3, 2, "France", "Spain"], "SF-139": [0, 1, "England", "Portugal"], "THIRD-143": [2, 0, "Spain", "England"], "FINAL-147": [2, 2, "France", "Portugal"]}, "positions": {"A-1": "Mexico", "A-2": "Czech Republic", "A-3": "South Korea", "A-4": "South Africa", "B-1": "Bosnia and Herzegovina", "B-2": "Switzerland", "B-3": "Canada", "B-4": "Qatar", "C-1": "Brazil", "C-2": "Morocco", "C-3": "Scotland", "C-4": "Haiti", "D-1": "Turkey", "D-2": "Paraguay", "D-3": "United States", "D-4": "Australia", "E-1": "Germany", "E-2": "Ecuador", "E-3": "Ivory Coast", "E-4": "Curaçao", "F-1": "Netherlands", "F-2": "Tunisia", "F-3": "Japan", "F-4": "Sweden", "G-1": "Belgium", "G-2": "Egypt", "G-3": "Iran", "G-4": "New Zealand", "H-1": "Spain", "H-2": "Uruguay", "H-3": "Saudi Arabia", "H-4": "Cape Verde", "I-1": "France", "I-2": "Norway", "I-3": "Senegal", "I-4": "Iraq", "J-1": "Argentina", "J-2": "Austria", "J-3": "Algeria", "J-4": "Jordan", "K-1": "Portugal", "K-2": "Colombia", "K-3": "Uzbekistan", "K-4": "DR Congo", "L-1": "England", "L-2": "Croatia", "L-3": "Ghana", "L-4": "Panama"}, "reached": {"r32": ["Algeria", "Argentina", "Austria", "Belgium", "Bosnia and Herzegovina", "Brazil", "Canada", "Colombia", "Croatia", "Czech Republic", "Ecuador", "Egypt", "England", "France", "Germany", "Ivory Coast", "Japan", "Mexico", "Morocco", "Netherlands", "Norway", "Paraguay", "Portugal", "Saudi Arabia", "Scotland", "Senegal", "South Korea", "Spain", "Switzerland", "Tunisia", "Turkey", "Uruguay"], "r16": ["Bosnia and Herzegovina", "Brazil", "Colombia", "England", "France", "Germany", "Mexico", "Morocco", "Norway", "Paraguay", "Portugal", "South Korea", "Spain", "Switzerland", "Turkey", "Uruguay"], "qf": ["Brazil", "England", "France", "Paraguay", "Portugal", "Spain", "Switzerland", "Turkey"], "sf": ["England", "France", "Portugal", "Spain"], "third": ["England", "Spain"], "final": ["France", "Portugal"]}, "awards": {"champion": "Portugal", "runnerup": "France", "third_place": "Spain", "boot_gold": "Ronaldo", "boot_silver": "Mbappé", "boot_bronze": "Kane", "ball_gold": "Mbappé", "ball_silver": "Vitinha", "ball_bronze": "Lamine Yamal"}}, {"name": "Jonete", "matches": {"GA-1": [2, 0, "Mexico", "South Africa"], "GA-2": [1, 0, "South Korea", "Czech Republic"], "GB-1": [2, 1, "Canada", "Bosnia and Herzegovina"], "GB-2": [0, 3, "Qatar", "Switzerland"], "GC-1": [2, 1, "Brazil", "Morocco"], "GC-2": [0, 2, "Haiti", "Scotland"], "GD-1": [2, 1, "United States", "Paraguay"], "GD-2": [1, 2, "Australia", "Turkey"], "GE-1": [5, 0, "Germany", "Curaçao"], "GE-2": [1, 1, "Ivory Coast", "Ecuador"], "GF-1": [2, 1, "Netherlands", "Japan"], "GF-2": [2, 0, "Sweden", "Tunisia"], "GG-1": [2, 0, "Belgium", "Egypt"], "GG-2": [2, 0, "Iran", "New Zealand"], "GH-1": [4, 1, "Spain", "Cape Verde"], "GH-2": [0, 2, "Saudi Arabia", "Uruguay"], "GI-1": [2, 1, "France", "Senegal"], "GI-2": [0, 3, "Iraq", "Norway"], "GJ-1": [3, 0, "Argentina", "Algeria"], "GJ-2": [2, 0, "Austria", "Jordan"], "GK-1": [4, 0, "Portugal", "DR Congo"], "GK-2": [0, 2, "Uzbekistan", "Colombia"], "GL-1": [2, 2, "England", "Croatia"], "GL-2": [0, 0, "Ghana", "Panama"], "GA-3": [1, 1, "Czech Republic", "South Africa"], "GA-4": [1, 1, "Mexico", "South Korea"], "GB-3": [1, 1, "Switzerland", "Bosnia and Herzegovina"], "GB-4": [3, 0, "Canada", "Qatar"], "GC-3": [0, 1, "Scotland", "Morocco"], "GC-4": [4, 0, "Brazil", "Haiti"], "GD-3": [3, 1, "United States", "Australia"], "GD-4": [1, 1, "Turkey", "Paraguay"], "GE-3": [2, 1, "Germany", "Ivory Coast"], "GE-4": [4, 0, "Ecuador", "Curaçao"], "GF-3": [3, 0, "Netherlands", "Sweden"], "GF-4": [0, 0, "Tunisia", "Japan"], "GG-3": [2, 1, "Belgium", "Iran"], "GG-4": [1, 1, "New Zealand", "Egypt"], "GH-3": [2, 0, "Spain", "Saudi Arabia"], "GH-4": [3, 1, "Uruguay", "Cape Verde"], "GI-3": [3, 0, "France", "Iraq"], "GI-4": [2, 1, "Norway", "Senegal"], "GJ-3": [2, 1, "Argentina", "Austria"], "GJ-4": [0, 1, "Jordan", "Algeria"], "GK-3": [4, 0, "Portugal", "Uzbekistan"], "GK-4": [3, 1, "Colombia", "DR Congo"], "GL-3": [1, 0, "England", "Ghana"], "GL-4": [0, 3, "Panama", "Croatia"], "GA-5": [2, 3, "Czech Republic", "Mexico"], "GA-6": [0, 2, "South Africa", "South Korea"], "GB-5": [2, 1, "Switzerland", "Canada"], "GB-6": [2, 1, "Bosnia and Herzegovina", "Qatar"], "GC-5": [0, 1, "Scotland", "Brazil"], "GC-6": [2, 0, "Morocco", "Haiti"], "GD-5": [2, 1, "Turkey", "United States"], "GD-6": [1, 0, "Paraguay", "Australia"], "GE-5": [0, 3, "Curaçao", "Ivory Coast"], "GE-6": [1, 2, "Ecuador", "Germany"], "GF-5": [0, 1, "Japan", "Sweden"], "GF-6": [1, 3, "Tunisia", "Netherlands"], "GG-5": [1, 1, "Egypt", "Iran"], "GG-6": [1, 3, "New Zealand", "Belgium"], "GH-5": [1, 2, "Cape Verde", "Saudi Arabia"], "GH-6": [1, 2, "Uruguay", "Spain"], "GI-5": [1, 2, "Norway", "France"], "GI-6": [3, 0, "Senegal", "Iraq"], "GJ-5": [1, 0, "Algeria", "Austria"], "GJ-6": [0, 4, "Jordan", "Argentina"], "GK-5": [0, 2, "Colombia", "Portugal"], "GK-6": [1, 1, "DR Congo", "Uzbekistan"], "GL-5": [0, 3, "Panama", "England"], "GL-6": [1, 1, "Croatia", "Ghana"], "R32-101": [1, 2, "South Korea", "Canada"], "R32-102": [2, 1, "Brazil", "Sweden"], "R32-103": [3, 0, "Germany", "Scotland"], "R32-104": [0, 1, "Netherlands", "Morocco"], "R32-105": [1, 3, "Ecuador", "Norway"], "R32-106": [3, 0, "France", "Paraguay"], "R32-107": [0, 0, "Mexico", "Ivory Coast"], "R32-108": [2, 0, "England", "Senegal"], "R32-109": [2, 1, "Belgium", "Saudi Arabia"], "R32-110": [2, 0, "Turkey", "Bosnia and Herzegovina"], "R32-111": [3, 0, "Spain", "Algeria"], "R32-112": [1, 2, "Colombia", "Croatia"], "R32-113": [1, 1, "Switzerland", "Austria"], "R32-114": [2, 0, "United States", "Iran"], "R32-115": [2, 1, "Argentina", "Uruguay"], "R32-116": [3, 0, "Portugal", "Ghana"], "R16-120": [0, 2, "Canada", "Morocco"], "R16-121": [0, 2, "Germany", "France"], "R16-122": [1, 0, "Brazil", "Norway"], "R16-123": [0, 2, "Mexico", "England"], "R16-124": [1, 3, "Croatia", "Spain"], "R16-125": [2, 2, "Turkey", "Belgium"], "R16-126": [2, 1, "Argentina", "United States"], "R16-127": [0, 2, "Switzerland", "Portugal"], "QF-131": [2, 0, "France", "Morocco"], "QF-132": [1, 0, "Spain", "Turkey"], "QF-133": [3, 1, "Brazil", "England"], "QF-134": [2, 3, "Argentina", "Portugal"], "SF-138": [1, 0, "France", "Spain"], "SF-139": [0, 2, "Brazil", "Portugal"], "THIRD-143": [3, 1, "Spain", "Brazil"], "FINAL-147": [2, 1, "France", "Portugal"]}, "positions": {"A-1": "Mexico", "A-2": "South Korea", "A-3": "Czech Republic", "A-4": "South Africa", "B-1": "Switzerland", "B-2": "Canada", "B-3": "Bosnia and Herzegovina", "B-4": "Qatar", "C-1": "Brazil", "C-2": "Morocco", "C-3": "Scotland", "C-4": "Haiti", "D-1": "Turkey", "D-2": "United States", "D-3": "Paraguay", "D-4": "Australia", "E-1": "Germany", "E-2": "Ecuador", "E-3": "Ivory Coast", "E-4": "Curaçao", "F-1": "Netherlands", "F-2": "Sweden", "F-3": "Japan", "F-4": "Tunisia", "G-1": "Belgium", "G-2": "Iran", "G-3": "Egypt", "G-4": "New Zealand", "H-1": "Spain", "H-2": "Uruguay", "H-3": "Saudi Arabia", "H-4": "Cape Verde", "I-1": "France", "I-2": "Norway", "I-3": "Senegal", "I-4": "Iraq", "J-1": "Argentina", "J-2": "Algeria", "J-3": "Austria", "J-4": "Jordan", "K-1": "Portugal", "K-2": "Colombia", "K-3": "DR Congo", "K-4": "Uzbekistan", "L-1": "England", "L-2": "Croatia", "L-3": "Ghana", "L-4": "Panama"}, "reached": {"r32": ["Algeria", "Argentina", "Austria", "Belgium", "Bosnia and Herzegovina", "Brazil", "Canada", "Colombia", "Croatia", "Ecuador", "England", "France", "Germany", "Ghana", "Iran", "Ivory Coast", "Mexico", "Morocco", "Netherlands", "Norway", "Paraguay", "Portugal", "Saudi Arabia", "Scotland", "Senegal", "South Korea", "Spain", "Sweden", "Switzerland", "Turkey", "United States", "Uruguay"], "r16": ["Argentina", "Belgium", "Brazil", "Canada", "Croatia", "England", "France", "Germany", "Mexico", "Morocco", "Norway", "Portugal", "Spain", "Switzerland", "Turkey", "United States"], "qf": ["Argentina", "Brazil", "England", "France", "Morocco", "Portugal", "Spain", "Turkey"], "sf": ["Brazil", "France", "Portugal", "Spain"], "third": ["Brazil", "Spain"], "final": ["France", "Portugal"]}, "awards": {"champion": "France", "runnerup": "Portugal", "third_place": "Spain", "boot_gold": "Kylian Mbappé", "boot_silver": "Gonçalo Ramos", "boot_bronze": "Julián Álvarez", "ball_gold": "Ousmane Dembele", "ball_silver": "Lamine Yamal", "ball_bronze": "Leo Messi"}}, {"name": "P-man", "matches": {"GA-1": [2, 1, "Mexico", "South Africa"], "GA-2": [2, 1, "South Korea", "Czech Republic"], "GB-1": [2, 0, "Canada", "Bosnia and Herzegovina"], "GB-2": [0, 3, "Qatar", "Switzerland"], "GC-1": [2, 1, "Brazil", "Morocco"], "GC-2": [0, 2, "Haiti", "Scotland"], "GD-1": [1, 0, "United States", "Paraguay"], "GD-2": [0, 1, "Australia", "Turkey"], "GE-1": [4, 0, "Germany", "Curaçao"], "GE-2": [0, 1, "Ivory Coast", "Ecuador"], "GF-1": [2, 1, "Netherlands", "Japan"], "GF-2": [1, 0, "Sweden", "Tunisia"], "GG-1": [2, 1, "Belgium", "Egypt"], "GG-2": [1, 0, "Iran", "New Zealand"], "GH-1": [3, 0, "Spain", "Cape Verde"], "GH-2": [1, 3, "Saudi Arabia", "Uruguay"], "GI-1": [2, 0, "France", "Senegal"], "GI-2": [1, 2, "Iraq", "Norway"], "GJ-1": [3, 1, "Argentina", "Algeria"], "GJ-2": [2, 1, "Austria", "Jordan"], "GK-1": [3, 0, "Portugal", "DR Congo"], "GK-2": [1, 3, "Uzbekistan", "Colombia"], "GL-1": [1, 0, "England", "Croatia"], "GL-2": [1, 0, "Ghana", "Panama"], "GA-3": [1, 0, "Czech Republic", "South Africa"], "GA-4": [3, 1, "Mexico", "South Korea"], "GB-3": [2, 0, "Switzerland", "Bosnia and Herzegovina"], "GB-4": [3, 0, "Canada", "Qatar"], "GC-3": [1, 2, "Scotland", "Morocco"], "GC-4": [4, 0, "Brazil", "Haiti"], "GD-3": [1, 1, "United States", "Australia"], "GD-4": [2, 0, "Turkey", "Paraguay"], "GE-3": [3, 1, "Germany", "Ivory Coast"], "GE-4": [2, 0, "Ecuador", "Curaçao"], "GF-3": [3, 1, "Netherlands", "Sweden"], "GF-4": [1, 3, "Tunisia", "Japan"], "GG-3": [3, 1, "Belgium", "Iran"], "GG-4": [0, 2, "New Zealand", "Egypt"], "GH-3": [3, 0, "Spain", "Saudi Arabia"], "GH-4": [3, 1, "Uruguay", "Cape Verde"], "GI-3": [2, 0, "France", "Iraq"], "GI-4": [2, 1, "Norway", "Senegal"], "GJ-3": [3, 1, "Argentina", "Austria"], "GJ-4": [1, 2, "Jordan", "Algeria"], "GK-3": [3, 0, "Portugal", "Uzbekistan"], "GK-4": [3, 0, "Colombia", "DR Congo"], "GL-3": [2, 0, "England", "Ghana"], "GL-4": [0, 2, "Panama", "Croatia"], "GA-5": [0, 2, "Czech Republic", "Mexico"], "GA-6": [0, 1, "South Africa", "South Korea"], "GB-5": [2, 1, "Switzerland", "Canada"], "GB-6": [1, 1, "Bosnia and Herzegovina", "Qatar"], "GC-5": [1, 4, "Scotland", "Brazil"], "GC-6": [4, 0, "Morocco", "Haiti"], "GD-5": [2, 1, "Turkey", "United States"], "GD-6": [1, 1, "Paraguay", "Australia"], "GE-5": [0, 3, "Curaçao", "Ivory Coast"], "GE-6": [0, 2, "Ecuador", "Germany"], "GF-5": [2, 1, "Japan", "Sweden"], "GF-6": [1, 4, "Tunisia", "Netherlands"], "GG-5": [2, 1, "Egypt", "Iran"], "GG-6": [0, 4, "New Zealand", "Belgium"], "GH-5": [1, 3, "Cape Verde", "Saudi Arabia"], "GH-6": [1, 2, "Uruguay", "Spain"], "GI-5": [1, 2, "Norway", "France"], "GI-6": [0, 1, "Senegal", "Iraq"], "GJ-5": [0, 1, "Algeria", "Austria"], "GJ-6": [0, 4, "Jordan", "Argentina"], "GK-5": [1, 2, "Colombia", "Portugal"], "GK-6": [1, 1, "DR Congo", "Uzbekistan"], "GL-5": [0, 3, "Panama", "England"], "GL-6": [2, 1, "Croatia", "Ghana"], "R32-101": [1, 0, "South Korea", "Canada"], "R32-102": [2, 1, "Brazil", "Japan"], "R32-103": [2, 1, "Germany", "Scotland"], "R32-104": [1, 0, "Netherlands", "Morocco"], "R32-105": [0, 1, "Ecuador", "Norway"], "R32-106": [3, 0, "France", "Sweden"], "R32-107": [1, 0, "Mexico", "Ivory Coast"], "R32-108": [1, 0, "England", "Iraq"], "R32-109": [2, 1, "Belgium", "Czech Republic"], "R32-110": [1, 0, "Turkey", "Algeria"], "R32-111": [3, 1, "Spain", "Austria"], "R32-112": [2, 1, "Colombia", "Croatia"], "R32-113": [3, 1, "Switzerland", "Iran"], "R32-114": [1, 2, "United States", "Egypt"], "R32-115": [2, 1, "Argentina", "Uruguay"], "R32-116": [2, 0, "Portugal", "Ghana"], "R16-120": [1, 3, "South Korea", "Netherlands"], "R16-121": [1, 2, "Germany", "France"], "R16-122": [2, 1, "Brazil", "Norway"], "R16-123": [0, 1, "Mexico", "England"], "R16-124": [0, 1, "Colombia", "Spain"], "R16-125": [1, 2, "Turkey", "Belgium"], "R16-126": [1, 0, "Argentina", "Egypt"], "R16-127": [1, 2, "Switzerland", "Portugal"], "QF-131": [2, 1, "France", "Netherlands"], "QF-132": [3, 1, "Spain", "Belgium"], "QF-133": [1, 1, "Brazil", "England"], "QF-134": [1, 1, "Argentina", "Portugal"], "SF-138": [0, 1, "France", "Spain"], "SF-139": [2, 1, "England", "Argentina"], "THIRD-143": [3, 1, "France", "Argentina"], "FINAL-147": [3, 1, "Spain", "England"]}, "positions": {"A-1": "Mexico", "A-2": "South Korea", "A-3": "Czech Republic", "A-4": "South Africa", "B-1": "Switzerland", "B-2": "Canada", "B-3": "Bosnia and Herzegovina", "B-4": "Qatar", "C-1": "Brazil", "C-2": "Morocco", "C-3": "Scotland", "C-4": "Haiti", "D-1": "Turkey", "D-2": "United States", "D-3": "Australia", "D-4": "Paraguay", "E-1": "Germany", "E-2": "Ecuador", "E-3": "Ivory Coast", "E-4": "Curaçao", "F-1": "Netherlands", "F-2": "Japan", "F-3": "Sweden", "F-4": "Tunisia", "G-1": "Belgium", "G-2": "Egypt", "G-3": "Iran", "G-4": "New Zealand", "H-1": "Spain", "H-2": "Uruguay", "H-3": "Saudi Arabia", "H-4": "Cape Verde", "I-1": "France", "I-2": "Norway", "I-3": "Iraq", "I-4": "Senegal", "J-1": "Argentina", "J-2": "Austria", "J-3": "Algeria", "J-4": "Jordan", "K-1": "Portugal", "K-2": "Colombia", "K-3": "Uzbekistan", "K-4": "DR Congo", "L-1": "England", "L-2": "Croatia", "L-3": "Ghana", "L-4": "Panama"}, "reached": {"r32": ["Algeria", "Argentina", "Austria", "Belgium", "Brazil", "Canada", "Colombia", "Croatia", "Czech Republic", "Ecuador", "Egypt", "England", "France", "Germany", "Ghana", "Iran", "Iraq", "Ivory Coast", "Japan", "Mexico", "Morocco", "Netherlands", "Norway", "Portugal", "Scotland", "South Korea", "Spain", "Sweden", "Switzerland", "Turkey", "United States", "Uruguay"], "r16": ["Argentina", "Belgium", "Brazil", "Colombia", "Egypt", "England", "France", "Germany", "Mexico", "Netherlands", "Norway", "Portugal", "South Korea", "Spain", "Switzerland", "Turkey"], "qf": ["Argentina", "Belgium", "Brazil", "England", "France", "Netherlands", "Portugal", "Spain"], "sf": ["Argentina", "England", "France", "Spain"], "third": ["Argentina", "France"], "final": ["England", "Spain"]}, "awards": {"champion": "Spain", "runnerup": "England", "third_place": "France", "boot_gold": "HurriKane", "boot_silver": "Tortuga Ninja", "boot_bronze": "O Tiburåo", "ball_gold": "Pedri", "ball_silver": "Bellingham", "ball_bronze": "Lamine"}}, {"name": "Santi", "matches": {"GA-1": [3, 0, "Mexico", "South Africa"], "GA-2": [1, 1, "South Korea", "Czech Republic"], "GB-1": [3, 0, "Canada", "Bosnia and Herzegovina"], "GB-2": [0, 4, "Qatar", "Switzerland"], "GC-1": [1, 1, "Brazil", "Morocco"], "GC-2": [0, 2, "Haiti", "Scotland"], "GD-1": [2, 2, "United States", "Paraguay"], "GD-2": [1, 4, "Australia", "Turkey"], "GE-1": [5, 0, "Germany", "Curaçao"], "GE-2": [1, 2, "Ivory Coast", "Ecuador"], "GF-1": [3, 1, "Netherlands", "Japan"], "GF-2": [2, 1, "Sweden", "Tunisia"], "GG-1": [3, 1, "Belgium", "Egypt"], "GG-2": [3, 0, "Iran", "New Zealand"], "GH-1": [5, 0, "Spain", "Cape Verde"], "GH-2": [1, 2, "Saudi Arabia", "Uruguay"], "GI-1": [4, 1, "France", "Senegal"], "GI-2": [1, 2, "Iraq", "Norway"], "GJ-1": [3, 1, "Argentina", "Algeria"], "GJ-2": [2, 0, "Austria", "Jordan"], "GK-1": [5, 0, "Portugal", "DR Congo"], "GK-2": [0, 4, "Uzbekistan", "Colombia"], "GL-1": [2, 1, "England", "Croatia"], "GL-2": [1, 1, "Ghana", "Panama"], "GA-3": [2, 1, "Czech Republic", "South Africa"], "GA-4": [3, 1, "Mexico", "South Korea"], "GB-3": [3, 1, "Switzerland", "Bosnia and Herzegovina"], "GB-4": [2, 0, "Canada", "Qatar"], "GC-3": [0, 3, "Scotland", "Morocco"], "GC-4": [4, 0, "Brazil", "Haiti"], "GD-3": [2, 1, "United States", "Australia"], "GD-4": [3, 0, "Turkey", "Paraguay"], "GE-3": [3, 1, "Germany", "Ivory Coast"], "GE-4": [3, 0, "Ecuador", "Curaçao"], "GF-3": [3, 1, "Netherlands", "Sweden"], "GF-4": [1, 2, "Tunisia", "Japan"], "GG-3": [4, 2, "Belgium", "Iran"], "GG-4": [0, 2, "New Zealand", "Egypt"], "GH-3": [3, 1, "Spain", "Saudi Arabia"], "GH-4": [2, 0, "Uruguay", "Cape Verde"], "GI-3": [3, 0, "France", "Iraq"], "GI-4": [1, 1, "Norway", "Senegal"], "GJ-3": [2, 1, "Argentina", "Austria"], "GJ-4": [1, 4, "Jordan", "Algeria"], "GK-3": [4, 0, "Portugal", "Uzbekistan"], "GK-4": [3, 1, "Colombia", "DR Congo"], "GL-3": [2, 0, "England", "Ghana"], "GL-4": [1, 2, "Panama", "Croatia"], "GA-5": [2, 3, "Czech Republic", "Mexico"], "GA-6": [0, 1, "South Africa", "South Korea"], "GB-5": [1, 1, "Switzerland", "Canada"], "GB-6": [1, 2, "Bosnia and Herzegovina", "Qatar"], "GC-5": [1, 3, "Scotland", "Brazil"], "GC-6": [4, 0, "Morocco", "Haiti"], "GD-5": [2, 0, "Turkey", "United States"], "GD-6": [1, 1, "Paraguay", "Australia"], "GE-5": [1, 2, "Curaçao", "Ivory Coast"], "GE-6": [2, 3, "Ecuador", "Germany"], "GF-5": [1, 1, "Japan", "Sweden"], "GF-6": [1, 4, "Tunisia", "Netherlands"], "GG-5": [2, 2, "Egypt", "Iran"], "GG-6": [1, 4, "New Zealand", "Belgium"], "GH-5": [1, 2, "Cape Verde", "Saudi Arabia"], "GH-6": [2, 4, "Uruguay", "Spain"], "GI-5": [1, 3, "Norway", "France"], "GI-6": [1, 1, "Senegal", "Iraq"], "GJ-5": [1, 1, "Algeria", "Austria"], "GJ-6": [0, 5, "Jordan", "Argentina"], "GK-5": [1, 2, "Colombia", "Portugal"], "GK-6": [1, 1, "DR Congo", "Uzbekistan"], "GL-5": [1, 3, "Panama", "England"], "GL-6": [3, 0, "Croatia", "Ghana"], "R32-101": [1, 2, "Czech Republic", "Canada"], "R32-102": [3, 0, "Morocco", "Japan"], "R32-103": [3, 0, "Germany", "Scotland"], "R32-104": [3, 2, "Netherlands", "Brazil"], "R32-105": [2, 1, "Ecuador", "Norway"], "R32-106": [4, 0, "France", "Sweden"], "R32-107": [3, 1, "Mexico", "Saudi Arabia"], "R32-108": [3, 1, "England", "Austria"], "R32-109": [2, 1, "Belgium", "South Korea"], "R32-110": [3, 0, "Turkey", "Qatar"], "R32-111": [4, 1, "Spain", "Algeria"], "R32-112": [1, 2, "Colombia", "Croatia"], "R32-113": [1, 1, "Switzerland", "Egypt"], "R32-114": [1, 2, "United States", "Iran"], "R32-115": [3, 2, "Argentina", "Uruguay"], "R32-116": [4, 1, "Portugal", "Ivory Coast"], "R16-120": [1, 3, "Canada", "Netherlands"], "R16-121": [1, 3, "Germany", "France"], "R16-122": [2, 0, "Morocco", "Ecuador"], "R16-123": [1, 2, "Mexico", "England"], "R16-124": [0, 3, "Croatia", "Spain"], "R16-125": [1, 2, "Turkey", "Belgium"], "R16-126": [2, 0, "Argentina", "Iran"], "R16-127": [1, 4, "Egypt", "Portugal"], "QF-131": [1, 1, "France", "Netherlands"], "QF-132": [3, 1, "Spain", "Belgium"], "QF-133": [2, 1, "Morocco", "England"], "QF-134": [2, 3, "Argentina", "Portugal"], "SF-138": [1, 1, "Netherlands", "Spain"], "SF-139": [1, 2, "Morocco", "Portugal"], "THIRD-143": [2, 1, "Netherlands", "Morocco"], "FINAL-147": [3, 0, "Spain", "Portugal"]}, "positions": {"A-1": "Mexico", "A-2": "Czech Republic", "A-3": "South Korea", "A-4": "South Africa", "B-1": "Switzerland", "B-2": "Canada", "B-3": "Qatar", "B-4": "Bosnia and Herzegovina", "C-1": "Morocco", "C-2": "Brazil", "C-3": "Scotland", "C-4": "Haiti", "D-1": "Turkey", "D-2": "United States", "D-3": "Paraguay", "D-4": "Australia", "E-1": "Germany", "E-2": "Ecuador", "E-3": "Ivory Coast", "E-4": "Curaçao", "F-1": "Netherlands", "F-2": "Japan", "F-3": "Sweden", "F-4": "Tunisia", "G-1": "Belgium", "G-2": "Iran", "G-3": "Egypt", "G-4": "New Zealand", "H-1": "Spain", "H-2": "Uruguay", "H-3": "Saudi Arabia", "H-4": "Cape Verde", "I-1": "France", "I-2": "Norway", "I-3": "Senegal", "I-4": "Iraq", "J-1": "Argentina", "J-2": "Algeria", "J-3": "Austria", "J-4": "Jordan", "K-1": "Portugal", "K-2": "Colombia", "K-3": "DR Congo", "K-4": "Uzbekistan", "L-1": "England", "L-2": "Croatia", "L-3": "Panama", "L-4": "Ghana"}, "reached": {"r32": ["Algeria", "Argentina", "Austria", "Belgium", "Brazil", "Canada", "Colombia", "Croatia", "Czech Republic", "Ecuador", "Egypt", "England", "France", "Germany", "Iran", "Ivory Coast", "Japan", "Mexico", "Morocco", "Netherlands", "Norway", "Portugal", "Qatar", "Saudi Arabia", "Scotland", "South Korea", "Spain", "Sweden", "Switzerland", "Turkey", "United States", "Uruguay"], "r16": ["Argentina", "Belgium", "Canada", "Croatia", "Ecuador", "Egypt", "England", "France", "Germany", "Iran", "Mexico", "Morocco", "Netherlands", "Portugal", "Spain", "Turkey"], "qf": ["Argentina", "Belgium", "England", "France", "Morocco", "Netherlands", "Portugal", "Spain"], "sf": ["Morocco", "Netherlands", "Portugal", "Spain"], "third": ["Morocco", "Netherlands"], "final": ["Portugal", "Spain"]}, "awards": {"champion": "Spain", "runnerup": "Portugal", "third_place": "Netherlands", "boot_gold": "Mbape", "boot_silver": "Kane", "boot_bronze": "Lamine", "ball_gold": "Lamine", "ball_silver": "Vitinha", "ball_bronze": "Pedri"}}, {"name": "Edu", "matches": {"GA-1": [1, 0, "Mexico", "South Africa"], "GA-2": [2, 1, "South Korea", "Czech Republic"], "GB-1": [0, 1, "Canada", "Bosnia and Herzegovina"], "GB-2": [0, 2, "Qatar", "Switzerland"], "GC-1": [2, 1, "Brazil", "Morocco"], "GC-2": [0, 2, "Haiti", "Scotland"], "GD-1": [1, 1, "United States", "Paraguay"], "GD-2": [0, 1, "Australia", "Turkey"], "GE-1": [4, 0, "Germany", "Curaçao"], "GE-2": [1, 2, "Ivory Coast", "Ecuador"], "GF-1": [2, 1, "Netherlands", "Japan"], "GF-2": [1, 0, "Sweden", "Tunisia"], "GG-1": [2, 1, "Belgium", "Egypt"], "GG-2": [1, 0, "Iran", "New Zealand"], "GH-1": [3, 0, "Spain", "Cape Verde"], "GH-2": [1, 2, "Saudi Arabia", "Uruguay"], "GI-1": [3, 1, "France", "Senegal"], "GI-2": [0, 1, "Iraq", "Norway"], "GJ-1": [3, 1, "Argentina", "Algeria"], "GJ-2": [1, 0, "Austria", "Jordan"], "GK-1": [3, 0, "Portugal", "DR Congo"], "GK-2": [1, 2, "Uzbekistan", "Colombia"], "GL-1": [2, 0, "England", "Croatia"], "GL-2": [1, 0, "Ghana", "Panama"], "GA-3": [1, 1, "Czech Republic", "South Africa"], "GA-4": [1, 2, "Mexico", "South Korea"], "GB-3": [1, 1, "Switzerland", "Bosnia and Herzegovina"], "GB-4": [1, 1, "Canada", "Qatar"], "GC-3": [1, 1, "Scotland", "Morocco"], "GC-4": [4, 0, "Brazil", "Haiti"], "GD-3": [1, 0, "United States", "Australia"], "GD-4": [0, 0, "Turkey", "Paraguay"], "GE-3": [2, 0, "Germany", "Ivory Coast"], "GE-4": [2, 0, "Ecuador", "Curaçao"], "GF-3": [2, 1, "Netherlands", "Sweden"], "GF-4": [1, 1, "Tunisia", "Japan"], "GG-3": [2, 0, "Belgium", "Iran"], "GG-4": [0, 1, "New Zealand", "Egypt"], "GH-3": [2, 1, "Spain", "Saudi Arabia"], "GH-4": [2, 0, "Uruguay", "Cape Verde"], "GI-3": [2, 0, "France", "Iraq"], "GI-4": [1, 1, "Norway", "Senegal"], "GJ-3": [2, 1, "Argentina", "Austria"], "GJ-4": [0, 1, "Jordan", "Algeria"], "GK-3": [2, 0, "Portugal", "Uzbekistan"], "GK-4": [2, 1, "Colombia", "DR Congo"], "GL-3": [3, 1, "England", "Ghana"], "GL-4": [1, 2, "Panama", "Croatia"], "GA-5": [1, 2, "Czech Republic", "Mexico"], "GA-6": [0, 2, "South Africa", "South Korea"], "GB-5": [2, 0, "Switzerland", "Canada"], "GB-6": [2, 1, "Bosnia and Herzegovina", "Qatar"], "GC-5": [1, 2, "Scotland", "Brazil"], "GC-6": [2, 0, "Morocco", "Haiti"], "GD-5": [1, 0, "Turkey", "United States"], "GD-6": [2, 1, "Paraguay", "Australia"], "GE-5": [0, 1, "Curaçao", "Ivory Coast"], "GE-6": [1, 2, "Ecuador", "Germany"], "GF-5": [1, 1, "Japan", "Sweden"], "GF-6": [0, 1, "Tunisia", "Netherlands"], "GG-5": [1, 1, "Egypt", "Iran"], "GG-6": [1, 2, "New Zealand", "Belgium"], "GH-5": [0, 1, "Cape Verde", "Saudi Arabia"], "GH-6": [1, 2, "Uruguay", "Spain"], "GI-5": [1, 2, "Norway", "France"], "GI-6": [2, 1, "Senegal", "Iraq"], "GJ-5": [1, 1, "Algeria", "Austria"], "GJ-6": [0, 2, "Jordan", "Argentina"], "GK-5": [0, 1, "Colombia", "Portugal"], "GK-6": [1, 0, "DR Congo", "Uzbekistan"], "GL-5": [0, 1, "Panama", "England"], "GL-6": [1, 0, "Croatia", "Ghana"], "R32-101": [1, 1, "Mexico", "Bosnia and Herzegovina"], "R32-102": [2, 0, "Brazil", "Sweden"], "R32-103": [2, 1, "Germany", "Scotland"], "R32-104": [2, 2, "Netherlands", "Morocco"], "R32-105": [2, 1, "Ecuador", "Norway"], "R32-106": [3, 0, "France", "United States"], "R32-107": [2, 1, "South Korea", "Ivory Coast"], "R32-108": [2, 0, "England", "Senegal"], "R32-109": [2, 1, "Belgium", "Saudi Arabia"], "R32-110": [1, 1, "Turkey", "Algeria"], "R32-111": [2, 0, "Spain", "Austria"], "R32-112": [1, 2, "Colombia", "Croatia"], "R32-113": [1, 0, "Switzerland", "Iran"], "R32-114": [2, 1, "Paraguay", "Egypt"], "R32-115": [3, 1, "Argentina", "Uruguay"], "R32-116": [3, 1, "Portugal", "Ghana"], "R16-120": [1, 2, "Bosnia and Herzegovina", "Netherlands"], "R16-121": [1, 2, "Germany", "France"], "R16-122": [2, 0, "Brazil", "Ecuador"], "R16-123": [1, 2, "South Korea", "England"], "R16-124": [0, 2, "Croatia", "Spain"], "R16-125": [1, 2, "Turkey", "Belgium"], "R16-126": [2, 0, "Argentina", "Paraguay"], "R16-127": [0, 2, "Switzerland", "Portugal"], "QF-131": [2, 0, "France", "Netherlands"], "QF-132": [2, 1, "Spain", "Belgium"], "QF-133": [1, 2, "Brazil", "England"], "QF-134": [2, 1, "Argentina", "Portugal"], "SF-138": [2, 1, "France", "Spain"], "SF-139": [1, 0, "England", "Argentina"], "THIRD-143": [2, 1, "Spain", "Argentina"], "FINAL-147": [3, 1, "France", "England"]}, "positions": {"A-1": "South Korea", "A-2": "Mexico", "A-3": "Czech Republic", "A-4": "South Africa", "B-1": "Switzerland", "B-2": "Bosnia and Herzegovina", "B-3": "Qatar", "B-4": "Canada", "C-1": "Brazil", "C-2": "Morocco", "C-3": "Scotland", "C-4": "Haiti", "D-1": "Turkey", "D-2": "Paraguay", "D-3": "United States", "D-4": "Australia", "E-1": "Germany", "E-2": "Ecuador", "E-3": "Ivory Coast", "E-4": "Curaçao", "F-1": "Netherlands", "F-2": "Sweden", "F-3": "Japan", "F-4": "Tunisia", "G-1": "Belgium", "G-2": "Egypt", "G-3": "Iran", "G-4": "New Zealand", "H-1": "Spain", "H-2": "Uruguay", "H-3": "Saudi Arabia", "H-4": "Cape Verde", "I-1": "France", "I-2": "Norway", "I-3": "Senegal", "I-4": "Iraq", "J-1": "Argentina", "J-2": "Austria", "J-3": "Algeria", "J-4": "Jordan", "K-1": "Portugal", "K-2": "Colombia", "K-3": "DR Congo", "K-4": "Uzbekistan", "L-1": "England", "L-2": "Croatia", "L-3": "Ghana", "L-4": "Panama"}, "reached": {"r32": ["Algeria", "Argentina", "Austria", "Belgium", "Bosnia and Herzegovina", "Brazil", "Colombia", "Croatia", "Ecuador", "Egypt", "England", "France", "Germany", "Ghana", "Iran", "Ivory Coast", "Mexico", "Morocco", "Netherlands", "Norway", "Paraguay", "Portugal", "Saudi Arabia", "Scotland", "Senegal", "South Korea", "Spain", "Sweden", "Switzerland", "Turkey", "United States", "Uruguay"], "r16": ["Argentina", "Belgium", "Bosnia and Herzegovina", "Brazil", "Croatia", "Ecuador", "England", "France", "Germany", "Netherlands", "Paraguay", "Portugal", "South Korea", "Spain", "Switzerland", "Turkey"], "qf": ["Argentina", "Belgium", "Brazil", "England", "France", "Netherlands", "Portugal", "Spain"], "sf": ["Argentina", "England", "France", "Spain"], "third": ["Argentina", "Spain"], "final": ["England", "France"]}, "awards": {"champion": "France", "runnerup": "England", "third_place": "Spain", "boot_gold": "Mbappe", "boot_silver": "Kane", "boot_bronze": "Lautaro", "ball_gold": "Mbappe", "ball_silver": "Kane", "ball_bronze": "Rice"}}, {"name": "Uri", "matches": {"GA-1": [2, 0, "Mexico", "South Africa"], "GA-2": [1, 1, "South Korea", "Czech Republic"], "GB-1": [0, 2, "Canada", "Bosnia and Herzegovina"], "GB-2": [1, 3, "Qatar", "Switzerland"], "GC-1": [1, 2, "Brazil", "Morocco"], "GC-2": [0, 3, "Haiti", "Scotland"], "GD-1": [1, 1, "United States", "Paraguay"], "GD-2": [0, 3, "Australia", "Turkey"], "GE-1": [5, 0, "Germany", "Curaçao"], "GE-2": [2, 1, "Ivory Coast", "Ecuador"], "GF-1": [2, 0, "Netherlands", "Japan"], "GF-2": [2, 0, "Sweden", "Tunisia"], "GG-1": [2, 1, "Belgium", "Egypt"], "GG-2": [1, 0, "Iran", "New Zealand"], "GH-1": [5, 1, "Spain", "Cape Verde"], "GH-2": [1, 3, "Saudi Arabia", "Uruguay"], "GI-1": [3, 0, "France", "Senegal"], "GI-2": [0, 2, "Iraq", "Norway"], "GJ-1": [1, 0, "Argentina", "Algeria"], "GJ-2": [2, 0, "Austria", "Jordan"], "GK-1": [3, 0, "Portugal", "DR Congo"], "GK-2": [0, 2, "Uzbekistan", "Colombia"], "GL-1": [2, 0, "England", "Croatia"], "GL-2": [1, 1, "Ghana", "Panama"], "GA-3": [2, 0, "Czech Republic", "South Africa"], "GA-4": [2, 1, "Mexico", "South Korea"], "GB-3": [2, 1, "Switzerland", "Bosnia and Herzegovina"], "GB-4": [1, 1, "Canada", "Qatar"], "GC-3": [0, 2, "Scotland", "Morocco"], "GC-4": [5, 0, "Brazil", "Haiti"], "GD-3": [2, 0, "United States", "Australia"], "GD-4": [3, 1, "Turkey", "Paraguay"], "GE-3": [3, 1, "Germany", "Ivory Coast"], "GE-4": [4, 1, "Ecuador", "Curaçao"], "GF-3": [3, 1, "Netherlands", "Sweden"], "GF-4": [1, 2, "Tunisia", "Japan"], "GG-3": [3, 1, "Belgium", "Iran"], "GG-4": [0, 2, "New Zealand", "Egypt"], "GH-3": [3, 2, "Spain", "Saudi Arabia"], "GH-4": [4, 0, "Uruguay", "Cape Verde"], "GI-3": [3, 0, "France", "Iraq"], "GI-4": [2, 1, "Norway", "Senegal"], "GJ-3": [2, 0, "Argentina", "Austria"], "GJ-4": [0, 2, "Jordan", "Algeria"], "GK-3": [4, 0, "Portugal", "Uzbekistan"], "GK-4": [3, 1, "Colombia", "DR Congo"], "GL-3": [2, 0, "England", "Ghana"], "GL-4": [0, 3, "Panama", "Croatia"], "GA-5": [1, 1, "Czech Republic", "Mexico"], "GA-6": [1, 2, "South Africa", "South Korea"], "GB-5": [3, 0, "Switzerland", "Canada"], "GB-6": [2, 0, "Bosnia and Herzegovina", "Qatar"], "GC-5": [1, 3, "Scotland", "Brazil"], "GC-6": [4, 0, "Morocco", "Haiti"], "GD-5": [2, 0, "Turkey", "United States"], "GD-6": [1, 1, "Paraguay", "Australia"], "GE-5": [0, 3, "Curaçao", "Ivory Coast"], "GE-6": [1, 3, "Ecuador", "Germany"], "GF-5": [0, 1, "Japan", "Sweden"], "GF-6": [0, 3, "Tunisia", "Netherlands"], "GG-5": [1, 0, "Egypt", "Iran"], "GG-6": [0, 3, "New Zealand", "Belgium"], "GH-5": [1, 3, "Cape Verde", "Saudi Arabia"], "GH-6": [1, 3, "Uruguay", "Spain"], "GI-5": [1, 3, "Norway", "France"], "GI-6": [2, 0, "Senegal", "Iraq"], "GJ-5": [1, 2, "Algeria", "Austria"], "GJ-6": [0, 4, "Jordan", "Argentina"], "GK-5": [1, 3, "Colombia", "Portugal"], "GK-6": [1, 1, "DR Congo", "Uzbekistan"], "GL-5": [1, 4, "Panama", "England"], "GL-6": [2, 1, "Croatia", "Ghana"], "R32-101": [1, 0, "Czech Republic", "Bosnia and Herzegovina"], "R32-102": [2, 0, "Morocco", "Sweden"], "R32-103": [2, 0, "Germany", "Scotland"], "R32-104": [2, 1, "Netherlands", "Brazil"], "R32-105": [0, 1, "Ivory Coast", "Norway"], "R32-106": [3, 1, "France", "Japan"], "R32-107": [1, 1, "Mexico", "Saudi Arabia"], "R32-108": [3, 0, "England", "Senegal"], "R32-109": [2, 1, "Belgium", "South Korea"], "R32-110": [3, 0, "Turkey", "Algeria"], "R32-111": [2, 0, "Spain", "Austria"], "R32-112": [0, 1, "Colombia", "Croatia"], "R32-113": [1, 0, "Switzerland", "Iran"], "R32-114": [2, 1, "United States", "Egypt"], "R32-115": [3, 1, "Argentina", "Uruguay"], "R32-116": [4, 0, "Portugal", "Ecuador"], "R16-120": [0, 2, "Czech Republic", "Netherlands"], "R16-121": [2, 3, "Germany", "France"], "R16-122": [1, 1, "Morocco", "Norway"], "R16-123": [0, 3, "Mexico", "England"], "R16-124": [0, 2, "Croatia", "Spain"], "R16-125": [3, 2, "Turkey", "Belgium"], "R16-126": [3, 1, "Argentina", "United States"], "R16-127": [0, 2, "Switzerland", "Portugal"], "QF-131": [2, 0, "France", "Netherlands"], "QF-132": [3, 1, "Spain", "Turkey"], "QF-133": [1, 2, "Morocco", "England"], "QF-134": [1, 1, "Argentina", "Portugal"], "SF-138": [2, 3, "France", "Spain"], "SF-139": [2, 1, "England", "Argentina"], "THIRD-143": [3, 1, "France", "Argentina"], "FINAL-147": [2, 2, "Spain", "England"]}, "positions": {"A-1": "Mexico", "A-2": "Czech Republic", "A-3": "South Korea", "A-4": "South Africa", "B-1": "Switzerland", "B-2": "Bosnia and Herzegovina", "B-3": "Qatar", "B-4": "Canada", "C-1": "Morocco", "C-2": "Brazil", "C-3": "Scotland", "C-4": "Haiti", "D-1": "Turkey", "D-2": "United States", "D-3": "Paraguay", "D-4": "Australia", "E-1": "Germany", "E-2": "Ivory Coast", "E-3": "Ecuador", "E-4": "Curaçao", "F-1": "Netherlands", "F-2": "Sweden", "F-3": "Japan", "F-4": "Tunisia", "G-1": "Belgium", "G-2": "Egypt", "G-3": "Iran", "G-4": "New Zealand", "H-1": "Spain", "H-2": "Uruguay", "H-3": "Saudi Arabia", "H-4": "Cape Verde", "I-1": "France", "I-2": "Norway", "I-3": "Senegal", "I-4": "Iraq", "J-1": "Argentina", "J-2": "Austria", "J-3": "Algeria", "J-4": "Jordan", "K-1": "Portugal", "K-2": "Colombia", "K-3": "DR Congo", "K-4": "Uzbekistan", "L-1": "England", "L-2": "Croatia", "L-3": "Ghana", "L-4": "Panama"}, "reached": {"r32": ["Algeria", "Argentina", "Austria", "Belgium", "Bosnia and Herzegovina", "Brazil", "Colombia", "Croatia", "Czech Republic", "Ecuador", "Egypt", "England", "France", "Germany", "Iran", "Ivory Coast", "Japan", "Mexico", "Morocco", "Netherlands", "Norway", "Portugal", "Saudi Arabia", "Scotland", "Senegal", "South Korea", "Spain", "Sweden", "Switzerland", "Turkey", "United States", "Uruguay"], "r16": ["Argentina", "Belgium", "Croatia", "Czech Republic", "England", "France", "Germany", "Mexico", "Morocco", "Netherlands", "Norway", "Portugal", "Spain", "Switzerland", "Turkey", "United States"], "qf": ["Argentina", "England", "France", "Morocco", "Netherlands", "Portugal", "Spain", "Turkey"], "sf": ["Argentina", "England", "France", "Spain"], "third": ["Argentina", "France"], "final": ["England", "Spain"]}, "awards": {"champion": "Spain", "runnerup": "England", "third_place": "France", "boot_gold": "Mbape", "boot_silver": "Harry Kane", "boot_bronze": "Oyarzabal", "ball_gold": "Lamine Yamal", "ball_silver": "Harry Kane", "ball_bronze": "Mbappe"}}, {"name": "Graells", "matches": {"GA-1": [2, 0, "Mexico", "South Africa"], "GA-2": [0, 2, "South Korea", "Czech Republic"], "GB-1": [2, 0, "Canada", "Bosnia and Herzegovina"], "GB-2": [0, 2, "Qatar", "Switzerland"], "GC-1": [2, 0, "Brazil", "Morocco"], "GC-2": [0, 2, "Haiti", "Scotland"], "GD-1": [2, 0, "United States", "Paraguay"], "GD-2": [0, 2, "Australia", "Turkey"], "GE-1": [2, 0, "Germany", "Curaçao"], "GE-2": [2, 0, "Ivory Coast", "Ecuador"], "GF-1": [0, 2, "Netherlands", "Japan"], "GF-2": [2, 0, "Sweden", "Tunisia"], "GG-1": [2, 0, "Belgium", "Egypt"], "GG-2": [2, 0, "Iran", "New Zealand"], "GH-1": [2, 0, "Spain", "Cape Verde"], "GH-2": [0, 2, "Saudi Arabia", "Uruguay"], "GI-1": [2, 0, "France", "Senegal"], "GI-2": [0, 2, "Iraq", "Norway"], "GJ-1": [2, 0, "Argentina", "Algeria"], "GJ-2": [2, 0, "Austria", "Jordan"], "GK-1": [2, 0, "Portugal", "DR Congo"], "GK-2": [0, 2, "Uzbekistan", "Colombia"], "GL-1": [2, 0, "England", "Croatia"], "GL-2": [2, 0, "Ghana", "Panama"], "GA-3": [2, 0, "Czech Republic", "South Africa"], "GA-4": [2, 0, "Mexico", "South Korea"], "GB-3": [2, 0, "Switzerland", "Bosnia and Herzegovina"], "GB-4": [2, 0, "Canada", "Qatar"], "GC-3": [0, 2, "Scotland", "Morocco"], "GC-4": [2, 0, "Brazil", "Haiti"], "GD-3": [2, 0, "United States", "Australia"], "GD-4": [2, 0, "Turkey", "Paraguay"], "GE-3": [2, 0, "Germany", "Ivory Coast"], "GE-4": [2, 0, "Ecuador", "Curaçao"], "GF-3": [2, 0, "Netherlands", "Sweden"], "GF-4": [0, 2, "Tunisia", "Japan"], "GG-3": [2, 0, "Belgium", "Iran"], "GG-4": [0, 2, "New Zealand", "Egypt"], "GH-3": [2, 0, "Spain", "Saudi Arabia"], "GH-4": [2, 0, "Uruguay", "Cape Verde"], "GI-3": [2, 0, "France", "Iraq"], "GI-4": [0, 2, "Norway", "Senegal"], "GJ-3": [2, 0, "Argentina", "Austria"], "GJ-4": [0, 2, "Jordan", "Algeria"], "GK-3": [2, 0, "Portugal", "Uzbekistan"], "GK-4": [2, 0, "Colombia", "DR Congo"], "GL-3": [2, 0, "England", "Ghana"], "GL-4": [0, 2, "Panama", "Croatia"], "GA-5": [0, 2, "Czech Republic", "Mexico"], "GA-6": [0, 2, "South Africa", "South Korea"], "GB-5": [2, 0, "Switzerland", "Canada"], "GB-6": [2, 0, "Bosnia and Herzegovina", "Qatar"], "GC-5": [0, 2, "Scotland", "Brazil"], "GC-6": [2, 0, "Morocco", "Haiti"], "GD-5": [2, 0, "Turkey", "United States"], "GD-6": [0, 2, "Paraguay", "Australia"], "GE-5": [0, 2, "Curaçao", "Ivory Coast"], "GE-6": [0, 2, "Ecuador", "Germany"], "GF-5": [2, 0, "Japan", "Sweden"], "GF-6": [0, 2, "Tunisia", "Netherlands"], "GG-5": [2, 0, "Egypt", "Iran"], "GG-6": [0, 2, "New Zealand", "Belgium"], "GH-5": [0, 2, "Cape Verde", "Saudi Arabia"], "GH-6": [0, 2, "Uruguay", "Spain"], "GI-5": [0, 2, "Norway", "France"], "GI-6": [2, 0, "Senegal", "Iraq"], "GJ-5": [0, 2, "Algeria", "Austria"], "GJ-6": [0, 2, "Jordan", "Argentina"], "GK-5": [0, 2, "Colombia", "Portugal"], "GK-6": [2, 0, "DR Congo", "Uzbekistan"], "GL-5": [0, 2, "Panama", "England"], "GL-6": [2, 0, "Croatia", "Ghana"], "R32-101": [2, 1, "Czech Republic", "Canada"], "R32-102": [2, 1, "Brazil", "Netherlands"], "R32-103": [2, 0, "Germany", "Scotland"], "R32-104": [1, 2, "Japan", "Morocco"], "R32-105": [0, 2, "Ivory Coast", "Senegal"], "R32-106": [2, 0, "France", "Australia"], "R32-107": [2, 0, "Mexico", "Saudi Arabia"], "R32-108": [2, 0, "England", "Ecuador"], "R32-109": [2, 0, "Belgium", "South Korea"], "R32-110": [2, 0, "Turkey", "Bosnia and Herzegovina"], "R32-111": [2, 0, "Spain", "Austria"], "R32-112": [0, 2, "Colombia", "Croatia"], "R32-113": [2, 0, "Switzerland", "Algeria"], "R32-114": [2, 1, "United States", "Egypt"], "R32-115": [2, 0, "Argentina", "Uruguay"], "R32-116": [2, 0, "Portugal", "Ghana"], "R16-120": [0, 2, "Czech Republic", "Morocco"], "R16-121": [0, 2, "Germany", "France"], "R16-122": [2, 0, "Brazil", "Senegal"], "R16-123": [0, 2, "Mexico", "England"], "R16-124": [1, 2, "Croatia", "Spain"], "R16-125": [1, 2, "Turkey", "Belgium"], "R16-126": [2, 0, "Argentina", "United States"], "R16-127": [0, 2, "Switzerland", "Portugal"], "QF-131": [2, 0, "France", "Morocco"], "QF-132": [2, 0, "Spain", "Belgium"], "QF-133": [1, 2, "Brazil", "England"], "QF-134": [1, 2, "Argentina", "Portugal"], "SF-138": [2, 1, "France", "Spain"], "SF-139": [1, 2, "England", "Portugal"], "THIRD-143": [2, 1, "Spain", "England"], "FINAL-147": [2, 1, "France", "Portugal"]}, "positions": {"A-1": "Mexico", "A-2": "Czech Republic", "A-3": "South Korea", "A-4": "South Africa", "B-1": "Switzerland", "B-2": "Canada", "B-3": "Bosnia and Herzegovina", "B-4": "Qatar", "C-1": "Brazil", "C-2": "Morocco", "C-3": "Scotland", "C-4": "Haiti", "D-1": "Turkey", "D-2": "United States", "D-3": "Australia", "D-4": "Paraguay", "E-1": "Germany", "E-2": "Ivory Coast", "E-3": "Ecuador", "E-4": "Curaçao", "F-1": "Japan", "F-2": "Netherlands", "F-3": "Sweden", "F-4": "Tunisia", "G-1": "Belgium", "G-2": "Egypt", "G-3": "Iran", "G-4": "New Zealand", "H-1": "Spain", "H-2": "Uruguay", "H-3": "Saudi Arabia", "H-4": "Cape Verde", "I-1": "France", "I-2": "Senegal", "I-3": "Norway", "I-4": "Iraq", "J-1": "Argentina", "J-2": "Austria", "J-3": "Algeria", "J-4": "Jordan", "K-1": "Portugal", "K-2": "Colombia", "K-3": "DR Congo", "K-4": "Uzbekistan", "L-1": "England", "L-2": "Croatia", "L-3": "Ghana", "L-4": "Panama"}, "reached": {"r32": ["Algeria", "Argentina", "Australia", "Austria", "Belgium", "Bosnia and Herzegovina", "Brazil", "Canada", "Colombia", "Croatia", "Czech Republic", "Ecuador", "Egypt", "England", "France", "Germany", "Ghana", "Ivory Coast", "Japan", "Mexico", "Morocco", "Netherlands", "Portugal", "Saudi Arabia", "Scotland", "Senegal", "South Korea", "Spain", "Switzerland", "Turkey", "United States", "Uruguay"], "r16": ["Argentina", "Belgium", "Brazil", "Croatia", "Czech Republic", "England", "France", "Germany", "Mexico", "Morocco", "Portugal", "Senegal", "Spain", "Switzerland", "Turkey", "United States"], "qf": ["Argentina", "Belgium", "Brazil", "England", "France", "Morocco", "Portugal", "Spain"], "sf": ["England", "France", "Portugal", "Spain"], "third": ["England", "Spain"], "final": ["France", "Portugal"]}, "awards": {"champion": "France", "runnerup": "Portugal", "third_place": "Spain", "boot_gold": "Harry Kane", "boot_silver": "Kylian Mbappé", "boot_bronze": "Michael Olise", "ball_gold": "Kylian Mbappé", "ball_silver": "Ousmane Dembélé", "ball_bronze": "Michael Olise"}}, {"name": "JJ", "matches": {"GA-1": [2, 1, "Mexico", "South Africa"], "GA-2": [1, 1, "South Korea", "Czech Republic"], "GB-1": [2, 1, "Canada", "Bosnia and Herzegovina"]}, "positions": {}, "reached": {"r32": [], "r16": [], "qf": [], "sf": [], "third": [], "final": []}, "awards": {"champion": null, "runnerup": null, "third_place": null, "boot_gold": null, "boot_silver": null, "boot_bronze": null, "ball_gold": null, "ball_silver": null, "ball_bronze": null}}], "meta": {"matches_total": 104}};
+/* Favoritos Balón de Oro (editable). Orden = favoritismo de apuestas. */
+window.BALLON_FAV = [
+  {name:"Lamine Yamal", team:"España"},
+  {name:"Jude Bellingham", team:"Inglaterra"},
+  {name:"Kylian Mbappé", team:"Francia"},
+  {name:"Vinícius Júnior", team:"Brasil"},
+  {name:"Pedri", team:"España"},
+  {name:"Erling Haaland", team:"Noruega"},
+  {name:"Harry Kane", team:"Inglaterra"},
+  {name:"Lionel Messi", team:"Argentina"},
+  {name:"Florian Wirtz", team:"Alemania"},
+  {name:"Cole Palmer", team:"Inglaterra"}
+];
 </script>
 
 <script>
 const P = window.PORRA;
 let labels = P.blockLabels;
 let openName = null, openMatch = null, didFocus = false;
+let predSortKey = null;   // ya no se usa; orden por marcador
 
 /* ================= MOTOR (portado de engine.py) ================= */
-function norm(s){
-  return (s||"").normalize("NFKD").replace(/[̀-ͯ]/g,"")
-    .toLowerCase().replace(/[^a-z0-9]/g,"");
-}
-function mapTeam(name){
-  if(!name) return null;
-  const n = norm(name);
+function norm(s){ return (s||"").normalize("NFKD").replace(/[̀-ͯ]/g,"")
+  .toLowerCase().replace(/[^a-z0-9]/g,""); }
+function mapTeam(name){ if(!name) return null; const n=norm(name);
   if(P.teamMap[n]) return P.teamMap[n];
-  for(const k in P.teamMap){ if(n && (n.indexOf(k)>=0 || k.indexOf(n)>=0)) return P.teamMap[k]; }
-  return null;
-}
+  for(const k in P.teamMap){ if(n && (n.indexOf(k)>=0||k.indexOf(n)>=0)) return P.teamMap[k]; }
+  return null; }
 function pairKey(a,b){ return [a,b].sort().join("|"); }
 function sign(x){ return x>0?1:(x<0?-1:0); }
 
 async function fetchESPN(){
-  const url = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=" + P.dateRange;
-  const data = await (await fetch(url, {cache:"no-store"})).json();
-  const out = [];
+  const url="https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates="+P.dateRange;
+  const data=await (await fetch(url,{cache:"no-store"})).json();
+  const out=[];
   for(const ev of (data.events||[])){
-    const comp = (ev.competitions||[{}])[0];
-    const cs = comp.competitors||[];
-    let home=null, away=null, gh=null, ga=null;
-    for(const c of cs){
-      const tn = (c.team||{}).displayName || (c.team||{}).name;
-      const sc = (c.score==null||c.score==="") ? null : parseInt(c.score,10);
-      if(c.homeAway==="home"){ home=mapTeam(tn); gh=sc; }
-      else if(c.homeAway==="away"){ away=mapTeam(tn); ga=sc; }
-    }
-    const st = ((comp.status||ev.status||{}).type) || {};
-    out.push({date:ev.date, home, away, gh, ga, state:st.state, status:st.name});
+    const comp=(ev.competitions||[{}])[0]; const cs=comp.competitors||[];
+    let home=null,away=null,gh=null,ga=null;
+    for(const c of cs){ const tn=(c.team||{}).displayName||(c.team||{}).name;
+      const sc=(c.score==null||c.score==="")?null:parseInt(c.score,10);
+      if(c.homeAway==="home"){home=mapTeam(tn);gh=sc;} else if(c.homeAway==="away"){away=mapTeam(tn);ga=sc;} }
+    const st=((comp.status||ev.status||{}).type)||{};
+    out.push({date:ev.date,home,away,gh,ga,state:st.state,status:st.name});
   }
   return out;
 }
-
-function stageOf(d){
-  for(const s of P.koOrder){ const w=P.koWindows[s]; if(w && d>=w[0] && d<=w[1]) return s; }
-  return null;
-}
-function groupStandings(keys, info){
-  const st={}; let done=0;
+function stageOf(d){ for(const s of P.koOrder){ const w=P.koWindows[s]; if(w&&d>=w[0]&&d<=w[1]) return s; } return null; }
+function groupStandings(keys,info){ const st={}; let done=0;
   for(const k of keys){ const m=info[k]; if(!m||!m.final) continue; done++;
-    const gh=m.gh, ga=m.ga, home=m.home, away=m.away;
+    const gh=m.gh,ga=m.ga,home=m.home,away=m.away;
     st[home]=st[home]||[0,0,0]; st[away]=st[away]||[0,0,0];
-    if(gh>ga) st[home][0]+=3; else if(gh<ga) st[away][0]+=3; else { st[home][0]++; st[away][0]++; }
-    st[home][1]+=gh-ga; st[away][1]+=ga-gh; st[home][2]+=gh; st[away][2]+=ga;
-  }
+    if(gh>ga)st[home][0]+=3; else if(gh<ga)st[away][0]+=3; else{st[home][0]++;st[away][0]++;}
+    st[home][1]+=gh-ga; st[away][1]+=ga-gh; st[home][2]+=gh; st[away][2]+=ga; }
   if(done<keys.length) return null;
-  return Object.keys(st).sort((a,b)=>
-    st[b][0]-st[a][0] || st[b][1]-st[a][1] || st[b][2]-st[a][2] || (a<b?-1:1));
-}
+  return Object.keys(st).sort((a,b)=> st[b][0]-st[a][0]||st[b][1]-st[a][1]||st[b][2]-st[a][2]||(a<b?-1:1)); }
 function buildActual(espn){
-  const actual={matches:{}, positions:{}, reached:{}};
-  const info={}; const koByStage={};
+  const actual={matches:{},positions:{},reached:{}}; const info={}; const koByStage={};
   for(const s of P.koOrder) koByStage[s]=[];
-  for(const m of espn){
-    if(!m.home||!m.away) continue;
-    const played = m.state==="in"||m.state==="post";
-    const final = m.state==="post";
-    const slot = P.groupSlots[pairKey(m.home,m.away)];
-    if(slot){
-      let gh=m.gh, ga=m.ga;
-      if(m.home!==slot.home){ gh=m.ga; ga=m.gh; }
+  for(const m of espn){ if(!m.home||!m.away) continue;
+    const played=m.state==="in"||m.state==="post"; const final=m.state==="post";
+    const slot=P.groupSlots[pairKey(m.home,m.away)];
+    if(slot){ let gh=m.gh,ga=m.ga; if(m.home!==slot.home){gh=m.ga;ga=m.gh;}
       info[slot.key]={gh,ga,home:slot.home,away:slot.away,state:m.state,final,espn_date:m.date};
-      if(played && gh!=null && ga!=null) actual.matches[slot.key]=[gh,ga,slot.home,slot.away];
-    } else {
-      const stage = stageOf((m.date||"").slice(0,10));
-      if(stage) koByStage[stage].push(m);
-    }
-  }
-  for(const s of P.koOrder){ const t=new Set();
-    for(const m of koByStage[s]){ t.add(m.home); t.add(m.away); } actual.reached[s]=[...t]; }
-  for(const s of P.koOrder){
-    const slots=P.koSlots[s]||[];
-    const es=koByStage[s].slice().sort((a,b)=> a.date<b.date?-1:1);
+      if(played&&gh!=null&&ga!=null) actual.matches[slot.key]=[gh,ga,slot.home,slot.away];
+    } else { const stage=stageOf((m.date||"").slice(0,10)); if(stage) koByStage[stage].push(m); } }
+  for(const s of P.koOrder){ const t=new Set(); for(const m of koByStage[s]){t.add(m.home);t.add(m.away);} actual.reached[s]=[...t]; }
+  for(const s of P.koOrder){ const slots=P.koSlots[s]||[]; const es=koByStage[s].slice().sort((a,b)=>a.date<b.date?-1:1);
     for(let i=0;i<Math.min(slots.length,es.length);i++){ const m=es[i];
-      if((m.state==="in"||m.state==="post") && m.gh!=null){
-        actual.matches[slots[i].key]=[m.gh,m.ga,m.home,m.away];
-        info[slots[i].key]={gh:m.gh,ga:m.ga,home:m.home,away:m.away,state:m.state,
-          final:m.state==="post",espn_date:m.date,stage:s};
-      }
-    }
-  }
-  for(const ltr in P.groupByLetter){
-    const order=groupStandings(P.groupByLetter[ltr], info);
-    if(order) order.forEach((t,i)=>{ actual.positions[ltr+"-"+(i+1)]=t; });
-  }
-  return {actual, info};
+      if((m.state==="in"||m.state==="post")&&m.gh!=null){ actual.matches[slots[i].key]=[m.gh,m.ga,m.home,m.away];
+        info[slots[i].key]={gh:m.gh,ga:m.ga,home:m.home,away:m.away,state:m.state,final:m.state==="post",espn_date:m.date,stage:s}; } } }
+  for(const ltr in P.groupByLetter){ const order=groupStandings(P.groupByLetter[ltr],info);
+    if(order) order.forEach((t,i)=>{ actual.positions[ltr+"-"+(i+1)]=t; }); }
+  return {actual,info};
 }
-
-function scoreMatch(pred, act, w){
-  const ph=pred[0], pa=pred[1], ah=act[0], aa=act[1];
-  if(ph==null||pa==null||ah==null||aa==null) return 0;
-  let pts=0;
+function scoreMatch(pred,act,w){ const ph=pred[0],pa=pred[1],ah=act[0],aa=act[1];
+  if(ph==null||pa==null||ah==null||aa==null) return 0; let pts=0;
   if(sign(ph-pa)===sign(ah-aa)){ pts+=w[0]; if((ph-pa)===(ah-aa)) pts+=w[1]; }
-  if(ph===ah && pa===aa) pts+=w[2];
-  return pts;
-}
-function inter(a,b){ if(!a||!b) return 0; const s=new Set(b); let n=0; for(const x of a) if(s.has(x)) n++; return n; }
-function wForKind(kind){ return kind==="grupos" ? P.weights.group : (P.weights[kind]||P.weights.group); }
-
-function scoreParticipant(part, S){
-  const A=S.actual;
-  const b={}; for(const k in P.blockLabels) b[k]=0;
+  if(ph===ah&&pa===aa) pts+=w[2]; return pts; }
+function inter(a,b){ if(!a||!b) return 0; const s=new Set(b); let n=0; for(const x of a) if(s.has(x))n++; return n; }
+function wForKind(kind){ return kind==="grupos"?P.weights.group:(P.weights[kind]||P.weights.group); }
+function scoreParticipant(part,S){ const A=S.actual; const b={}; for(const k in P.blockLabels) b[k]=0;
   for(const key in A.matches){ if(key[0]!=="G") continue; const pm=part.matches[key]; if(!pm) continue;
-    b.grupos_partidos += scoreMatch(pm, A.matches[key], P.weights.group); }
-  for(const k in A.positions){ if(part.positions[k]===A.positions[k]) b.grupos_posiciones += P.posPts; }
-  b.grupos_clasif = P.qualif.r32 * inter(part.reached.r32, A.reached.r32);
-  const koBlock={r32:"r32_partidos",r16:"r16_partidos",qf:"qf_partidos",
-    sf:"sf_partidos",third:"third_partido",final:"final_partido"};
-  const koW={r32:P.weights.r32,r16:P.weights.r16,qf:P.weights.qf,sf:P.weights.sf,
-    third:P.weights.third,final:P.weights.final};
+    b.grupos_partidos+=scoreMatch(pm,A.matches[key],P.weights.group); }
+  for(const k in A.positions){ if(part.positions[k]===A.positions[k]) b.grupos_posiciones+=P.posPts; }
+  b.grupos_clasif=P.qualif.r32*inter(part.reached.r32,A.reached.r32);
+  const koBlock={r32:"r32_partidos",r16:"r16_partidos",qf:"qf_partidos",sf:"sf_partidos",third:"third_partido",final:"final_partido"};
+  const koW={r32:P.weights.r32,r16:P.weights.r16,qf:P.weights.qf,sf:P.weights.sf,third:P.weights.third,final:P.weights.final};
   for(const stage of P.koOrder){ for(const slot of (P.koSlots[stage]||[])){ const key=slot.key;
-    if(A.matches[key] && part.matches[key])
-      b[koBlock[stage]] += scoreMatch(part.matches[key], A.matches[key], koW[stage]); } }
-  b.r32_clasif = P.qualif.r16 * inter(part.reached.r16, A.reached.r16);
-  b.r16_clasif = P.qualif.qf  * inter(part.reached.qf,  A.reached.qf);
-  b.qf_clasif  = P.qualif.sf  * inter(part.reached.sf,  A.reached.sf);
-  b.sf_clasif_3y4   = P.qualif.third * inter(part.reached.third, A.reached.third);
-  b.sf_clasif_final = P.qualif.final * inter(part.reached.final, A.reached.final);
-  let premios=0; const aw=A.awards||{};
-  for(const k in P.awardPts){ if(aw[k] && part.awards[k]===aw[k]) premios+=P.awardPts[k]; }
-  b.premios=premios;
-  let total=0; for(const k in b) total+=b[k];
-  return {total, breakdown:b};
-}
-
+    if(A.matches[key]&&part.matches[key]) b[koBlock[stage]]+=scoreMatch(part.matches[key],A.matches[key],koW[stage]); } }
+  b.r32_clasif=P.qualif.r16*inter(part.reached.r16,A.reached.r16);
+  b.r16_clasif=P.qualif.qf*inter(part.reached.qf,A.reached.qf);
+  b.qf_clasif=P.qualif.sf*inter(part.reached.sf,A.reached.sf);
+  b.sf_clasif_3y4=P.qualif.third*inter(part.reached.third,A.reached.third);
+  b.sf_clasif_final=P.qualif.final*inter(part.reached.final,A.reached.final);
+  let premios=0; const aw=A.awards||{}; for(const k in P.awardPts){ if(aw[k]&&part.awards[k]===aw[k]) premios+=P.awardPts[k]; }
+  b.premios=premios; let total=0; for(const k in b) total+=b[k]; return {total,breakdown:b}; }
 function computeStandings(S){
-  const rows = P.participants.map(part => {
-    const r=scoreParticipant(part,S);
-    return {name:part.name, total:r.total, breakdown:r.breakdown};
-  });
+  const rows=P.participants.map(part=>{ const r=scoreParticipant(part,S); return {name:part.name,total:r.total,breakdown:r.breakdown}; });
   rows.sort((a,b)=> b.total-a.total || a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
-  let lastPts=null, lastPos=0;
-  rows.forEach((r,i)=>{ if(r.total!==lastPts){ lastPos=i+1; lastPts=r.total; } r.pos=lastPos; });
+  let lastPts=null,lastPos=0; rows.forEach((r,i)=>{ if(r.total!==lastPts){lastPos=i+1;lastPts=r.total;} r.pos=lastPos; });
   let played=0; for(const k in S.info){ const st=S.info[k].state; if(st==="in"||st==="post") played++; }
-  return {standings:rows, block_labels:P.blockLabels,
-    meta:{participants:rows.length, matches_played:played, matches_total:P.meta.matches_total}};
-}
+  return {standings:rows,block_labels:P.blockLabels,
+    meta:{participants:rows.length,matches_played:played,matches_total:P.meta.matches_total}}; }
 function matchesView(S){
-  const items = P.fixtures.map(fx => {
-    const a = S.info[fx.key];
-    const home = a?a.home:fx.home, away = a?a.away:fx.away;
-    const state = a?a.state:"pre";
-    const score = (a && (a.state==="in"||a.state==="post") && a.gh!=null) ? [a.gh,a.ga] : null;
-    const w = wForKind(fx.kind);
-    const preds = P.participants.map(part => {
-      const pm = part.matches[fx.key];
-      if(!pm) return {name:part.name, ph:null, pa:null, home:null, away:null, pts:null};
-      let pts=null; if(score) pts=scoreMatch(pm, score, w);
-      return {name:part.name, ph:pm[0], pa:pm[1], home:pm[2], away:pm[3], pts:pts};
-    });
-    preds.sort((x,y)=> ((y.pts==null?-1:y.pts)-(x.pts==null?-1:x.pts))
-      || x.name.toLowerCase().localeCompare(y.name.toLowerCase()));
-    return {key:fx.key, kind:fx.kind, group:fx.group, home:home, away:away,
-      kickoff:fx.kickoff, espn_date:a?a.espn_date:null, state:state, score:score, predictions:preds};
-  });
-  let live = items.findIndex(it=>it.state==="in");
-  if(live<0){ const fin=[]; items.forEach((it,i)=>{ if(it.state==="post") fin.push(i); });
-    live = fin.length ? fin[fin.length-1] : 0; }
-  return {matches:items, focus_index:live};
+  const items=P.fixtures.map(fx=>{ const a=S.info[fx.key];
+    const home=a?a.home:fx.home,away=a?a.away:fx.away; const state=a?a.state:"pre";
+    const score=(a&&(a.state==="in"||a.state==="post")&&a.gh!=null)?[a.gh,a.ga]:null;
+    const w=wForKind(fx.kind);
+    const preds=P.participants.map(part=>{ const pm=part.matches[fx.key];
+      if(!pm) return {name:part.name,ph:null,pa:null,home:null,away:null,pts:null};
+      let pts=null; if(score) pts=scoreMatch(pm,score,w);
+      return {name:part.name,ph:pm[0],pa:pm[1],home:pm[2],away:pm[3],pts:pts}; });
+    /* orden por los numeros del marcador pronosticado (local, luego visitante) */
+    preds.sort((x,y)=>{ const xn=x.ph==null, yn=y.ph==null; if(xn||yn) return xn-yn;
+      return (x.ph-y.ph) || (x.pa-y.pa) || x.name.toLowerCase().localeCompare(y.name.toLowerCase()); });
+    return {key:fx.key,kind:fx.kind,group:fx.group,home,away,kickoff:fx.kickoff,
+      espn_date:a?a.espn_date:null,state,score,predictions:preds}; });
+  let live=items.findIndex(it=>it.state==="in");
+  if(live<0){ const fin=[]; items.forEach((it,i)=>{ if(it.state==="post") fin.push(i); }); live=fin.length?fin[fin.length-1]:0; }
+  return {matches:items,focus_index:live}; }
+
+/* Clasificacion "antes del ultimo partido" -> para las flechas */
+function prevPositions(espn){
+  const fin=espn.filter(m=>m.state==="post"&&m.date);
+  if(!fin.length) return null;
+  let last=fin.reduce((a,b)=> a.date>b.date?a:b);
+  const mod=espn.map(m=> m===last ? Object.assign({},m,{state:"pre",gh:null,ga:null}) : m);
+  const st=computeStandings(buildActual(mod));
+  const map={}; st.standings.forEach(r=> map[r.name]=r.pos); return map;
 }
 
-/* ================= RENDER (igual que el dashboard) ================= */
-document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
+/* ================= RENDER ================= */
+document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
   document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
   document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
   t.classList.add("active");
   document.getElementById("panel-"+t.dataset.tab).classList.add("active");
   if(t.dataset.tab==="partidos") scrollToFocus();
+  if(t.dataset.tab==="premios") loadScorers();
 }));
-function rowClass(r,idx){ if(r.pos===1)return "rank-1"; if(r.pos===2)return "rank-2";
-  if(r.pos===3)return "rank-3"; return (idx%2===0)?"rest-even":"rest-odd"; }
+function rowClass(r,idx,maxPos){ if(r.pos===maxPos&&maxPos>3) return "rank-last";
+  if(r.pos===1)return "rank-1"; if(r.pos===2)return "rank-2"; if(r.pos===3)return "rank-3";
+  return (idx%2===0)?"rest-even":"rest-odd"; }
+function arrowHTML(name,pos,prev){ if(!prev||prev[name]==null) return "";
+  const d=prev[name]-pos; if(d>0) return `<span class="arrow a-up">▲</span>`;
+  if(d<0) return `<span class="arrow a-down">▼</span>`; return ""; }
 function detailHTML(r){ let rows="";
   for(const key in labels){ const v=r.breakdown[key]||0;
-    rows += `<div class="row ${v===0?'zero':''}"><span>${labels[key]}</span><span class="val">${v}</span></div>`; }
+    rows+=`<div class="row ${v===0?'zero':''}"><span>${labels[key]}</span><span class="val">${v}</span></div>`; }
   return `<tr class="detail"><td colspan="3"><div class="detail-inner">${rows}</div></td></tr>`; }
 function renderStandings(data){
   const tb=document.getElementById("tbody"); const rows=data.standings||[];
   if(!rows.length){ tb.innerHTML=`<tr><td colspan="3" class="empty">Sin participantes.</td></tr>`; return; }
+  const maxPos=Math.max.apply(null,rows.map(r=>r.pos)); const prev=window._prevPos;
   let html="";
-  rows.forEach((r,idx)=>{ html += `<tr class="clik ${rowClass(r,idx)}" data-name="${r.name}">
-    <td class="pos">${r.pos}</td><td class="player">${r.name}</td><td class="pts">${r.total}</td></tr>`;
-    if(r.name===openName) html += detailHTML(r); });
+  rows.forEach((r,idx)=>{ const cls=rowClass(r,idx,maxPos);
+    const lantern = cls==="rank-last" ? `<span class="lantern">🏮</span> ` : "";
+    html+=`<tr class="clik ${cls}" data-name="${r.name}">
+      <td class="pos">${arrowHTML(r.name,r.pos,prev)}${r.pos}</td>
+      <td class="player">${lantern}${r.name}</td><td class="pts">${r.total}</td></tr>`;
+    if(r.name===openName) html+=detailHTML(r); });
   tb.innerHTML=html;
   tb.querySelectorAll("tr[data-name]").forEach(tr=>tr.addEventListener("click",()=>{
     openName=(openName===tr.dataset.name)?null:tr.dataset.name; renderStandings(data); }));
   const m=data.meta||{};
-  document.getElementById("meta").innerHTML =
-    `${m.participants||0} jugadores · ${m.matches_played||0}/${m.matches_total||0} partidos`;
+  document.getElementById("meta").innerHTML=`${m.participants||0} jugadores · ${m.matches_played||0}/${m.matches_total||0} partidos`;
 }
-const ROUND_NAMES={grupos:"Fase de grupos",r32:"Dieciseisavos",r16:"Octavos",
-  qf:"Cuartos",sf:"Semifinales",third:"3er y 4º puesto",final:"Final"};
+const ROUND_NAMES={grupos:"Fase de grupos",r32:"Dieciseisavos",r16:"Octavos",qf:"Cuartos",sf:"Semifinales",third:"3er y 4º puesto",final:"Final"};
 function fmtKick(it){ const iso=it.espn_date||it.kickoff; if(!iso) return "";
   return new Date(iso).toLocaleString("es-ES",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"}); }
 function badge(state){ if(state==="in")return `<span class="m-badge b-live blink">● En juego</span>`;
-  if(state==="post")return `<span class="m-badge b-final">Final</span>`;
-  return `<span class="m-badge b-pre">Programado</span>`; }
+  if(state==="post")return `<span class="m-badge b-final">Final</span>`; return `<span class="m-badge b-pre">Próximo</span>`; }
 function predHTML(it){ if(!it.predictions.length) return `<div class="hint">Sin participantes.</div>`;
-  const showPts=it.score!==null; let h=`<div class="hint">Pronósticos de cada jugador${showPts?" · puntos":""}:</div>`;
+  const showPts=it.score!==null; let h=`<div class="hint">Pronósticos (ordenados por marcador)${showPts?" · puntos":""}:</div>`;
   it.predictions.forEach(p=>{ const sc=(p.ph===null)?"—":`${p.ph}–${p.pa}`; let pts="";
     if(showPts&&p.pts!==null) pts=`<span class="px ${p.pts>0?'pts-pos':'pts-zero'}">+${p.pts}</span>`;
     h+=`<div class="pred"><span class="pn">${p.name}</span><span class="pp">${sc}</span>${pts}</div>`; });
@@ -338,7 +417,7 @@ function matchHTML(it,idx,focusIdx){
 function renderMatches(data){
   const cont=document.getElementById("matches"); const items=data.matches||[]; const focusIdx=data.focus_index||0;
   if(!items.length){ cont.innerHTML=`<div class="empty">Sin partidos.</div>`; return; }
-  let html="", lastRound=null;
+  let html="",lastRound=null;
   items.forEach((it,idx)=>{ if(it.kind!==lastRound){ html+=`<div class="round-h">${ROUND_NAMES[it.kind]||it.kind}</div>`; lastRound=it.kind; }
     html+=matchHTML(it,idx,focusIdx); });
   cont.innerHTML=html;
@@ -349,32 +428,111 @@ function renderMatches(data){
 function scrollToFocus(){ const el=document.getElementById("m-"+(window._focusIdx||0));
   if(el) el.scrollIntoView({behavior:"smooth",block:"center"}); }
 
-/* ================= LOOP (fetch ESPN en el navegador) ================= */
-function nextDelayMs(espn){
-  const now=Date.now();
-  if(espn.some(m=>m.state==="in")) return 5*60*1000;            // en juego: 5 min
-  let next=null;
-  for(const m of espn){ if(m.state==="pre" && m.date){ const t=new Date(m.date).getTime();
-    if(t>now && (next===null||t<next)) next=t; } }
-  if(next!==null) return Math.max(60*1000, Math.min(next-now, 30*60*1000));
-  return 30*60*1000;
+/* ---- Cabecera La Roja: countdown al proximo partido de España ---- */
+let _rojaTarget=null, _rojaMatch=null;
+function setupRoja(){
+  const now=Date.now(); let next=null;
+  for(const fx of P.fixtures){
+    if((fx.home==="Spain"||fx.away==="Spain") && fx.kickoff){
+      const t=new Date(fx.kickoff).getTime();
+      if(t>now-2*3600*1000 && (next===null||t<next.t)) next={t,fx};
+    }
+  }
+  const el=document.getElementById("roja");
+  if(!next){ el.innerHTML=""; _rojaTarget=null; return; }
+  _rojaTarget=next.t; _rojaMatch=next.fx;
+  const rival = next.fx.home==="Spain" ? next.fx.away : next.fx.home;
+  el.innerHTML=`<div class="roja">
+    <div class="roja-top"><span class="flag">🇪🇸</span><span class="jersey">👕</span>
+      Próximo partido de La Roja <span class="flag">🇪🇸</span></div>
+    <div class="roja-match">🇪🇸 España &nbsp;vs&nbsp; ${rival}</div>
+    <div class="roja-cd" id="roja-cd"></div>
+    <div class="roja-loc">📍 Santjoanistes 7</div>
+  </div>`;
+  tickRoja();
 }
+function tickRoja(){
+  if(_rojaTarget===null) return;
+  const cd=document.getElementById("roja-cd"); if(!cd) return;
+  let diff=Math.max(0, _rojaTarget-Date.now());
+  const d=Math.floor(diff/86400000); diff-=d*86400000;
+  const h=Math.floor(diff/3600000); diff-=h*3600000;
+  const m=Math.floor(diff/60000); diff-=m*60000;
+  const s=Math.floor(diff/1000);
+  const box=(n,l)=>`<div class="cd-box"><div class="cd-num">${String(n).padStart(2,"0")}</div><div class="cd-lab">${l}</div></div>`;
+  cd.innerHTML = box(d,"días")+box(h,"horas")+box(m,"min")+box(s,"seg");
+}
+setInterval(tickRoja, 1000);
+
+/* ---- Premios: goleadores (ESPN core api) + balon (favoritos) ---- */
+const ESPN_CORE="https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.world/seasons/2026";
+let _scorersLoaded=false, _refCache={};
+async function getRef(ref){ if(_refCache[ref]) return _refCache[ref];
+  const r=await (await fetch(ref.replace(/^http:/,"https:"),{cache:"no-store"})).json();
+  _refCache[ref]=r; return r; }
+function renderBallon(){
+  const el=document.getElementById("ballon");
+  el.innerHTML = window.BALLON_FAV.map((p,i)=>{ const cls=i<3?`top${i+1}`:"";
+    return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
+      <span class="ln">${p.name}<span class="lt">${p.team}</span></span></div>`; }).join("");
+}
+async function loadScorers(){
+  renderBallon();
+  if(_scorersLoaded) return; _scorersLoaded=true;
+  const cont=document.getElementById("scorers");
+  try{
+    const d=await (await fetch(ESPN_CORE+"/types/1/leaders",{cache:"no-store"})).json();
+    const cat=(d.categories||[]).find(c=>c.name==="goalsLeaders");
+    const leaders=(cat&&cat.leaders||[]).filter(L=>L.value>0).slice(0,20);
+    if(!leaders.length){ cont.innerHTML=`<div class="empty">Aún no hay goles en el Mundial.</div>`; return; }
+    const rows=await Promise.all(leaders.map(async L=>{
+      let name="—", team="";
+      try{ const a=await getRef(L.athlete["$ref"]); name=a.displayName||a.fullName||"—"; }catch(e){}
+      try{ const t=await getRef(L.team["$ref"]); team=t.displayName||t.name||""; }catch(e){}
+      return {name, team, goals:L.value};
+    }));
+    cont.innerHTML = rows.map((r,i)=>{ const cls=i<3?`top${i+1}`:"";
+      return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
+        <span class="ln">${r.name}<span class="lt">${r.team}</span></span>
+        <span class="lv">${r.goals} ⚽</span></div>`; }).join("");
+  }catch(e){ cont.innerHTML=`<div class="empty">No se pudieron cargar los goleadores.</div>`; }
+}
+
+/* ---- Intro Farolillo Rojo ---- */
+let _introDone=false;
+function showIntro(lastName){
+  if(_introDone) return; _introDone=true;
+  const el=document.getElementById("intro");
+  document.getElementById("intro-name").textContent = lastName || "—";
+  const hide=()=>el.classList.add("hide");
+  el.addEventListener("click", hide);
+  setTimeout(hide, 3400);
+}
+
+/* ================= LOOP ================= */
+function nextDelayMs(espn){ const now=Date.now();
+  if(espn.some(m=>m.state==="in")) return 5*60*1000;
+  let next=null; for(const m of espn){ if(m.state==="pre"&&m.date){ const t=new Date(m.date).getTime();
+    if(t>now&&(next===null||t<next)) next=t; } }
+  if(next!==null) return Math.max(60*1000, Math.min(next-now, 30*60*1000)); return 30*60*1000; }
 async function tick(){
   try{
-    const espn = await fetchESPN();
-    const S = buildActual(espn);
-    renderStandings(computeStandings(S));
-    const mv = matchesView(S);
-    renderMatches(mv);
+    const espn=await fetchESPN();
+    window._prevPos = prevPositions(espn);
+    const S=buildActual(espn);
+    const cs=computeStandings(S);
+    renderStandings(cs);
+    const mv=matchesView(S); renderMatches(mv); setupRoja();
     if(!didFocus){ didFocus=true;
       if(document.querySelector('.tab[data-tab=partidos]').classList.contains("active")) setTimeout(scrollToFocus,150); }
-    // siguiente partido en el footer
-    const nf = mv.matches.find(it=>it.state==="pre");
-    document.getElementById("next").textContent = nf
-      ? `Próximo: ${nf.home} – ${nf.away} (${fmtKick(nf)})` : "Mundial finalizado";
+    const last=cs.standings[cs.standings.length-1];
+    showIntro(last?last.name:null);
+    const nf=mv.matches.find(it=>it.state==="pre");
+    document.getElementById("next").textContent = nf?`Próximo: ${nf.home} – ${nf.away} (${fmtKick(nf)})`:"Mundial finalizado";
     setTimeout(tick, nextDelayMs(espn));
   }catch(e){
-    document.getElementById("meta").innerHTML = "⚠️ No se pudo conectar a ESPN. Reintentando…";
+    document.getElementById("meta").innerHTML="⚠️ No se pudo conectar a ESPN. Reintentando…";
+    showIntro(null);
     setTimeout(tick, 60*1000);
   }
 }
