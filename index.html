@@ -202,7 +202,7 @@
   <div class="tabs">
     <button class="tab active" data-tab="principal">Clasificación</button>
     <button class="tab" data-tab="partidos">Partidos</button>
-    <button class="tab" data-tab="premios">🥇 Bota/Balón</button>
+    <button class="tab" data-tab="premios">👟 Bota de Oro</button>
   </div>
 
   <section class="panel active" id="panel-principal">
@@ -228,11 +228,6 @@
       <div class="psub">Datos en vivo de ESPN · World Cup 2026</div>
       <div id="scorers"><div class="empty">Cargando goleadores…</div></div>
     </div>
-    <div class="pcard">
-      <h3>🏅 Balón de Oro — Mejor jugador</h3>
-      <div class="psub">Favoritos de las casas de apuestas (el oficial se decide al final)</div>
-      <div id="ballon"></div>
-    </div>
   </section>
 </div>
 
@@ -245,19 +240,6 @@ window.PLAYER_TAGS = {
   "Lagen":   {t:"🏆 2021"},
   "Uri":     {t:"✨ Nuevo", cls:"new"}
 };
-/* Favoritos Balón de Oro (editable). Orden = favoritismo de apuestas. */
-window.BALLON_FAV = [
-  {name:"Lamine Yamal", team:"España"},
-  {name:"Jude Bellingham", team:"Inglaterra"},
-  {name:"Kylian Mbappé", team:"Francia"},
-  {name:"Vinícius Júnior", team:"Brasil"},
-  {name:"Pedri", team:"España"},
-  {name:"Erling Haaland", team:"Noruega"},
-  {name:"Harry Kane", team:"Inglaterra"},
-  {name:"Lionel Messi", team:"Argentina"},
-  {name:"Florian Wirtz", team:"Alemania"},
-  {name:"Cole Palmer", team:"Inglaterra"}
-];
 </script>
 
 <script>
@@ -489,14 +471,7 @@ let _scorersLoaded=false, _refCache={};
 async function getRef(ref){ if(_refCache[ref]) return _refCache[ref];
   const r=await (await fetch(ref.replace(/^http:/,"https:"),{cache:"no-store"})).json();
   _refCache[ref]=r; return r; }
-function renderBallon(){
-  const el=document.getElementById("ballon");
-  el.innerHTML = window.BALLON_FAV.map((p,i)=>{ const cls=i<3?`top${i+1}`:"";
-    return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
-      <span class="ln">${p.name}<span class="lt">${p.team}</span></span></div>`; }).join("");
-}
 async function loadScorers(){
-  renderBallon();
   if(_scorersLoaded) return; _scorersLoaded=true;
   const cont=document.getElementById("scorers");
   try{
