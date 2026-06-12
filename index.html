@@ -32,7 +32,12 @@
   h1{font-size:1.25rem; margin:0; font-weight:800; line-height:1.1;}
   .sub{font-size:.74rem; color:#5a6b72; margin-top:2px;}
   .status{font-size:.72rem; color:#5a6b72; text-align:right; line-height:1.4;
-    flex-shrink:1; min-width:0;}
+    flex-shrink:1; min-width:0; cursor:pointer;}
+  #ptr{position:fixed; top:0; left:50%; transform:translateX(-50%) translateY(-50px);
+    z-index:40; background:var(--teal); color:#fff; font-size:.76rem; font-weight:700;
+    padding:7px 18px; border-radius:0 0 14px 14px; opacity:0; white-space:nowrap;
+    box-shadow:0 3px 10px rgba(0,0,0,.25); pointer-events:none;}
+  #ptr.snap{transition:transform .25s ease, opacity .25s ease;}
   #meta{display:inline-block;}
   .live-dot{display:inline-block; width:8px; height:8px; border-radius:50%;
     background:#2ecc71; margin-right:4px; animation:pulse 1.6s infinite;}
@@ -194,6 +199,8 @@
   <div class="it-name" id="intro-name">…</div>
   <div class="it-x">(toca para entrar)</div>
 </div>
+
+<div id="ptr">↓ Desliza para actualizar</div>
 
 <div class="wrap">
   <header class="top">
@@ -545,9 +552,14 @@ function nextDelayMs(espn){ const now=Date.now();
   let next=null; for(const m of espn){ if(m.state==="pre"&&m.date){ const t=new Date(m.date).getTime();
     if(t>now&&(next===null||t<next)) next=t; } }
   if(next!==null) return Math.max(60*1000, Math.min(next-now, 30*60*1000)); return 30*60*1000; }
+let _timer=null, _busy=false;
 async function tick(){
+  if(_timer){ clearTimeout(_timer); _timer=null; }
+  if(_busy) return;
+  _busy=true;
+  let espn=null;
   try{
-    const espn=await fetchESPN();
+    espn=await fetchESPN();
     window._prevPos = prevPositions(espn);
     const S=buildActual(espn);
     const cs=computeStandings(S);
@@ -559,13 +571,44 @@ async function tick(){
     showIntro(last?last.name:null);
     const nf=mv.matches.find(it=>it.state==="pre");
     document.getElementById("next").textContent = nf?`Próximo: ${nf.home} – ${nf.away} (${fmtKick(nf)})`:"Mundial finalizado";
-    setTimeout(tick, nextDelayMs(espn));
   }catch(e){
-    document.getElementById("meta").innerHTML="⚠️ No se pudo conectar a ESPN. Reintentando…";
+    document.getElementById("meta").innerHTML="⚠️ Sin conexión con ESPN. Desliza para reintentar.";
     showIntro(null);
-    setTimeout(tick, 60*1000);
+    _busy=false; _timer=setTimeout(tick, 60*1000); return;
   }
+  _busy=false; _timer=setTimeout(tick, nextDelayMs(espn));
 }
+function refreshNow(){ tick(); }
+
+/* Pull-to-refresh propio (necesario en modo web-app/standalone de iOS,
+   donde no existe el "tirar para refrescar" del navegador). */
+(function(){
+  const ptr=document.getElementById("ptr");
+  if(!ptr) return;
+  let startY=0, pulling=false, dist=0; const TH=68;
+  function set(y,op){ ptr.style.transform="translateX(-50%) translateY("+y+"px)"; ptr.style.opacity=op; }
+  window.addEventListener("touchstart",e=>{
+    if((window.scrollY||document.documentElement.scrollTop||0)<=0 && !_busy){
+      startY=e.touches[0].clientY; pulling=true; dist=0; ptr.classList.remove("snap"); }
+  }, {passive:true});
+  window.addEventListener("touchmove",e=>{
+    if(!pulling) return;
+    dist=e.touches[0].clientY-startY;
+    if(dist>0){ const d=Math.min(dist,130);
+      set(d-46, Math.min(1,d/TH));
+      ptr.textContent = d>TH ? "↑  Suelta para actualizar" : "↓  Desliza para actualizar"; }
+  }, {passive:true});
+  window.addEventListener("touchend",()=>{
+    if(!pulling) return; pulling=false; ptr.classList.add("snap");
+    if(dist>TH){ ptr.textContent="⟳  Actualizando…"; set(16,1); refreshNow();
+      setTimeout(()=>set(-50,0), 1100); }
+    else set(-50,0);
+    dist=0;
+  }, {passive:true});
+})();
+/* Tocar el indicador LIVE también refresca */
+document.querySelector(".status").addEventListener("click", refreshNow);
+
 function applyHash(){ const want=(location.hash||"").replace("#","")||"principal";
   const tab=document.querySelector(`.tab[data-tab="${want}"]`); if(tab) tab.click(); }
 window.addEventListener("hashchange", applyHash);
