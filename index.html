@@ -277,7 +277,6 @@
     </div>
     <div class="pcard">
       <h3>🏅 Balón de Oro — Mejor jugador</h3>
-      <div class="psub">Cuotas Player of the Tournament (casas de apuestas) · jun 2026</div>
       <div id="ballon"><div class="empty">Cargando…</div></div>
     </div>
   </section>
@@ -642,15 +641,25 @@ async function nameTeam(L){
   try{ const t=await getRef(L.team["$ref"]); team=t.displayName||t.name||""; }catch(e){}
   return {name, team};
 }
-function renderBallon(){
+function oddsToPct(o){                   // cuota fraccional "13/2" -> % implícito
+  const m=String(o||"").split("/"); if(m.length!==2) return null;
+  const a=parseFloat(m[0]), b=parseFloat(m[1]); if(!(a>0&&b>0)) return null;
+  return b/(a+b)*100;
+}
+async function loadBallon(){
   const el=document.getElementById("ballon"); if(!el) return;
-  el.innerHTML = (window.BALLON_FAV||[]).map((p,i)=>{ const cls=i<3?`top${i+1}`:"";
+  let list=window.BALLON_FAV||[];
+  try{ const r=await fetch("balon.json",{cache:"no-store"});   // se refresca cada 24h
+    if(r.ok){ const j=await r.json(); if(Array.isArray(j)&&j.length) list=j; }
+  }catch(e){}
+  el.innerHTML=list.map((p,i)=>{ const cls=i<3?`top${i+1}`:"";
+    const pct=oddsToPct(p.odds); const val = pct!=null ? (Math.round(pct*10)/10)+"%" : (p.pct||"");
     return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
       <span class="ln">${p.name}<span class="lt">${p.team}</span></span>
-      <span class="lv">${p.odds}</span></div>`; }).join("");
+      <span class="lv">${val}</span></div>`; }).join("");
 }
 async function loadScorers(){
-  renderBallon();                       // Balón de Oro: cuotas (estático, editable)
+  loadBallon();                         // Balón de Oro: % desde balon.json (24h)
   if(_scorersLoaded) return; _scorersLoaded=true;
   const cont=document.getElementById("scorers");
   try{
