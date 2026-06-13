@@ -608,13 +608,14 @@ function renderLiveBanner(espn, mv){
 let _glovoOn=null;
 function checkGlovo(){
   const el=document.getElementById("glovo"); if(!el) return;
-  const madridH=(new Date().getUTCHours()+2)%24;   // junio/julio: CEST = UTC+2
-  const show = true;   /* TEMP: forzado para previsualizar (revertir a: madridH>=20 && madridH<22) */
+  const now=new Date();
+  const dec=((now.getUTCHours()+2)%24) + now.getUTCMinutes()/60;  // CEST = UTC+2
+  const show = dec>=20 && dec<22.5;   // 20:00–22:30 hora española
   if(show===_glovoOn) return; _glovoOn=show;
   if(show){ el.style.display="block";
     el.innerHTML=`<a class="glovo" href="https://glovoapp.com/" target="_blank" rel="noopener">
       <span class="gl-ic">🛵</span>
-      <span class="gl-txt"><b>Recuerda pedir tu Glovo</b><small>(pregunta a Guille por descuentos)</small></span>
+      <span class="gl-txt"><b>¡Es hora de pedir tu Glovo!</b><small>(pregunta a Guille por descuentos)</small></span>
       <span class="gl-btn">Ir a la App ›</span></a>`;
   } else { el.style.display="none"; el.innerHTML=""; }
 }
