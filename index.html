@@ -343,12 +343,11 @@ async function fetchESPN(){
     for(const d of (comp.details||[])){
       if(!d.scoringPlay) continue;
       const ath=(d.athletesInvolved||[])[0]||{};
-      const mref=((d.team||{})["$ref"]||"").match(/teams\/(\d+)/);
-      const tid=mref?mref[1]:null; const tx=(d.type||{}).text||"";
+      const tid=String((d.team||ath.team||{}).id||"");
       scorers.push({who:ath.displayName||ath.shortName||"?",
         min:((d.clock||{}).displayValue)||"",
         side: tid===homeId?"home":(tid===awayId?"away":""),
-        pen:/penal/i.test(tx), og:/own/i.test(tx)});
+        pen:!!d.penaltyKick, og:!!d.ownGoal});
     }
     out.push({date:ev.date,home,away,gh,ga,state:t.state,status:t.name,
       clock:stt.displayClock||"", detail:t.shortDetail||"", scorers:scorers});
