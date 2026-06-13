@@ -277,7 +277,7 @@
     </div>
     <div class="pcard">
       <h3>🏅 Balón de Oro — Mejor jugador</h3>
-      <div class="psub">En directo · por contribución (goles + asistencias) · ESPN</div>
+      <div class="psub">Cuotas Player of the Tournament (casas de apuestas) · jun 2026</div>
       <div id="ballon"><div class="empty">Cargando…</div></div>
     </div>
   </section>
@@ -292,6 +292,21 @@ window.PLAYER_TAGS = {
   "Lagen":   {t:"🏆 2021"},
   "Uri":     {t:"✨ Nuevo", cls:"new"}
 };
+/* Balón de Oro — cuotas casa de apuestas (Player of the Tournament). Editable.
+   Actualizado jun 2026. Ordenado favorito → menos favorito. */
+window.BALLON_FAV = [
+  {name:"Michael Olise", team:"Francia", odds:"13/2"},
+  {name:"Harry Kane", team:"Inglaterra", odds:"7/1"},
+  {name:"Lamine Yamal", team:"España", odds:"8/1"},
+  {name:"Kylian Mbappé", team:"Francia", odds:"10/1"},
+  {name:"Lionel Messi", team:"Argentina", odds:"10/1"},
+  {name:"Vinícius Júnior", team:"Brasil", odds:"14/1"},
+  {name:"Bruno Fernandes", team:"Portugal", odds:"21/1"},
+  {name:"Erling Haaland", team:"Noruega", odds:"26/1"},
+  {name:"Bukayo Saka", team:"Inglaterra", odds:"51/1"},
+  {name:"Achraf Hakimi", team:"Marruecos", odds:"51/1"},
+  {name:"Mohamed Salah", team:"Egipto", odds:"67/1"}
+];
 </script>
 
 <script>
@@ -404,9 +419,11 @@ function matchesView(S){
       if(!pm) return {name:part.name,ph:null,pa:null,home:null,away:null,pts:null};
       let pts=null; if(score) pts=scoreMatch(pm,score,w);
       return {name:part.name,ph:pm[0],pa:pm[1],home:pm[2],away:pm[3],pts:pts}; });
-    /* orden por los numeros del marcador pronosticado (local, luego visitante) */
+    /* orden por diferencia de goles: mayor victoria local (10-0) → empates →
+       mayor victoria visitante (0-10). Desempate: más goles, luego nombre. */
     preds.sort((x,y)=>{ const xn=x.ph==null, yn=y.ph==null; if(xn||yn) return xn-yn;
-      return (x.ph-y.ph) || (x.pa-y.pa) || x.name.toLowerCase().localeCompare(y.name.toLowerCase()); });
+      return ((y.ph-y.pa)-(x.ph-x.pa)) || ((y.ph+y.pa)-(x.ph+x.pa))
+        || x.name.toLowerCase().localeCompare(y.name.toLowerCase()); });
     return {key:fx.key,kind:fx.kind,group:fx.group,home,away,kickoff:fx.kickoff,
       espn_date:a?a.espn_date:null,state,score,predictions:preds}; });
   let live=items.findIndex(it=>it.state==="in");
@@ -471,7 +488,7 @@ function fmtKick(it){ const iso=it.espn_date||it.kickoff; if(!iso) return "";
 function badge(state){ if(state==="in")return `<span class="m-badge b-live blink">● En juego</span>`;
   if(state==="post")return `<span class="m-badge b-final">Final</span>`; return `<span class="m-badge b-pre">Próximo</span>`; }
 function predHTML(it){ if(!it.predictions.length) return `<div class="hint">Sin participantes.</div>`;
-  const showPts=it.score!==null; let h=`<div class="hint">Pronósticos (ordenados por marcador)${showPts?" · puntos":""}:</div>`;
+  const showPts=it.score!==null; let h=`<div class="hint">Pronósticos (por diferencia de goles)${showPts?" · puntos":""}:</div>`;
   it.predictions.forEach(p=>{ const sc=(p.ph===null)?"—":`${p.ph}–${p.pa}`; let pts="";
     if(showPts&&p.pts!==null) pts=`<span class="px ${p.pts>0?'pts-pos':'pts-zero'}">+${p.pts}</span>`;
     h+=`<div class="pred"><span class="pn">${p.name}</span><span class="pp">${sc}</span>${pts}</div>`; });
@@ -625,40 +642,28 @@ async function nameTeam(L){
   try{ const t=await getRef(L.team["$ref"]); team=t.displayName||t.name||""; }catch(e){}
   return {name, team};
 }
+function renderBallon(){
+  const el=document.getElementById("ballon"); if(!el) return;
+  el.innerHTML = (window.BALLON_FAV||[]).map((p,i)=>{ const cls=i<3?`top${i+1}`:"";
+    return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
+      <span class="ln">${p.name}<span class="lt">${p.team}</span></span>
+      <span class="lv">${p.odds}</span></div>`; }).join("");
+}
 async function loadScorers(){
+  renderBallon();                       // Balón de Oro: cuotas (estático, editable)
   if(_scorersLoaded) return; _scorersLoaded=true;
-  const cont=document.getElementById("scorers"), bal=document.getElementById("ballon");
+  const cont=document.getElementById("scorers");
   try{
     const d=await (await fetch(ESPN_CORE+"/types/1/leaders",{cache:"no-store"})).json();
     const cats={}; (d.categories||[]).forEach(c=>cats[c.name]=c.leaders||[]);
-    const goals=cats.goalsLeaders||[], assists=cats.assistsLeaders||[];
-
-    // ---- Bota de Oro (goles) ----
-    const gl=goals.filter(L=>L.value>0).slice(0,20);
-    if(!gl.length){ cont.innerHTML=`<div class="empty">Aún no hay goles en el Mundial.</div>`; }
-    else{
-      const rows=await Promise.all(gl.map(async L=>({...await nameTeam(L), goals:L.value})));
-      cont.innerHTML=rows.map((r,i)=>{ const cls=i<3?`top${i+1}`:"";
-        return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
-          <span class="ln">${r.name}<span class="lt">${r.team}</span></span>
-          <span class="lv">${r.goals} ⚽</span></div>`; }).join("");
-    }
-
-    // ---- Balón de Oro = contribución real (goles + asistencias), en vivo ----
-    const map={};
-    goals.forEach(L=>{ const k=L.athlete["$ref"]; map[k]=map[k]||{L,g:0,a:0}; map[k].g=L.value; });
-    assists.forEach(L=>{ const k=L.athlete["$ref"]; map[k]=map[k]||{L,g:0,a:0}; map[k].a=L.value; });
-    const arr=Object.values(map).map(o=>({...o,c:o.g+o.a})).filter(o=>o.c>0)
-      .sort((x,y)=> y.c-x.c || y.g-x.g).slice(0,12);
-    if(!arr.length){ bal.innerHTML=`<div class="empty">Aún no hay datos suficientes.</div>`; }
-    else{
-      const rows=await Promise.all(arr.map(async o=>({...await nameTeam(o.L), g:o.g, a:o.a})));
-      bal.innerHTML=rows.map((r,i)=>{ const cls=i<3?`top${i+1}`:"";
-        return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
-          <span class="ln">${r.name}<span class="lt">${r.team}</span></span>
-          <span class="lv">${r.g}⚽ ${r.a}🅰️</span></div>`; }).join("");
-    }
-  }catch(e){ cont.innerHTML=`<div class="empty">No se pudieron cargar los datos.</div>`; }
+    const gl=(cats.goalsLeaders||[]).filter(L=>L.value>0).slice(0,20);
+    if(!gl.length){ cont.innerHTML=`<div class="empty">Aún no hay goles en el Mundial.</div>`; return; }
+    const rows=await Promise.all(gl.map(async L=>({...await nameTeam(L), goals:L.value})));
+    cont.innerHTML=rows.map((r,i)=>{ const cls=i<3?`top${i+1}`:"";
+      return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
+        <span class="ln">${r.name}<span class="lt">${r.team}</span></span>
+        <span class="lv">${r.goals} ⚽</span></div>`; }).join("");
+  }catch(e){ cont.innerHTML=`<div class="empty">No se pudieron cargar los goleadores.</div>`; }
 }
 
 /* ---- Intro Farolillo Rojo ---- */
