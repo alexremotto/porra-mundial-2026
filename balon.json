@@ -1,13 +1,32 @@
 [
-  {"name": "Michael Olise", "team": "Francia", "odds": "13/2"},
-  {"name": "Harry Kane", "team": "Inglaterra", "odds": "7/1"},
-  {"name": "Lamine Yamal", "team": "España", "odds": "8/1"},
-  {"name": "Kylian Mbappé", "team": "Francia", "odds": "10/1"},
-  {"name": "Lionel Messi", "team": "Argentina", "odds": "10/1"},
-  {"name": "Vinícius Júnior", "team": "Brasil", "odds": "14/1"},
-  {"name": "Bruno Fernandes", "team": "Portugal", "odds": "21/1"},
-  {"name": "Erling Haaland", "team": "Noruega", "odds": "26/1"},
-  {"name": "Bukayo Saka", "team": "Inglaterra", "odds": "51/1"},
-  {"name": "Achraf Hakimi", "team": "Marruecos", "odds": "51/1"},
-  {"name": "Mohamed Salah", "team": "Egipto", "odds": "67/1"}
+  {
+    "name": "FOX Sports may be compensated. Read more about Sports Betting on FOX Sports. Michael Olise",
+    "team": "Francia",
+    "odds": "13/2"
+  },
+  {
+    "name": "Bundesliga champion Bayern Munich this season. Harry Kane",
+    "team": "Inglaterra",
+    "odds": "17/2"
+  },
+  {
+    "name": "Lamine Yamal",
+    "team": "España",
+    "odds": "17/2"
+  },
+  {
+    "name": "Lamal is considered by many to be the next guy to enter the Messi-Ronaldo class. Kylian Mbappé",
+    "team": "Francia",
+    "odds": "17/2"
+  },
+  {
+    "name": "Lionel Messi",
+    "team": "Argentina",
+    "odds": "11/1"
+  },
+  {
+    "name": "Vini Jr.",
+    "team": "Brasil",
+    "odds": "14/1"
+  }
 ]
