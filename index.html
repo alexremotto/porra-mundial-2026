@@ -609,7 +609,7 @@ let _glovoOn=null;
 function checkGlovo(){
   const el=document.getElementById("glovo"); if(!el) return;
   const madridH=(new Date().getUTCHours()+2)%24;   // junio/julio: CEST = UTC+2
-  const show = madridH>=20 && madridH<22;
+  const show = true;   /* TEMP: forzado para previsualizar (revertir a: madridH>=20 && madridH<22) */
   if(show===_glovoOn) return; _glovoOn=show;
   if(show){ el.style.display="block";
     el.innerHTML=`<a class="glovo" href="https://glovoapp.com/" target="_blank" rel="noopener">
