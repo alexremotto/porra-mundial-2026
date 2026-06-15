@@ -808,24 +808,43 @@ function chronicleDay(tl, i){
     if(up<0 && (!faller||up<faller.up)) faller={name:x.name,up}; }); }
   const res=cur.matches.map(m=>`<span class="r">${m.home} <b>${m.gh}–${m.ga}</b> ${m.away}</span>`).join("");
   const ps=[];
+  const second = cur.st[1] || null;
+  const gap2 = second ? (leader.total - second.total) : 0;
+  const nm = cur.matches.length;
 
-  // P1 — intro + ganadores del día
+  // P1 — apertura + ganador del día (repertorio amplio)
   if(top.delta>0){
     ps.push(_pick([
-      `Jornada de ${cur.matches.length} partidos y quien se frotó las manos fue <b>${_join(winners)}</b>, +<b>${top.delta}</b> puntos. ${_pick(["Día de patrón.","Clínica de pronósticos.","Ojo clínico.","Recital de quiniela."],r)}`,
-      `Con ${cur.matches.length} partidos en juego, <b>${_join(winners)}</b> arrasó: +<b>${top.delta}</b>. ${_pick(["Para enmarcar.","Sin despeinarse.","De crack.","Con la bola de cristal."],r)}`,
-      `La mejor jornada fue para <b>${_join(winners)}</b> (+<b>${top.delta}</b>). ${_pick(["El resto, a verlas venir.","Aviso a navegantes.","Puro acierto."],r)}`
+      `Se jugaban ${nm} partidos y el que se frotó las manos fue <b>${_join(winners)}</b>, que se embolsó +<b>${top.delta}</b> puntos.`,
+      `Jornada de ${nm} partidos con sello de <b>${_join(winners)}</b>: +<b>${top.delta}</b> y a presumir de olfato.`,
+      `Día de patrón para <b>${_join(winners)}</b>, que leyó la cartelera de cabo a rabo y se llevó +<b>${top.delta}</b>.`,
+      `La pizarra de hoy la firma <b>${_join(winners)}</b>: +<b>${top.delta}</b> en ${nm} partidos. Para nota.`,
+      `${nm} partidos y <b>${_join(winners)}</b> los clavó casi todos para sumar +<b>${top.delta}</b>.`,
+      `Campanazo de <b>${_join(winners)}</b> en la jornada: +<b>${top.delta}</b> puntos de un plumazo.`,
+      `Recital de quiniela de <b>${_join(winners)}</b>, a +<b>${top.delta}</b> mientras el resto miraba de reojo.`,
+      `Quien quiera aprender, que mire a <b>${_join(winners)}</b>: +<b>${top.delta}</b> en una jornada de ${nm} partidos.`,
+      `<b>${_join(winners)}</b> se sacó la bola de cristal y firmó la mejor jornada: +<b>${top.delta}</b>.`
     ],r));
   } else {
-    ps.push(`Jornada de ${cur.matches.length} partidos sin apenas alegrías: la cosa estuvo floja arriba. ${_pick(["Pinchazo casi general.","Quiniela maldita.","Día para olvidar."],r)}`);
+    ps.push(_pick([
+      `Jornada de ${nm} partidos para olvidar: arriba no se enteró casi nadie y nadie se destacó.`,
+      `${nm} partidos y la quiniela salió de chichinabo: pleno de pinchazos en la zona noble.`,
+      `Día gris en la porra: con ${nm} partidos, nadie firmó una jornada para enmarcar.`,
+      `Se jugaban ${nm} partidos y el guion fue plano, plano: poca puntería generalizada.`
+    ],r));
   }
 
   // P2 — pinchazos del día
   if(zeros.length){
     const zl = zeros.length>3 ? `${zeros.slice(0,3).join(", ")} y compañía` : _join(zeros);
     ps.push(_pick([
-      `En la otra cara de la moneda, <span class="bad">${zl}</span> se fue de vacío. ${_pick(["Cero patatero.","A reflexionar.","Día de tachones."],r)}`,
-      `<span class="bad">${zl}</span> no dio una y se quedó a cero. ${_pick(["Toca remar.","Sin premio.","Otra que se escapa."],r)}`
+      `En la acera de enfrente, <span class="bad">${zl}</span> se fue de vacío. A reflexionar.`,
+      `<span class="bad">${zl}</span> no dio una y se quedó con un redondo cero.`,
+      `Cero pelotero para <span class="bad">${zl}</span>; jornada de tachones y excusas.`,
+      `<span class="bad">${zl}</span> miró el marcador y se le atragantó: ni un punto.`,
+      `Día de barbecho para <span class="bad">${zl}</span>, que se quedó a verlas venir.`,
+      `Quien no rascó nada: <span class="bad">${zl}</span>. Toca remar de lo lindo.`,
+      `<span class="bad">${zl}</span> sumó un brillante cero. El fútbol, ese desconocido.`
     ],r));
   }
 
@@ -836,16 +855,46 @@ function chronicleDay(tl, i){
     const c=cold[0];
     ps.push(_pick([
       `Capítulo aparte para <span class="bad">${c.name}</span>: ${c.s} jornadas seguidas sin mojar. ¿Alguien le ha explicado que en el fútbol marcan goles? 🤔`,
-      `<span class="bad">${c.name}</span> acumula ${c.s} días en blanco. Su olfato analítico está oficialmente en cuarentena.`,
-      `Van ${c.s} jornadas y <span class="bad">${c.name}</span> sigue sin enterarse de la película. ¿Pronostica con los pies o tira los dados?`,
-      `Preocupa <span class="bad">${c.name}</span>: ${c.s} jornadas de sequía. De experto en fútbol le queda ya poco.`
+      `<span class="bad">${c.name}</span> acumula ${c.s} días en blanco. Su olfato analítico está en cuarentena.`,
+      `Van ${c.s} jornadas y <span class="bad">${c.name}</span> sigue sin enterarse de la película. ¿Pronostica con los pies?`,
+      `Preocupa <span class="bad">${c.name}</span>: ${c.s} jornadas de sequía. De experto en fútbol le queda ya poco.`,
+      `Sequía bíblica la de <span class="bad">${c.name}</span>: ${c.s} jornadas sin catar punto. ¿Reset de fábrica?`,
+      `<span class="bad">${c.name}</span> lleva ${c.s} días en barbecho. A este paso pide la baja por bajo rendimiento.`,
+      `${c.s} jornadas sin pegar una <span class="bad">${c.name}</span>. ¿Seguro que ve los partidos?`
+    ],r));
+  }
+
+  // P-carrera — narra la situación arriba
+  if(second){
+    if(gap2>=8) ps.push(_pick([
+      `Arriba, <b>${leader.name}</b> se ha escapado: ${gap2} de ventaja sobre <b>${second.name}</b> y empieza a oler a fuga.`,
+      `<b>${leader.name}</b> manda con autoridad, ${gap2} puntos por delante de <b>${second.name}</b>. ¿Quién le tose?`,
+      `La cabeza tiene dueño: <b>${leader.name}</b> saca ${gap2} a <b>${second.name}</b> y mira a todos por encima del hombro.`,
+      `Fuga en marcha: <b>${leader.name}</b> ya le saca ${gap2} a <b>${second.name}</b>. Habrá que ir a buscarlo con perros.`
+    ],r));
+    else if(gap2<=2) ps.push(_pick([
+      `Arriba no se fían ni un pelo: <b>${leader.name}</b> y <b>${second.name}</b> se pelean el trono por ${gap2===0?"nada (empate)":"solo "+gap2}.`,
+      `Mano a mano en la cima: <b>${leader.name}</b> aguanta el liderato ${gap2===0?"por un suspiro":"por "+gap2} ante <b>${second.name}</b>.`,
+      `Pole provisional de <b>${leader.name}</b>, pero <b>${second.name}</b> le respira en la nuca (a ${gap2===0?"cero":gap2}).`,
+      `Pañuelo arriba: <b>${leader.name}</b> y <b>${second.name}</b> separados por ${gap2===0?"absolutamente nada":"un mísero "+gap2}.`
+    ],r));
+    else ps.push(_pick([
+      `<b>${leader.name}</b> sigue al frente con <b>${leader.total}</b>, perseguido a ${gap2} por <b>${second.name}</b>.`,
+      `Lidera <b>${leader.name}</b> (${leader.total}), con <b>${second.name}</b> al acecho a ${gap2}.`,
+      `En lo alto, <b>${leader.name}</b> mantiene el mando; <b>${second.name}</b> aprieta a ${gap2} de distancia.`,
+      `<b>${leader.name}</b> arriba con ${leader.total}; <b>${second.name}</b> no se rinde y se queda a ${gap2}.`
     ],r));
   }
 
   // P4 — movimientos de posición
-  if(riser){ ps.push(`📈 <b>${riser.name}</b> escaló ${riser.up} ${riser.up===1?"puesto":"puestos"}${(faller)?`, mientras <span class="bad">${faller.name}</span> se dejó ${-faller.up}`:""}. ${_pick(["La tabla se mueve.","Pura montaña rusa.","Esto no ha hecho más que empezar."],r)}`); }
+  if(riser){ ps.push(_pick([
+    `📈 <b>${riser.name}</b> escaló ${riser.up} ${riser.up===1?"puesto":"puestos"}${faller?`, mientras <span class="bad">${faller.name}</span> se dejó ${-faller.up}`:""}.`,
+    `📈 Ascensor para <b>${riser.name}</b>, +${riser.up} ${riser.up===1?"puesto":"puestos"}${faller?` a costa del bajón de <span class="bad">${faller.name}</span> (-${-faller.up})`:""}.`,
+    `📈 La tabla se sacude: <b>${riser.name}</b> sube ${riser.up}${faller?` y <span class="bad">${faller.name}</span> baja ${-faller.up}`:""}.`,
+    `📈 <b>${riser.name}</b> dio un acelerón y ganó ${riser.up} ${riser.up===1?"plaza":"plazas"}${faller?`; <span class="bad">${faller.name}</span>, en sentido contrario (-${-faller.up})`:""}.`
+  ],r)); }
 
-  // P5 — líder + farolillo (todos los empatados a último)
+  // P5 — farolillo rojo (todos los empatados a último)
   const mp=Math.max.apply(null,cur.st.map(x=>x.pos));
   const faros=cur.st.filter(x=>x.pos===mp);
   const faroNames=faros.map(x=>x.name);
@@ -855,27 +904,45 @@ function chronicleDay(tl, i){
     const cnt=faroNames.map(n=>({n,c:_faroCountUpTo(tl,i,n)})).sort((a,b)=>b.c-a.c);
     const worst=cnt[0];
     faroTxt=_pick([
-      `${faroBad} se reparten el farolillo rojo, empatados a ${faros[0].total} puntos. Mal de muchos...`,
-      `Farolillo rojo compartido: ${faroBad} cierran la tabla a ${faros[0].total}. Sálvese quien pueda.`,
-      `Empate en el fango: ${faroBad} cargan juntos con el farolillo rojo (${faros[0].total} pts).`
+      `${faroBad} se reparten el farolillo rojo, empatados a ${faros[0].total} puntos.`,
+      `Farolillo rojo a medias: ${faroBad} cierran la tabla con ${faros[0].total} puntitos.`,
+      `Empate en el fondo del pozo: ${faroBad} cargan juntos con el farolillo (${faros[0].total}).`,
+      `Hermandad del farolillo: ${faroBad} igualados a ${faros[0].total} en el sótano de la clasificación.`,
+      `Abajo del todo, codo con codo: ${faroBad} firman tablas en la miseria (${faros[0].total} pts).`,
+      `${faroBad} se dan la mano en el último puesto, empatados a ${faros[0].total}.`,
+      `Cola compartida: ${faroBad} no se sueltan ni para lo malo (${faros[0].total} pts).`
     ],r);
-    if(worst.c>=2) faroTxt += ` Eso sí, <b>${worst.n}</b> es el más reincidente (ya van ${worst.c}). 🏮`;
+    if(worst.c>=2) faroTxt += " "+_pick([
+      `Eso sí, <b>${worst.n}</b> es el más reincidente del grupo (ya van ${worst.c}). 🏮`,
+      `El veterano del sótano es <b>${worst.n}</b>, ya con ${worst.c} farolillos a la espalda. 🏮`,
+      `<b>${worst.n}</b> manda (por llamarlo de algún modo) en ese club con ${worst.c} días de farolillo. 🏮`
+    ],r);
   } else {
     const fc=_faroCountUpTo(tl,i,faroNames[0]);
-    if(fc>=3) faroTxt=`${faroBad} vuelve a hundirse en el farolillo rojo: ya van <b>${fc}</b>. Esto es oficialmente una tradición. 🏮`;
-    else if(fc===2) faroTxt=`${faroBad} repite farolillo (van ${fc}). La tendencia no pinta bien...`;
+    if(fc>=3) faroTxt=_pick([
+      `${faroBad} vuelve a hundirse en el farolillo rojo: ya van <b>${fc}</b>. Esto es oficialmente una tradición. 🏮`,
+      `Otra vez <span class="bad">${faroNames[0]}</span> de farolillo (<b>${fc}</b> ya). A esto se le llama abonarse al sótano. 🏮`,
+      `<span class="bad">${faroNames[0]}</span> y el farolillo, historia de amor: <b>${fc}</b> días juntos. 🏮`
+    ],r);
+    else if(fc===2) faroTxt=_pick([
+      `${faroBad} repite farolillo (van ${fc}). La tendencia no pinta nada bien...`,
+      `Segundo farolillo para <span class="bad">${faroNames[0]}</span>. Esto empieza a ser costumbre.`
+    ],r);
     else faroTxt=_pick([
       `${faroBad} cierra la tabla y carga con el farolillo rojo.`,
-      `El farolillo se lo queda ${faroBad}, último con ${faros[0].total}.`],r);
+      `El farolillo se lo queda ${faroBad}, último con ${faros[0].total}.`,
+      `Y en el furgón de cola, ${faroBad}: farolillo rojo del día.`
+    ],r);
   }
-  ps.push(`Manda <b>${leader.name}</b> con <b>${leader.total}</b> puntos. 🏮 ${faroTxt}`);
+  ps.push(`Y para cerrar: manda <b>${leader.name}</b> con <b>${leader.total}</b> puntos. 🏮 ${faroTxt}`);
 
   // P6 — guiño a Lagen (mano negra) cuando no puntúa
   if(has("Lagen") && _deltaAt(tl,i,"Lagen")===0 && r()<0.7){
     ps.push(_pick([
-      `Curioso lo de <b>Lagen</b>, otra vez a cero... Cuando él llevaba las cuentas de la porra siempre le sonreían los números. ¿Mano negra desactivada? 🤨`,
+      `Curioso lo de <b>Lagen</b>, otra vez a cero... Cuando él llevaba las cuentas siempre le sonreían los números. ¿Mano negra desactivada? 🤨`,
       `<b>Lagen</b> pincha. Sin el boli mágico de "contable oficial", la cosa ya no es lo mismo, ¿eh fundador?`,
-      `Sospechoso el cero de <b>Lagen</b>: dicen que en sus tiempos de tesorero la quiniela le cundía bastante más. 👀`
+      `Sospechoso el cero de <b>Lagen</b>: dicen que en sus tiempos de tesorero la quiniela le cundía bastante más. 👀`,
+      `Pinchó <b>Lagen</b>. Antes, llevando él las cuentas, jamás se le veía abajo... cosas del azar, claro. 🤨`
     ],r));
   }
 
@@ -885,7 +952,8 @@ function chronicleDay(tl, i){
     ps.push(_pick([
       `Recordatorio para <b>JJ</b>, penando por abajo: mandar la porra a última hora igual no fue su mejor jugada... ⏰`,
       `<b>JJ</b> sigue a remolque. Quizá entregar tarde la porra le está pasando factura, ¿no crees?`,
-      `Lo de <b>JJ</b> tiene delito: el último en entregar y casi el último en la tabla. Causalidad o casualidad. ⏰`
+      `Lo de <b>JJ</b> tiene delito: el último en entregar y casi el último en la tabla. Causalidad o casualidad. ⏰`,
+      `<b>JJ</b> abonado a la zona baja. Empezar tarde la porra se paga, amigo. ⏰`
     ],r));
   }
 
