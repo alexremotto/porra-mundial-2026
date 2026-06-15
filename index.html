@@ -44,10 +44,14 @@
   @keyframes pulse{0%{opacity:.35}50%{opacity:1}100%{opacity:.35}}
 
   .tabs{display:flex; gap:5px; margin-bottom:14px;}
-  .tab{flex:1; text-align:center; padding:10px 6px; border-radius:8px 8px 0 0;
+  .tab{flex:1; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:1px; line-height:1.05; min-height:46px;
+    padding:7px 4px; border-radius:8px 8px 0 0;
     background:#cdd8dd; color:#33484f; font-weight:700; cursor:pointer;
-    border:none; font-size:.85rem; transition:background .15s; min-width:0;}
+    border:none; font-size:.82rem; transition:background .15s; min-width:0;}
   .tab.active{background:var(--teal); color:#fff;}
+  .t-emoji{font-size:1.05rem; line-height:1;}
+  .t-lab{white-space:nowrap;}
   .panel{display:none;} .panel.active{display:block;}
 
   /* ---- Banner de partido EN DIRECTO (arriba de clasificación) ---- */
@@ -271,10 +275,10 @@
   </header>
 
   <div class="tabs">
-    <button class="tab active" data-tab="principal">Clasificación</button>
-    <button class="tab" data-tab="partidos">Partidos</button>
-    <button class="tab" data-tab="premios">🥇 Bota/Balón</button>
-    <button class="tab" data-tab="cronica" id="tab-cronica" style="display:none">📰 Crónica</button>
+    <button class="tab active" data-tab="principal"><span class="t-lab">Tabla</span></button>
+    <button class="tab" data-tab="partidos"><span class="t-lab">Partidos</span></button>
+    <button class="tab" data-tab="premios"><span class="t-emoji">🥇</span><span class="t-lab">Bota/Balón</span></button>
+    <button class="tab" data-tab="cronica" id="tab-cronica" style="display:none"><span class="t-emoji">📰</span><span class="t-lab">Crónica</span></button>
   </div>
 
   <section class="panel active" id="panel-principal">
@@ -709,8 +713,15 @@ function _seedRand(s){ let h=2166136261>>>0; for(let i=0;i<s.length;i++){ h^=s.c
   return function(){ h^=h<<13; h^=h>>>17; h^=h<<5; h>>>=0; return h/4294967296; }; }
 function _pick(a,r){ return a[Math.floor(r()*a.length)]; }
 function _join(a){ return a.length<=2 ? a.join(" y ") : a.slice(0,-1).join(", ")+" y "+a.slice(-1); }
-function chronicleDay(cur, prev){
+function _totAt(tl,i,name){ if(i<0||i>=tl.length) return 0; const r=tl[i].st.find(x=>x.name===name); return r?r.total:0; }
+function _deltaAt(tl,i,name){ return _totAt(tl,i,name)-_totAt(tl,i-1,name); }
+function _coldStreak(tl,i,name){ let c=0; for(let j=i;j>=0;j--){ if(_deltaAt(tl,j,name)===0) c++; else break; } return c; }
+function _faroCountUpTo(tl,i,name){ let c=0; for(let j=0;j<=i;j++){ const L=tl[j].st[tl[j].st.length-1]; if(L&&L.name===name) c++; } return c; }
+function _ord(n){ return n+"º"; }
+function chronicleDay(tl, i){
+  const cur=tl[i], prev=i>0?tl[i-1]:null;
   const r=_seedRand(cur.day);
+  const has=name=>cur.st.some(x=>x.name===name);
   const before={}, prevPos={};
   if(prev){ prev.st.forEach(x=>{ before[x.name]=x.total; prevPos[x.name]=x.pos; }); }
   const rows=cur.st.map(x=>({name:x.name,total:x.total,pos:x.pos,delta:x.total-(before[x.name]||0)}));
@@ -725,27 +736,72 @@ function chronicleDay(cur, prev){
     if(up<0 && (!faller||up<faller.up)) faller={name:x.name,up}; }); }
   const res=cur.matches.map(m=>`<span class="r">${m.home} <b>${m.gh}–${m.ga}</b> ${m.away}</span>`).join("");
   const ps=[];
+
+  // P1 — intro + ganadores del día
   if(top.delta>0){
     ps.push(_pick([
-      `Jornada de ${cur.matches.length} partidos y quien se frotó las manos fue <b>${_join(winners)}</b>, +<b>${top.delta}</b> puntos. ${_pick(["Día de patrón.","Clínica de pronósticos.","Ojo clínico.","Recital."],r)}`,
-      `Con ${cur.matches.length} partidos en juego, <b>${_join(winners)}</b> arrasó: +<b>${top.delta}</b>. ${_pick(["Para enmarcar.","Sin despeinarse.","De crack."],r)}`,
+      `Jornada de ${cur.matches.length} partidos y quien se frotó las manos fue <b>${_join(winners)}</b>, +<b>${top.delta}</b> puntos. ${_pick(["Día de patrón.","Clínica de pronósticos.","Ojo clínico.","Recital de quiniela."],r)}`,
+      `Con ${cur.matches.length} partidos en juego, <b>${_join(winners)}</b> arrasó: +<b>${top.delta}</b>. ${_pick(["Para enmarcar.","Sin despeinarse.","De crack.","Con la bola de cristal."],r)}`,
       `La mejor jornada fue para <b>${_join(winners)}</b> (+<b>${top.delta}</b>). ${_pick(["El resto, a verlas venir.","Aviso a navegantes.","Puro acierto."],r)}`
     ],r));
   } else {
-    ps.push(`Jornada de ${cur.matches.length} partidos sin alegrías: nadie rascó puntos. ${_pick(["Pinchazo general.","Quiniela maldita.","Día para olvidar."],r)}`);
+    ps.push(`Jornada de ${cur.matches.length} partidos sin apenas alegrías: la cosa estuvo floja arriba. ${_pick(["Pinchazo casi general.","Quiniela maldita.","Día para olvidar."],r)}`);
   }
+
+  // P2 — pinchazos del día
   if(zeros.length){
     const zl = zeros.length>3 ? `${zeros.slice(0,3).join(", ")} y compañía` : _join(zeros);
     ps.push(_pick([
-      `En la otra cara, <span class="bad">${zl}</span> se fue de vacío. ${_pick(["Cero patatero.","A reflexionar.","Día de tachones."],r)}`,
+      `En la otra cara de la moneda, <span class="bad">${zl}</span> se fue de vacío. ${_pick(["Cero patatero.","A reflexionar.","Día de tachones."],r)}`,
       `<span class="bad">${zl}</span> no dio una y se quedó a cero. ${_pick(["Toca remar.","Sin premio.","Otra que se escapa."],r)}`
     ],r));
   }
-  if(riser){ ps.push(`📈 <b>${riser.name}</b> escaló ${riser.up} ${riser.up===1?"puesto":"puestos"}${(faller)?`, mientras <span class="bad">${faller.name}</span> se dejó ${-faller.up}`:""}. ${_pick(["La tabla se mueve.","Pura montaña rusa.",""],r)}`); }
-  ps.push(`Manda <b>${leader.name}</b> con <b>${leader.total}</b> puntos. 🏮 ${_pick([
+
+  // P3 — rachas frías (dudando de su olfato futbolístico)
+  const cold=rows.map(x=>({name:x.name,s:_coldStreak(tl,i,x.name)}))
+                 .filter(x=>x.s>=2).sort((a,b)=>b.s-a.s);
+  if(cold.length){
+    const c=cold[0];
+    ps.push(_pick([
+      `Capítulo aparte para <span class="bad">${c.name}</span>: ${c.s} jornadas seguidas sin mojar. ¿Alguien le ha explicado que en el fútbol marcan goles? 🤔`,
+      `<span class="bad">${c.name}</span> acumula ${c.s} días en blanco. Su olfato analítico está oficialmente en cuarentena.`,
+      `Van ${c.s} jornadas y <span class="bad">${c.name}</span> sigue sin enterarse de la película. ¿Pronostica con los pies o tira los dados?`,
+      `Preocupa <span class="bad">${c.name}</span>: ${c.s} jornadas de sequía. De experto en fútbol le queda ya poco.`
+    ],r));
+  }
+
+  // P4 — movimientos de posición
+  if(riser){ ps.push(`📈 <b>${riser.name}</b> escaló ${riser.up} ${riser.up===1?"puesto":"puestos"}${(faller)?`, mientras <span class="bad">${faller.name}</span> se dejó ${-faller.up}`:""}. ${_pick(["La tabla se mueve.","Pura montaña rusa.","Esto no ha hecho más que empezar."],r)}`); }
+
+  // P5 — líder + farolillo con tendencia
+  const fc=_faroCountUpTo(tl,i,faro.name);
+  let faroTxt;
+  if(fc>=3) faroTxt=`<span class="bad">${faro.name}</span> vuelve a hundirse en el farolillo rojo: ya van <b>${fc}</b>. Esto es oficialmente una tradición. 🏮`;
+  else if(fc===2) faroTxt=`<span class="bad">${faro.name}</span> repite farolillo (van ${fc}). La tendencia no pinta bien...`;
+  else faroTxt=_pick([
     `<span class="bad">${faro.name}</span> cierra la tabla y carga con el farolillo rojo.`,
-    `El farolillo se lo queda <span class="bad">${faro.name}</span>, último con ${faro.total}.`,
-    `<span class="bad">${faro.name}</span>, a espabilar: farolillo rojo otra vez.`],r)}`);
+    `El farolillo se lo queda <span class="bad">${faro.name}</span>, último con ${faro.total}.`],r);
+  ps.push(`Manda <b>${leader.name}</b> con <b>${leader.total}</b> puntos. 🏮 ${faroTxt}`);
+
+  // P6 — guiño a Lagen (mano negra) cuando no puntúa
+  if(has("Lagen") && _deltaAt(tl,i,"Lagen")===0 && r()<0.7){
+    ps.push(_pick([
+      `Curioso lo de <b>Lagen</b>, otra vez a cero... Cuando él llevaba las cuentas de la porra siempre le sonreían los números. ¿Mano negra desactivada? 🤨`,
+      `<b>Lagen</b> pincha. Sin el boli mágico de "contable oficial", la cosa ya no es lo mismo, ¿eh fundador?`,
+      `Sospechoso el cero de <b>Lagen</b>: dicen que en sus tiempos de tesorero la quiniela le cundía bastante más. 👀`
+    ],r));
+  }
+
+  // P7 — guiño a JJ (entregó la porra tarde), sobre todo en los primeros días
+  const jjPos=(cur.st.find(x=>x.name==="JJ")||{}).pos;
+  if(has("JJ") && jjPos>=cur.st.length-3 && (_deltaAt(tl,i,"JJ")===0 || i<=4) && r()<0.6){
+    ps.push(_pick([
+      `Recordatorio para <b>JJ</b>, penando por abajo: mandar la porra a última hora igual no fue su mejor jugada... ⏰`,
+      `<b>JJ</b> sigue a remolque. Quizá entregar tarde la porra le está pasando factura, ¿no crees?`,
+      `Lo de <b>JJ</b> tiene delito: el último en entregar y casi el último en la tabla. Causalidad o casualidad. ⏰`
+    ],r));
+  }
+
   const title=new Date(cur.day+"T12:00:00Z").toLocaleDateString("es-ES",
     {weekday:"long",day:"numeric",month:"long",timeZone:"UTC"});
   return `<div class="cron-day"><h3>📅 ${title}</h3>
@@ -758,7 +814,7 @@ function renderCronica(espn){
   const tl=dailyTimeline(espn||window._espn||[]);
   if(!tl.length){ el.innerHTML=`<div class="empty">Aún no ha cerrado ninguna jornada. La primera crónica saldrá al terminar el día (23:59 hora de México).</div>`; return; }
   let html="";
-  for(let i=tl.length-1;i>=0;i--) html+=chronicleDay(tl[i], i>0?tl[i-1]:null);
+  for(let i=tl.length-1;i>=0;i--) html+=chronicleDay(tl, i);
   el.innerHTML=html;
 }
 
