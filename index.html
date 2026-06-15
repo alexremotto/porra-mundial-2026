@@ -223,6 +223,9 @@
     text-align:center;}
   .dn{display:inline-block; min-width:18px; font-weight:800; color:#37474f;
     background:#eef3f5; border-radius:8px; padding:0 6px; margin-left:5px; font-size:.76rem;}
+  .poschart{padding:4px 16px 0;}
+  .poschart svg{width:100%; height:auto; display:block;}
+  .poschart-x{text-align:center; font-size:.66rem; color:#9aa7ad; margin-top:1px;}
   /* Crónica del día */
   .cron-day{background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.08);
     padding:14px 16px; margin-bottom:14px;}
@@ -542,12 +545,37 @@ function rowClass(r,idx,maxPos){ if(r.pos===maxPos&&maxPos>3) return "rank-last"
 function arrowHTML(name,pos,prev){ if(!prev||prev[name]==null) return "";
   const d=prev[name]-pos; if(d>0) return `<span class="arrow a-up">▲</span>`;
   if(d<0) return `<span class="arrow a-down">▼</span>`; return ""; }
+function posChartSVG(name){
+  const tl=dailyTimeline(window._espn||[]);
+  const N=Math.max(2,(P.participants||[]).length);
+  const pts=[];
+  tl.forEach(s=>{ const r=s.st.find(x=>x.name===name); if(r) pts.push({pos:r.pos, faro:_faroDay(s.st,name)}); });
+  const cs=window._cs||[]; const cr=cs.find(x=>x.name===name);
+  if(cr){ const mp=cs.length?Math.max.apply(null,cs.map(x=>x.pos)):cr.pos;
+    pts.push({pos:cr.pos, faro:cr.pos===mp, now:true}); }
+  if(pts.length<2) return "";
+  const W=280,H=84,pl=14,pr=12,ptp=18,pb=16,n=pts.length;
+  const X=i=> pl + i*(W-pl-pr)/(n-1);
+  const Y=pos=> ptp + (pos-1)/(N-1)*(H-ptp-pb);
+  const line=pts.map((p,i)=>`${X(i).toFixed(1)},${Y(p.pos).toFixed(1)}`).join(" ");
+  let dots="";
+  pts.forEach((p,i)=>{ const x=X(i),y=Y(p.pos);
+    if(p.faro) dots+=`<text x="${x.toFixed(1)}" y="${(y-5).toFixed(1)}" font-size="12" text-anchor="middle">🏮</text>`;
+    else dots+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${p.now?3.6:2.6}" fill="${p.now?'#3C7E87':'#8aa0a6'}"/>`; });
+  const f=pts[0], l=pts[n-1];
+  const lab=`<text x="${X(0).toFixed(1)}" y="${(Y(f.pos)-7).toFixed(1)}" font-size="9" fill="#9aa7ad" text-anchor="middle">${f.pos}º</text>
+    <text x="${X(n-1).toFixed(1)}" y="${(Y(l.pos)+13).toFixed(1)}" font-size="10" fill="#3C7E87" text-anchor="middle" font-weight="700">${l.pos}º</text>`;
+  return `<div class="poschart"><svg viewBox="0 0 ${W} ${H}">
+    <polyline points="${line}" fill="none" stroke="#bcd0d6" stroke-width="2.2" stroke-linejoin="round"/>
+    ${dots}${lab}</svg><div class="poschart-x">📈 evolución de posición (🏮 = farolillo)</div></div>`;
+}
 function detailHTML(r){
   // Cabecera: días de farolillo rojo de este jugador
   const ld=(window._lanternDays||{})[r.name]||0;
   let head="";
   if(ld>0){ const lant="🏮".repeat(Math.min(ld,8));
     head=`<div class="det-head">${lant} <b>${ld}</b> ${ld===1?"día":"días"} de farolillo rojo 🔴</div>`; }
+  const chart=posChartSVG(r.name);
   let rows="";
   if((P.detailMode||"blocks")==="concepts" && r.det){
     if(!r.det.length) rows=`<div class="row zero"><span>Aún sin puntos</span><span class="val">0</span></div>`;
@@ -557,7 +585,7 @@ function detailHTML(r){
     for(const key in labels){ const v=r.breakdown[key]||0;
       rows+=`<div class="row ${v===0?'zero':''}"><span>${labels[key]}</span><span class="val">${v}</span></div>`; }
   }
-  return `<tr class="detail"><td colspan="3">${head}<div class="detail-inner">${rows}</div></td></tr>`; }
+  return `<tr class="detail"><td colspan="3">${head}${chart}<div class="detail-inner">${rows}</div></td></tr>`; }
 function renderStandings(data){
   const tb=document.getElementById("tbody"); const rows=data.standings||[];
   if(!rows.length){ tb.innerHTML=`<tr><td colspan="3" class="empty">Sin participantes.</td></tr>`; return; }
@@ -666,6 +694,8 @@ function renderLiveBanner(espn, mv){
       return `<span class="lb-scorer">⚽ ${s.min} ${s.who}${tag}</span>`; };
     const homeS=(m.scorers||[]).filter(s=>s.side!=="away").map(mkSc).join("");
     const awayS=(m.scorers||[]).filter(s=>s.side==="away").map(mkSc).join("");
+    const ht = m.status==="STATUS_HALFTIME" || /half\s*-?time|descanso|^ht$/i.test((m.detail||"").trim());
+    const clk = ht ? "⏸ Descanso" : (m.clock||m.detail||"");
     return `<div class="livebar" data-key="${key}">
       <div class="lb-grid">
         <div class="lb-side h">
@@ -675,7 +705,7 @@ function renderLiveBanner(espn, mv){
         <div class="lb-mid">
           <div class="lb-scoreline">${m.gh==null?0:m.gh}<i>-</i>${m.ga==null?0:m.ga}</div>
           <div class="lb-dir">● EN DIRECTO</div>
-          <div class="lb-clock">${m.clock||m.detail||""}</div>
+          <div class="lb-clock">${clk}</div>
         </div>
         <div class="lb-side a">
           <div class="lb-team">${fl[m.away]||""} ${m.away}</div>
@@ -735,9 +765,11 @@ function dailyTimeline(espn){
   _tlCache={sig:sig, data:out};
   return out;
 }
+function _faroDay(st,name){ const mp=Math.max.apply(null,st.map(r=>r.pos)); return st.some(r=>r.pos===mp && r.name===name); }
 function lanternData(espn){
   const tl=dailyTimeline(espn); const tally={};
-  for(const s of tl){ const last=s.st[s.st.length-1]; if(last) tally[last.name]=(tally[last.name]||0)+1; }
+  for(const s of tl){ const mp=Math.max.apply(null,s.st.map(r=>r.pos));   // empate a último: cuentan todos
+    s.st.filter(r=>r.pos===mp).forEach(r=>{ tally[r.name]=(tally[r.name]||0)+1; }); }
   window._lanternDays=tally;
   let best=null; for(const n in tally){ if(!best||tally[n]>best.n) best={name:n,n:tally[n]}; }
   return best;
@@ -756,7 +788,7 @@ function _join(a){ return a.length<=2 ? a.join(" y ") : a.slice(0,-1).join(", ")
 function _totAt(tl,i,name){ if(i<0||i>=tl.length) return 0; const r=tl[i].st.find(x=>x.name===name); return r?r.total:0; }
 function _deltaAt(tl,i,name){ return _totAt(tl,i,name)-_totAt(tl,i-1,name); }
 function _coldStreak(tl,i,name){ let c=0; for(let j=i;j>=0;j--){ if(_deltaAt(tl,j,name)===0) c++; else break; } return c; }
-function _faroCountUpTo(tl,i,name){ let c=0; for(let j=0;j<=i;j++){ const L=tl[j].st[tl[j].st.length-1]; if(L&&L.name===name) c++; } return c; }
+function _faroCountUpTo(tl,i,name){ let c=0; for(let j=0;j<=i;j++){ if(_faroDay(tl[j].st,name)) c++; } return c; }
 function _ord(n){ return n+"º"; }
 function chronicleDay(tl, i){
   const cur=tl[i], prev=i>0?tl[i-1]:null;
@@ -932,7 +964,7 @@ async function tick(){
     window._prevPos = prevPositions(espn);
     const S=buildActual(espn);
     const cs=computeStandings(S);
-    window._espn=espn; lanternData(espn);   // pobla _lanternDays antes de pintar
+    window._espn=espn; window._cs=cs.standings; lanternData(espn);   // pobla _lanternDays antes de pintar
     renderStandings(cs);
     const mv=matchesView(S); window._mv=mv; renderMatches(mv); setupTopBanner(espn);
     renderLiveBanner(espn, mv); renderLanternRecord(espn); checkGlovo();
@@ -990,93 +1022,87 @@ applyHash();
 tick();
 </script>
 
-<script type="module">
-/* ===== Jugadores conectados (Firebase Realtime DB) ===== */
-const P = window.PORRA || {};
-if(P.features && P.features.presence && P.firebase && P.firebase.databaseURL){
-  try{
-    const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js");
-    const { getDatabase, ref, onValue, onDisconnect, update, serverTimestamp, set } =
-      await import("https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js");
-    const app = initializeApp(P.firebase);
-    const db = getDatabase(app);
-    const NAMES = (P.participants||[]).map(p=>p.name);
-    const keyOf = n => n.replace(/[.#$\[\]\/]/g,"_");
-    let me = localStorage.getItem("porra_me") || null;
-    if(me && !NAMES.includes(me)){ me=null; localStorage.removeItem("porra_me"); }
-    let data = {};
+<script>
+/* ===== Jugadores conectados — vía API REST de Firebase RTDB (sin SDK) =====
+   Más simple y fiable que el websocket del SDK: heartbeat + sondeo cada 25 s.
+   "online" = visto en los últimos 75 s. Al irse, expira solo. */
+(function(){
+  const P = window.PORRA || {};
+  const bar = document.getElementById("presence-bar");
+  const modal = document.getElementById("presence-modal");
+  const body = document.getElementById("pmodal-body");
+  if(!(bar && P.features && P.features.presence && P.firebase && P.firebase.databaseURL)) return;
+  const DB = P.firebase.databaseURL.replace(/\/+$/,"");
+  const NAMES = (P.participants||[]).map(p=>p.name);
+  const keyOf = n => encodeURIComponent(n.replace(/[.#$\[\]\/]/g,"_"));
+  let me = localStorage.getItem("porra_me") || null;
+  if(me && !NAMES.includes(me)){ me=null; localStorage.removeItem("porra_me"); }
+  let data = {};
 
-    const bar = document.getElementById("presence-bar");
-    const modal = document.getElementById("presence-modal");
-    const body = document.getElementById("pmodal-body");
-    document.getElementById("pmodal-x").addEventListener("click", ()=>modal.classList.add("hide"));
-    modal.addEventListener("click", e=>{ if(e.target===modal) modal.classList.add("hide"); });
+  function rel(ts){
+    if(!ts) return "sin datos";
+    const s=Math.max(0,(Date.now()-ts)/1000);
+    if(s<90) return "hace un momento";
+    if(s<3600) return "hace "+Math.round(s/60)+" min";
+    if(s<86400) return "hace "+Math.round(s/3600)+" h";
+    const d=Math.round(s/86400); return d===1?"ayer":"hace "+d+" días";
+  }
+  function dataOf(n){ return data[n.replace(/[.#$\[\]\/]/g,"_")]||{}; }
+  function isOnline(p){ return p && p.online && (Date.now()-(p.lastSeen||0) < 75000); }
 
-    function rel(ts){
-      if(!ts) return "nunca";
-      const s=Math.max(0,(Date.now()-ts)/1000);
-      if(s<90) return "hace un momento";
-      if(s<3600) return "hace "+Math.round(s/60)+" min";
-      if(s<86400) return "hace "+Math.round(s/3600)+" h";
-      const d=Math.round(s/86400); return d===1?"ayer":"hace "+d+" días";
+  function renderBar(){
+    const online = NAMES.filter(n=>isOnline(dataOf(n))).length;
+    bar.style.display="block";
+    bar.innerHTML = `<span class="pbar"><span class="pdot"></span>
+      ${online} conectado${online===1?"":"s"} <span class="pmuted">· ver</span></span>`;
+  }
+  function row(r, on){
+    const right = on ? `<span class="seen">en línea</span>` : `<span class="seen">${rel(r.p.lastSeen)}</span>`;
+    return `<div class="prow${r.n===me?' me':''}"><span class="dot ${on?'on':'off'}"></span>
+      <span class="nm">${r.n}${r.n===me?' (tú)':''}</span>${right}</div>`;
+  }
+  function renderModal(){
+    const rows = NAMES.map(n=>({n, p:dataOf(n), on:isOnline(dataOf(n))}));
+    const online = rows.filter(r=>r.on).sort((a,b)=>a.n.localeCompare(b.n));
+    const offline = rows.filter(r=>!r.on).sort((a,b)=>(b.p.lastSeen||0)-(a.p.lastSeen||0));
+    let h="";
+    if(!me){
+      h += `<div class="phint">¿Quién eres? Elige tu nombre para aparecer como conectado:</div>
+        <div class="pwho">${NAMES.map(n=>`<button data-n="${n}">${n}</button>`).join("")}</div>`;
+    } else {
+      h += `<div class="phint">Conectado como <b>${me}</b> · <span class="pchg" id="pchg">cambiar</span></div>`;
     }
-    function isOnline(p){ return p && p.online && (Date.now()-(p.lastSeen||0) < 150000); }
+    h += `<div class="psec">🟢 En línea (${online.length})</div>`;
+    h += online.length ? online.map(r=>row(r,true)).join("") : `<div class="phint">Nadie conectado ahora mismo.</div>`;
+    if(offline.length) h += `<div class="psec">Última conexión</div>` + offline.map(r=>row(r,false)).join("");
+    body.innerHTML=h;
+    body.querySelectorAll(".pwho button").forEach(b=>b.addEventListener("click",()=>setMe(b.dataset.n)));
+    const chg=document.getElementById("pchg"); if(chg) chg.addEventListener("click",()=>{ me=null; localStorage.removeItem("porra_me"); renderModal(); });
+  }
+  function openModal(){ renderModal(); modal.classList.remove("hide"); }
 
-    function startPresence(){
-      if(!me) return;
-      const myRef = ref(db, "presence/"+keyOf(me));
-      const beat = ()=> update(myRef, {online:true, name:me, lastSeen:serverTimestamp()});
-      beat();
-      onDisconnect(myRef).update({online:false, lastSeen:serverTimestamp()});
-      setInterval(beat, 60000);
-      window.addEventListener("pagehide", ()=> update(myRef,{online:false,lastSeen:Date.now()}));
-    }
-    function setMe(n){ me=n; localStorage.setItem("porra_me",n); startPresence(); renderModal(); }
+  async function pull(){
+    try{ const r=await fetch(DB+"/presence.json",{cache:"no-store"});
+      if(r.ok){ data=await r.json()||{}; renderBar(); if(!modal.classList.contains("hide")) renderModal(); } }
+    catch(e){}
+  }
+  async function beat(){
+    if(!me) return;
+    try{ await fetch(DB+"/presence/"+keyOf(me)+".json",{method:"PUT",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({online:true,name:me,lastSeen:Date.now()})}); }catch(e){}
+  }
+  function setMe(n){ me=n; localStorage.setItem("porra_me",n); renderBar(); beat().then(pull); renderModal(); }
 
-    function renderBar(){
-      const online = NAMES.filter(n=>isOnline(data[keyOf(n)])).length;
-      bar.style.display="block";
-      bar.innerHTML = `<span class="pbar"><span class="pdot"></span>
-        ${online} conectado${online===1?"":"s"} <span class="pmuted">· ver</span></span>`;
-      bar.querySelector(".pbar").addEventListener("click", openModal);
-    }
-    function renderModal(){
-      const rows = NAMES.map(n=>({n, p:data[keyOf(n)]||{}, on:isOnline(data[keyOf(n)])}));
-      const online = rows.filter(r=>r.on).sort((a,b)=>a.n.localeCompare(b.n));
-      const offline = rows.filter(r=>!r.on).sort((a,b)=>(b.p.lastSeen||0)-(a.p.lastSeen||0));
-      let h="";
-      if(!me){
-        h += `<div class="phint">¿Quién eres? Elige tu nombre para aparecer como conectado:</div>
-          <div class="pwho">${NAMES.map(n=>`<button data-n="${n}">${n}</button>`).join("")}</div>`;
-      } else {
-        h += `<div class="phint">Estás conectado como <b>${me}</b> · <span class="pchg" id="pchg">cambiar</span></div>`;
-      }
-      h += `<div class="psec">🟢 En línea (${online.length})</div>`;
-      h += online.length ? online.map(r=>row(r,true)).join("") : `<div class="phint">Nadie conectado ahora mismo.</div>`;
-      if(offline.length){
-        h += `<div class="psec">Última conexión</div>` + offline.map(r=>row(r,false)).join("");
-      }
-      body.innerHTML=h;
-      body.querySelectorAll(".pwho button").forEach(b=>b.addEventListener("click",()=>setMe(b.dataset.n)));
-      const chg=document.getElementById("pchg"); if(chg) chg.addEventListener("click",()=>{ me=null; localStorage.removeItem("porra_me"); renderModal(); });
-    }
-    function row(r, on){
-      const meTag = r.n===me ? " me" : "";
-      const right = on ? `<span class="seen">en línea</span>`
-                       : `<span class="seen">${rel(r.p.lastSeen)}</span>`;
-      return `<div class="prow${meTag}"><span class="dot ${on?'on':'off'}"></span>
-        <span class="nm">${r.n}${r.n===me?' (tú)':''}</span>${right}</div>`;
-    }
-    function openModal(){ renderModal(); modal.classList.remove("hide"); }
+  bar.style.display="block"; renderBar();
+  bar.addEventListener("click", openModal);
+  document.getElementById("pmodal-x").addEventListener("click", ()=>modal.classList.add("hide"));
+  modal.addEventListener("click", e=>{ if(e.target===modal) modal.classList.add("hide"); });
 
-    let shown=false;
-    onValue(ref(db,"presence"), snap=>{ data=snap.val()||{}; renderBar();
-      if(!modal.classList.contains("hide")) renderModal();
-      if(!shown){ shown=true; if(!me) setTimeout(openModal, 1500); } },
-      err=>{ console.warn("presence read error (¿BD/reglas?):", err); });
-    startPresence();
-  }catch(e){ console.warn("Firebase presence no disponible:", e); }
-}
+  beat(); pull();
+  setInterval(()=>{ beat(); pull(); }, 25000);
+  if(!me) setTimeout(()=>{ if(!localStorage.getItem("porra_me")) openModal(); }, 2500);
+})();
 </script>
 </body>
 </html>
