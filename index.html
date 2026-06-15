@@ -845,14 +845,29 @@ function chronicleDay(tl, i){
   // P4 — movimientos de posición
   if(riser){ ps.push(`📈 <b>${riser.name}</b> escaló ${riser.up} ${riser.up===1?"puesto":"puestos"}${(faller)?`, mientras <span class="bad">${faller.name}</span> se dejó ${-faller.up}`:""}. ${_pick(["La tabla se mueve.","Pura montaña rusa.","Esto no ha hecho más que empezar."],r)}`); }
 
-  // P5 — líder + farolillo con tendencia
-  const fc=_faroCountUpTo(tl,i,faro.name);
+  // P5 — líder + farolillo (todos los empatados a último)
+  const mp=Math.max.apply(null,cur.st.map(x=>x.pos));
+  const faros=cur.st.filter(x=>x.pos===mp);
+  const faroNames=faros.map(x=>x.name);
+  const faroBad=_join(faroNames.map(n=>`<span class="bad">${n}</span>`));
   let faroTxt;
-  if(fc>=3) faroTxt=`<span class="bad">${faro.name}</span> vuelve a hundirse en el farolillo rojo: ya van <b>${fc}</b>. Esto es oficialmente una tradición. 🏮`;
-  else if(fc===2) faroTxt=`<span class="bad">${faro.name}</span> repite farolillo (van ${fc}). La tendencia no pinta bien...`;
-  else faroTxt=_pick([
-    `<span class="bad">${faro.name}</span> cierra la tabla y carga con el farolillo rojo.`,
-    `El farolillo se lo queda <span class="bad">${faro.name}</span>, último con ${faro.total}.`],r);
+  if(faros.length>1){
+    const cnt=faroNames.map(n=>({n,c:_faroCountUpTo(tl,i,n)})).sort((a,b)=>b.c-a.c);
+    const worst=cnt[0];
+    faroTxt=_pick([
+      `${faroBad} se reparten el farolillo rojo, empatados a ${faros[0].total} puntos. Mal de muchos...`,
+      `Farolillo rojo compartido: ${faroBad} cierran la tabla a ${faros[0].total}. Sálvese quien pueda.`,
+      `Empate en el fango: ${faroBad} cargan juntos con el farolillo rojo (${faros[0].total} pts).`
+    ],r);
+    if(worst.c>=2) faroTxt += ` Eso sí, <b>${worst.n}</b> es el más reincidente (ya van ${worst.c}). 🏮`;
+  } else {
+    const fc=_faroCountUpTo(tl,i,faroNames[0]);
+    if(fc>=3) faroTxt=`${faroBad} vuelve a hundirse en el farolillo rojo: ya van <b>${fc}</b>. Esto es oficialmente una tradición. 🏮`;
+    else if(fc===2) faroTxt=`${faroBad} repite farolillo (van ${fc}). La tendencia no pinta bien...`;
+    else faroTxt=_pick([
+      `${faroBad} cierra la tabla y carga con el farolillo rojo.`,
+      `El farolillo se lo queda ${faroBad}, último con ${faros[0].total}.`],r);
+  }
   ps.push(`Manda <b>${leader.name}</b> con <b>${leader.total}</b> puntos. 🏮 ${faroTxt}`);
 
   // P6 — guiño a Lagen (mano negra) cuando no puntúa
