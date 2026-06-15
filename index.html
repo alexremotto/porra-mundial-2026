@@ -1040,7 +1040,7 @@ tick();
   let data = {};
 
   function rel(ts){
-    if(!ts) return "sin datos";
+    if(!ts) return "aún no ha entrado";
     const s=Math.max(0,(Date.now()-ts)/1000);
     if(s<90) return "hace un momento";
     if(s<3600) return "hace "+Math.round(s/60)+" min";
