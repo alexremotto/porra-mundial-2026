@@ -232,6 +232,8 @@
   #intro.hide{opacity:0; pointer-events:none;}
   #intro .big{font-size:5.5rem; transform-origin:top center;
     animation:swing 1.6s ease-in-out infinite; filter:drop-shadow(0 6px 14px rgba(255,80,80,.5));}
+  #intro .big.img{font-size:0;}
+  #intro .intro-img{width:165px; height:auto; display:block;}
   #intro .it-h{font-size:.95rem; letter-spacing:3px; text-transform:uppercase;
     color:#ff9b9b; font-weight:800;}
   #intro .it-name{font-size:2.4rem; font-weight:900; animation:pop .6s ease both .25s;}
@@ -1225,6 +1227,12 @@ function showIntro(lastName){
   if(_introDone) return; _introDone=true;
   const el=document.getElementById("intro");
   document.getElementById("intro-name").textContent = lastName || "—";
+  const big=el.querySelector(".big");
+  if(big){
+    if(lastName==="Lagen"){ big.classList.add("img");
+      big.innerHTML='<img class="intro-img" src="lagen-farolillo.png" alt="Lagen farolillo">'; }
+    else { big.classList.remove("img"); big.textContent="🏮"; }
+  }
   const hide=()=>el.classList.add("hide");
   el.addEventListener("click", hide);
   setTimeout(hide, 3400);
