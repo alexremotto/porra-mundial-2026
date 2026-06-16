@@ -217,6 +217,8 @@
   .lead .lv{font-weight:800; color:var(--teal); flex-shrink:0;}
   .lead.top1 .lr{color:var(--gold); font-size:1.1rem;}
   .lead.top2 .lr{color:#9aa7ad;} .lead.top3 .lr{color:#cd7f32;}
+  .bdelta{font-size:.66rem; font-weight:800; margin-left:5px; vertical-align:middle;}
+  .bdelta.bu{color:#16a34a;} .bdelta.bd{color:#dc2626;}
   .vermas{display:block; width:100%; margin-top:9px; border:1px dashed #cfd8dc;
     background:#f6f9fa; color:var(--teal); font-weight:800; font-size:.82rem;
     padding:9px; border-radius:9px; cursor:pointer;}
@@ -1136,14 +1138,21 @@ function oddsToPct(o){                   // cuota fraccional "13/2" -> % implíc
 async function loadBallon(){
   const el=document.getElementById("ballon"); if(!el) return;
   let list=window.BALLON_FAV||[];
-  try{ const r=await fetch(P.balonUrl||"balon.json",{cache:"no-store"});  // se refresca cada 24h
-    if(r.ok){ const j=await r.json(); if(Array.isArray(j)&&j.length) list=j; }
+  try{ const r=await fetch(P.balonUrl||"balon.json",{cache:"no-store"});  // se refresca periódicamente
+    if(r.ok){ const j=await r.json(); const arr=Array.isArray(j)?j:((j&&j.players)||[]);
+      if(arr.length) list=arr; }
   }catch(e){}
   el.innerHTML=list.map((p,i)=>{ const cls=i<3?`top${i+1}`:"";
-    const pct=oddsToPct(p.odds); const val = pct!=null ? (Math.round(pct*10)/10)+"%" : (p.pct||"");
+    const pct=oddsToPct(p.odds);
+    const val = pct!=null ? (Math.round(pct*10)/10)+"%" : (p.pct||"");
+    let delta="";
+    if(pct!=null && p.prevOdds){ const pp=oddsToPct(p.prevOdds);
+      if(pp!=null){ const d=Math.round((pct-pp)*10)/10;
+        if(Math.abs(d)>=0.1){ const up=d>0;
+          delta=`<span class="bdelta ${up?'bu':'bd'}">${up?'▲':'▼'}${Math.abs(d)}</span>`; } } }
     return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
       <span class="ln">${p.name}<span class="lt">${p.team}</span></span>
-      <span class="lv">${val}</span></div>`; }).join("");
+      <span class="lv">${val}${delta}</span></div>`; }).join("");
 }
 async function loadScorers(){
   loadBallon();                         // Balón de Oro: % desde balon.json (24h)
