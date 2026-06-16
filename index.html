@@ -837,7 +837,12 @@ function lanternData(espn){
   let maxN=0; for(const n in tally) maxN=Math.max(maxN,tally[n]);
   if(maxN<=0) return null;
   // empate en el récord: orden alfabético INVERSO (p.ej. Santi antes que Guille)
-  const tops=Object.keys(tally).filter(n=>tally[n]===maxN).sort((a,b)=>b.localeCompare(a));
+  // En empate del récord: Lagen primero; si no, orden alfabético inverso (Santi…)
+  const tops=Object.keys(tally).filter(n=>tally[n]===maxN).sort((a,b)=>{
+    if(a==="Lagen"&&b!=="Lagen") return -1;
+    if(b==="Lagen"&&a!=="Lagen") return 1;
+    return b.localeCompare(a);
+  });
   return {name:tops[0], n:maxN};
 }
 function renderLanternRecord(espn){
