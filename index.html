@@ -279,6 +279,14 @@
   .cron-qh{font-size:.72rem; font-weight:800; color:var(--teal); margin-bottom:5px;}
   .cron-quote{font-size:.88rem; margin:3px 0; line-height:1.45;}
   .cron-quote b{color:#33484f;}
+  .cmt-del, .cron-quote.cmt-del{opacity:.45; text-decoration:line-through;}
+  .cmt-priv, .cron-quote.cmt-priv{opacity:.7;}
+  .cmt-item em, .cron-quote em{font-size:.72rem; color:#9aa7ad; font-style:italic;}
+  .mod{white-space:nowrap; margin-left:6px;}
+  .modbtn{border:1px solid #cfd8dc; background:#f6f9fa; color:#33484f; font-size:.66rem;
+    font-weight:700; border-radius:8px; padding:1px 7px; margin-left:3px; cursor:pointer;}
+  .modbtn.dl{color:#c0392b; border-color:#e6b8b2;}
+  .modbtn:hover{background:#e7eff1;}
   /* Presencia (jugadores conectados) — botón flotante tipo chatbot */
   #presence-bar{position:fixed; right:14px; bottom:16px; z-index:45;}
   .pbar{display:inline-flex; align-items:center; gap:7px; cursor:pointer;
@@ -1019,7 +1027,11 @@ function chronicleDay(tl, i, dayComments){
     {weekday:"long",day:"numeric",month:"long",timeZone:"UTC"});
   // --- mezcla con los comentarios de la gente (lo que dijeron ese día) ---
   const parts = ps.map(p=>`<p>${p}</p>`);
-  const cmts = dayComments ? Object.values(dayComments).filter(c=>c&&c.text).sort((a,b)=>(a.ts||0)-(b.ts||0)) : [];
+  // En la crónica entran los no-eliminados (los "privados" SÍ cuentan aquí);
+  // Lagen ve todos para poder moderar.
+  const ent = dayComments ? Object.entries(dayComments).filter(([id,c])=>c&&c.text)
+    .sort((a,b)=>(a[1].ts||0)-(b[1].ts||0)) : [];
+  const cmts = ent.filter(([id,c]) => isLagen() ? true : c.mod!=="del");
   if(cmts.length){
     const lead=`<p>${_pick([
       "Y la grada no se calló; estos fueron sus apuntes:",
@@ -1028,12 +1040,14 @@ function chronicleDay(tl, i, dayComments){
       "La afición también tuvo cosas que decir:",
       "Y el palco de prensa amateur opinó:"],r)}</p>`;
     const block=`<div class="cron-quotes"><div class="cron-qh">🗣️ La grada opina</div>`+
-      cmts.map(c=>`<div class="cron-quote"><b>${_esc(c.author||"Anónimo")}</b>: “${_esc(c.text)}”</div>`).join("")+`</div>`;
+      cmts.map(([id,c])=>{ const st=c.mod==="del"?" cmt-del":(c.mod==="priv"?" cmt-priv":"");
+        return `<div class="cron-quote${st}"><b>${_esc(c.author||"Anónimo")}</b>: “${_esc(c.text)}”${modBtns(cur.day,id,c.mod)}</div>`; }).join("")+`</div>`;
     const at=Math.min(parts.length, 3);
     parts.splice(at, 0, lead, block);
   }
+  const pubN = ent.filter(([id,c])=>c.mod!=="del").length;
   return `<div class="cron-day"><h3>📅 ${title}</h3>
-    <div class="cron-sub">${cur.matches.length} partidos · cierre de la jornada${cmts.length?` · 💬 ${cmts.length}`:""}</div>
+    <div class="cron-sub">${cur.matches.length} partidos · cierre de la jornada${pubN?` · 💬 ${pubN}`:""}</div>
     <div class="cron-res">${res}</div>
     <div class="cron-txt">${parts.join("")}</div></div>`;
 }
@@ -1047,13 +1061,36 @@ async function fetchComments(){
   try{ const r=await fetch(_DBURL+"/comments.json",{cache:"no-store"}); if(r.ok) return (await r.json())||{}; }catch(e){}
   return {};
 }
+function isLagen(){ return (localStorage.getItem("porra_me")||"")==="Lagen"; }
+function modBtns(day, id, mod){
+  if(!isLagen()) return "";
+  let b="";
+  if(mod==="del") b=`<button class="modbtn" data-d="${day}" data-i="${id}" data-v="">↩︎ restaurar</button>`;
+  else if(mod==="priv") b=`<button class="modbtn" data-d="${day}" data-i="${id}" data-v="">👁 mostrar</button>`
+                          +`<button class="modbtn dl" data-d="${day}" data-i="${id}" data-v="del">🗑</button>`;
+  else b=`<button class="modbtn" data-d="${day}" data-i="${id}" data-v="priv">🙈 feed</button>`
+        +`<button class="modbtn dl" data-d="${day}" data-i="${id}" data-v="del">🗑</button>`;
+  return `<span class="mod">${b}</span>`;
+}
 function renderTodayComments(){
   const el=document.getElementById("cmt-today"); if(!el) return;
   const c=(window._comments||{})[_todayMx()]||{};
-  const arr=Object.values(c).filter(x=>x&&x.text).sort((a,b)=>(a.ts||0)-(b.ts||0));
-  el.innerHTML = arr.length ? `<div class="cmt-today-h">Comentarios de hoy (${arr.length})</div>`+
-    arr.map(x=>`<div class="cmt-item"><b>${_esc(x.author)}</b>: ${_esc(x.text)}</div>`).join("") : "";
+  // feed público: solo comentarios sin moderar. Lagen ve todos (para moderar).
+  const ent=Object.entries(c).filter(([id,x])=>x&&x.text).sort((a,b)=>(a[1].ts||0)-(b[1].ts||0));
+  const vis=ent.filter(([id,x]) => isLagen() ? true : !x.mod);
+  el.innerHTML = vis.length ? `<div class="cmt-today-h">Comentarios de hoy (${vis.filter(([id,x])=>!x.mod).length})</div>`+
+    vis.map(([id,x])=>{ const st=x.mod==="del"?" cmt-del":(x.mod==="priv"?" cmt-priv":"");
+      const tag=x.mod==="del"?' <em>(eliminado)</em>':(x.mod==="priv"?' <em>(oculto del feed)</em>':'');
+      return `<div class="cmt-item${st}"><b>${_esc(x.author)}</b>: ${_esc(x.text)}${tag}${modBtns(_todayMx(),id,x.mod)}</div>`;
+    }).join("") : "";
 }
+document.addEventListener("click", function(e){
+  const b=e.target.closest(".modbtn"); if(!b) return;
+  if(!isLagen() || !_DBURL) return;
+  fetch(_DBURL+"/comments/"+b.dataset.d+"/"+b.dataset.i+".json",
+    {method:"PATCH", headers:{"Content-Type":"application/json"},
+     body:JSON.stringify({mod: b.dataset.v||null})}).then(()=>renderCronica(window._espn)).catch(()=>{});
+});
 function renderCommentBox(){
   const box=document.getElementById("cmt-box"); if(!box) return;
   if(!box.dataset.ready){
