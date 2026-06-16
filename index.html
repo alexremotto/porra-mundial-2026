@@ -1223,6 +1223,14 @@ async function loadScorers(){
 
 /* ---- Intro Farolillo Rojo ---- */
 let _introDone=false;
+function farolilloName(standings){
+  if(!standings||!standings.length) return null;
+  const mp=Math.max.apply(null, standings.map(r=>r.pos));
+  const tied=standings.filter(r=>r.pos===mp).map(r=>r.name);
+  tied.sort((a,b)=>{ if(a==="Lagen"&&b!=="Lagen") return -1; if(b==="Lagen"&&a!=="Lagen") return 1;
+    return b.localeCompare(a); });   // Lagen primero; resto, alfabético inverso
+  return tied[0];
+}
 function showIntro(lastName){
   if(_introDone) return; _introDone=true;
   const el=document.getElementById("intro");
@@ -1262,8 +1270,7 @@ async function tick(){
     if((P.features||{}).chronicle) renderCronica(espn);
     if(!didFocus){ didFocus=true;
       if(document.querySelector('.tab[data-tab=partidos]').classList.contains("active")) setTimeout(scrollToFocus,150); }
-    const last=cs.standings[cs.standings.length-1];
-    showIntro(last?last.name:null);
+    showIntro(farolilloName(cs.standings));
     const nf=mv.matches.find(it=>it.state==="pre");
     document.getElementById("next").textContent = nf?`Próximo: ${nf.home} – ${nf.away} (${fmtKick(nf)})`:"Mundial finalizado";
   }catch(e){
