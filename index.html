@@ -237,6 +237,28 @@
   .cron-txt{font-size:.93rem; line-height:1.55; color:#1c1c1c;}
   .cron-txt p{margin:0 0 9px;} .cron-txt p:last-child{margin-bottom:0;}
   .cron-txt b{color:var(--teal);} .cron-txt .bad{color:#c0392b; font-weight:700;}
+  /* Caja de comentarios + citas en la crónica */
+  .cmt-box{background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.08);
+    padding:13px 15px; margin-bottom:14px;}
+  .cmt-title{font-weight:800; font-size:1rem;}
+  .cmt-sub{font-size:.72rem; color:#9aa7ad; margin:2px 0 9px;}
+  .cmt-row{display:flex; gap:7px;}
+  .cmt-row input{flex:1; min-width:0; border:1px solid #cfd8dc; border-radius:9px;
+    padding:9px 11px; font-size:.9rem;}
+  .cmt-row button{border:none; background:var(--teal); color:#fff; font-weight:800;
+    border-radius:9px; padding:0 16px; cursor:pointer;}
+  .cmt-row button:disabled{opacity:.5;}
+  .cmt-hint{font-size:.7rem; color:#9aa7ad; margin-top:6px;}
+  #cmt-today{margin-top:10px;}
+  .cmt-today-h{font-size:.7rem; font-weight:800; text-transform:uppercase;
+    letter-spacing:.5px; color:#9aa7ad; margin-bottom:4px;}
+  .cmt-item{font-size:.86rem; padding:5px 2px; border-bottom:1px dotted #eef3f5;}
+  .cmt-item b{color:var(--teal);}
+  .cron-quotes{margin:8px 0 10px; padding:9px 12px; background:#f6f9fa;
+    border-left:3px solid var(--teal); border-radius:8px;}
+  .cron-qh{font-size:.72rem; font-weight:800; color:var(--teal); margin-bottom:5px;}
+  .cron-quote{font-size:.88rem; margin:3px 0; line-height:1.45;}
+  .cron-quote b{color:#33484f;}
   /* Presencia (jugadores conectados) — botón flotante tipo chatbot */
   #presence-bar{position:fixed; right:14px; bottom:16px; z-index:45;}
   .pbar{display:inline-flex; align-items:center; gap:7px; cursor:pointer;
@@ -341,6 +363,7 @@
   </section>
 
   <section class="panel" id="panel-cronica">
+    <div id="cmt-box"></div>
     <div id="cronica"><div class="empty">Cargando crónica…</div></div>
   </section>
 
@@ -793,7 +816,7 @@ function _deltaAt(tl,i,name){ return _totAt(tl,i,name)-_totAt(tl,i-1,name); }
 function _coldStreak(tl,i,name){ let c=0; for(let j=i;j>=0;j--){ if(_deltaAt(tl,j,name)===0) c++; else break; } return c; }
 function _faroCountUpTo(tl,i,name){ let c=0; for(let j=0;j<=i;j++){ if(_faroDay(tl[j].st,name)) c++; } return c; }
 function _ord(n){ return n+"º"; }
-function chronicleDay(tl, i){
+function chronicleDay(tl, i, dayComments){
   const cur=tl[i], prev=i>0?tl[i-1]:null;
   const r=_seedRand(cur.day);
   const has=name=>cur.st.some(x=>x.name===name);
@@ -962,17 +985,84 @@ function chronicleDay(tl, i){
 
   const title=new Date(cur.day+"T12:00:00Z").toLocaleDateString("es-ES",
     {weekday:"long",day:"numeric",month:"long",timeZone:"UTC"});
+  // --- mezcla con los comentarios de la gente (lo que dijeron ese día) ---
+  const parts = ps.map(p=>`<p>${p}</p>`);
+  const cmts = dayComments ? Object.values(dayComments).filter(c=>c&&c.text).sort((a,b)=>(a.ts||0)-(b.ts||0)) : [];
+  if(cmts.length){
+    const lead=`<p>${_pick([
+      "Y la grada no se calló; estos fueron sus apuntes:",
+      "Mientras, en el grupo se cocía salseo del bueno:",
+      "Turno para los analistas de barra del WhatsApp:",
+      "La afición también tuvo cosas que decir:",
+      "Y el palco de prensa amateur opinó:"],r)}</p>`;
+    const block=`<div class="cron-quotes"><div class="cron-qh">🗣️ La grada opina</div>`+
+      cmts.map(c=>`<div class="cron-quote"><b>${_esc(c.author||"Anónimo")}</b>: “${_esc(c.text)}”</div>`).join("")+`</div>`;
+    const at=Math.min(parts.length, 3);
+    parts.splice(at, 0, lead, block);
+  }
   return `<div class="cron-day"><h3>📅 ${title}</h3>
-    <div class="cron-sub">${cur.matches.length} partidos · cierre de la jornada</div>
+    <div class="cron-sub">${cur.matches.length} partidos · cierre de la jornada${cmts.length?` · 💬 ${cmts.length}`:""}</div>
     <div class="cron-res">${res}</div>
-    <div class="cron-txt">${ps.map(p=>`<p>${p}</p>`).join("")}</div></div>`;
+    <div class="cron-txt">${parts.join("")}</div></div>`;
 }
-function renderCronica(espn){
+
+/* ---- Comentarios de la gente (Firebase) ---- */
+const _DBURL=(P.firebase&&P.firebase.databaseURL)?P.firebase.databaseURL.replace(/\/+$/,""):null;
+function _esc(s){ return String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
+function _todayMx(){ return _mxDay(new Date().toISOString()); }
+async function fetchComments(){
+  if(!_DBURL) return {};
+  try{ const r=await fetch(_DBURL+"/comments.json",{cache:"no-store"}); if(r.ok) return (await r.json())||{}; }catch(e){}
+  return {};
+}
+function renderTodayComments(){
+  const el=document.getElementById("cmt-today"); if(!el) return;
+  const c=(window._comments||{})[_todayMx()]||{};
+  const arr=Object.values(c).filter(x=>x&&x.text).sort((a,b)=>(a.ts||0)-(b.ts||0));
+  el.innerHTML = arr.length ? `<div class="cmt-today-h">Comentarios de hoy (${arr.length})</div>`+
+    arr.map(x=>`<div class="cmt-item"><b>${_esc(x.author)}</b>: ${_esc(x.text)}</div>`).join("") : "";
+}
+function renderCommentBox(){
+  const box=document.getElementById("cmt-box"); if(!box) return;
+  if(!box.dataset.ready){
+    box.dataset.ready="1";
+    box.innerHTML=`<div class="cmt-box">
+      <div class="cmt-title">✍️ Comenta la jornada de hoy</div>
+      <div class="cmt-sub">Datos curiosos, piques, predicciones… aparecerá en la crónica de mañana.</div>
+      <div class="cmt-row">
+        <input id="cmt-input" maxlength="240" placeholder="Escribe tu comentario…">
+        <button id="cmt-send">Enviar</button>
+      </div>
+      <div class="cmt-hint">Firma eligiendo tu nombre en el botón 👥 (abajo a la derecha); si no, irá como Anónimo.</div>
+      <div id="cmt-today"></div>
+    </div>`;
+    const send=document.getElementById("cmt-send"), input=document.getElementById("cmt-input");
+    async function submit(){
+      const text=(input.value||"").trim(); if(!text) return;
+      if(!_DBURL){ alert("Comentarios no disponibles (falta configurar la base)."); return; }
+      const author=localStorage.getItem("porra_me")||"Anónimo";
+      send.disabled=true;
+      try{ await fetch(_DBURL+"/comments/"+_todayMx()+".json",{method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({author:author,text:text.slice(0,240),ts:Date.now()})});
+        input.value=""; await renderCronica(window._espn);
+      }catch(e){ alert("No se pudo enviar (¿reglas de Firebase?)."); }
+      send.disabled=false; input.focus();
+    }
+    send.addEventListener("click",submit);
+    input.addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); submit(); } });
+  }
+  renderTodayComments();
+}
+async function renderCronica(espn){
   const el=document.getElementById("cronica"); if(!el) return;
+  renderCommentBox();
+  window._comments = await fetchComments();
+  renderTodayComments();
   const tl=dailyTimeline(espn||window._espn||[]);
   if(!tl.length){ el.innerHTML=`<div class="empty">Aún no ha cerrado ninguna jornada. La primera crónica saldrá al terminar el día (23:59 hora de México).</div>`; return; }
   let html="";
-  for(let i=tl.length-1;i>=0;i--) html+=chronicleDay(tl, i);
+  for(let i=tl.length-1;i>=0;i--) html+=chronicleDay(tl, i, (window._comments[tl[i].day]||{}));
   el.innerHTML=html;
 }
 
