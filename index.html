@@ -50,8 +50,22 @@
     background:#cdd8dd; color:#33484f; font-weight:700; cursor:pointer;
     border:none; font-size:.82rem; transition:background .15s; min-width:0;}
   .tab.active{background:var(--teal); color:#fff;}
+  .tab{position:relative;}
+  .tab-badge{position:absolute; top:5px; right:9px; width:11px; height:11px;
+    border-radius:50%; background:#e74c3c; box-shadow:0 0 0 2px #fff; animation:pulse 1.4s infinite;}
   .t-emoji{font-size:1.05rem; line-height:1;}
   .t-lab{white-space:nowrap;}
+  /* Popup crónica de ayer */
+  .cmodal{position:fixed; inset:0; z-index:70; display:flex; align-items:center;
+    justify-content:center; padding:14px; background:rgba(20,30,34,.5); transition:opacity .2s;}
+  .cmodal.hide{opacity:0; pointer-events:none;}
+  .cmodal-card{background:#fff; width:100%; max-width:520px; max-height:86vh; overflow:auto;
+    border-radius:14px; padding:14px 16px 16px; box-shadow:0 10px 30px rgba(0,0,0,.3);}
+  .cmodal-h{display:flex; justify-content:space-between; align-items:center;
+    font-size:1.1rem; font-weight:800; margin-bottom:8px;}
+  .cmodal-h #cron-modal-x{cursor:pointer; color:#9aa7ad;}
+  .cmodal-ok{display:block; width:100%; margin-top:10px; border:none; background:var(--teal);
+    color:#fff; font-weight:800; padding:11px; border-radius:10px; cursor:pointer; font-size:.95rem;}
   .panel{display:none;} .panel.active{display:block;}
 
   /* ---- Banner de partido EN DIRECTO (arriba de clasificación) ---- */
@@ -203,6 +217,10 @@
   .lead .lv{font-weight:800; color:var(--teal); flex-shrink:0;}
   .lead.top1 .lr{color:var(--gold); font-size:1.1rem;}
   .lead.top2 .lr{color:#9aa7ad;} .lead.top3 .lr{color:#cd7f32;}
+  .vermas{display:block; width:100%; margin-top:9px; border:1px dashed #cfd8dc;
+    background:#f6f9fa; color:var(--teal); font-weight:800; font-size:.82rem;
+    padding:9px; border-radius:9px; cursor:pointer;}
+  .vermas:hover{background:#eef3f5;}
 
   /* ---- Intro Farolillo Rojo ---- */
   #intro{position:fixed; inset:0; z-index:50; display:flex; flex-direction:column;
@@ -339,7 +357,7 @@
     <button class="tab active" data-tab="principal"><span class="t-lab">Tabla</span></button>
     <button class="tab" data-tab="partidos"><span class="t-lab">Partidos</span></button>
     <button class="tab" data-tab="premios"><span class="t-emoji">🥇</span><span class="t-lab">Bota/Balón</span></button>
-    <button class="tab" data-tab="cronica" id="tab-cronica" style="display:none"><span class="t-emoji">📰</span><span class="t-lab">Crónica</span></button>
+    <button class="tab" data-tab="cronica" id="tab-cronica" style="display:none"><span class="tab-badge" id="cron-badge" style="display:none"></span><span class="t-emoji">📰</span><span class="t-lab">Crónica</span></button>
   </div>
 
   <section class="panel active" id="panel-principal">
@@ -378,6 +396,14 @@
       <div id="ballon"><div class="empty">Cargando…</div></div>
     </div>
   </section>
+</div>
+
+<div id="cron-modal" class="cmodal hide">
+  <div class="cmodal-card">
+    <div class="cmodal-h"><span>📰 Crónica de ayer</span><span id="cron-modal-x">✕</span></div>
+    <div id="cron-modal-body"></div>
+    <button class="cmodal-ok" id="cron-modal-ok">¡Vista! Cerrar</button>
+  </div>
 </div>
 
 <div id="presence-modal" class="pmodal hide">
@@ -563,7 +589,7 @@ document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
   document.getElementById("panel-"+t.dataset.tab).classList.add("active");
   if(t.dataset.tab==="partidos") scrollToFocus();
   if(t.dataset.tab==="premios") loadScorers();
-  if(t.dataset.tab==="cronica") renderCronica(window._espn);
+  if(t.dataset.tab==="cronica"){ renderCronica(window._espn); markCronSeen(); document.getElementById("cron-modal").classList.add("hide"); }
 }));
 function rowClass(r,idx,maxPos){ if(r.pos===maxPos&&maxPos>3) return "rank-last";
   if(r.pos===1)return "rank-1"; if(r.pos===2)return "rank-2"; if(r.pos===3)return "rank-3";
@@ -797,8 +823,11 @@ function lanternData(espn){
   for(const s of tl){ const mp=Math.max.apply(null,s.st.map(r=>r.pos));   // empate a último: cuentan todos
     s.st.filter(r=>r.pos===mp).forEach(r=>{ tally[r.name]=(tally[r.name]||0)+1; }); }
   window._lanternDays=tally;
-  let best=null; for(const n in tally){ if(!best||tally[n]>best.n) best={name:n,n:tally[n]}; }
-  return best;
+  let maxN=0; for(const n in tally) maxN=Math.max(maxN,tally[n]);
+  if(maxN<=0) return null;
+  // empate en el récord: orden alfabético INVERSO (p.ej. Santi antes que Guille)
+  const tops=Object.keys(tally).filter(n=>tally[n]===maxN).sort((a,b)=>b.localeCompare(a));
+  return {name:tops[0], n:maxN};
 }
 function renderLanternRecord(espn){
   const el=document.getElementById("lantern-rec"); if(!el) return;
@@ -1033,14 +1062,13 @@ function renderCommentBox(){
         <input id="cmt-input" maxlength="240" placeholder="Escribe tu comentario…">
         <button id="cmt-send">Enviar</button>
       </div>
-      <div class="cmt-hint">Firma eligiendo tu nombre en el botón 👥 (abajo a la derecha); si no, irá como Anónimo.</div>
       <div id="cmt-today"></div>
     </div>`;
     const send=document.getElementById("cmt-send"), input=document.getElementById("cmt-input");
     async function submit(){
       const text=(input.value||"").trim(); if(!text) return;
       if(!_DBURL){ alert("Comentarios no disponibles (falta configurar la base)."); return; }
-      const author=localStorage.getItem("porra_me")||"Anónimo";
+      const author="Anónimo";
       send.disabled=true;
       try{ await fetch(_DBURL+"/comments/"+_todayMx()+".json",{method:"POST",
         headers:{"Content-Type":"application/json"},
@@ -1064,7 +1092,31 @@ async function renderCronica(espn){
   let html="";
   for(let i=tl.length-1;i>=0;i--) html+=chronicleDay(tl, i, (window._comments[tl[i].day]||{}));
   el.innerHTML=html;
+  updateCronBadge(); maybeShowCronPopup();
 }
+
+/* ---- Aviso de crónica nueva (badge + popup al entrar) ---- */
+function latestCronDay(){ const tl=dailyTimeline(window._espn||[]); return tl.length?tl[tl.length-1].day:null; }
+function cronUnseen(){ const l=latestCronDay(); return !!(l && l!==localStorage.getItem("porra_cron_seen")); }
+function updateCronBadge(){ const b=document.getElementById("cron-badge"); if(b) b.style.display=cronUnseen()?"block":"none"; }
+function markCronSeen(){ const l=latestCronDay(); if(l) localStorage.setItem("porra_cron_seen",l); updateCronBadge(); }
+let _cronPopupShown=false;
+function maybeShowCronPopup(){
+  if(_cronPopupShown || !cronUnseen()) return;
+  const tl=dailyTimeline(window._espn||[]); if(!tl.length) return;
+  _cronPopupShown=true;
+  const i=tl.length-1;
+  const body=document.getElementById("cron-modal-body"); if(!body) return;
+  body.innerHTML=chronicleDay(tl, i, (window._comments&&window._comments[tl[i].day])||{});
+  document.getElementById("cron-modal").classList.remove("hide");
+}
+(function(){
+  const m=document.getElementById("cron-modal"); if(!m) return;
+  const close=()=>{ m.classList.add("hide"); markCronSeen(); };
+  const x=document.getElementById("cron-modal-x"), ok=document.getElementById("cron-modal-ok");
+  if(x) x.addEventListener("click",close); if(ok) ok.addEventListener("click",close);
+  m.addEventListener("click",e=>{ if(e.target===m) close(); });
+})();
 
 /* ---- Premios: goleadores + balón de oro (goles + asistencias), en vivo ---- */
 const ESPN_CORE="https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.world/seasons/2026";
@@ -1105,10 +1157,16 @@ async function loadScorers(){
     const gl=(cats.goalsLeaders||[]).filter(L=>L.value>0).slice(0,20);
     if(!gl.length){ cont.innerHTML=`<div class="empty">Aún no hay goles en el Mundial.</div>`; return; }
     const rows=await Promise.all(gl.map(async L=>({...await nameTeam(L), goals:L.value})));
-    cont.innerHTML=rows.map((r,i)=>{ const cls=i<3?`top${i+1}`:"";
+    const rowHTML=(r,i)=>{ const cls=i<3?`top${i+1}`:"";
       return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
         <span class="ln">${r.name}<span class="lt">${r.team}</span></span>
-        <span class="lv">${r.goals} ⚽</span></div>`; }).join("");
+        <span class="lv">${r.goals} ⚽</span></div>`; };
+    function paint(n){
+      cont.innerHTML = rows.slice(0,n).map(rowHTML).join("") +
+        (rows.length>n ? `<button class="vermas" id="scorers-more">Ver más (${rows.length-n})</button>` : "");
+      const mb=document.getElementById("scorers-more"); if(mb) mb.addEventListener("click",()=>paint(rows.length));
+    }
+    paint(10);
   }catch(e){ cont.innerHTML=`<div class="empty">No se pudieron cargar los goleadores.</div>`; }
 }
 
@@ -1276,7 +1334,6 @@ tick();
 
   beat(); pull();
   setInterval(()=>{ beat(); pull(); }, 25000);
-  if(!me) setTimeout(()=>{ if(!localStorage.getItem("porra_me")) openModal(); }, 2500);
 })();
 </script>
 </body>
