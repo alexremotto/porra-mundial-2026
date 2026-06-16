@@ -589,7 +589,8 @@ document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
   document.getElementById("panel-"+t.dataset.tab).classList.add("active");
   if(t.dataset.tab==="partidos") scrollToFocus();
   if(t.dataset.tab==="premios") loadScorers();
-  if(t.dataset.tab==="cronica"){ renderCronica(window._espn); markCronSeen(); document.getElementById("cron-modal").classList.add("hide"); }
+  if(t.dataset.tab==="cronica"){ const u=cronUnseen();
+    renderCronica(window._espn).then(()=>{ if(u) showCronPopup(); markCronSeen(); }); }
 }));
 function rowClass(r,idx,maxPos){ if(r.pos===maxPos&&maxPos>3) return "rank-last";
   if(r.pos===1)return "rank-1"; if(r.pos===2)return "rank-2"; if(r.pos===3)return "rank-3";
@@ -1092,19 +1093,16 @@ async function renderCronica(espn){
   let html="";
   for(let i=tl.length-1;i>=0;i--) html+=chronicleDay(tl, i, (window._comments[tl[i].day]||{}));
   el.innerHTML=html;
-  updateCronBadge(); maybeShowCronPopup();
+  updateCronBadge();
 }
 
-/* ---- Aviso de crónica nueva (badge + popup al entrar) ---- */
+/* ---- Aviso de crónica nueva: badge en la pestaña + popup SOLO al clicar Crónica ---- */
 function latestCronDay(){ const tl=dailyTimeline(window._espn||[]); return tl.length?tl[tl.length-1].day:null; }
 function cronUnseen(){ const l=latestCronDay(); return !!(l && l!==localStorage.getItem("porra_cron_seen")); }
 function updateCronBadge(){ const b=document.getElementById("cron-badge"); if(b) b.style.display=cronUnseen()?"block":"none"; }
 function markCronSeen(){ const l=latestCronDay(); if(l) localStorage.setItem("porra_cron_seen",l); updateCronBadge(); }
-let _cronPopupShown=false;
-function maybeShowCronPopup(){
-  if(_cronPopupShown || !cronUnseen()) return;
+function showCronPopup(){
   const tl=dailyTimeline(window._espn||[]); if(!tl.length) return;
-  _cronPopupShown=true;
   const i=tl.length-1;
   const body=document.getElementById("cron-modal-body"); if(!body) return;
   body.innerHTML=chronicleDay(tl, i, (window._comments&&window._comments[tl[i].day])||{});
