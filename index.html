@@ -260,11 +260,11 @@
     padding:13px 15px; margin-bottom:14px;}
   .cmt-title{font-weight:800; font-size:1rem;}
   .cmt-sub{font-size:.72rem; color:#9aa7ad; margin:2px 0 9px;}
-  .cmt-row{display:flex; gap:7px;}
-  .cmt-row input{flex:1; min-width:0; border:1px solid #cfd8dc; border-radius:9px;
-    padding:9px 11px; font-size:.9rem;}
-  .cmt-row button{border:none; background:var(--teal); color:#fff; font-weight:800;
-    border-radius:9px; padding:0 16px; cursor:pointer;}
+  .cmt-row{display:flex; flex-direction:column; gap:8px; align-items:stretch;}
+  .cmt-row textarea{width:100%; min-height:78px; resize:vertical; border:1px solid #cfd8dc;
+    border-radius:9px; padding:10px 12px; font-size:.9rem; font-family:inherit; line-height:1.45;}
+  .cmt-row button{align-self:flex-end; border:none; background:var(--teal); color:#fff;
+    font-weight:800; border-radius:9px; padding:9px 22px; cursor:pointer;}
   .cmt-row button:disabled{opacity:.5;}
   .cmt-hint{font-size:.7rem; color:#9aa7ad; margin-top:6px;}
   #cmt-today{margin-top:10px;}
@@ -1060,7 +1060,7 @@ function renderCommentBox(){
       <div class="cmt-title">✍️ Comenta la jornada de hoy</div>
       <div class="cmt-sub">Datos curiosos, piques, predicciones… aparecerá en la crónica de mañana.</div>
       <div class="cmt-row">
-        <input id="cmt-input" maxlength="240" placeholder="Escribe tu comentario…">
+        <textarea id="cmt-input" maxlength="240" rows="3" placeholder="Escribe tu comentario…"></textarea>
         <button id="cmt-send">Enviar</button>
       </div>
       <div id="cmt-today"></div>
@@ -1079,7 +1079,7 @@ function renderCommentBox(){
       send.disabled=false; input.focus();
     }
     send.addEventListener("click",submit);
-    input.addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); submit(); } });
+    input.addEventListener("keydown",e=>{ if((e.ctrlKey||e.metaKey)&&e.key==="Enter"){ e.preventDefault(); submit(); } });
   }
   renderTodayComments();
 }
