@@ -554,7 +554,10 @@ function scoreParticipant(part,S){ const A=S.actual; const b={}; for(const k in 
   return {total,breakdown:b,det}; }
 function computeStandings(S){
   const rows=P.participants.map(part=>{ const r=scoreParticipant(part,S); return {name:part.name,total:r.total,breakdown:r.breakdown,det:r.det}; });
-  rows.sort((a,b)=> b.total-a.total || a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+  // En empate: orden alfabético, pero Lagen siempre el último del grupo (excepción)
+  rows.sort((a,b)=> b.total-a.total
+    || (a.name==="Lagen") - (b.name==="Lagen")
+    || a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   let lastPts=null,lastPos=0; rows.forEach((r,i)=>{ if(r.total!==lastPts){lastPos=i+1;lastPts=r.total;} r.pos=lastPos; });
   let played=0; for(const k in S.info){ const st=S.info[k].state; if(st==="in"||st==="post") played++; }
   return {standings:rows,block_labels:P.blockLabels,
