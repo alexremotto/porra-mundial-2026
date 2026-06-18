@@ -259,6 +259,10 @@
   .cron-txt{font-size:.93rem; line-height:1.55; color:#1c1c1c;}
   .cron-txt p{margin:0 0 9px;} .cron-txt p:last-child{margin-bottom:0;}
   .cron-txt b{color:var(--teal);} .cron-txt .bad{color:#c0392b; font-weight:700;}
+  .cron-headline{font-size:1.02rem; font-weight:800; color:#16323a; line-height:1.25; margin:1px 0 3px;}
+  .cron-article p{margin:0 0 9px;} .cron-article p:last-child{margin-bottom:0;}
+  .cron-article b{color:var(--teal);} .cron-article em{color:#c0392b; font-style:italic;}
+  .cron-article .q{color:#445; font-style:italic;}
   /* Caja de comentarios + citas en la crónica */
   .cmt-box{background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.08);
     padding:13px 15px; margin-bottom:14px;}
@@ -554,10 +558,7 @@ function scoreParticipant(part,S){ const A=S.actual; const b={}; for(const k in 
   return {total,breakdown:b,det}; }
 function computeStandings(S){
   const rows=P.participants.map(part=>{ const r=scoreParticipant(part,S); return {name:part.name,total:r.total,breakdown:r.breakdown,det:r.det}; });
-  // En empate: orden alfabético, pero Lagen siempre el último del grupo (excepción)
-  rows.sort((a,b)=> b.total-a.total
-    || (a.name==="Lagen") - (b.name==="Lagen")
-    || a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+  rows.sort((a,b)=> b.total-a.total || a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   let lastPts=null,lastPos=0; rows.forEach((r,i)=>{ if(r.total!==lastPts){lastPos=i+1;lastPts=r.total;} r.pos=lastPos; });
   let played=0; for(const k in S.info){ const st=S.info[k].state; if(st==="in"||st==="post") played++; }
   return {standings:rows,block_labels:P.blockLabels,
@@ -866,7 +867,7 @@ function _deltaAt(tl,i,name){ return _totAt(tl,i,name)-_totAt(tl,i-1,name); }
 function _coldStreak(tl,i,name){ let c=0; for(let j=i;j>=0;j--){ if(_deltaAt(tl,j,name)===0) c++; else break; } return c; }
 function _faroCountUpTo(tl,i,name){ let c=0; for(let j=0;j<=i;j++){ if(_faroDay(tl[j].st,name)) c++; } return c; }
 function _ord(n){ return n+"º"; }
-function chronicleDay(tl, i, dayComments){
+function chronicleDay(tl, i, dayComments, article){
   const cur=tl[i], prev=i>0?tl[i-1]:null;
   const r=_seedRand(cur.day);
   const has=name=>cur.st.some(x=>x.name===name);
@@ -883,6 +884,16 @@ function chronicleDay(tl, i, dayComments){
     if(up>0 && (!riser||up>riser.up)) riser={name:x.name,up};
     if(up<0 && (!faller||up<faller.up)) faller={name:x.name,up}; }); }
   const res=cur.matches.map(m=>`<span class="r">${m.home} <b>${m.gh}–${m.ga}</b> ${m.away}</span>`).join("");
+  const title0=new Date(cur.day+"T12:00:00Z").toLocaleDateString("es-ES",
+    {weekday:"long",day:"numeric",month:"long",timeZone:"UTC"});
+  // Si hay artículo redactado para el día, se usa (mezcla análisis + comentarios)
+  if(article && article.body){
+    return `<div class="cron-day"><h3>📅 ${title0}</h3>
+      ${article.title?`<div class="cron-headline">${article.title}</div>`:""}
+      <div class="cron-sub">${cur.matches.length} partidos · crónica del día</div>
+      <div class="cron-res">${res}</div>
+      <div class="cron-txt cron-article">${article.body}</div></div>`;
+  }
   const ps=[];
   const second = cur.st[1] || null;
   const gap2 = second ? (leader.total - second.total) : 0;
@@ -1071,6 +1082,11 @@ async function fetchComments(){
   try{ const r=await fetch(_DBURL+"/comments.json",{cache:"no-store"}); if(r.ok) return (await r.json())||{}; }catch(e){}
   return {};
 }
+async function fetchCronicas(){
+  try{ const r=await fetch((P.cronicasUrl||"cronicas.json")+"?t="+Date.now(),{cache:"no-store"});
+    if(r.ok) return (await r.json())||{}; }catch(e){}
+  return {};
+}
 function isLagen(){ return (localStorage.getItem("porra_me")||"")==="Lagen"; }
 function modBtns(day, id, mod){
   if(!isLagen()) return "";
@@ -1136,11 +1152,12 @@ async function renderCronica(espn){
   const el=document.getElementById("cronica"); if(!el) return;
   renderCommentBox();
   window._comments = await fetchComments();
+  window._cronicas = await fetchCronicas();
   renderTodayComments();
   const tl=dailyTimeline(espn||window._espn||[]);
   if(!tl.length){ el.innerHTML=`<div class="empty">Aún no ha cerrado ninguna jornada. La primera crónica saldrá al terminar el día (23:59 hora de México).</div>`; return; }
   let html="";
-  for(let i=tl.length-1;i>=0;i--) html+=chronicleDay(tl, i, (window._comments[tl[i].day]||{}));
+  for(let i=tl.length-1;i>=0;i--) html+=chronicleDay(tl, i, (window._comments[tl[i].day]||{}), (window._cronicas[tl[i].day]||null));
   el.innerHTML=html;
   updateCronBadge();
 }
@@ -1154,7 +1171,7 @@ function showCronPopup(){
   const tl=dailyTimeline(window._espn||[]); if(!tl.length) return;
   const i=tl.length-1;
   const body=document.getElementById("cron-modal-body"); if(!body) return;
-  body.innerHTML=chronicleDay(tl, i, (window._comments&&window._comments[tl[i].day])||{});
+  body.innerHTML=chronicleDay(tl, i, (window._comments&&window._comments[tl[i].day])||{}, (window._cronicas&&window._cronicas[tl[i].day])||null);
   document.getElementById("cron-modal").classList.remove("hide");
 }
 (function(){
