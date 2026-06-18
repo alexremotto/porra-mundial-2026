@@ -1,0 +1,187 @@
+{
+ "day": "2026-06-17",
+ "prevDay": "2026-06-16",
+ "generatedAt": "2026-06-18T10:41:17Z",
+ "results": [
+  {
+   "home": "Portugal",
+   "away": "DR Congo",
+   "gh": 1,
+   "ga": 1
+  },
+  {
+   "home": "England",
+   "away": "Croatia",
+   "gh": 4,
+   "ga": 2
+  },
+  {
+   "home": "Ghana",
+   "away": "Panama",
+   "gh": 1,
+   "ga": 0
+  },
+  {
+   "home": "Uzbekistan",
+   "away": "Colombia",
+   "gh": 1,
+   "ga": 3
+  }
+ ],
+ "standings": [
+  {
+   "pos": 1,
+   "name": "Carrillo",
+   "total": 59,
+   "deltaPts": 2,
+   "deltaPos": 0
+  },
+  {
+   "pos": 2,
+   "name": "JJ",
+   "total": 54,
+   "deltaPts": 14,
+   "deltaPos": 0
+  },
+  {
+   "pos": 3,
+   "name": "Abete",
+   "total": 46,
+   "deltaPts": 12,
+   "deltaPos": 1
+  },
+  {
+   "pos": 4,
+   "name": "Quimnot",
+   "total": 44,
+   "deltaPts": 8,
+   "deltaPos": -1
+  },
+  {
+   "pos": 5,
+   "name": "Jonete",
+   "total": 35,
+   "deltaPts": 4,
+   "deltaPos": 0
+  },
+  {
+   "pos": 6,
+   "name": "P-man",
+   "total": 34,
+   "deltaPts": 15,
+   "deltaPos": 4
+  },
+  {
+   "pos": 7,
+   "name": "Edu",
+   "total": 33,
+   "deltaPts": 12,
+   "deltaPos": 1
+  },
+  {
+   "pos": 8,
+   "name": "Graells",
+   "total": 31,
+   "deltaPts": 9,
+   "deltaPos": -1
+  },
+  {
+   "pos": 9,
+   "name": "Lagen",
+   "total": 30,
+   "deltaPts": 12,
+   "deltaPos": 2
+  },
+  {
+   "pos": 10,
+   "name": "Uri",
+   "total": 29,
+   "deltaPts": 8,
+   "deltaPos": -2
+  },
+  {
+   "pos": 11,
+   "name": "Guille",
+   "total": 26,
+   "deltaPts": 2,
+   "deltaPos": -5
+  },
+  {
+   "pos": 12,
+   "name": "Santi",
+   "total": 20,
+   "deltaPts": 2,
+   "deltaPos": -1
+  }
+ ],
+ "leader": [
+  "Carrillo"
+ ],
+ "farolillo": [
+  "Santi"
+ ],
+ "topGainers": [
+  {
+   "name": "P-man",
+   "deltaPts": 15
+  },
+  {
+   "name": "JJ",
+   "deltaPts": 14
+  },
+  {
+   "name": "Abete",
+   "deltaPts": 12
+  }
+ ],
+ "comments": [
+  {
+   "text": "Demano que s’obri investigació oficial a Pitoniso Carrillo per trampes i dopping tecnológico. Auditoria + Investigació ja 🤚🏿",
+   "ts": 1781678654362
+  },
+  {
+   "text": "Hi ha rumors que el farolillo rojo s’ha creat perquè JL9 pugui tenir algun títol i no s’enfadi",
+   "ts": 1781678952991
+  },
+  {
+   "text": "Jaja muy buena la pantalla de inico con la cara del señor lagen",
+   "ts": 1781680755927
+  },
+  {
+   "text": "Joan Garcia es de La Masia",
+   "ts": 1781688159353
+  },
+  {
+   "text": "Lagen welcome to farolillo 😂 agafa el testigo que jo dema ja surto",
+   "ts": 1781710220289
+  },
+  {
+   "text": "Mig camp portugal > Mig camp espanya",
+   "ts": 1781716567113
+  },
+  {
+   "text": "Guineuada > Congo",
+   "ts": 1781716740991
+  },
+  {
+   "text": "Vitinha = Apache Tellez",
+   "ts": 1781718509952
+  },
+  {
+   "text": "EuroLevante > Brasil del 2002",
+   "ts": 1781724751676
+  },
+  {
+   "text": "Cancer > Perro Sanxe",
+   "ts": 1781725294008
+  },
+  {
+   "text": "Demano investigació FIFA Carrillo ha utilitzat IA en prediccions, volem validació",
+   "ts": 1781728408890
+  },
+  {
+   "text": "Marc Cucurella realizó 21 pases hacia atrás contra Cabo Verde, la mayor cantidad de cualquier jugador en un solo partido de la Copa del Mundo hasta ahora.\nFuente: WhoScored.",
+   "ts": 1781730592659
+  }
+ ]
+}
