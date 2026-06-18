@@ -1262,8 +1262,10 @@ function showIntro(lastName){
   document.getElementById("intro-name").textContent = lastName || "—";
   const big=el.querySelector(".big");
   if(big){
-    if(lastName==="Lagen"){ big.classList.add("img");
-      big.innerHTML='<img class="intro-img" src="lagen-farolillo.png" alt="Lagen farolillo">'; }
+    const FARO_IMG={Lagen:"lagen-farolillo.png", Santi:"santi-farolillo.png"};
+    const img=FARO_IMG[lastName];
+    if(img){ big.classList.add("img");
+      big.innerHTML='<img class="intro-img" src="'+img+'" alt="'+lastName+' farolillo">'; }
     else { big.classList.remove("img"); big.textContent="🏮"; }
   }
   const hide=()=>el.classList.add("hide");
