@@ -1278,7 +1278,7 @@ function showIntro(lastName){
 
 /* ================= LOOP ================= */
 function nextDelayMs(espn){ const now=Date.now();
-  if(espn.some(m=>m.state==="in")) return 5*60*1000;
+  if(espn.some(m=>m.state==="in")) return 20*1000;   // partido en juego: casi real-time
   let next=null; for(const m of espn){ if(m.state==="pre"&&m.date){ const t=new Date(m.date).getTime();
     if(t>now&&(next===null||t<next)) next=t; } }
   if(next!==null) return Math.max(60*1000, Math.min(next-now, 30*60*1000)); return 30*60*1000; }
@@ -1311,6 +1311,13 @@ async function tick(){
   _busy=false; _timer=setTimeout(tick, nextDelayMs(espn));
 }
 function refreshNow(){ tick(); }
+
+/* Al ocultar la pestaña paramos el sondeo; al volver, refresco inmediato
+   (datos frescos al instante sin esperar al siguiente ciclo). */
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden){ if(_timer){ clearTimeout(_timer); _timer=null; } }
+  else if(!_busy){ tick(); }
+});
 
 /* Pull-to-refresh propio (necesario en modo web-app/standalone de iOS,
    donde no existe el "tirar para refrescar" del navegador). */
