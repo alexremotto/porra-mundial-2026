@@ -583,15 +583,15 @@ function matchesView(S){
   if(live<0){ const fin=[]; items.forEach((it,i)=>{ if(it.state==="post") fin.push(i); }); live=fin.length?fin[fin.length-1]:0; }
   return {matches:items,focus_index:live}; }
 
-/* Clasificacion "antes del/los partido(s) mas reciente(s)" -> flechas.
-   Incluye partidos EN JUEGO: durante un partido las flechas reflejan el
-   movimiento que está provocando ese resultado en vivo. Excluye todos los
-   partidos con la fecha de inicio más reciente (cubre partidos simultáneos). */
+/* Clasificacion "antes del último DÍA" -> flechas = subida/bajada en el día más
+   reciente (no solo del último partido). Excluye TODOS los partidos del día-MX
+   más reciente (jugados o en juego); así la flecha refleja el movimiento neto de
+   ese día e incluye en vivo los partidos que se estén jugando ese mismo día. */
 function prevPositions(espn){
   const played=espn.filter(m=>(m.state==="post"||m.state==="in")&&m.date);
   if(!played.length) return null;
-  const maxd=played.reduce((a,b)=> a.date>b.date?a:b).date;
-  const mod=espn.map(m=> ((m.state==="post"||m.state==="in")&&m.date===maxd)
+  const maxDay=played.map(m=>_mxDay(m.date)).sort().slice(-1)[0];
+  const mod=espn.map(m=> ((m.state==="post"||m.state==="in")&&m.date&&_mxDay(m.date)===maxDay)
     ? Object.assign({},m,{state:"pre",gh:null,ga:null}) : m);
   const st=computeStandings(buildActual(mod));
   const map={}; st.standings.forEach(r=> map[r.name]=r.pos); return map;
