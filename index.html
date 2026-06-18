@@ -89,7 +89,7 @@
   .lb-clock{font-size:.85rem; font-weight:800; color:var(--live);}
   .lb-tap{margin-top:9px; text-align:center; font-size:.66rem; color:var(--live); font-weight:700;}
 
-  /* ---- Banner Teikit (19–22:30 hora española) ---- */
+  /* ---- Banner Teikit (19:00–23:30 hora española) ---- */
   #glovo{margin-bottom:12px;}
   .glovo{display:flex; align-items:center; gap:11px; text-decoration:none;
     background:linear-gradient(135deg,#0a2f63,#051f44); color:#fff; border-radius:12px;
@@ -801,7 +801,7 @@ function checkGlovo(){
   const el=document.getElementById("glovo"); if(!el) return;
   const now=new Date();
   const dec=((now.getUTCHours()+2)%24) + now.getUTCMinutes()/60;  // CEST = UTC+2
-  const show = dec>=(P.glovoStart||20) && dec<22.5;   // hora española
+  const show = dec>=(P.glovoStart||20) && dec<23.5;   // hora española (19:00–23:30)
   if(show===_glovoOn) return; _glovoOn=show;
   if(show){ el.style.display="block";
     el.innerHTML=`<a class="glovo" href="https://glovo.go.link/open?link_type=store&store_id=21029&adjust_t=s321jkn" target="_blank" rel="noopener">
