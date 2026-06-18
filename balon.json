@@ -2,40 +2,46 @@
   "baseDate": "2026-06-18",
   "players": [
     {
+      "name": "Kylian Mbappé",
+      "team": "Francia",
+      "odds": "6/1",
+      "prevOdds": "17/2"
+    },
+    {
       "name": "Michael Olise",
       "team": "Francia",
       "odds": "13/2",
       "prevOdds": "13/2"
     },
     {
+      "name": "Lionel Messi",
+      "team": "Argentina",
+      "odds": "13/2",
+      "prevOdds": "11/1"
+    },
+    {
       "name": "Harry Kane",
       "team": "Inglaterra",
-      "odds": "17/2",
+      "odds": "9/1",
       "prevOdds": "17/2"
     },
     {
       "name": "Lamine Yamal",
       "team": "España",
-      "odds": "17/2",
+      "odds": "12/1",
       "prevOdds": "17/2"
-    },
-    {
-      "name": "Kylian Mbappé",
-      "team": "Francia",
-      "odds": "17/2",
-      "prevOdds": "17/2"
-    },
-    {
-      "name": "Lionel Messi",
-      "team": "Argentina",
-      "odds": "11/1",
-      "prevOdds": "11/1"
     },
     {
       "name": "Vini Jr.",
       "team": "Brasil",
-      "odds": "14/1",
+      "odds": "18/1",
       "prevOdds": "14/1"
+    },
+    {
+      "name": "Erling Haaland",
+      "team": "Noruega",
+      "odds": "18/1",
+      "prevOdds": "18/1"
     }
   ]
 }
