@@ -1,117 +1,117 @@
 {
- "day": "2026-06-17",
- "prevDay": "2026-06-16",
- "generatedAt": "2026-06-18T11:05:07Z",
+ "day": "2026-06-18",
+ "prevDay": "2026-06-17",
+ "generatedAt": "2026-06-19T06:08:50Z",
  "results": [
   {
-   "home": "Portugal",
-   "away": "DR Congo",
+   "home": "Czech Republic",
+   "away": "South Africa",
    "gh": 1,
    "ga": 1
   },
   {
-   "home": "England",
-   "away": "Croatia",
+   "home": "Switzerland",
+   "away": "Bosnia and Herzegovina",
    "gh": 4,
-   "ga": 2
+   "ga": 1
   },
   {
-   "home": "Ghana",
-   "away": "Panama",
-   "gh": 1,
+   "home": "Canada",
+   "away": "Qatar",
+   "gh": 6,
    "ga": 0
   },
   {
-   "home": "Uzbekistan",
-   "away": "Colombia",
+   "home": "Mexico",
+   "away": "South Korea",
    "gh": 1,
-   "ga": 3
+   "ga": 0
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Carrillo",
-   "total": 59,
-   "deltaPts": 2,
+   "total": 64,
+   "deltaPts": 5,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "JJ",
-   "total": 54,
-   "deltaPts": 14,
+   "total": 55,
+   "deltaPts": 1,
    "deltaPos": 0
   },
   {
    "pos": 3,
-   "name": "Abete",
-   "total": 46,
-   "deltaPts": 12,
+   "name": "Quimnot",
+   "total": 50,
+   "deltaPts": 6,
    "deltaPos": 1
   },
   {
    "pos": 4,
-   "name": "Quimnot",
-   "total": 44,
-   "deltaPts": 8,
+   "name": "Abete",
+   "total": 47,
+   "deltaPts": 1,
    "deltaPos": -1
   },
   {
    "pos": 5,
    "name": "Jonete",
-   "total": 35,
-   "deltaPts": 4,
+   "total": 43,
+   "deltaPts": 8,
    "deltaPos": 0
   },
   {
    "pos": 6,
-   "name": "P-man",
-   "total": 34,
-   "deltaPts": 15,
-   "deltaPos": 4
-  },
-  {
-   "pos": 7,
    "name": "Edu",
-   "total": 33,
-   "deltaPts": 12,
+   "total": 40,
+   "deltaPts": 7,
    "deltaPos": 1
   },
   {
-   "pos": 8,
-   "name": "Graells",
-   "total": 31,
+   "pos": 7,
+   "name": "Lagen",
+   "total": 39,
    "deltaPts": 9,
-   "deltaPos": -1
+   "deltaPos": 2
+  },
+  {
+   "pos": 8,
+   "name": "P-man",
+   "total": 37,
+   "deltaPts": 3,
+   "deltaPos": -2
   },
   {
    "pos": 9,
-   "name": "Lagen",
-   "total": 30,
-   "deltaPts": 12,
+   "name": "Guille",
+   "total": 35,
+   "deltaPts": 9,
    "deltaPos": 2
   },
   {
    "pos": 10,
-   "name": "Uri",
-   "total": 29,
-   "deltaPts": 8,
+   "name": "Graells",
+   "total": 34,
+   "deltaPts": 3,
    "deltaPos": -2
   },
   {
-   "pos": 11,
-   "name": "Guille",
-   "total": 26,
-   "deltaPts": 2,
-   "deltaPos": -5
+   "pos": 10,
+   "name": "Uri",
+   "total": 34,
+   "deltaPts": 5,
+   "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 20,
-   "deltaPts": 2,
-   "deltaPos": -1
+   "total": 23,
+   "deltaPts": 3,
+   "deltaPos": 0
   }
  ],
  "leader": [
@@ -122,66 +122,62 @@
  ],
  "topGainers": [
   {
-   "name": "P-man",
-   "deltaPts": 15
+   "name": "Lagen",
+   "deltaPts": 9
   },
   {
-   "name": "JJ",
-   "deltaPts": 14
+   "name": "Guille",
+   "deltaPts": 9
   },
   {
-   "name": "Abete",
-   "deltaPts": 12
+   "name": "Jonete",
+   "deltaPts": 8
   }
  ],
  "comments": [
   {
-   "text": "Demano que s’obri investigació oficial a Pitoniso Carrillo per trampes i dopping tecnológico. Auditoria + Investigació ja 🤚🏿",
-   "ts": 1781678654362
+   "text": "Aposto a que avui Santi surt de farolillo🏮",
+   "ts": 1781781406349
   },
   {
-   "text": "Hi ha rumors que el farolillo rojo s’ha creat perquè JL9 pugui tenir algun títol i no s’enfadi",
-   "ts": 1781678952991
+   "text": "Deu fer fred alla abaix santi. Vols una manta?",
+   "ts": 1781782473689
   },
   {
-   "text": "Jaja muy buena la pantalla de inico con la cara del señor lagen",
-   "ts": 1781680755927
+   "text": "Silvia Orriols > Mbappé",
+   "ts": 1781783670228
   },
   {
-   "text": "Joan Garcia es de La Masia",
-   "ts": 1781688159353
+   "text": "Loco de Mandri > Cristiano Ronaldo",
+   "ts": 1781784165901
   },
   {
-   "text": "Lagen welcome to farolillo 😂 agafa el testigo que jo dema ja surto",
-   "ts": 1781710220289
+   "text": "Guille empieza a oler a farolillo viendo sus pronosticos",
+   "ts": 1781799903550
   },
   {
-   "text": "Mig camp portugal > Mig camp espanya",
-   "ts": 1781716567113
+   "text": "Sant es despenja a la cua.. farolillo comença a perdre la gràcia, s'obre enquesta per veure si hauriem d'ampliar a dos farolillos. Voteu.",
+   "ts": 1781813068282
   },
   {
-   "text": "Guineuada > Congo",
-   "ts": 1781716740991
+   "text": "Es una bona proposta Sub-Farolillo💡",
+   "ts": 1781816145017
   },
   {
-   "text": "Vitinha = Apache Tellez",
-   "ts": 1781718509952
+   "text": "Santilillo i que farolillo sigui el penultim",
+   "ts": 1781816364591
   },
   {
-   "text": "EuroLevante > Brasil del 2002",
-   "ts": 1781724751676
+   "text": "La app tarda mucho en actualizar en LIVE los goles. Si sigue asi me quedo en la app de Carrillo y borro esta.",
+   "ts": 1781816434272
   },
   {
-   "text": "Cancer > Perro Sanxe",
-   "ts": 1781725294008
+   "text": "Torrente Presidente: estreno 26 junio en Netflix. VIVA NOX.",
+   "ts": 1781816940516
   },
   {
-   "text": "Demano investigació FIFA Carrillo ha utilitzat IA en prediccions, volem validació",
-   "ts": 1781728408890
-  },
-  {
-   "text": "Marc Cucurella realizó 21 pases hacia atrás contra Cabo Verde, la mayor cantidad de cualquier jugador en un solo partido de la Copa del Mundo hasta ahora.\nFuente: WhoScored.",
-   "ts": 1781730592659
+   "text": "El boig de muntaner faria millor la porra que el Santi, esteu d'acord?",
+   "ts": 1781817753101
   }
  ]
 }
