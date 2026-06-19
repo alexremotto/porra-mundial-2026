@@ -264,6 +264,9 @@
   .cron-article p{margin:0 0 9px;} .cron-article p:last-child{margin-bottom:0;}
   .cron-article b{color:var(--teal);} .cron-article em{color:#c0392b; font-style:italic;}
   .cron-article .q{color:#445; font-style:italic;}
+  .cron-pending{margin-top:9px; padding:14px 12px; text-align:center; color:#5a6b72;
+    background:#f3f6f7; border:1px dashed #c4d0d4; border-radius:9px; font-size:.9rem;}
+  .cron-pending small{color:#8a99a0; font-size:.76rem;}
   /* Caja de comentarios + citas en la crónica */
   .cmt-box{background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.08);
     padding:13px 15px; margin-bottom:14px;}
@@ -895,6 +898,13 @@ function chronicleDay(tl, i, dayComments, article){
       <div class="cron-res">${res}</div>
       <div class="cron-txt cron-article">${article.body}</div></div>`;
   }
+  // Sin artículo redactado todavía: placeholder limpio (NUNCA la versión básica
+  // con texto simple y los comentarios sueltos).
+  return `<div class="cron-day"><h3>📅 ${title0}</h3>
+    <div class="cron-sub">${cur.matches.length} partidos · crónica del día</div>
+    <div class="cron-res">${res}</div>
+    <div class="cron-pending">✍️ La crónica de este día se está redactando…<br>
+      <small>aparecerá aquí en cuanto esté lista</small></div></div>`;
   const ps=[];
   const second = cur.st[1] || null;
   const gap2 = second ? (leader.total - second.total) : 0;
