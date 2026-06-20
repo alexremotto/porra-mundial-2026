@@ -1,115 +1,115 @@
 {
- "day": "2026-06-18",
- "prevDay": "2026-06-17",
- "generatedAt": "2026-06-19T10:05:07Z",
+ "day": "2026-06-19",
+ "prevDay": "2026-06-18",
+ "generatedAt": "2026-06-20T06:17:03Z",
  "results": [
   {
-   "home": "Czech Republic",
-   "away": "South Africa",
-   "gh": 1,
-   "ga": 1
-  },
-  {
-   "home": "Switzerland",
-   "away": "Bosnia and Herzegovina",
-   "gh": 4,
-   "ga": 1
-  },
-  {
-   "home": "Canada",
-   "away": "Qatar",
-   "gh": 6,
+   "home": "United States",
+   "away": "Australia",
+   "gh": 2,
    "ga": 0
   },
   {
-   "home": "Mexico",
-   "away": "South Korea",
-   "gh": 1,
+   "home": "Scotland",
+   "away": "Morocco",
+   "gh": 0,
+   "ga": 1
+  },
+  {
+   "home": "Brazil",
+   "away": "Haiti",
+   "gh": 3,
    "ga": 0
+  },
+  {
+   "home": "Turkey",
+   "away": "Paraguay",
+   "gh": 0,
+   "ga": 1
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Carrillo",
-   "total": 64,
-   "deltaPts": 5,
+   "total": 72,
+   "deltaPts": 8,
    "deltaPos": 0
   },
   {
    "pos": 2,
-   "name": "JJ",
-   "total": 55,
-   "deltaPts": 1,
-   "deltaPos": 0
-  },
-  {
-   "pos": 3,
    "name": "Quimnot",
-   "total": 50,
-   "deltaPts": 6,
+   "total": 59,
+   "deltaPts": 9,
    "deltaPos": 1
   },
   {
-   "pos": 4,
+   "pos": 3,
    "name": "Abete",
-   "total": 47,
-   "deltaPts": 1,
+   "total": 58,
+   "deltaPts": 11,
+   "deltaPos": 1
+  },
+  {
+   "pos": 3,
+   "name": "JJ",
+   "total": 58,
+   "deltaPts": 3,
    "deltaPos": -1
   },
   {
    "pos": 5,
    "name": "Jonete",
-   "total": 43,
-   "deltaPts": 8,
+   "total": 55,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 6,
-   "name": "Edu",
-   "total": 40,
-   "deltaPts": 7,
+   "name": "Lagen",
+   "total": 48,
+   "deltaPts": 9,
    "deltaPos": 1
   },
   {
    "pos": 7,
-   "name": "Lagen",
-   "total": 39,
+   "name": "Guille",
+   "total": 45,
+   "deltaPts": 10,
+   "deltaPos": 2
+  },
+  {
+   "pos": 8,
+   "name": "Graells",
+   "total": 43,
    "deltaPts": 9,
    "deltaPos": 2
   },
   {
    "pos": 8,
-   "name": "P-man",
-   "total": 37,
-   "deltaPts": 3,
-   "deltaPos": -2
-  },
-  {
-   "pos": 9,
-   "name": "Guille",
-   "total": 35,
+   "name": "Uri",
+   "total": 43,
    "deltaPts": 9,
    "deltaPos": 2
   },
   {
    "pos": 10,
-   "name": "Graells",
-   "total": 34,
-   "deltaPts": 3,
-   "deltaPos": -2
+   "name": "Edu",
+   "total": 42,
+   "deltaPts": 2,
+   "deltaPos": -4
   },
   {
    "pos": 10,
-   "name": "Uri",
-   "total": 34,
+   "name": "P-man",
+   "total": 42,
    "deltaPts": 5,
-   "deltaPos": 0
+   "deltaPos": -2
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 23,
+   "total": 26,
    "deltaPts": 3,
    "deltaPos": 0
   }
@@ -122,62 +122,66 @@
  ],
  "topGainers": [
   {
-   "name": "Lagen",
-   "deltaPts": 9
+   "name": "Jonete",
+   "deltaPts": 12
+  },
+  {
+   "name": "Abete",
+   "deltaPts": 11
   },
   {
    "name": "Guille",
-   "deltaPts": 9
-  },
-  {
-   "name": "Jonete",
-   "deltaPts": 8
+   "deltaPts": 10
   }
  ],
  "comments": [
   {
-   "text": "Aposto a que avui Santi surt de farolillo🏮",
-   "ts": 1781781406349
+   "text": "Poca cosa es cou per aqui",
+   "ts": 1781885516652
   },
   {
-   "text": "Deu fer fred alla abaix santi. Vols una manta?",
-   "ts": 1781782473689
+   "text": "Sabemos quien fue el farolillo de 2018",
+   "ts": 1781886809114
   },
   {
-   "text": "Silvia Orriols > Mbappé",
-   "ts": 1781783670228
+   "text": "Portem streapers al proxim matx a Santjoanistes a la mitja part?",
+   "ts": 1781886812895
   },
   {
-   "text": "Loco de Mandri > Cristiano Ronaldo",
-   "ts": 1781784165901
+   "text": "Tbe es podria fer que qui es farolillo porta menjar / beure als partits",
+   "ts": 1781886873714
   },
   {
-   "text": "Guille empieza a oler a farolillo viendo sus pronosticos",
-   "ts": 1781799903550
+   "text": "O preferiu veure tetes?",
+   "ts": 1781886891458
   },
   {
-   "text": "Sant es despenja a la cua.. farolillo comença a perdre la gràcia, s'obre enquesta per veure si hauriem d'ampliar a dos farolillos. Voteu.",
-   "ts": 1781813068282
+   "text": "Santi pot proveir les dues coses",
+   "ts": 1781889585881
   },
   {
-   "text": "Es una bona proposta Sub-Farolillo💡",
-   "ts": 1781816145017
+   "text": "No ha quedat clara la penyora pel farolillo final no?? S’escolten propostes",
+   "ts": 1781889671715
   },
   {
-   "text": "Santilillo i que farolillo sigui el penultim",
-   "ts": 1781816364591
+   "text": "Dr. FAROLVILA porta streapers diu?",
+   "ts": 1781889874467
   },
   {
-   "text": "La app tarda mucho en actualizar en LIVE los goles. Si sigue asi me quedo en la app de Carrillo y borro esta.",
-   "ts": 1781816434272
+   "text": "Sin duda, Santi deberá enseñarnos todas las tetas de su movil como penalización por ser farolillo rojo tanto tiempo",
+   "ts": 1781907309945
   },
   {
-   "text": "Torrente Presidente: estreno 26 junio en Netflix. VIVA NOX.",
-   "ts": 1781816940516
+   "text": "Y haciendo seleccion previa de las mejores, 100%",
+   "ts": 1781908267099
   },
   {
-   "text": "El boig de muntaner faria millor la porra que el Santi, esteu d'acord?",
-   "ts": 1781817753101
+   "text": "Futbol i tetes, que mes podem demanar?",
+   "ts": 1781911147232
+  },
+  {
+   "text": "Ja demanada streaper per diumenge 6.45pm, picarà al timbre i ball/show de 10 mins i dew, mai sabrem qui la va demanar",
+   "ts": 1781911252537
   }
  ]
 }
