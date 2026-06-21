@@ -1,115 +1,115 @@
 {
- "day": "2026-06-19",
- "prevDay": "2026-06-18",
- "generatedAt": "2026-06-20T10:05:08Z",
+ "day": "2026-06-20",
+ "prevDay": "2026-06-19",
+ "generatedAt": "2026-06-21T06:07:56Z",
  "results": [
   {
-   "home": "United States",
-   "away": "Australia",
+   "home": "Netherlands",
+   "away": "Sweden",
+   "gh": 5,
+   "ga": 1
+  },
+  {
+   "home": "Germany",
+   "away": "Ivory Coast",
    "gh": 2,
-   "ga": 0
-  },
-  {
-   "home": "Scotland",
-   "away": "Morocco",
-   "gh": 0,
    "ga": 1
   },
   {
-   "home": "Brazil",
-   "away": "Haiti",
-   "gh": 3,
+   "home": "Ecuador",
+   "away": "Curaçao",
+   "gh": 0,
    "ga": 0
   },
   {
-   "home": "Turkey",
-   "away": "Paraguay",
+   "home": "Tunisia",
+   "away": "Japan",
    "gh": 0,
-   "ga": 1
+   "ga": 4
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Carrillo",
-   "total": 72,
-   "deltaPts": 8,
+   "total": 74,
+   "deltaPts": 2,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Quimnot",
-   "total": 59,
+   "total": 68,
    "deltaPts": 9,
-   "deltaPos": 1
+   "deltaPos": 0
   },
   {
    "pos": 3,
    "name": "Abete",
-   "total": 58,
-   "deltaPts": 11,
+   "total": 67,
+   "deltaPts": 9,
+   "deltaPos": 0
+  },
+  {
+   "pos": 4,
+   "name": "Jonete",
+   "total": 63,
+   "deltaPts": 8,
    "deltaPos": 1
   },
   {
-   "pos": 3,
-   "name": "JJ",
-   "total": 58,
-   "deltaPts": 3,
-   "deltaPos": -1
-  },
-  {
    "pos": 5,
-   "name": "Jonete",
-   "total": 55,
-   "deltaPts": 12,
-   "deltaPos": 0
+   "name": "JJ",
+   "total": 61,
+   "deltaPts": 3,
+   "deltaPos": -2
   },
   {
    "pos": 6,
    "name": "Lagen",
-   "total": 48,
-   "deltaPts": 9,
-   "deltaPos": 1
+   "total": 51,
+   "deltaPts": 3,
+   "deltaPos": 0
   },
   {
    "pos": 7,
    "name": "Guille",
-   "total": 45,
-   "deltaPts": 10,
-   "deltaPos": 2
+   "total": 50,
+   "deltaPts": 5,
+   "deltaPos": 0
   },
   {
    "pos": 8,
    "name": "Graells",
-   "total": 43,
-   "deltaPts": 9,
-   "deltaPos": 2
+   "total": 46,
+   "deltaPts": 3,
+   "deltaPos": 0
   },
   {
    "pos": 8,
    "name": "Uri",
-   "total": 43,
-   "deltaPts": 9,
-   "deltaPos": 2
-  },
-  {
-   "pos": 10,
-   "name": "Edu",
-   "total": 42,
-   "deltaPts": 2,
-   "deltaPos": -4
+   "total": 46,
+   "deltaPts": 3,
+   "deltaPos": 0
   },
   {
    "pos": 10,
    "name": "P-man",
-   "total": 42,
-   "deltaPts": 5,
-   "deltaPos": -2
+   "total": 45,
+   "deltaPts": 3,
+   "deltaPos": 0
+  },
+  {
+   "pos": 11,
+   "name": "Edu",
+   "total": 44,
+   "deltaPts": 2,
+   "deltaPos": -1
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 26,
+   "total": 29,
    "deltaPts": 3,
    "deltaPos": 0
   }
@@ -122,66 +122,78 @@
  ],
  "topGainers": [
   {
-   "name": "Jonete",
-   "deltaPts": 12
+   "name": "Quimnot",
+   "deltaPts": 9
   },
   {
    "name": "Abete",
-   "deltaPts": 11
+   "deltaPts": 9
   },
   {
-   "name": "Guille",
-   "deltaPts": 10
+   "name": "Jonete",
+   "deltaPts": 8
   }
  ],
  "comments": [
   {
-   "text": "Poca cosa es cou per aqui",
-   "ts": 1781885516652
+   "text": "Cucurella 🐀",
+   "ts": 1781937652778
   },
   {
-   "text": "Sabemos quien fue el farolillo de 2018",
-   "ts": 1781886809114
+   "text": "Top 3 remontadas: 1) Barça-PSG; 2) Pelo Ter Stegen; 3) Porra Lagen",
+   "ts": 1781937759982
   },
   {
-   "text": "Portem streapers al proxim matx a Santjoanistes a la mitja part?",
-   "ts": 1781886812895
+   "text": "Es dificil pasar más desapercibido en esta porra que Jonete",
+   "ts": 1781942251231
   },
   {
-   "text": "Tbe es podria fer que qui es farolillo porta menjar / beure als partits",
-   "ts": 1781886873714
+   "text": "La streaper tendrá “porra”?",
+   "ts": 1781943880411
   },
   {
-   "text": "O preferiu veure tetes?",
-   "ts": 1781886891458
+   "text": "P-man de nuevo cerca del farolillo que ya ganó en 2018",
+   "ts": 1781946079549
   },
   {
-   "text": "Santi pot proveir les dues coses",
-   "ts": 1781889585881
+   "text": "Avui es pren algo i es veu algun match al museu del farolillo",
+   "ts": 1781946441355
   },
   {
-   "text": "No ha quedat clara la penyora pel farolillo final no?? S’escolten propostes",
-   "ts": 1781889671715
+   "text": "Amb l'streaper, qui es corri abans fent-se una palla, +10 punts classificació, accepteu?",
+   "ts": 1781947306607
   },
   {
-   "text": "Dr. FAROLVILA porta streapers diu?",
-   "ts": 1781889874467
+   "text": "Stripper, no streaper. El català correcte, passa’l",
+   "ts": 1781947339331
   },
   {
-   "text": "Sin duda, Santi deberá enseñarnos todas las tetas de su movil como penalización por ser farolillo rojo tanto tiempo",
-   "ts": 1781907309945
+   "text": "IN",
+   "ts": 1781947377595
   },
   {
-   "text": "Y haciendo seleccion previa de las mejores, 100%",
-   "ts": 1781908267099
+   "text": "IN",
+   "ts": 1781947417839
   },
   {
-   "text": "Futbol i tetes, que mes podem demanar?",
-   "ts": 1781911147232
+   "text": "Mano cambiada suma doble",
+   "ts": 1781947473433
   },
   {
-   "text": "Ja demanada streaper per diumenge 6.45pm, picarà al timbre i ball/show de 10 mins i dew, mai sabrem qui la va demanar",
-   "ts": 1781911252537
+   "text": "Graells Porra App > Instagram",
+   "ts": 1781978522086
+  },
+  {
+   "text": "Jonete espabila",
+   "ts": 1781978625842
+  },
+  {
+   "text": "Stop the count > por qué no te callas",
+   "ts": 1781979527735
+  },
+  {
+   "text": "Apaaa la radio Stop the count",
+   "ts": 1781979589526
   }
  ]
 }
