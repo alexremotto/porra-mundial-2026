@@ -168,6 +168,8 @@
     border-radius:8px; padding:9px 11px; margin-bottom:10px; line-height:1.4;}
   .fc-note b{color:#16323a;}
   .fc-eq{display:inline-block; width:16px; color:#b9c3c7; margin-right:5px; font-weight:800;}
+  .fc-est{display:inline-block; margin-left:6px; font-size:.56rem; font-weight:800; color:#8a6d1a;
+    background:#fdf0d2; border-radius:5px; padding:1px 5px; vertical-align:middle;}
   /* Futuros: grupos */
   #grp-list{display:grid; grid-template-columns:repeat(6,1fr); gap:6px; margin:4px 0 12px;}
   .grp-btn{padding:9px 0; border:1px solid #d3dde0; background:#f4f7f8; color:#33474e;
@@ -669,7 +671,28 @@ function forecastActual(){
   // Premios (Bota/Balón/campeón) NO se proyectan: pura especulación a futuro -> 0 para todos.
   return {actual:A,info:real.info};
 }
-function forecastStandings(){ return computeStandings(forecastActual()); }
+function _stageCap(st){ return (P.koSlots[st]||[]).length*2; }
+const _KO_BLOCKS=["r32_partidos","r32_clasif","r16_partidos","r16_clasif","qf_partidos","qf_clasif",
+  "sf_partidos","sf_clasif_3y4","sf_clasif_final","third_partido","final_partido"];
+// KO completo = ha puesto todos los marcadores KO y los reached al completo
+function _koComplete(p){ for(const st of P.koOrder){ if((p.reached[st]||[]).length < _stageCap(st)) return false;
+    for(const slot of (P.koSlots[st]||[])) if(!p.matches[slot.key]) return false; } return true; }
+function forecastStandings(){
+  const S=forecastActual();
+  const base=P.participants.map(p=>({name:p.name, br:scoreParticipant(p,S).breakdown, p}));
+  // media de los bloques KO entre quienes SÍ tienen el bracket completo (referencia)
+  const complete=base.filter(x=>_koComplete(x.p));
+  const avg={}; for(const k of _KO_BLOCKS) avg[k]= complete.length ? complete.reduce((s,x)=>s+(x.br[k]||0),0)/complete.length : 0;
+  const rows=base.map(({name,br,p})=>{ const inc=!_koComplete(p); const b=Object.assign({},br);
+    if(inc) for(const k of _KO_BLOCKS) b[k]=avg[k];     // a los incompletos: media de los demás en KO
+    let total=0; for(const k in b) total+=b[k];
+    const det=[]; for(const k in P.blockLabels){ const v=Math.round(b[k]||0); if(v>0) det.push({label:P.blockLabels[k],n:null,pts:v}); }
+    return {name, total:Math.round(total), breakdown:b, det, filled:inc}; });
+  rows.sort((a,b)=> b.total-a.total || a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+  let lastPts=null,lastPos=0; rows.forEach((r,i)=>{ if(r.total!==lastPts){lastPos=i+1;lastPts=r.total;} r.pos=lastPos; });
+  let played=0; for(const k in S.info){ const st=S.info[k].state; if(st==="in"||st==="post") played++; }
+  return {standings:rows,block_labels:P.blockLabels,
+    meta:{participants:rows.length,matches_played:played,matches_total:P.meta.matches_total}}; }
 
 /* ===== FUTUROS: grupos -> clasificación actual + aciertos de cada jugador ===== */
 function groupTeams(letter){ const a=[]; for(const pk in P.groupSlots){ const s=P.groupSlots[pk];
@@ -827,9 +850,10 @@ function renderStandings(data, mode){
     if(mode==="forecast"){ const ap=actPos[r.name], d=(ap!=null)?(ap-r.pos):0;
       mark = d>0?`<span class="arrow a-up">▲${d}</span>`:(d<0?`<span class="arrow a-down">▼${-d}</span>`:`<span class="fc-eq">·</span>`); }
     else mark = arrowHTML(r.name,r.pos,prev);
+    const est = (mode==="forecast"&&r.filled) ? `<span class="fc-est" title="Predicciones KO incompletas: estimadas con la media de la peña">~est</span>` : "";
     html+=`<tr class="clik ${cls}" data-name="${r.name}">
       <td class="pos">${mark}${r.pos}</td>
-      <td class="player">${lantern}${r.name}${tag}</td><td class="pts">${r.total}</td></tr>`;
+      <td class="player">${lantern}${r.name}${tag}${est}</td><td class="pts">${r.total}</td></tr>`;
     if(r.name===openName) html+=detailHTML(r); });
   tb.innerHTML=html;
   tb.querySelectorAll("tr[data-name]").forEach(tr=>tr.addEventListener("click",()=>{
