@@ -331,6 +331,12 @@
   .cmt-del, .cron-quote.cmt-del{opacity:.45; text-decoration:line-through;}
   .cmt-priv, .cron-quote.cmt-priv{opacity:.7;}
   .cmt-item em, .cron-quote em{font-size:.72rem; color:#9aa7ad; font-style:italic;}
+  .cmt-rx{display:inline-flex; gap:5px; margin-left:7px; vertical-align:middle;}
+  .rxb{border:1px solid #d3dde0; background:#f4f7f8; color:#5a6b72; border-radius:20px;
+    padding:1px 8px; font-size:.72rem; font-weight:700; cursor:pointer; line-height:1.5;
+    -webkit-tap-highlight-color:transparent;}
+  .rxb.up.on{background:#d5f0e6; border-color:#37b083; color:#0c7a52;}
+  .rxb.dn.on{background:#fde3e0; border-color:#e2877e; color:#b5392c;}
   .mod{white-space:nowrap; margin-left:6px;}
   .modbtn{border:1px solid #cfd8dc; background:#f6f9fa; color:#33484f; font-size:.66rem;
     font-weight:700; border-radius:8px; padding:1px 7px; margin-left:3px; cursor:pointer;}
@@ -1325,6 +1331,20 @@ async function fetchCronicas(){
   return Object.assign({}, git, fb);
 }
 function isLagen(){ return (localStorage.getItem("porra_me")||"")==="Lagen"; }
+function _uid(){ let u=localStorage.getItem("porra_uid");
+  if(!u){ u="u"+Math.random().toString(36).slice(2,10)+Date.now().toString(36); localStorage.setItem("porra_uid",u); } return u; }
+// 👍/👎 a un comentario: un voto por dispositivo, se guarda en /comments/{day}/{id}/reactions/{uid}
+document.addEventListener("click", function(e){
+  const b=e.target.closest(".rxb"); if(!b||!_DBURL) return;
+  const day=b.dataset.d, id=b.dataset.i, v=parseInt(b.dataset.v,10), uid=_uid();
+  const cur=((window._comments||{})[day]||{})[id]; if(!cur) return;
+  if(!cur.reactions) cur.reactions={};
+  const newv=(cur.reactions[uid]===v)?null:v;       // re-clicar tu voto lo quita
+  if(newv===null) delete cur.reactions[uid]; else cur.reactions[uid]=newv;
+  renderTodayComments();                             // feedback inmediato
+  fetch(_DBURL+"/comments/"+day+"/"+id+"/reactions/"+uid+".json",
+    {method:"PUT", headers:{"Content-Type":"application/json"}, body:JSON.stringify(newv)}).catch(()=>{});
+});
 function modBtns(day, id, mod){
   if(!isLagen()) return "";
   let b="";
@@ -1341,10 +1361,16 @@ function renderTodayComments(){
   // feed público: solo comentarios sin moderar. Lagen ve todos (para moderar).
   const ent=Object.entries(c).filter(([id,x])=>x&&x.text).sort((a,b)=>(a[1].ts||0)-(b[1].ts||0));
   const vis=ent.filter(([id,x]) => isLagen() ? true : !x.mod);
+  const me=_uid();
   el.innerHTML = vis.length ? `<div class="cmt-today-h">Comentarios de hoy (${vis.filter(([id,x])=>!x.mod).length})</div>`+
     vis.map(([id,x])=>{ const st=x.mod==="del"?" cmt-del":(x.mod==="priv"?" cmt-priv":"");
       const tag=x.mod==="del"?' <em>(eliminado)</em>':(x.mod==="priv"?' <em>(oculto del feed)</em>':'');
-      return `<div class="cmt-item${st}"><b>${_esc(x.author)}</b>: ${_esc(x.text)}${tag}${modBtns(_todayMx(),id,x.mod)}</div>`;
+      const rx=x.reactions||{}; let up=0,down=0,mine=0;
+      for(const k in rx){ const vv=rx[k]; if(vv===1)up++; else if(vv===-1)down++; if(k===me)mine=vv; }
+      const rxH = x.mod==="del" ? "" : `<span class="cmt-rx">`
+        +`<button class="rxb up${mine===1?' on':''}" data-d="${_todayMx()}" data-i="${id}" data-v="1">👍${up?' '+up:''}</button>`
+        +`<button class="rxb dn${mine===-1?' on':''}" data-d="${_todayMx()}" data-i="${id}" data-v="-1">👎${down?' '+down:''}</button></span>`;
+      return `<div class="cmt-item${st}"><b>${_esc(x.author)}</b>: ${_esc(x.text)}${tag}${rxH}${modBtns(_todayMx(),id,x.mod)}</div>`;
     }).join("") : "";
 }
 document.addEventListener("click", function(e){
