@@ -666,8 +666,7 @@ function forecastActual(){
   for(const st in caps) A.reached[st]=consensusReached(st,caps[st]);
   for(const st of P.koOrder){ for(const slot of (P.koSlots[st]||[])){ if(A.matches[slot.key]) continue;
     const c=consensusScore(slot.key); if(c) A.matches[slot.key]=[c[0],c[1],"",""]; } }
-  for(const k in P.awardPts){ const v={}; for(const part of P.participants){ const a=part.awards[k]; if(a) v[a]=(v[a]||0)+1; }
-    const best=Object.keys(v).sort((x,y)=> v[y]-v[x]||(x<y?-1:1))[0]; if(best) A.awards[k]=best; }
+  // Premios (Bota/Balón/campeón) NO se proyectan: pura especulación a futuro -> 0 para todos.
   return {actual:A,info:real.info};
 }
 function forecastStandings(){ return computeStandings(forecastActual()); }
