@@ -1,121 +1,122 @@
 {
- "day": "2026-06-20",
- "prevDay": "2026-06-19",
- "generatedAt": "2026-06-21T11:39:25Z",
+ "day": "2026-06-21",
+ "prevDay": "2026-06-20",
+ "generatedAt": "2026-06-22T06:40:55Z",
  "results": [
   {
-   "home": "Netherlands",
-   "away": "Sweden",
-   "gh": 5,
-   "ga": 1
+   "home": "Spain",
+   "away": "Saudi Arabia",
+   "gh": 4,
+   "ga": 0
   },
   {
-   "home": "Germany",
-   "away": "Ivory Coast",
-   "gh": 2,
-   "ga": 1
-  },
-  {
-   "home": "Ecuador",
-   "away": "Curaçao",
+   "home": "Belgium",
+   "away": "Iran",
    "gh": 0,
    "ga": 0
   },
   {
-   "home": "Tunisia",
-   "away": "Japan",
-   "gh": 0,
-   "ga": 4
+   "home": "Uruguay",
+   "away": "Cape Verde",
+   "gh": 2,
+   "ga": 2
+  },
+  {
+   "home": "New Zealand",
+   "away": "Egypt",
+   "gh": 1,
+   "ga": 3
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Carrillo",
-   "total": 74,
-   "deltaPts": 2,
-   "deltaPos": 0
-  },
-  {
-   "pos": 2,
-   "name": "Quimnot",
-   "total": 68,
-   "deltaPts": 9,
-   "deltaPos": 0
-  },
-  {
-   "pos": 3,
-   "name": "Abete",
-   "total": 67,
-   "deltaPts": 9,
-   "deltaPos": 0
-  },
-  {
-   "pos": 4,
-   "name": "Jonete",
-   "total": 63,
+   "total": 82,
    "deltaPts": 8,
+   "deltaPos": 0
+  },
+  {
+   "pos": 1,
+   "name": "Quimnot",
+   "total": 82,
+   "deltaPts": 14,
    "deltaPos": 1
   },
   {
-   "pos": 5,
+   "pos": 3,
    "name": "JJ",
-   "total": 61,
-   "deltaPts": 3,
-   "deltaPos": -2
+   "total": 73,
+   "deltaPts": 12,
+   "deltaPos": 2
+  },
+  {
+   "pos": 4,
+   "name": "Abete",
+   "total": 72,
+   "deltaPts": 5,
+   "deltaPos": -1
+  },
+  {
+   "pos": 5,
+   "name": "Jonete",
+   "total": 64,
+   "deltaPts": 1,
+   "deltaPos": -1
   },
   {
    "pos": 6,
    "name": "Lagen",
-   "total": 51,
-   "deltaPts": 3,
+   "total": 56,
+   "deltaPts": 5,
    "deltaPos": 0
   },
   {
    "pos": 7,
    "name": "Guille",
-   "total": 50,
-   "deltaPts": 5,
+   "total": 52,
+   "deltaPts": 2,
    "deltaPos": 0
   },
   {
    "pos": 8,
    "name": "Graells",
-   "total": 46,
-   "deltaPts": 3,
+   "total": 51,
+   "deltaPts": 5,
    "deltaPos": 0
   },
   {
    "pos": 8,
    "name": "Uri",
-   "total": 46,
-   "deltaPts": 3,
+   "total": 51,
+   "deltaPts": 5,
    "deltaPos": 0
   },
   {
    "pos": 10,
    "name": "P-man",
-   "total": 45,
-   "deltaPts": 3,
+   "total": 50,
+   "deltaPts": 5,
    "deltaPos": 0
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 44,
+   "total": 46,
    "deltaPts": 2,
-   "deltaPos": -1
+   "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 29,
-   "deltaPts": 3,
+   "total": 34,
+   "deltaPts": 5,
    "deltaPos": 0
   }
  ],
  "leader": [
-  "Carrillo"
+  "Carrillo",
+  "Quimnot"
  ],
  "farolillo": [
   "Santi"
@@ -123,77 +124,61 @@
  "topGainers": [
   {
    "name": "Quimnot",
-   "deltaPts": 9
+   "deltaPts": 14
   },
   {
-   "name": "Abete",
-   "deltaPts": 9
+   "name": "JJ",
+   "deltaPts": 12
   },
   {
-   "name": "Jonete",
+   "name": "Carrillo",
    "deltaPts": 8
   }
  ],
  "comments": [
   {
-   "text": "Cucurella 🐀",
-   "ts": 1781937652778
+   "text": "Avui juga Espanya. Visca Espanya, visca el Rei, visca l’ordre i la llei.",
+   "ts": 1782030516418
   },
   {
-   "text": "Top 3 remontadas: 1) Barça-PSG; 2) Pelo Ter Stegen; 3) Porra Lagen",
-   "ts": 1781937759982
+   "text": "Joan Garcia; Cucurella, Laporte, Cubarsí, Llorente; Pedri, Rodri, Olmo; Nico, Oyarzabal, Lamine. Algun canvi o amb això es guanya copa?",
+   "ts": 1782032948010
   },
   {
-   "text": "Es dificil pasar más desapercibido en esta porra que Jonete",
-   "ts": 1781942251231
+   "text": "Se viene 2o empate de España",
+   "ts": 1782041121434
   },
   {
-   "text": "La streaper tendrá “porra”?",
-   "ts": 1781943880411
-  },
-  {
-   "text": "P-man de nuevo cerca del farolillo que ya ganó en 2018",
-   "ts": 1781946079549
-  },
-  {
-   "text": "Avui es pren algo i es veu algun match al museu del farolillo",
-   "ts": 1781946441355
-  },
-  {
-   "text": "Amb l'streaper, qui es corri abans fent-se una palla, +10 punts classificació, accepteu?",
-   "ts": 1781947306607
-  },
-  {
-   "text": "Stripper, no streaper. El català correcte, passa’l",
-   "ts": 1781947339331
+   "text": "Los que no han venido hoy a ver el matx, -5 punts",
+   "ts": 1782065113068
   },
   {
    "text": "IN",
-   "ts": 1781947377595
+   "ts": 1782065272799
   },
   {
    "text": "IN",
-   "ts": 1781947417839
+   "ts": 1782065276673
   },
   {
-   "text": "Mano cambiada suma doble",
-   "ts": 1781947473433
+   "text": "Lamentable los que no han venido a ver el partido.",
+   "ts": 1782066547805
   },
   {
-   "text": "Graells Porra App > Instagram",
-   "ts": 1781978522086
+   "text": "Tarjeta groga, proxima al carrer",
+   "ts": 1782068592387
   },
   {
-   "text": "Jonete espabila",
-   "ts": 1781978625842
+   "text": "Graells media tabla ni fu ni fa",
+   "ts": 1782070193925
   },
   {
-   "text": "Stop the count > por qué no te callas",
-   "ts": 1781979527735
+   "text": "Santi, al contrario que su tocayo e ídolo Santiago Abascal, lleva días más rojo que Pablo Iglesias. Por cierto, tan podemita que era y explota a la gente en su bar “Garibaldi”",
+   "ts": 1782073045283
   },
   {
-   "text": "Apaaa la radio Stop the count",
-   "ts": 1781979589526
+   "text": "Lo importante para la crónica de hoy. Que estarìa haciendo Graells hoy para fallar a la quedada para ver el Mundial?\nA) Comprando farolilo en los chinos\nB) Reunion de accionistas Grupo Nomo\nC) Seguia en Boris desde el sabado.\nD) Otros",
+   "ts": 1782080095096
   }
  ]
 }
