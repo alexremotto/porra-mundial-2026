@@ -223,6 +223,8 @@
     text-shadow:0 1px 2px rgba(0,0,0,.35);}
   .roja-match{margin-top:6px; font-size:1.05rem; font-weight:800;
     text-shadow:0 1px 2px rgba(0,0,0,.4);}
+  .roja-when{margin-top:6px; font-size:.9rem; font-weight:800; color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.35);}
+  .roja-when .roja-tz{font-size:.72rem; font-weight:600; opacity:.85;}
   .roja-cd{display:flex; gap:8px; margin-top:9px;}
   .cd-box{background:rgba(0,0,0,.28); border-radius:8px; padding:6px 0; flex:1;
     text-align:center;}
@@ -951,10 +953,14 @@ function setupTopBanner(espn){
       if(t>now-2*3600*1000 && (next===null||t<next.t)) next={t,m}; } }
     if(!next){ el.innerHTML=""; _bnTarget=null; return; }
     _bnTarget=next.t; const rival=next.m.home==="Spain"?next.m.away:next.m.home;
+    const _d=new Date(next.m.date);
+    const _fecha=_d.toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long",timeZone:"Europe/Madrid"});
+    const _hora=_d.toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit",timeZone:"Europe/Madrid"});
     el.innerHTML=`<div class="roja">
       <div class="roja-top"><span class="flag">🇪🇸</span><span class="jersey">👕</span>
         Próximo partido de La Roja <span class="flag">🇪🇸</span></div>
       <div class="roja-match">🇪🇸 España &nbsp;vs&nbsp; ${rival}</div>
+      <div class="roja-when">📅 ${_fecha} · ${_hora}h <span class="roja-tz">(hora España)</span></div>
       <div class="roja-cd" id="banner-cd"></div>
       <div class="roja-loc">📍 Santjoanistes 7</div></div>`;
   } else if(cfg.type==="event"){
