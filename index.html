@@ -167,6 +167,8 @@
   .fc-note{font-size:.74rem; color:#5a6b72; background:#f3f6f7; border:1px solid #e0e8ea;
     border-radius:8px; padding:9px 11px; margin-bottom:10px; line-height:1.4;}
   .fc-note b{color:#16323a;}
+  .fc-pred{margin-top:7px; padding-top:7px; border-top:1px solid #e0e8ea; color:#33474e;}
+  .fc-pred b{color:var(--teal);} .fc-pm{display:block; margin-top:2px; color:#8a99a0; font-size:.7rem;}
   .fc-eq{display:inline-block; width:16px; color:#b9c3c7; margin-right:5px; font-weight:800;}
   .fc-est{display:inline-block; margin-left:6px; font-size:.56rem; font-weight:800; color:#8a6d1a;
     background:#fdf0d2; border-radius:5px; padding:1px 5px; vertical-align:middle;}
@@ -424,7 +426,8 @@
       <button class="ttg active" data-mode="actual">🏆 Actual</button>
       <button class="ttg" data-mode="forecast">🔮 Estimada final</button>
     </div>
-    <div id="fc-note" class="fc-note" style="display:none">Estimación de la clasificación <b>al final del torneo</b> según el escenario de <b>consenso</b> de la peña (lo que falta se proyecta con el 1X2 y los clasificados más votados). Son los puntos del torneo completo, por eso mucho más altos que los actuales. ▲▼ = puestos que ganaría/perdería respecto a ahora.</div>
+    <div id="fc-note" class="fc-note" style="display:none">Estimación de la clasificación <b>al final del torneo</b> según el escenario de <b>consenso</b> de la peña (lo que falta se proyecta con el 1X2 y los clasificados más votados). Son los puntos del torneo completo, por eso mucho más altos que los actuales. ▲▼ = puestos que ganaría/perdería respecto a ahora.
+      <div id="fc-pred" class="fc-pred"></div></div>
     <table>
       <thead><tr>
         <th style="width:74px">Pos</th><th style="text-align:left;padding-left:14px">Jugador</th>
@@ -869,6 +872,14 @@ function renderTable(){
   const data = mode==="forecast"
     ? (window._csForecast||(window._csForecast=forecastStandings()))
     : (window._csActual||computeStandings(buildActual(window._espn||[])));
+  if(mode==="forecast"){
+    const real=window._csActual||computeStandings(buildActual(window._espn||[]));
+    const rs=real.standings.reduce((s,r)=>s+r.total,0), es=data.standings.reduce((s,r)=>s+r.total,0);
+    const rp = es>0?Math.round(rs/es*100):0; const m=real.meta||{};
+    const el=document.getElementById("fc-pred");
+    if(el) el.innerHTML=`📊 <b>Predictibilidad:</b> ~${rp}% ya es real (resultados jugados) · ~${100-rp}% previsión.`
+      +` <span class="fc-pm">${m.matches_played||0}/${m.matches_total||0} partidos jugados; las rondas KO, aún por venir, son las que más puntúan.</span>`;
+  }
   renderStandings(data, mode);
 }
 const ROUND_NAMES={grupos:"Fase de grupos",r32:"Dieciseisavos",r16:"Octavos",qf:"Cuartos",sf:"Semifinales",third:"3er y 4º puesto",final:"Final"};
