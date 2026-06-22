@@ -159,6 +159,37 @@
     background:#eef2f3; color:#33474e; border:1px solid #d3dde0; border-radius:9px;
     font-weight:700; font-size:.82rem; cursor:pointer; -webkit-tap-highlight-color:transparent;}
   .load-older:active{background:#e2e8ea;}
+  /* Toggle Actual / Estimada */
+  .tbl-toggle{display:flex; gap:6px; margin-bottom:10px;}
+  .ttg{flex:1; padding:9px; border:1px solid #d3dde0; background:#f4f7f8; color:#5a6b72;
+    border-radius:9px; font-weight:700; font-size:.86rem; cursor:pointer; -webkit-tap-highlight-color:transparent;}
+  .ttg.active{background:var(--teal); color:#fff; border-color:var(--teal);}
+  .fc-note{font-size:.74rem; color:#5a6b72; background:#f3f6f7; border:1px solid #e0e8ea;
+    border-radius:8px; padding:9px 11px; margin-bottom:10px; line-height:1.4;}
+  .fc-note b{color:#16323a;}
+  .fc-eq{display:inline-block; width:16px; color:#b9c3c7; margin-right:5px; font-weight:800;}
+  /* Futuros: grupos */
+  #grp-list{display:grid; grid-template-columns:repeat(6,1fr); gap:6px; margin:4px 0 12px;}
+  .grp-btn{padding:9px 0; border:1px solid #d3dde0; background:#f4f7f8; color:#33474e;
+    border-radius:8px; font-weight:800; font-size:.92rem; cursor:pointer; -webkit-tap-highlight-color:transparent;}
+  .grp-btn.active{background:var(--teal); color:#fff; border-color:var(--teal);}
+  .grp-head{font-weight:800; color:#16323a; margin:2px 0 7px; font-size:1rem;}
+  .grp-status{font-weight:600; font-size:.74rem; color:#8a99a0;}
+  .grp-table{margin-bottom:12px;}
+  .gt-row{display:flex; align-items:center; gap:9px; padding:6px 8px; border-bottom:1px solid var(--sep); font-size:.92rem;}
+  .gt-pos{width:20px; text-align:center; font-weight:800; color:#9aa7ac; border-radius:5px;}
+  .gt-pos.q{background:#d5f0e6; color:#0c7a52;} .gt-pos.q3{background:#fdf0d2; color:#9a7016;}
+  .gt-team{flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .gt-pts{font-weight:800; color:#16323a;}
+  .grp-acc-h{font-size:.8rem; font-weight:700; color:#33474e; margin:4px 0 6px;}
+  .grp-acc-h small{font-weight:500; color:#8a99a0;} .ok-t{color:#0c7a52;}
+  .acc-row{display:flex; align-items:center; gap:8px; padding:5px 4px; border-bottom:1px solid var(--sep);}
+  .acc-name{width:64px; font-size:.82rem; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .acc-cells{flex:1; display:flex; gap:4px;}
+  .ac{display:inline-flex; align-items:center; justify-content:center; width:26px; height:24px;
+    border-radius:6px; font-size:.95rem; background:#eef1f2; border:1.5px solid transparent;}
+  .ac.ok{background:#d5f0e6; border-color:#37b083;} .ac.no{background:#fde3e0; border-color:#e2877e;}
+  .acc-n{width:30px; text-align:right; font-weight:800; font-size:.82rem; color:#16323a;}
   .match-row{display:flex; align-items:center; gap:7px; padding:9px 10px; cursor:pointer;}
   .m-time{width:62px; font-size:.64rem; color:#7a888e; line-height:1.25; flex-shrink:0;}
   .m-teams{flex:1; min-width:0; display:flex; align-items:center; justify-content:center;
@@ -380,13 +411,18 @@
   <div class="tabs">
     <button class="tab active" data-tab="principal"><span class="t-emoji">🏆</span><span class="t-lab">Tabla</span></button>
     <button class="tab" data-tab="partidos"><span class="t-emoji">⚽</span><span class="t-lab">Partidos</span></button>
-    <button class="tab" data-tab="premios"><span class="t-emoji">🥇</span><span class="t-lab">Bota/Balón</span></button>
+    <button class="tab" data-tab="premios"><span class="t-emoji">🔮</span><span class="t-lab">Futuros</span></button>
     <button class="tab" data-tab="cronica" id="tab-cronica" style="display:none"><span class="tab-badge" id="cron-badge" style="display:none"></span><span class="t-emoji">📰</span><span class="t-lab">Crónica</span></button>
   </div>
 
   <section class="panel active" id="panel-principal">
     <div id="glovo" style="display:none"></div>
     <div id="livebanner" style="display:none"></div>
+    <div class="tbl-toggle">
+      <button class="ttg active" data-mode="actual">🏆 Actual</button>
+      <button class="ttg" data-mode="forecast">🔮 Estimada final</button>
+    </div>
+    <div id="fc-note" class="fc-note" style="display:none">Estimación de la clasificación <b>al final del torneo</b> según el escenario de <b>consenso</b> de la peña (lo que falta se proyecta con el 1X2 y los clasificados más votados). Son los puntos del torneo completo, por eso mucho más altos que los actuales. ▲▼ = puestos que ganaría/perdería respecto a ahora.</div>
     <table>
       <thead><tr>
         <th style="width:74px">Pos</th><th style="text-align:left;padding-left:14px">Jugador</th>
@@ -410,6 +446,12 @@
   </section>
 
   <section class="panel" id="panel-premios">
+    <div class="pcard">
+      <h3>🔮 Grupos — clasificación y aciertos</h3>
+      <div class="psub">Toca un grupo para ver su clasificación y quién la está clavando</div>
+      <div id="grp-list"></div>
+      <div id="grp-detail"></div>
+    </div>
     <div class="pcard">
       <h3>👟 Bota de Oro — Máximos goleadores</h3>
       <div class="psub">Datos en vivo de ESPN · World Cup 2026</div>
@@ -571,6 +613,107 @@ function computeStandings(S){
   let played=0; for(const k in S.info){ const st=S.info[k].state; if(st==="in"||st==="post") played++; }
   return {standings:rows,block_labels:P.blockLabels,
     meta:{participants:rows.length,matches_played:played,matches_total:P.meta.matches_total}}; }
+
+/* ===== FORECAST: "Puntuación final estimada" (escenario CONSENSO de la peña) =====
+   Construye un "actual" proyectado = resultados reales + consenso para lo que falta
+   (partidos de grupo -> tablas -> clasificados; rondas KO por consenso de la peña),
+   y lo pasa por el mismo motor de puntuación. */
+let _slotMap=null;
+function slotByKey(k){ if(!_slotMap){ _slotMap={}; for(const pk in P.groupSlots){ const s=P.groupSlots[pk]; _slotMap[s.key]=s; } } return _slotMap[k]; }
+function _allGroupKeys(){ const a=[]; for(const l in P.groupByLetter) for(const k of P.groupByLetter[l]) a.push(k); return a; }
+function consensusScore(key){           // signo más votado y, dentro, el marcador exacto más repetido
+  const votes=[]; for(const part of P.participants){ const pm=part.matches[key]; if(pm&&pm[0]!=null&&pm[1]!=null) votes.push([pm[0],pm[1]]); }
+  if(!votes.length) return null;
+  const sg={}; for(const v of votes){ const s=sign(v[0]-v[1]); sg[s]=(sg[s]||0)+1; }
+  const bs=Object.keys(sg).sort((a,b)=> sg[b]-sg[a])[0]*1;
+  const ex={}; for(const v of votes){ if(sign(v[0]-v[1])!==bs) continue; const t=v[0]+"-"+v[1]; ex[t]=(ex[t]||0)+1; }
+  return Object.keys(ex).sort((a,b)=> ex[b]-ex[a])[0].split("-").map(Number);
+}
+function groupTableFull(keys,info){     // {arr:[{team,pts,gd,gf}] ordenado, done, total}
+  const st={}; let done=0;
+  for(const k of keys){ const m=info[k]; if(!m||!m.final) continue; done++;
+    const gh=m.gh,ga=m.ga,home=m.home,away=m.away;
+    st[home]=st[home]||{team:home,pts:0,gd:0,gf:0}; st[away]=st[away]||{team:away,pts:0,gd:0,gf:0};
+    if(gh>ga)st[home].pts+=3; else if(gh<ga)st[away].pts+=3; else{st[home].pts++;st[away].pts++;}
+    st[home].gd+=gh-ga; st[away].gd+=ga-gh; st[home].gf+=gh; st[away].gf+=ga; }
+  const arr=Object.values(st).sort((a,b)=> b.pts-a.pts||b.gd-a.gd||b.gf-a.gf||(a.team<b.team?-1:1));
+  return {arr,done,total:keys.length};
+}
+function projectR32(info){               // top2 de cada grupo + 8 mejores terceros (formato 48 equipos)
+  const direct=[], thirds=[];
+  for(const l in P.groupByLetter){ const t=groupTableFull(P.groupByLetter[l],info).arr;
+    if(t[0])direct.push(t[0].team); if(t[1])direct.push(t[1].team); if(t[2])thirds.push(t[2]); }
+  thirds.sort((a,b)=> b.pts-a.pts||b.gd-a.gd||b.gf-a.gf||(a.team<b.team?-1:1));
+  const nThird=Math.max(0,(P.koSlots.r32.length*2)-direct.length);
+  return direct.concat(thirds.slice(0,nThird).map(x=>x.team));
+}
+function consensusReached(stage,n){      // equipos más votados por la peña para llegar a esa ronda
+  const v={}; for(const part of P.participants){ for(const t of (part.reached[stage]||[])) v[t]=(v[t]||0)+1; }
+  return Object.keys(v).sort((a,b)=> v[b]-v[a]||(a<b?-1:1)).slice(0,n);
+}
+function forecastActual(){
+  const real=buildActual(window._espn||[]);
+  const A={matches:Object.assign({},real.actual.matches),
+           positions:Object.assign({},real.actual.positions),
+           reached:Object.assign({},real.actual.reached), awards:{}};
+  for(const k of _allGroupKeys()){ if(A.matches[k]) continue; const s=slotByKey(k); const c=consensusScore(k);
+    if(s&&c) A.matches[k]=[c[0],c[1],s.home,s.away]; }
+  const ginfo={}; for(const k of _allGroupKeys()){ const m=A.matches[k]; if(m) ginfo[k]={gh:m[0],ga:m[1],home:m[2],away:m[3],final:true}; }
+  for(const l in P.groupByLetter){ const t=groupTableFull(P.groupByLetter[l],ginfo);
+    if(t.done===t.total) t.arr.forEach((x,i)=> A.positions[l+"-"+(i+1)]=x.team); }
+  A.reached.r32=projectR32(ginfo);
+  const caps={r16:16,qf:8,sf:4,third:2,final:2};
+  for(const st in caps) A.reached[st]=consensusReached(st,caps[st]);
+  for(const st of P.koOrder){ for(const slot of (P.koSlots[st]||[])){ if(A.matches[slot.key]) continue;
+    const c=consensusScore(slot.key); if(c) A.matches[slot.key]=[c[0],c[1],"",""]; } }
+  for(const k in P.awardPts){ const v={}; for(const part of P.participants){ const a=part.awards[k]; if(a) v[a]=(v[a]||0)+1; }
+    const best=Object.keys(v).sort((x,y)=> v[y]-v[x]||(x<y?-1:1))[0]; if(best) A.awards[k]=best; }
+  return {actual:A,info:real.info};
+}
+function forecastStandings(){ return computeStandings(forecastActual()); }
+
+/* ===== FUTUROS: grupos -> clasificación actual + aciertos de cada jugador ===== */
+function groupTeams(letter){ const a=[]; for(const pk in P.groupSlots){ const s=P.groupSlots[pk];
+  if(s.group===letter){ if(!a.includes(s.home))a.push(s.home); if(!a.includes(s.away))a.push(s.away); } } return a; }
+function currentGroupOrder(letter,info){
+  const t=groupTableFull(P.groupByLetter[letter],info);
+  const order=t.arr.map(x=>x.team);
+  for(const tm of groupTeams(letter)) if(!order.includes(tm)) order.push(tm);
+  return {order,table:t.arr,done:t.done,total:t.total};
+}
+function renderFuturos(){
+  const list=document.getElementById("grp-list"); if(!list) return;
+  if(!list.dataset.built){
+    list.innerHTML=Object.keys(P.groupByLetter).sort().map(l=>`<button class="grp-btn" data-g="${l}">${l}</button>`).join("");
+    list.dataset.built="1";
+    list.querySelectorAll(".grp-btn").forEach(b=>b.addEventListener("click",()=>{
+      list.querySelectorAll(".grp-btn").forEach(x=>x.classList.toggle("active",x===b)); showGroup(b.dataset.g); }));
+  }
+  const sel=list.querySelector(".grp-btn.active")||list.querySelector(".grp-btn");
+  if(sel){ sel.classList.add("active"); showGroup(sel.dataset.g); }
+}
+function showGroup(letter){
+  const det=document.getElementById("grp-detail"); if(!det) return;
+  const info=buildActual(window._espn||[]).info;
+  const {order,table,done,total}=currentGroupOrder(letter,info);
+  const fl=t=>P.flags[t]||"";
+  const posTeam={}; order.forEach((t,i)=> posTeam[i+1]=t);
+  const tbl=order.map((t,i)=>{ const row=table.find(x=>x.team===t);
+    return `<div class="gt-row"><span class="gt-pos ${i<2?'q':(i===2?'q3':'')}">${i+1}</span>`
+      +`<span class="gt-team">${fl(t)} ${t}</span><span class="gt-pts">${row?row.pts:'–'}</span></div>`; }).join("");
+  const accs=P.participants.map(part=>{ let n=0; const cells=[];
+    for(let i=1;i<=4;i++){ const pred=part.positions[letter+"-"+i]; const ok=pred&&pred===posTeam[i]; if(ok)n++;
+      cells.push(`<span class="ac ${ok?'ok':(pred?'no':'')}" title="${i}º: ${pred||'?'}">${pred?fl(pred):'·'}</span>`); }
+    return {name:part.name,n,cells:cells.join("")}; });
+  accs.sort((a,b)=> b.n-a.n || a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
+  const accH=accs.map(a=>`<div class="acc-row"><span class="acc-name">${a.name}</span>`
+    +`<span class="acc-cells">${a.cells}</span><span class="acc-n">${a.n}/4</span></div>`).join("");
+  const status = done>=total ? "final" : `en curso · ${done}/${total}`;
+  det.innerHTML=`<div class="grp-head">Grupo ${letter} <span class="grp-status">${status}</span></div>`
+    +`<div class="grp-table">${tbl}</div>`
+    +`<div class="grp-acc-h">Aciertos por jugador <small>su orden previsto · <b class="ok-t">verde</b>=posición acertada</small></div>`
+    +`<div class="grp-acc">${accH}</div>`;
+}
 function matchesView(S){
   const items=P.fixtures.map(fx=>{ const a=S.info[fx.key];
     const home=a?a.home:fx.home,away=a?a.away:fx.away; const state=a?a.state:"pre";
@@ -612,9 +755,16 @@ document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
   t.classList.add("active");
   document.getElementById("panel-"+t.dataset.tab).classList.add("active");
   if(t.dataset.tab==="partidos") scrollToFocus();
-  if(t.dataset.tab==="premios") loadScorers();
+  if(t.dataset.tab==="premios"){ renderFuturos(); loadScorers(); }
   if(t.dataset.tab==="cronica"){ const u=cronUnseen();
     renderCronica(window._espn).then(()=>{ if(u) showCronPopup(); markCronSeen(); }); }
+}));
+document.querySelectorAll(".ttg").forEach(b=>b.addEventListener("click",()=>{
+  window._tableMode=b.dataset.mode;
+  document.querySelectorAll(".ttg").forEach(x=>x.classList.toggle("active", x===b));
+  openName=null;
+  if(window._tableMode==="forecast") window._csForecast=forecastStandings();
+  renderTable();
 }));
 function rowClass(r,idx,maxPos){ if(r.pos===maxPos&&maxPos>3) return "rank-last";
   if(r.pos===1)return "rank-1"; if(r.pos===2)return "rank-2"; if(r.pos===3)return "rank-3";
@@ -663,24 +813,40 @@ function detailHTML(r){
       rows+=`<div class="row ${v===0?'zero':''}"><span>${labels[key]}</span><span class="val">${v}</span></div>`; }
   }
   return `<tr class="detail"><td colspan="3">${head}${chart}<div class="detail-inner">${rows}</div></td></tr>`; }
-function renderStandings(data){
+function renderStandings(data, mode){
+  mode = mode || window._tableMode || "actual";
   const tb=document.getElementById("tbody"); const rows=data.standings||[];
   if(!rows.length){ tb.innerHTML=`<tr><td colspan="3" class="empty">Sin participantes.</td></tr>`; return; }
   const maxPos=Math.max.apply(null,rows.map(r=>r.pos)); const prev=window._prevPos;
+  const actPos={}; if(mode==="forecast"&&window._csActual) window._csActual.standings.forEach(r=>actPos[r.name]=r.pos);
   let html="";
   rows.forEach((r,idx)=>{ const cls=rowClass(r,idx,maxPos);
     const lantern = cls==="rank-last" ? `<span class="lantern">🏮</span> ` : "";
     const tg = (window.PLAYER_TAGS||{})[r.name];
     const tag = tg ? `<span class="ptag ${tg.cls||""}">${tg.t}</span>` : "";
+    let mark;
+    if(mode==="forecast"){ const ap=actPos[r.name], d=(ap!=null)?(ap-r.pos):0;
+      mark = d>0?`<span class="arrow a-up">▲${d}</span>`:(d<0?`<span class="arrow a-down">▼${-d}</span>`:`<span class="fc-eq">·</span>`); }
+    else mark = arrowHTML(r.name,r.pos,prev);
     html+=`<tr class="clik ${cls}" data-name="${r.name}">
-      <td class="pos">${arrowHTML(r.name,r.pos,prev)}${r.pos}</td>
+      <td class="pos">${mark}${r.pos}</td>
       <td class="player">${lantern}${r.name}${tag}</td><td class="pts">${r.total}</td></tr>`;
     if(r.name===openName) html+=detailHTML(r); });
   tb.innerHTML=html;
   tb.querySelectorAll("tr[data-name]").forEach(tr=>tr.addEventListener("click",()=>{
-    openName=(openName===tr.dataset.name)?null:tr.dataset.name; renderStandings(data); }));
+    openName=(openName===tr.dataset.name)?null:tr.dataset.name; renderStandings(data,mode); }));
   const m=data.meta||{};
-  document.getElementById("meta").innerHTML=`${m.participants||0} jugadores · ${m.matches_played||0}/${m.matches_total||0} partidos`;
+  document.getElementById("meta").innerHTML = mode==="forecast"
+    ? `🔮 estimación final · consenso`
+    : `${m.participants||0} jugadores · ${m.matches_played||0}/${m.matches_total||0} partidos`;
+}
+function renderTable(){
+  const mode=window._tableMode||"actual";
+  const note=document.getElementById("fc-note"); if(note) note.style.display = mode==="forecast"?"block":"none";
+  const data = mode==="forecast"
+    ? (window._csForecast||(window._csForecast=forecastStandings()))
+    : (window._csActual||computeStandings(buildActual(window._espn||[])));
+  renderStandings(data, mode);
 }
 const ROUND_NAMES={grupos:"Fase de grupos",r32:"Dieciseisavos",r16:"Octavos",qf:"Cuartos",sf:"Semifinales",third:"3er y 4º puesto",final:"Final"};
 function fmtKick(it){ const iso=it.espn_date||it.kickoff; if(!iso) return "";
@@ -1322,10 +1488,12 @@ async function tick(){
   try{
     espn=await fetchESPN();
     window._prevPos = prevPositions(espn);
+    window._espn=espn;
     const S=buildActual(espn);
     const cs=computeStandings(S);
-    window._espn=espn; window._cs=cs.standings; lanternData(espn);   // pobla _lanternDays antes de pintar
-    renderStandings(cs);
+    window._csActual=cs; window._cs=cs.standings; lanternData(espn);   // pobla _lanternDays antes de pintar
+    window._csForecast = (window._tableMode==="forecast") ? forecastStandings() : null;
+    renderTable();
     const mv=matchesView(S); window._mv=mv; renderMatches(mv); setupTopBanner(espn);
     renderLiveBanner(espn, mv); renderLanternRecord(espn); checkGlovo();
     if((P.features||{}).chronicle) renderCronica(espn);
