@@ -1,184 +1,301 @@
 {
- "day": "2026-06-21",
- "prevDay": "2026-06-20",
- "generatedAt": "2026-06-22T10:35:04Z",
+ "day": "2026-06-22",
+ "prevDay": "2026-06-21",
+ "generatedAt": "2026-06-23T06:51:33Z",
  "results": [
   {
-   "home": "Spain",
-   "away": "Saudi Arabia",
-   "gh": 4,
-   "ga": 0
-  },
-  {
-   "home": "Belgium",
-   "away": "Iran",
-   "gh": 0,
-   "ga": 0
-  },
-  {
-   "home": "Uruguay",
-   "away": "Cape Verde",
+   "home": "Argentina",
+   "away": "Austria",
    "gh": 2,
+   "ga": 0
+  },
+  {
+   "home": "France",
+   "away": "Iraq",
+   "gh": 3,
+   "ga": 0
+  },
+  {
+   "home": "Norway",
+   "away": "Senegal",
+   "gh": 3,
    "ga": 2
   },
   {
-   "home": "New Zealand",
-   "away": "Egypt",
+   "home": "Jordan",
+   "away": "Algeria",
    "gh": 1,
-   "ga": 3
+   "ga": 2
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Carrillo",
-   "total": 82,
-   "deltaPts": 8,
+   "total": 91,
+   "deltaPts": 9,
    "deltaPos": 0
   },
   {
    "pos": 1,
-   "name": "Quimnot",
-   "total": 82,
-   "deltaPts": 14,
-   "deltaPos": 1
+   "name": "JJ",
+   "total": 91,
+   "deltaPts": 18,
+   "deltaPos": 2
   },
   {
    "pos": 3,
-   "name": "JJ",
-   "total": 73,
-   "deltaPts": 12,
-   "deltaPos": 2
+   "name": "Quimnot",
+   "total": 89,
+   "deltaPts": 7,
+   "deltaPos": -2
   },
   {
    "pos": 4,
    "name": "Abete",
-   "total": 72,
-   "deltaPts": 5,
-   "deltaPos": -1
+   "total": 88,
+   "deltaPts": 16,
+   "deltaPos": 0
   },
   {
    "pos": 5,
    "name": "Jonete",
-   "total": 64,
-   "deltaPts": 1,
-   "deltaPos": -1
+   "total": 80,
+   "deltaPts": 16,
+   "deltaPos": 0
   },
   {
    "pos": 6,
-   "name": "Lagen",
-   "total": 56,
-   "deltaPts": 5,
-   "deltaPos": 0
+   "name": "Uri",
+   "total": 70,
+   "deltaPts": 19,
+   "deltaPos": 2
   },
   {
    "pos": 7,
-   "name": "Guille",
-   "total": 52,
-   "deltaPts": 2,
-   "deltaPos": 0
+   "name": "Lagen",
+   "total": 69,
+   "deltaPts": 13,
+   "deltaPos": -1
   },
   {
    "pos": 8,
+   "name": "P-man",
+   "total": 66,
+   "deltaPts": 16,
+   "deltaPos": 2
+  },
+  {
+   "pos": 9,
    "name": "Graells",
-   "total": 51,
-   "deltaPts": 5,
-   "deltaPos": 0
-  },
-  {
-   "pos": 8,
-   "name": "Uri",
-   "total": 51,
-   "deltaPts": 5,
-   "deltaPos": 0
+   "total": 60,
+   "deltaPts": 9,
+   "deltaPos": -1
   },
   {
    "pos": 10,
-   "name": "P-man",
-   "total": 50,
-   "deltaPts": 5,
-   "deltaPos": 0
+   "name": "Guille",
+   "total": 58,
+   "deltaPts": 6,
+   "deltaPos": -3
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 46,
-   "deltaPts": 2,
+   "total": 52,
+   "deltaPts": 6,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 34,
-   "deltaPts": 5,
+   "total": 43,
+   "deltaPts": 9,
    "deltaPos": 0
   }
  ],
  "leader": [
   "Carrillo",
-  "Quimnot"
+  "JJ"
  ],
  "farolillo": [
   "Santi"
  ],
  "topGainers": [
   {
-   "name": "Quimnot",
-   "deltaPts": 14
+   "name": "Uri",
+   "deltaPts": 19
   },
   {
    "name": "JJ",
-   "deltaPts": 12
+   "deltaPts": 18
   },
   {
-   "name": "Carrillo",
-   "deltaPts": 8
+   "name": "Abete",
+   "deltaPts": 16
   }
  ],
  "comments": [
   {
-   "text": "Avui juga Espanya. Visca Espanya, visca el Rei, visca l’ordre i la llei.",
-   "ts": 1782030516418
+   "text": "Sigo sin entender porque no se penaliza a JJ por entrar a media porra empezada con 15 partidos poniendo resultado ya real",
+   "ts": 1782124486241,
+   "likes": 6,
+   "dislikes": 0,
+   "score": 6
   },
   {
-   "text": "Joan Garcia; Cucurella, Laporte, Cubarsí, Llorente; Pedri, Rodri, Olmo; Nico, Oyarzabal, Lamine. Algun canvi o amb això es guanya copa?",
-   "ts": 1782032948010
+   "text": "Doña victoria pronunciate",
+   "ts": 1782155714617,
+   "likes": 5,
+   "dislikes": 0,
+   "score": 5
   },
   {
-   "text": "Se viene 2o empate de España",
-   "ts": 1782041121434
+   "text": "Estimada final: Carrolillo rojo",
+   "ts": 1782145798463,
+   "likes": 4,
+   "dislikes": 0,
+   "score": 4
   },
   {
-   "text": "Los que no han venido hoy a ver el matx, -5 punts",
-   "ts": 1782065113068
+   "text": "ANKARA MESSI ANKARA MESSI",
+   "ts": 1782154944744,
+   "likes": 4,
+   "dislikes": 0,
+   "score": 4
   },
   {
-   "text": "IN",
-   "ts": 1782065272799
+   "text": "Cucurella se coma un polla > se come una paella",
+   "ts": 1782108641021,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
   },
   {
-   "text": "IN",
-   "ts": 1782065276673
+   "text": "Porra santi = porra carrillo con ruedas de bicicleta",
+   "ts": 1782108727443,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
   },
   {
-   "text": "Lamentable los que no han venido a ver el partido.",
-   "ts": 1782066547805
+   "text": "Pau vino. Pago la porra. La ganó. Cobró y se fue. Todo esto sin hablar ni decir nada. Debate: no hay puntos por show? Y negativos por aburribus?",
+   "ts": 1782124562115,
+   "likes": 3,
+   "dislikes": 1,
+   "score": 2
   },
   {
-   "text": "Tarjeta groga, proxima al carrer",
-   "ts": 1782068592387
+   "text": "Solo pocas conocen la verdadera PORRA de don Dr. Soldevila",
+   "ts": 1782127860572,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
   },
   {
-   "text": "Graells media tabla ni fu ni fa",
-   "ts": 1782070193925
+   "text": "HELIO Varela, de Cabo Verde, se convirtió en el segundo jugador com nombre/apellido de elemento quimico que marca en toda la historia del mundial. El primero fue Fernando HIERRO",
+   "ts": 1782164899601,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
   },
   {
-   "text": "Santi, al contrario que su tocayo e ídolo Santiago Abascal, lleva días más rojo que Pablo Iglesias. Por cierto, tan podemita que era y explota a la gente en su bar “Garibaldi”",
-   "ts": 1782073045283
+   "text": "Esta cayendo la del pulpo eguino en el francia - irak",
+   "ts": 1782171480336,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
   },
   {
-   "text": "Lo importante para la crónica de hoy. Que estarìa haciendo Graells hoy para fallar a la quedada para ver el Mundial?\nA) Comprando farolilo en los chinos\nB) Reunion de accionistas Grupo Nomo\nC) Seguia en Boris desde el sabado.\nD) Otros",
-   "ts": 1782080095096
+   "text": "Magui corceiro no opta a balon de oro? No entenc",
+   "ts": 1782124658935,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Hoy es el cumple del perico del grupo, don Guillermo. Hoy de momento no se ha quejado del sistema de puntuación de la porra… ¿cuánto tardará en hacerlo…? Es una incógnita…",
+   "ts": 1782127408786,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Quien falla más, Fallant Torres o el Dr Santiago Soldevila rellenando la porra?",
+   "ts": 1782127480415,
+   "likes": 2,
+   "dislikes": 1,
+   "score": 1
+  },
+  {
+   "text": "Avalos 16 años de carcel. Perro Sanxe hijo de puta dimite desgraciado.",
+   "ts": 1782155277129,
+   "likes": 2,
+   "dislikes": 1,
+   "score": 1
+  },
+  {
+   "text": "A tomar por saco el CM del Atl. Madrid",
+   "ts": 1782166051753,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Lamintable protocolo tormentas",
+   "ts": 1782169770918,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Quien fue el farolillo 2018?",
+   "ts": 1782171528862,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Tarta de queso siempre sin mermelada como miguel angel roman",
+   "ts": 1782171584897,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "La mayor ausencia del mundial, a parte de algun acierto de santi, es el gran Roony Bardghji",
+   "ts": 1782172054453,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Magui Corceiro ya ganó dos balones de oro durante su pubertad, ganará una tercera…??",
+   "ts": 1782127565055,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Niña con sindrome de down chocando la mano > 11 negros franceses y 11 moros talibanes",
+   "ts": 1782162005828,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Cabo Verde ganaria a la seleccion catalana. Puta cataluña. Viva VOX. Vida el ilustrísimo y grande España DOCTOR SOLDEVILA. Por una grande y libre. Viva las gordas sin tetas que me dan de comer y me pagan todas mis excedidas.",
+   "ts": 1782119148788,
+   "likes": 0,
+   "dislikes": 3,
+   "score": -3
+  },
+  {
+   "text": "Vicky mañana te dice griezmann que lo deja todo por ti. Dale 👍🏽 si aceptas su propuesta. Dale 👎🏽 si seguimos con Lagen otra temporada mas.",
+   "ts": 1782157456352,
+   "likes": 0,
+   "dislikes": 4,
+   "score": -4
   }
  ]
 }
