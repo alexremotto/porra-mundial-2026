@@ -1,120 +1,121 @@
 {
- "day": "2026-06-22",
- "prevDay": "2026-06-21",
- "generatedAt": "2026-06-23T10:35:07Z",
+ "day": "2026-06-23",
+ "prevDay": "2026-06-22",
+ "generatedAt": "2026-06-24T06:37:30Z",
  "results": [
   {
-   "home": "Argentina",
-   "away": "Austria",
-   "gh": 2,
+   "home": "Portugal",
+   "away": "Uzbekistan",
+   "gh": 5,
    "ga": 0
   },
   {
-   "home": "France",
-   "away": "Iraq",
-   "gh": 3,
+   "home": "England",
+   "away": "Ghana",
+   "gh": 0,
    "ga": 0
   },
   {
-   "home": "Norway",
-   "away": "Senegal",
-   "gh": 3,
-   "ga": 2
+   "home": "Panama",
+   "away": "Croatia",
+   "gh": 0,
+   "ga": 1
   },
   {
-   "home": "Jordan",
-   "away": "Algeria",
+   "home": "Colombia",
+   "away": "DR Congo",
    "gh": 1,
-   "ga": 2
+   "ga": 0
   }
  ],
  "standings": [
   {
    "pos": 1,
-   "name": "Carrillo",
-   "total": 91,
+   "name": "Abete",
+   "total": 97,
    "deltaPts": 9,
+   "deltaPos": 3
+  },
+  {
+   "pos": 1,
+   "name": "Carrillo",
+   "total": 97,
+   "deltaPts": 6,
    "deltaPos": 0
   },
   {
    "pos": 1,
    "name": "JJ",
-   "total": 91,
-   "deltaPts": 18,
-   "deltaPos": 2
-  },
-  {
-   "pos": 3,
-   "name": "Quimnot",
-   "total": 89,
-   "deltaPts": 7,
-   "deltaPos": -2
+   "total": 97,
+   "deltaPts": 6,
+   "deltaPos": 0
   },
   {
    "pos": 4,
-   "name": "Abete",
-   "total": 88,
-   "deltaPts": 16,
-   "deltaPos": 0
+   "name": "Quimnot",
+   "total": 95,
+   "deltaPts": 6,
+   "deltaPos": -1
   },
   {
    "pos": 5,
-   "name": "Jonete",
-   "total": 80,
-   "deltaPts": 16,
-   "deltaPos": 0
-  },
-  {
-   "pos": 6,
-   "name": "Uri",
-   "total": 70,
-   "deltaPts": 19,
+   "name": "Lagen",
+   "total": 84,
+   "deltaPts": 15,
    "deltaPos": 2
   },
   {
+   "pos": 6,
+   "name": "Jonete",
+   "total": 83,
+   "deltaPts": 3,
+   "deltaPos": -1
+  },
+  {
    "pos": 7,
-   "name": "Lagen",
-   "total": 69,
-   "deltaPts": 13,
+   "name": "Uri",
+   "total": 73,
+   "deltaPts": 3,
    "deltaPos": -1
   },
   {
    "pos": 8,
    "name": "P-man",
-   "total": 66,
-   "deltaPts": 16,
-   "deltaPos": 2
+   "total": 69,
+   "deltaPts": 3,
+   "deltaPos": 0
   },
   {
    "pos": 9,
    "name": "Graells",
-   "total": 60,
-   "deltaPts": 9,
-   "deltaPos": -1
+   "total": 63,
+   "deltaPts": 3,
+   "deltaPos": 0
   },
   {
    "pos": 10,
-   "name": "Guille",
-   "total": 58,
-   "deltaPts": 6,
-   "deltaPos": -3
+   "name": "Edu",
+   "total": 61,
+   "deltaPts": 9,
+   "deltaPos": 1
   },
   {
    "pos": 11,
-   "name": "Edu",
-   "total": 52,
-   "deltaPts": 6,
-   "deltaPos": 0
+   "name": "Guille",
+   "total": 60,
+   "deltaPts": 2,
+   "deltaPos": -1
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 43,
-   "deltaPts": 9,
+   "total": 49,
+   "deltaPts": 6,
    "deltaPos": 0
   }
  ],
  "leader": [
+  "Abete",
   "Carrillo",
   "JJ"
  ],
@@ -123,179 +124,200 @@
  ],
  "topGainers": [
   {
-   "name": "Uri",
-   "deltaPts": 19
-  },
-  {
-   "name": "JJ",
-   "deltaPts": 18
+   "name": "Lagen",
+   "deltaPts": 15
   },
   {
    "name": "Abete",
-   "deltaPts": 16
+   "deltaPts": 9
+  },
+  {
+   "name": "Edu",
+   "deltaPts": 9
   }
  ],
  "comments": [
   {
-   "text": "Sigo sin entender porque no se penaliza a JJ por entrar a media porra empezada con 15 partidos poniendo resultado ya real",
-   "ts": 1782124486241,
-   "likes": 6,
-   "dislikes": 0,
-   "score": 6
+   "text": "Pulgares arriba para DESCALIFICAR a JJ por no cumplir con los terminos y condiciones en la entrega de resultados de la porra. Aprovechando asi informacion privilegiada respecto al resto de participantes colocandolo a dia de hoy en liderazgo",
+   "ts": 1782209950103,
+   "likes": 8,
+   "dislikes": 1,
+   "score": 7
   },
   {
-   "text": "Doña victoria pronunciate",
-   "ts": 1782155714617,
+   "text": "Blanca Puigdelloses se ha dado más besos con gente de esta porra, que puntos tiene Santi",
+   "ts": 1782210312733,
+   "likes": 7,
+   "dislikes": 0,
+   "score": 7
+  },
+  {
+   "text": "Puigdemont > Puigdelloses",
+   "ts": 1782220836779,
    "likes": 5,
    "dislikes": 0,
    "score": 5
   },
   {
-   "text": "Estimada final: Carrolillo rojo",
-   "ts": 1782145798463,
-   "likes": 4,
-   "dislikes": 0,
-   "score": 4
-  },
-  {
-   "text": "ANKARA MESSI ANKARA MESSI",
-   "ts": 1782154944744,
-   "likes": 4,
-   "dislikes": 0,
-   "score": 4
-  },
-  {
-   "text": "Cucurella se coma un polla > se come una paella",
-   "ts": 1782108641021,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Porra santi = porra carrillo con ruedas de bicicleta",
-   "ts": 1782108727443,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Pau vino. Pago la porra. La ganó. Cobró y se fue. Todo esto sin hablar ni decir nada. Debate: no hay puntos por show? Y negativos por aburribus?",
-   "ts": 1782124562115,
+   "text": "¿Sabias qué… Uzbekistán es uno de los únicos dos países del mundo “doblemente sin litoral”. Esto significa que no tiene salida al mar, ni todos los países que lo rodean? Evitando que lleguen pateras con putos negros y moros de mierda.",
+   "ts": 1782236199769,
    "likes": 3,
+   "dislikes": 0,
+   "score": 3
+  },
+  {
+   "text": "Es confirma que Peman va ser farolillo rojo 2018 pero no es posa la medalleta. Ho deixo aqui perque consti a la cronica.\nHo dire cada dia",
+   "ts": 1782244118008,
+   "likes": 4,
    "dislikes": 1,
-   "score": 2
+   "score": 3
   },
   {
-   "text": "Solo pocas conocen la verdadera PORRA de don Dr. Soldevila",
-   "ts": 1782127860572,
+   "text": "Ferran Torres > Harry Kane",
+   "ts": 1782251466226,
+   "likes": 3,
+   "dislikes": 0,
+   "score": 3
+  },
+  {
+   "text": "- • - - -",
+   "ts": 1782208680042,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "HELIO Varela, de Cabo Verde, se convirtió en el segundo jugador com nombre/apellido de elemento quimico que marca en toda la historia del mundial. El primero fue Fernando HIERRO",
-   "ts": 1782164899601,
+   "text": "Respecto al “farolillo rojo”, su origen es ferroviario: en los trenes antiguos se colocaba una luz roja en el último vagón para indicar claramente el final del convoy.",
+   "ts": 1782210963386,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Esta cayendo la del pulpo eguino en el francia - irak",
-   "ts": 1782171480336,
+   "text": "ALLEZ LE LANTERNE🏮ROUGE",
+   "ts": 1782220804505,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Magui corceiro no opta a balon de oro? No entenc",
-   "ts": 1782124658935,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Hoy es el cumple del perico del grupo, don Guillermo. Hoy de momento no se ha quejado del sistema de puntuación de la porra… ¿cuánto tardará en hacerlo…? Es una incógnita…",
-   "ts": 1782127408786,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Quien falla más, Fallant Torres o el Dr Santiago Soldevila rellenando la porra?",
-   "ts": 1782127480415,
+   "text": "Trincao = Sauras",
+   "ts": 1782241107498,
    "likes": 2,
-   "dislikes": 1,
-   "score": 1
+   "dislikes": 0,
+   "score": 2
   },
   {
-   "text": "Avalos 16 años de carcel. Perro Sanxe hijo de puta dimite desgraciado.",
-   "ts": 1782155277129,
-   "likes": 2,
-   "dislikes": 1,
-   "score": 1
-  },
-  {
-   "text": "A tomar por saco el CM del Atl. Madrid",
-   "ts": 1782166051753,
+   "text": "Nuevo día. Viva España. Ojala hoy Cristiano Ronaldo se rompa hoy las dos piernas y confiese que es homosexual.",
+   "ts": 1782200618413,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Lamintable protocolo tormentas",
-   "ts": 1782169770918,
+   "text": "¡Feliz cumpleaños Blanca Puigdelloses!",
+   "ts": 1782208788075,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Quien fue el farolillo 2018?",
-   "ts": 1782171528862,
+   "text": "Porque sale el ganador de 2019 (hansi) pero no el farolillo de ese mismo año? Quien fue y porque no es portador de esa insignia junto a su nombre?",
+   "ts": 1782223743647,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Tarta de queso siempre sin mermelada como miguel angel roman",
-   "ts": 1782171584897,
+   "text": "- • - - -",
+   "ts": 1782235905527,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "La mayor ausencia del mundial, a parte de algun acierto de santi, es el gran Roony Bardghji",
-   "ts": 1782172054453,
+   "text": "¿Sabias qué… del 11 titular de Ghana, todos juegan en Europa menos el portero? La invasión silenciosa. Vota NOX.",
+   "ts": 1782248236113,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Magui Corceiro ya ganó dos balones de oro durante su pubertad, ganará una tercera…??",
-   "ts": 1782127565055,
+   "text": "Hauria d'existir comentaris anonim sempre mes enlla del mundial, em dona la vida nens",
+   "ts": 1782249452668,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Cuando le das a la extrema derecha el anonimato, pasa esto… buscan una excusa para seguir con esto todo el año, no solo para la porra",
+   "ts": 1782251568671,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Llega San Juan. Entre Carrillo, Jofra y Lagen, quién creéis que es más santo?",
+   "ts": 1782206387588,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Niña con sindrome de down chocando la mano > 11 negros franceses y 11 moros talibanes",
-   "ts": 1782162005828,
+   "text": "Jon el más santo",
+   "ts": 1782206844414,
+   "likes": 2,
+   "dislikes": 2,
+   "score": 0
+  },
+  {
+   "text": "¿Sabias qué… la expresión «farolillo🏮rojo» procede del francés lanterne rouge y se popularizó en el Tour de Francia para designar al ciclista que ocupaba la última posición de la clasificación general? #Peman2🏮18",
+   "ts": 1782208420539,
+   "likes": 2,
+   "dislikes": 2,
+   "score": 0
+  },
+  {
+   "text": "Blanca\nPuigdelloses\nLo-lololo-lololo-lolo",
+   "ts": 1782209252497,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Cabo Verde ganaria a la seleccion catalana. Puta cataluña. Viva VOX. Vida el ilustrísimo y grande España DOCTOR SOLDEVILA. Por una grande y libre. Viva las gordas sin tetas que me dan de comer y me pagan todas mis excedidas.",
-   "ts": 1782119148788,
-   "likes": 0,
-   "dislikes": 3,
-   "score": -3
+   "text": "Después de tanta polémica, auguro 5 goles de CR7 a la temible Uzbekistan, para igualar a Messi en el pichichi. SUUUUUUUUUUUU!",
+   "ts": 1782210194154,
+   "likes": 1,
+   "dislikes": 1,
+   "score": 0
   },
   {
-   "text": "Vicky mañana te dice griezmann que lo deja todo por ti. Dale 👍🏽 si aceptas su propuesta. Dale 👎🏽 si seguimos con Lagen otra temporada mas.",
-   "ts": 1782157456352,
+   "text": "Dr Farolvila ha colgado un POV, pero no el POV esperado",
+   "ts": 1782228969486,
    "likes": 0,
-   "dislikes": 4,
-   "score": -4
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Es el farolillo de los POVs",
+   "ts": 1782229182941,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "FaPOVlillo",
+   "ts": 1782229200472,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "El de arriba es gay ⤴️",
+   "ts": 1782252240019,
+   "likes": 1,
+   "dislikes": 1,
+   "score": 0
   }
  ]
 }
