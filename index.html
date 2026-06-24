@@ -177,6 +177,16 @@
   .grp-btn{padding:9px 0; border:1px solid #d3dde0; background:#f4f7f8; color:#33474e;
     border-radius:8px; font-weight:800; font-size:.92rem; cursor:pointer; -webkit-tap-highlight-color:transparent;}
   .grp-btn.active{background:var(--teal); color:#fff; border-color:var(--teal);}
+  .grp-btn.live{position:relative; border-color:#e23b3b; box-shadow:0 0 0 1px #e23b3b inset;}
+  .grp-btn.live::after{content:""; position:absolute; top:4px; right:4px; width:7px; height:7px;
+    border-radius:50%; background:#e23b3b; animation:blink 1s steps(2) infinite;}
+  .grp-prov{font-size:.74rem; color:#8a3b14; background:#fff4e8; border:1px solid #f0d6bd;
+    border-radius:8px; padding:8px 10px; margin-bottom:9px; line-height:1.4;}
+  .grp-prov b{color:#c0392b;}
+  .gt-mv{font-size:.74rem; font-weight:800; margin-right:6px;}
+  .gt-mv.up{color:#0c7a52;} .gt-mv.dn{color:#c0392b;}
+  .gt-row.lv{background:#fff7f5;}
+  .gt-live{margin-left:7px; font-size:.62rem; font-weight:800; color:#e23b3b; vertical-align:middle;}
   .grp-head{font-weight:800; color:#16323a; margin:2px 0 7px; font-size:1rem;}
   .grp-status{font-weight:600; font-size:.74rem; color:#8a99a0;}
   .grp-table{margin-bottom:12px;}
@@ -642,15 +652,18 @@ function consensusScore(key){           // signo más votado y, dentro, el marca
   const ex={}; for(const v of votes){ if(sign(v[0]-v[1])!==bs) continue; const t=v[0]+"-"+v[1]; ex[t]=(ex[t]||0)+1; }
   return Object.keys(ex).sort((a,b)=> ex[b]-ex[a])[0].split("-").map(Number);
 }
-function groupTableFull(keys,info){     // {arr:[{team,pts,gd,gf}] ordenado, done, total}
-  const st={}; let done=0;
-  for(const k of keys){ const m=info[k]; if(!m||!m.final) continue; done++;
+function groupTableFull(keys,info,includeLive){   // {arr:[{team,pts,gd,gf}], done, live, total}
+  const st={}; let done=0, live=0;
+  for(const k of keys){ const m=info[k]; if(!m||m.gh==null) continue;
+    const isLive=m.state==="in";
+    if(!(m.final || (includeLive&&isLive))) continue;
+    if(m.final) done++; else live++;
     const gh=m.gh,ga=m.ga,home=m.home,away=m.away;
     st[home]=st[home]||{team:home,pts:0,gd:0,gf:0}; st[away]=st[away]||{team:away,pts:0,gd:0,gf:0};
     if(gh>ga)st[home].pts+=3; else if(gh<ga)st[away].pts+=3; else{st[home].pts++;st[away].pts++;}
     st[home].gd+=gh-ga; st[away].gd+=ga-gh; st[home].gf+=gh; st[away].gf+=ga; }
   const arr=Object.values(st).sort((a,b)=> b.pts-a.pts||b.gd-a.gd||b.gf-a.gf||(a.team<b.team?-1:1));
-  return {arr,done,total:keys.length};
+  return {arr,done,live,total:keys.length};
 }
 function projectR32(info){               // top2 de cada grupo + 8 mejores terceros (formato 48 equipos)
   const direct=[], thirds=[];
@@ -708,11 +721,10 @@ function forecastStandings(){
 /* ===== FUTUROS: grupos -> clasificación actual + aciertos de cada jugador ===== */
 function groupTeams(letter){ const a=[]; for(const pk in P.groupSlots){ const s=P.groupSlots[pk];
   if(s.group===letter){ if(!a.includes(s.home))a.push(s.home); if(!a.includes(s.away))a.push(s.away); } } return a; }
-function currentGroupOrder(letter,info){
-  const t=groupTableFull(P.groupByLetter[letter],info);
-  const order=t.arr.map(x=>x.team);
-  for(const tm of groupTeams(letter)) if(!order.includes(tm)) order.push(tm);
-  return {order,table:t.arr,done:t.done,total:t.total};
+function _liveGroup(){            // letra del grupo con un partido EN JUEGO ahora
+  for(const m of (window._espn||[])){ if(m.state==="in"&&m.home&&m.away){
+    const s=P.groupSlots[pairKey(m.home,m.away)]; if(s) return s.group; } }
+  return null;
 }
 function renderFuturos(){
   const list=document.getElementById("grp-list"); if(!list) return;
@@ -722,18 +734,43 @@ function renderFuturos(){
     list.querySelectorAll(".grp-btn").forEach(b=>b.addEventListener("click",()=>{
       list.querySelectorAll(".grp-btn").forEach(x=>x.classList.toggle("active",x===b)); showGroup(b.dataset.g); }));
   }
-  const sel=list.querySelector(".grp-btn.active")||list.querySelector(".grp-btn");
-  if(sel){ sel.classList.add("active"); showGroup(sel.dataset.g); }
+  const live=_liveGroup();
+  // marca el botón del grupo en juego
+  list.querySelectorAll(".grp-btn").forEach(x=>x.classList.toggle("live", x.dataset.g===live));
+  const cur=list.querySelector(".grp-btn.active");
+  const target = live || (cur?cur.dataset.g:null) || list.querySelector(".grp-btn").dataset.g;   // auto-selecciona el que se juega
+  list.querySelectorAll(".grp-btn").forEach(x=>x.classList.toggle("active", x.dataset.g===target));
+  showGroup(target);
+}
+// refresco en vivo mientras la pestaña está abierta (sin cambiar de grupo)
+function refreshFuturosLive(){
+  const list=document.getElementById("grp-list"); if(!list||!list.dataset.built) return;
+  const live=_liveGroup();
+  list.querySelectorAll(".grp-btn").forEach(x=>x.classList.toggle("live", x.dataset.g===live));
+  const ab=list.querySelector(".grp-btn.active"); if(ab) showGroup(ab.dataset.g);
 }
 function showGroup(letter){
   const det=document.getElementById("grp-detail"); if(!det) return;
   const info=buildActual(window._espn||[]).info;
-  const {order,table,done,total}=currentGroupOrder(letter,info);
+  const keys=P.groupByLetter[letter];
+  const base=groupTableFull(keys,info,false);    // solo finalizados
+  const prov=groupTableFull(keys,info,true);     // + en juego (provisional)
   const fl=t=>P.flags[t]||"";
+  const order=prov.arr.map(x=>x.team);
+  for(const tm of groupTeams(letter)) if(!order.includes(tm)) order.push(tm);
   const posTeam={}; order.forEach((t,i)=> posTeam[i+1]=t);
-  const tbl=order.map((t,i)=>{ const row=table.find(x=>x.team===t);
-    return `<div class="gt-row"><span class="gt-pos ${i<2?'q':(i===2?'q3':'')}">${i+1}</span>`
-      +`<span class="gt-team">${fl(t)} ${t}</span><span class="gt-pts">${row?row.pts:'–'}</span></div>`; }).join("");
+  const provRow={}; prov.arr.forEach(x=> provRow[x.team]=x);
+  const basePos={}; base.arr.forEach((x,i)=> basePos[x.team]=i+1);
+  const liveT=new Set();
+  for(const k of keys){ const m=info[k]; if(m&&m.state==="in"){ liveT.add(m.home); liveT.add(m.away); } }
+  const hasLive=prov.live>0;
+  const tbl=order.map((t,i)=>{ const row=provRow[t];
+    let mv="";
+    if(hasLive && basePos[t]){ const d=basePos[t]-(i+1);
+      mv = d>0?`<span class="gt-mv up">▲${d}</span>`:(d<0?`<span class="gt-mv dn">▼${-d}</span>`:""); }
+    const dot = liveT.has(t)?`<span class="gt-live">● en juego</span>`:"";
+    return `<div class="gt-row${liveT.has(t)?' lv':''}"><span class="gt-pos ${i<2?'q':(i===2?'q3':'')}">${i+1}</span>`
+      +`<span class="gt-team">${fl(t)} ${t}${dot}</span>${mv}<span class="gt-pts">${row?row.pts:'–'}</span></div>`; }).join("");
   const accs=P.participants.map(part=>{ let n=0; const cells=[];
     for(let i=1;i<=4;i++){ const pred=part.positions[letter+"-"+i]; const ok=pred&&pred===posTeam[i]; if(ok)n++;
       cells.push(`<span class="ac ${ok?'ok':(pred?'no':'')}" title="${i}º: ${pred||'?'}">${pred?fl(pred):'·'}</span>`); }
@@ -741,8 +778,9 @@ function showGroup(letter){
   accs.sort((a,b)=> b.n-a.n || a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   const accH=accs.map(a=>`<div class="acc-row"><span class="acc-name">${a.name}</span>`
     +`<span class="acc-cells">${a.cells}</span><span class="acc-n">${a.n}/4</span></div>`).join("");
-  const status = done>=total ? "final" : `en curso · ${done}/${total}`;
+  const status = base.done>=base.total ? "final" : (hasLive?`🔴 en juego · ${base.done}/${base.total} jugados`:`en curso · ${base.done}/${base.total}`);
   det.innerHTML=`<div class="grp-head">Grupo ${letter} <span class="grp-status">${status}</span></div>`
+    +(hasLive?`<div class="grp-prov">⚡ Clasificación con el/los partido(s) en juego aplicados (provisional). <b>▲▼</b> = cambio respecto a antes de empezar.</div>`:"")
     +`<div class="grp-table">${tbl}</div>`
     +`<div class="grp-acc-h">Aciertos por jugador <small>su orden previsto · <b class="ok-t">verde</b>=posición acertada</small></div>`
     +`<div class="grp-acc">${accH}</div>`;
@@ -1562,6 +1600,7 @@ async function tick(){
     renderTable();
     const mv=matchesView(S); window._mv=mv; renderMatches(mv); setupTopBanner(espn);
     renderLiveBanner(espn, mv); renderLanternRecord(espn); checkGlovo();
+    if(document.getElementById("panel-premios").classList.contains("active")) refreshFuturosLive();
     if((P.features||{}).chronicle) renderCronica(espn);
     if(!didFocus){ didFocus=true;
       if(document.querySelector('.tab[data-tab=partidos]').classList.contains("active")) setTimeout(scrollToFocus,150); }
