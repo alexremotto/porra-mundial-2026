@@ -598,26 +598,16 @@ function buildActual(espn){
   for(const t of qualifiedR32(info)) if(!actual.reached.r32.includes(t)) actual.reached.r32.push(t);
   return {actual,info};
 }
-/* Clasificados confirmados a 1/16 (R32): top-2 de grupos terminados + equipos que
-   han clinchado matemáticamente el top-2 en grupos en curso + 8 mejores terceros
-   (solo cuando TODOS los grupos han acabado). Conservador: nunca falsos positivos. */
+/* Clasificados confirmados a 1/16 (R32): SOLO el top-2 de los grupos ya CERRADOS
+   (clasificados seguros). Los 8 mejores terceros se añaden únicamente cuando TODOS
+   los grupos han acabado (antes no son comparables). Nada de clinchados en curso. */
 function qualifiedR32(info){
   const out=new Set(), thirds=[]; let allDone=true;
   for(const L in P.groupByLetter){
-    const keys=P.groupByLetter[L];
-    const tbl=groupTableFull(keys,info,false);          // solo finalizados
-    const complete = tbl.done===keys.length;
-    const pts={}, rem={};
-    for(const tm of groupTeams(L)){ pts[tm]=0; rem[tm]=0; }
-    tbl.arr.forEach(x=> pts[x.team]=x.pts);
-    for(const k of keys){ const m=info[k]; if(!(m&&m.final)){ const s=slotByKey(k);
-      if(s){ rem[s.home]++; rem[s.away]++; } } }
-    if(complete){ if(tbl.arr[0])out.add(tbl.arr[0].team); if(tbl.arr[1])out.add(tbl.arr[1].team);
+    const tbl=groupTableFull(P.groupByLetter[L],info,false);   // solo finalizados
+    if(tbl.done===tbl.total){ if(tbl.arr[0])out.add(tbl.arr[0].team); if(tbl.arr[1])out.add(tbl.arr[1].team);
       if(tbl.arr[2])thirds.push(tbl.arr[2]); }
-    else { allDone=false;
-      for(const tm of groupTeams(L)){ const minT=pts[tm]; let threats=0;   // ¿clinchó top-2?
-        for(const o of groupTeams(L)){ if(o!==tm && pts[o]+3*rem[o]>=minT) threats++; }
-        if(threats<=1) out.add(tm); } }
+    else allDone=false;
   }
   if(allDone){ thirds.sort((a,b)=> b.pts-a.pts||b.gd-a.gd||b.gf-a.gf||(a.team<b.team?-1:1));
     thirds.slice(0, Math.max(0, P.koSlots.r32.length*2-out.size)).forEach(x=> out.add(x.team)); }
