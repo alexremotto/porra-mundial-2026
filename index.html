@@ -187,6 +187,8 @@
   .gt-mv.up{color:#0c7a52;} .gt-mv.dn{color:#c0392b;}
   .gt-row.lv{background:#fff7f5;}
   .gt-live{margin-left:7px; font-size:.62rem; font-weight:800; color:#e23b3b; vertical-align:middle;}
+  .gt-q{margin-left:6px; font-size:.74rem; font-weight:800; color:#0c7a52; background:#d5f0e6;
+    border-radius:5px; padding:0 5px; vertical-align:middle;}
   .grp-head{font-weight:800; color:#16323a; margin:2px 0 7px; font-size:1rem;}
   .grp-status{font-weight:600; font-size:.74rem; color:#8a99a0;}
   .grp-table{margin-bottom:12px;}
@@ -592,7 +594,34 @@ function buildActual(espn){
         info[slots[i].key]={gh:m.gh,ga:m.ga,home:m.home,away:m.away,state:m.state,final:m.state==="post",espn_date:m.date,stage:s}; } } }
   for(const ltr in P.groupByLetter){ const order=groupStandings(P.groupByLetter[ltr],info);
     if(order) order.forEach((t,i)=>{ actual.positions[ltr+"-"+(i+1)]=t; }); }
+  // Equipos YA clasificados a 1/16 según resultados reales -> aplica sus puntos
+  for(const t of qualifiedR32(info)) if(!actual.reached.r32.includes(t)) actual.reached.r32.push(t);
   return {actual,info};
+}
+/* Clasificados confirmados a 1/16 (R32): top-2 de grupos terminados + equipos que
+   han clinchado matemáticamente el top-2 en grupos en curso + 8 mejores terceros
+   (solo cuando TODOS los grupos han acabado). Conservador: nunca falsos positivos. */
+function qualifiedR32(info){
+  const out=new Set(), thirds=[]; let allDone=true;
+  for(const L in P.groupByLetter){
+    const keys=P.groupByLetter[L];
+    const tbl=groupTableFull(keys,info,false);          // solo finalizados
+    const complete = tbl.done===keys.length;
+    const pts={}, rem={};
+    for(const tm of groupTeams(L)){ pts[tm]=0; rem[tm]=0; }
+    tbl.arr.forEach(x=> pts[x.team]=x.pts);
+    for(const k of keys){ const m=info[k]; if(!(m&&m.final)){ const s=slotByKey(k);
+      if(s){ rem[s.home]++; rem[s.away]++; } } }
+    if(complete){ if(tbl.arr[0])out.add(tbl.arr[0].team); if(tbl.arr[1])out.add(tbl.arr[1].team);
+      if(tbl.arr[2])thirds.push(tbl.arr[2]); }
+    else { allDone=false;
+      for(const tm of groupTeams(L)){ const minT=pts[tm]; let threats=0;   // ¿clinchó top-2?
+        for(const o of groupTeams(L)){ if(o!==tm && pts[o]+3*rem[o]>=minT) threats++; }
+        if(threats<=1) out.add(tm); } }
+  }
+  if(allDone){ thirds.sort((a,b)=> b.pts-a.pts||b.gd-a.gd||b.gf-a.gf||(a.team<b.team?-1:1));
+    thirds.slice(0, Math.max(0, P.koSlots.r32.length*2-out.size)).forEach(x=> out.add(x.team)); }
+  return out;
 }
 function scoreMatch(pred,act,w){ const ph=pred[0],pa=pred[1],ah=act[0],aa=act[1];
   if(ph==null||pa==null||ah==null||aa==null) return 0; let pts=0;
@@ -764,13 +793,15 @@ function showGroup(letter){
   const liveT=new Set();
   for(const k of keys){ const m=info[k]; if(m&&m.state==="in"){ liveT.add(m.home); liveT.add(m.away); } }
   const hasLive=prov.live>0;
+  const qual=qualifiedR32(info);                   // equipos ya clasificados a 1/16
   const tbl=order.map((t,i)=>{ const row=provRow[t];
     let mv="";
     if(hasLive && basePos[t]){ const d=basePos[t]-(i+1);
       mv = d>0?`<span class="gt-mv up">▲${d}</span>`:(d<0?`<span class="gt-mv dn">▼${-d}</span>`:""); }
     const dot = liveT.has(t)?`<span class="gt-live">● en juego</span>`:"";
+    const qok = qual.has(t)?`<span class="gt-q" title="Ya clasificado a 1/16">✓</span>`:"";
     return `<div class="gt-row${liveT.has(t)?' lv':''}"><span class="gt-pos ${i<2?'q':(i===2?'q3':'')}">${i+1}</span>`
-      +`<span class="gt-team">${fl(t)} ${t}${dot}</span>${mv}<span class="gt-pts">${row?row.pts:'–'}</span></div>`; }).join("");
+      +`<span class="gt-team">${fl(t)} ${t}${qok}${dot}</span>${mv}<span class="gt-pts">${row?row.pts:'–'}</span></div>`; }).join("");
   const accs=P.participants.map(part=>{ let n=0; const cells=[];
     for(let i=1;i<=4;i++){ const pred=part.positions[letter+"-"+i]; const ok=pred&&pred===posTeam[i]; if(ok)n++;
       cells.push(`<span class="ac ${ok?'ok':(pred?'no':'')}" title="${i}º: ${pred||'?'}">${pred?fl(pred):'·'}</span>`); }
