@@ -1,29 +1,41 @@
 {
- "day": "2026-06-23",
- "prevDay": "2026-06-22",
- "generatedAt": "2026-06-24T19:46:53Z",
+ "day": "2026-06-24",
+ "prevDay": "2026-06-23",
+ "generatedAt": "2026-06-25T06:39:48Z",
  "results": [
   {
-   "home": "Portugal",
-   "away": "Uzbekistan",
-   "gh": 5,
-   "ga": 0
-  },
-  {
-   "home": "England",
-   "away": "Ghana",
-   "gh": 0,
-   "ga": 0
-  },
-  {
-   "home": "Panama",
-   "away": "Croatia",
-   "gh": 0,
+   "home": "Bosnia and Herzegovina",
+   "away": "Qatar",
+   "gh": 3,
    "ga": 1
   },
   {
-   "home": "Colombia",
-   "away": "DR Congo",
+   "home": "Switzerland",
+   "away": "Canada",
+   "gh": 2,
+   "ga": 1
+  },
+  {
+   "home": "Morocco",
+   "away": "Haiti",
+   "gh": 4,
+   "ga": 2
+  },
+  {
+   "home": "Scotland",
+   "away": "Brazil",
+   "gh": 0,
+   "ga": 3
+  },
+  {
+   "home": "Czech Republic",
+   "away": "Mexico",
+   "gh": 0,
+   "ga": 3
+  },
+  {
+   "home": "South Africa",
+   "away": "South Korea",
    "gh": 1,
    "ga": 0
   }
@@ -31,93 +43,91 @@
  "standings": [
   {
    "pos": 1,
+   "name": "Lagen",
+   "total": 134,
+   "deltaPts": 47,
+   "deltaPos": 4
+  },
+  {
+   "pos": 2,
    "name": "Abete",
-   "total": 97,
-   "deltaPts": 9,
-   "deltaPos": 3
-  },
-  {
-   "pos": 1,
-   "name": "Carrillo",
-   "total": 97,
-   "deltaPts": 6,
-   "deltaPos": 0
-  },
-  {
-   "pos": 1,
-   "name": "JJ",
-   "total": 97,
-   "deltaPts": 6,
-   "deltaPos": 0
-  },
-  {
-   "pos": 4,
-   "name": "Quimnot",
-   "total": 95,
-   "deltaPts": 6,
+   "total": 131,
+   "deltaPts": 31,
    "deltaPos": -1
   },
   {
-   "pos": 5,
-   "name": "Lagen",
-   "total": 84,
-   "deltaPts": 15,
+   "pos": 2,
+   "name": "Quimnot",
+   "total": 131,
+   "deltaPts": 33,
    "deltaPos": 2
   },
   {
-   "pos": 6,
+   "pos": 4,
    "name": "Jonete",
-   "total": 83,
-   "deltaPts": 3,
-   "deltaPos": -1
+   "total": 127,
+   "deltaPts": 41,
+   "deltaPos": 2
+  },
+  {
+   "pos": 5,
+   "name": "Carrillo",
+   "total": 124,
+   "deltaPts": 24,
+   "deltaPos": -4
+  },
+  {
+   "pos": 6,
+   "name": "JJ",
+   "total": 121,
+   "deltaPts": 21,
+   "deltaPos": -5
   },
   {
    "pos": 7,
-   "name": "Uri",
-   "total": 73,
-   "deltaPts": 3,
-   "deltaPos": -1
-  },
-  {
-   "pos": 8,
    "name": "P-man",
-   "total": 69,
-   "deltaPts": 3,
-   "deltaPos": 0
-  },
-  {
-   "pos": 9,
-   "name": "Graells",
-   "total": 63,
-   "deltaPts": 3,
-   "deltaPos": 0
-  },
-  {
-   "pos": 10,
-   "name": "Edu",
-   "total": 61,
-   "deltaPts": 9,
+   "total": 112,
+   "deltaPts": 40,
    "deltaPos": 1
   },
   {
-   "pos": 11,
+   "pos": 8,
+   "name": "Graells",
+   "total": 107,
+   "deltaPts": 41,
+   "deltaPos": 1
+  },
+  {
+   "pos": 9,
+   "name": "Uri",
+   "total": 95,
+   "deltaPts": 22,
+   "deltaPos": -2
+  },
+  {
+   "pos": 10,
    "name": "Guille",
-   "total": 60,
-   "deltaPts": 2,
-   "deltaPos": -1
+   "total": 90,
+   "deltaPts": 27,
+   "deltaPos": 0
+  },
+  {
+   "pos": 11,
+   "name": "Edu",
+   "total": 84,
+   "deltaPts": 23,
+   "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 49,
-   "deltaPts": 6,
+   "total": 73,
+   "deltaPts": 21,
    "deltaPos": 0
   }
  ],
  "leader": [
-  "Abete",
-  "Carrillo",
-  "JJ"
+  "Lagen"
  ],
  "farolillo": [
   "Santi"
@@ -125,199 +135,178 @@
  "topGainers": [
   {
    "name": "Lagen",
-   "deltaPts": 15
+   "deltaPts": 47
   },
   {
-   "name": "Abete",
-   "deltaPts": 9
+   "name": "Jonete",
+   "deltaPts": 41
   },
   {
-   "name": "Edu",
-   "deltaPts": 9
+   "name": "Graells",
+   "deltaPts": 41
   }
  ],
  "comments": [
   {
-   "text": "Pulgares arriba para DESCALIFICAR a JJ por no cumplir con los terminos y condiciones en la entrega de resultados de la porra. Aprovechando asi informacion privilegiada respecto al resto de participantes colocandolo a dia de hoy en liderazgo",
-   "ts": 1782209950103,
-   "likes": 8,
-   "dislikes": 1,
-   "score": 7
-  },
-  {
-   "text": "Blanca Puigdelloses se ha dado más besos con gente de esta porra, que puntos tiene Santi",
-   "ts": 1782210312733,
-   "likes": 7,
-   "dislikes": 0,
-   "score": 7
-  },
-  {
-   "text": "Puigdemont > Puigdelloses",
-   "ts": 1782220836779,
-   "likes": 5,
-   "dislikes": 0,
-   "score": 5
-  },
-  {
-   "text": "¿Sabias qué… Uzbekistán es uno de los únicos dos países del mundo “doblemente sin litoral”. Esto significa que no tiene salida al mar, ni todos los países que lo rodean? Evitando que lleguen pateras con putos negros y moros de mierda.",
-   "ts": 1782236199769,
-   "likes": 3,
-   "dislikes": 0,
-   "score": 3
-  },
-  {
-   "text": "Es confirma que Peman va ser farolillo rojo 2018 pero no es posa la medalleta. Ho deixo aqui perque consti a la cronica.\nHo dire cada dia",
-   "ts": 1782244118008,
+   "text": "Baltasaaaaaar!!! El patineteeee!!!!",
+   "ts": 1782304761002,
    "likes": 4,
    "dislikes": 1,
    "score": 3
   },
   {
-   "text": "Ferran Torres > Harry Kane",
-   "ts": 1782251466226,
+   "text": "Tothom a la Apprillo JA",
+   "ts": 1782304719511,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Es nota tant quan un comentari està fet per Jonete…",
+   "ts": 1782333977151,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Mejores remontadas del futbol: 1) Barça vs PSG; 2) Pelo de Ter Stegen; 3) Porra Lagen",
+   "ts": 1782334763880,
    "likes": 3,
-   "dislikes": 0,
-   "score": 3
+   "dislikes": 1,
+   "score": 2
   },
   {
-   "text": "- • - - -",
-   "ts": 1782208680042,
+   "text": "Encuesta anónima:\nVota 👍🏻 ets de Pits\nVota 👎🏻 ets de culs",
+   "ts": 1782337858842,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Respecto al “farolillo rojo”, su origen es ferroviario: en los trenes antiguos se colocaba una luz roja en el último vagón para indicar claramente el final del convoy.",
-   "ts": 1782210963386,
+   "text": "Bon dia i bon mati a la vila del pingui",
+   "ts": 1782287954160,
    "likes": 2,
-   "dislikes": 0,
-   "score": 2
+   "dislikes": 1,
+   "score": 1
   },
   {
-   "text": "ALLEZ LE LANTERNE🏮ROUGE",
-   "ts": 1782220804505,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Trincao = Sauras",
-   "ts": 1782241107498,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Nuevo día. Viva España. Ojala hoy Cristiano Ronaldo se rompa hoy las dos piernas y confiese que es homosexual.",
-   "ts": 1782200618413,
+   "text": "Ravenna FC con Ronaldinho > Real Mandril con Cucurella",
+   "ts": 1782291108078,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "¡Feliz cumpleaños Blanca Puigdelloses!",
-   "ts": 1782208788075,
+   "text": "Habra patch cuando haya patch tambien de farolillo 2018",
+   "ts": 1782295062094,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Porque sale el ganador de 2019 (hansi) pero no el farolillo de ese mismo año? Quien fue y porque no es portador de esa insignia junto a su nombre?",
-   "ts": 1782223743647,
+   "text": "Lagen ja asoma el podi ✈️✈️",
+   "ts": 1782332254760,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "- • - - -",
-   "ts": 1782235905527,
+   "text": "Ressaca nens",
+   "ts": 1782334835114,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "¿Sabias qué… del 11 titular de Ghana, todos juegan en Europa menos el portero? La invasión silenciosa. Vota NOX.",
-   "ts": 1782248236113,
+   "text": "Imaginar Graells guanyar porrassu es com imaginar Espanyol guantar Champions 👋",
+   "ts": 1782335163411,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Hauria d'existir comentaris anonim sempre mes enlla del mundial, em dona la vida nens",
-   "ts": 1782249452668,
+   "text": "Tremendo que autocorrector de la porra no ha deixat que “espanyol” i “guanyar” anessin junts",
+   "ts": 1782338470680,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Cuando le das a la extrema derecha el anonimato, pasa esto… buscan una excusa para seguir con esto todo el año, no solo para la porra",
-   "ts": 1782251568671,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Llega San Juan. Entre Carrillo, Jofra y Lagen, quién creéis que es más santo?",
-   "ts": 1782206387588,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Jon el más santo",
-   "ts": 1782206844414,
-   "likes": 2,
-   "dislikes": 2,
-   "score": 0
-  },
-  {
-   "text": "¿Sabias qué… la expresión «farolillo🏮rojo» procede del francés lanterne rouge y se popularizó en el Tour de Francia para designar al ciclista que ocupaba la última posición de la clasificación general? #Peman2🏮18",
-   "ts": 1782208420539,
-   "likes": 2,
-   "dislikes": 2,
-   "score": 0
-  },
-  {
-   "text": "Blanca\nPuigdelloses\nLo-lololo-lololo-lolo",
-   "ts": 1782209252497,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Después de tanta polémica, auguro 5 goles de CR7 a la temible Uzbekistan, para igualar a Messi en el pichichi. SUUUUUUUUUUUU!",
-   "ts": 1782210194154,
+   "text": "Exigimos PATCH ESPECIAL “LEGACY” a los 6 miembros que hemos participado en todas las ediciones Porrasu (estilo Messi, Neuer, Modric y Ronaldo).",
+   "ts": 1782288080392,
    "likes": 1,
    "dislikes": 1,
    "score": 0
   },
   {
-   "text": "Dr Farolvila ha colgado un POV, pero no el POV esperado",
-   "ts": 1782228969486,
+   "text": "Que pasa con la cronica de ayer?",
+   "ts": 1782295080067,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Es el farolillo de los POVs",
-   "ts": 1782229182941,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "FaPOVlillo",
-   "ts": 1782229200472,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "El de arriba es gay ⤴️",
-   "ts": 1782252240019,
+   "text": "MOCION DE CENSURA AL PERRO SANXE YA. Elecciones YA.",
+   "ts": 1782295100010,
    "likes": 1,
    "dislikes": 1,
    "score": 0
+  },
+  {
+   "text": "12:38 i encara redactant la crònica?? Pero que es això?? Quina vergonya",
+   "ts": 1782297536876,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Exigim RESPONSABILITATS als redactors de la cronica. El periodisme MATINA.",
+   "ts": 1782298969141,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Arbiiiiiit la cronica!",
+   "ts": 1782299207259,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Hoy Marruecos - Haiti. Donde se juega? En el patio de la carcel. Vota NOX.",
+   "ts": 1782322630614,
+   "likes": 2,
+   "dislikes": 2,
+   "score": 0
+  },
+  {
+   "text": "😂",
+   "ts": 1782332215515,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Si us plau que Lagen no remonti més, no el podria aguantar 2 anys recordant-ho",
+   "ts": 1782334889087,
+   "likes": 1,
+   "dislikes": 1,
+   "score": 0
+  },
+  {
+   "text": "Enquesta anonima. Vota 👍 si creus que immigrants fora, Vota 👎 si creus que immigrants son espanyols.",
+   "ts": 1782337060831,
+   "likes": 1,
+   "dislikes": 2,
+   "score": -1
+  },
+  {
+   "text": "🚨 Comunicat oficial: #VagaDeCronica Avui no hi haurà crònica degut a les constants acusacions d’alguns membres sobre un farolillo del passat. Busquin a tots.",
+   "ts": 1782304595606,
+   "likes": 1,
+   "dislikes": 59,
+   "score": -58
   }
  ]
 }
