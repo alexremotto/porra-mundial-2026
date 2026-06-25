@@ -4,7 +4,7 @@
     {
       "name": "Lionel Messi",
       "team": "Argentina",
-      "odds": "39/10",
+      "odds": "7/2",
       "prevOdds": "39/10"
     },
     {
@@ -16,31 +16,31 @@
     {
       "name": "Michael Olise",
       "team": "Francia",
-      "odds": "5/1",
+      "odds": "15/2",
       "prevOdds": "5/1"
-    },
-    {
-      "name": "Erling Haaland",
-      "team": "Noruega",
-      "odds": "9/1",
-      "prevOdds": "9/1"
     },
     {
       "name": "Harry Kane",
       "team": "Inglaterra",
-      "odds": "12/1",
+      "odds": "13/1",
       "prevOdds": "12/1"
+    },
+    {
+      "name": "Erling Haaland",
+      "team": "Noruega",
+      "odds": "14/1",
+      "prevOdds": "9/1"
     },
     {
       "name": "Lamine Yamal",
       "team": "España",
-      "odds": "12/1",
+      "odds": "14/1",
       "prevOdds": "12/1"
     },
     {
       "name": "Vini Jr.",
       "team": "Brasil",
-      "odds": "16/1",
+      "odds": "14/1",
       "prevOdds": "16/1"
     }
   ]
