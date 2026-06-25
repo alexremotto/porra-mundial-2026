@@ -1099,7 +1099,7 @@ function checkGlovo(){
   const show = dec>=(P.glovoStart||20) && dec<23.5;   // hora española (19:00–23:30)
   if(show===_glovoOn) return; _glovoOn=show;
   if(show){ el.style.display="block";
-    el.innerHTML=`<a class="glovo" href="https://glovo.go.link/open?link_type=store&store_id=21029&adjust_t=s321jkn" target="_blank" rel="noopener">
+    el.innerHTML=`<a class="glovo" href="https://teikit.es/home/?controller=stores&map" target="_blank" rel="noopener">
       <img class="gl-logo" src="teikit-logo.png" alt="Teikit">
       <span class="gl-txt"><b>¡Hora de pedir en Teikit!</b><small>Código <span class="gl-code">BCN5</span> · 5€ de descuento en tu primer pedido</small></span>
       <span class="gl-btn">Pedir ›</span></a>`;
