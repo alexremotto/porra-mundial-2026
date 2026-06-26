@@ -1,312 +1,256 @@
 {
- "day": "2026-06-24",
- "prevDay": "2026-06-23",
- "generatedAt": "2026-06-25T19:44:27Z",
+ "day": "2026-06-25",
+ "prevDay": "2026-06-24",
+ "generatedAt": "2026-06-26T06:43:39Z",
  "results": [
   {
-   "home": "Bosnia and Herzegovina",
-   "away": "Qatar",
-   "gh": 3,
-   "ga": 1
+   "home": "Curaçao",
+   "away": "Ivory Coast",
+   "gh": 0,
+   "ga": 2
   },
   {
-   "home": "Switzerland",
-   "away": "Canada",
+   "home": "Ecuador",
+   "away": "Germany",
    "gh": 2,
    "ga": 1
   },
   {
-   "home": "Morocco",
-   "away": "Haiti",
-   "gh": 4,
-   "ga": 2
-  },
-  {
-   "home": "Scotland",
-   "away": "Brazil",
-   "gh": 0,
-   "ga": 3
-  },
-  {
-   "home": "Czech Republic",
-   "away": "Mexico",
-   "gh": 0,
-   "ga": 3
-  },
-  {
-   "home": "South Africa",
-   "away": "South Korea",
+   "home": "Japan",
+   "away": "Sweden",
    "gh": 1,
+   "ga": 1
+  },
+  {
+   "home": "Tunisia",
+   "away": "Netherlands",
+   "gh": 1,
+   "ga": 3
+  },
+  {
+   "home": "Paraguay",
+   "away": "Australia",
+   "gh": 0,
    "ga": 0
+  },
+  {
+   "home": "Turkey",
+   "away": "United States",
+   "gh": 3,
+   "ga": 2
   }
  ],
  "standings": [
   {
    "pos": 1,
-   "name": "Lagen",
-   "total": 134,
-   "deltaPts": 47,
-   "deltaPos": 4
+   "name": "Abete",
+   "total": 198,
+   "deltaPts": 49,
+   "deltaPos": 1
   },
   {
    "pos": 2,
-   "name": "Abete",
-   "total": 131,
-   "deltaPts": 31,
+   "name": "Lagen",
+   "total": 189,
+   "deltaPts": 37,
    "deltaPos": -1
   },
   {
-   "pos": 2,
-   "name": "Quimnot",
-   "total": 131,
-   "deltaPts": 33,
+   "pos": 3,
+   "name": "JJ",
+   "total": 187,
+   "deltaPts": 48,
    "deltaPos": 2
   },
   {
    "pos": 4,
-   "name": "Jonete",
-   "total": 127,
-   "deltaPts": 41,
-   "deltaPos": 2
+   "name": "Quimnot",
+   "total": 172,
+   "deltaPts": 23,
+   "deltaPos": -2
   },
   {
    "pos": 5,
-   "name": "Carrillo",
-   "total": 124,
-   "deltaPts": 24,
-   "deltaPos": -4
+   "name": "Jonete",
+   "total": 169,
+   "deltaPts": 27,
+   "deltaPos": -1
   },
   {
    "pos": 6,
-   "name": "JJ",
-   "total": 121,
+   "name": "Carrillo",
+   "total": 160,
    "deltaPts": 21,
-   "deltaPos": -5
+   "deltaPos": -1
+  },
+  {
+   "pos": 7,
+   "name": "Graells",
+   "total": 155,
+   "deltaPts": 30,
+   "deltaPos": 1
   },
   {
    "pos": 7,
    "name": "P-man",
-   "total": 112,
-   "deltaPts": 40,
-   "deltaPos": 1
-  },
-  {
-   "pos": 8,
-   "name": "Graells",
-   "total": 107,
-   "deltaPts": 41,
-   "deltaPos": 1
+   "total": 155,
+   "deltaPts": 28,
+   "deltaPos": 0
   },
   {
    "pos": 9,
    "name": "Uri",
-   "total": 95,
-   "deltaPts": 22,
-   "deltaPos": -2
+   "total": 141,
+   "deltaPts": 28,
+   "deltaPos": 0
   },
   {
    "pos": 10,
    "name": "Guille",
-   "total": 90,
+   "total": 135,
    "deltaPts": 27,
    "deltaPos": 0
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 84,
-   "deltaPts": 23,
+   "total": 124,
+   "deltaPts": 25,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 73,
-   "deltaPts": 21,
+   "total": 123,
+   "deltaPts": 35,
    "deltaPos": 0
   }
  ],
  "leader": [
-  "Lagen"
+  "Abete"
  ],
  "farolillo": [
   "Santi"
  ],
  "topGainers": [
   {
+   "name": "Abete",
+   "deltaPts": 49
+  },
+  {
+   "name": "JJ",
+   "deltaPts": 48
+  },
+  {
    "name": "Lagen",
-   "deltaPts": 47
-  },
-  {
-   "name": "Jonete",
-   "deltaPts": 41
-  },
-  {
-   "name": "Graells",
-   "deltaPts": 41
+   "deltaPts": 37
   }
  ],
  "comments": [
   {
-   "text": "Baltasaaaaaar!!! El patineteeee!!!!",
-   "ts": 1782304761002,
+   "text": "Com els 59 dislikes del comment d'ahir que olora heavy a.... #LagenImpostor ✋🏿✋🏿",
+   "ts": 1782372115028,
    "likes": 4,
-   "dislikes": 1,
-   "score": 3
+   "dislikes": 0,
+   "score": 4
   },
   {
-   "text": "Tothom a la Apprillo JA",
-   "ts": 1782304719511,
+   "text": "No volem impostors al xat 👀",
+   "ts": 1782371487529,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Es nota tant quan un comentari està fet per Jonete…",
-   "ts": 1782333977151,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Mejores remontadas del futbol: 1) Barça vs PSG; 2) Pelo de Ter Stegen; 3) Porra Lagen",
-   "ts": 1782334763880,
+   "text": "59 persones van donar la seva opinio. Llibertat presos politics 🎗️",
+   "ts": 1782378194545,
    "likes": 3,
    "dislikes": 1,
    "score": 2
   },
   {
-   "text": "Encuesta anónima:\nVota 👍🏻 ets de Pits\nVota 👎🏻 ets de culs",
-   "ts": 1782337858842,
+   "text": "\"De farolillo a Top 1\", la historia de Lagen, un chico humilde de Tres Torres. #SantiSíSePuede",
+   "ts": 1782399142142,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Bon dia i bon mati a la vila del pingui",
-   "ts": 1782287954160,
-   "likes": 2,
+   "text": "Se vienen días tochos de 6 partidos. Donde cojones está Curaçao?",
+   "ts": 1782377517717,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Solicito incorporar una nueva funcionalidad en la app que permita restar puntos a una persona cuando haya decisión unánime (el implicado no puede votar)",
+   "ts": 1782423381101,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Dato curioso: Gonzalo PLATA es el tercer jugador con nombre/apellido de elemento quimico que marca en toda la historia de la copa del mundo, tras Fernando HIERRO y HELIO Varela",
+   "ts": 1782430034973,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "El que no envia els resultats a temps es JJ, ens volen fer el lio i que perdem el foco",
+   "ts": 1782430105911,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Dato curioso: Weghorst es el apellido mas largo de los 1248 jugadores del mundial cuyas letras no se cruzan consigo mismo en un circulo ordenado alfabeticamente (para los que no son Aula, orden alfabetico circular empezando por la W)",
+   "ts": 1782436140194,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "La gente hace comentarios haciendose pasar por Lagen. Pero se ve claramente que no es el. Lagen es muy humilde",
+   "ts": 1782444701441,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Enquesta anonima del dia: vota 👍 si vols Julian al Barsa, vota 👎 si no vols Julian al Barsa",
+   "ts": 1782388961192,
+   "likes": 3,
+   "dislikes": 3,
+   "score": 0
+  },
+  {
+   "text": "Lagen mano negra 🤚🏿 robo",
+   "ts": 1782402429210,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Lagen encara no ha enviat tots els resultats de tothom (ni el seu) 🧐",
+   "ts": 1782423185070,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Només jo tinc la meva porra 👀 #LiderSiuuu",
+   "ts": 1782423971270,
+   "likes": 0,
    "dislikes": 1,
-   "score": 1
-  },
-  {
-   "text": "Ravenna FC con Ronaldinho > Real Mandril con Cucurella",
-   "ts": 1782291108078,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Habra patch cuando haya patch tambien de farolillo 2018",
-   "ts": 1782295062094,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Lagen ja asoma el podi ✈️✈️",
-   "ts": 1782332254760,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Ressaca nens",
-   "ts": 1782334835114,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Imaginar Graells guanyar porrassu es com imaginar Espanyol guantar Champions 👋",
-   "ts": 1782335163411,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Tremendo que autocorrector de la porra no ha deixat que “espanyol” i “guanyar” anessin junts",
-   "ts": 1782338470680,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Exigimos PATCH ESPECIAL “LEGACY” a los 6 miembros que hemos participado en todas las ediciones Porrasu (estilo Messi, Neuer, Modric y Ronaldo).",
-   "ts": 1782288080392,
-   "likes": 1,
-   "dislikes": 1,
-   "score": 0
-  },
-  {
-   "text": "Que pasa con la cronica de ayer?",
-   "ts": 1782295080067,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "MOCION DE CENSURA AL PERRO SANXE YA. Elecciones YA.",
-   "ts": 1782295100010,
-   "likes": 1,
-   "dislikes": 1,
-   "score": 0
-  },
-  {
-   "text": "12:38 i encara redactant la crònica?? Pero que es això?? Quina vergonya",
-   "ts": 1782297536876,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Exigim RESPONSABILITATS als redactors de la cronica. El periodisme MATINA.",
-   "ts": 1782298969141,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Arbiiiiiit la cronica!",
-   "ts": 1782299207259,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Hoy Marruecos - Haiti. Donde se juega? En el patio de la carcel. Vota NOX.",
-   "ts": 1782322630614,
-   "likes": 2,
-   "dislikes": 2,
-   "score": 0
-  },
-  {
-   "text": "😂",
-   "ts": 1782332215515,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Si us plau que Lagen no remonti més, no el podria aguantar 2 anys recordant-ho",
-   "ts": 1782334889087,
-   "likes": 1,
-   "dislikes": 1,
-   "score": 0
-  },
-  {
-   "text": "Enquesta anonima. Vota 👍 si creus que immigrants fora, Vota 👎 si creus que immigrants son espanyols.",
-   "ts": 1782337060831,
-   "likes": 1,
-   "dislikes": 2,
    "score": -1
   },
   {
-   "text": "🚨 Comunicat oficial: #VagaDeCronica Avui no hi haurà crònica degut a les constants acusacions d’alguns membres sobre un farolillo del passat. Busquin a tots.",
-   "ts": 1782304595606,
-   "likes": 1,
-   "dislikes": 59,
-   "score": -58
+   "text": "Nova jornada. Ja soc lider. Siuuuuu 🖕🏽",
+   "ts": 1782369235352,
+   "likes": 0,
+   "dislikes": 5,
+   "score": -5
   }
  ]
 }
