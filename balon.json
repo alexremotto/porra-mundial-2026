@@ -1,5 +1,5 @@
 {
-  "baseDate": "2026-06-26",
+  "baseDate": "2026-06-27",
   "players": [
     {
       "name": "Lionel Messi",
@@ -10,26 +10,26 @@
     {
       "name": "Kylian Mbappé",
       "team": "Francia",
-      "odds": "24/5",
+      "odds": "5/1",
       "prevOdds": "24/5"
+    },
+    {
+      "name": "Ousmane Dembélé",
+      "team": "Francia",
+      "odds": "10/1",
+      "prevOdds": "10/1"
     },
     {
       "name": "Michael Olise",
       "team": "Francia",
-      "odds": "15/2",
+      "odds": "12/1",
       "prevOdds": "15/2"
     },
     {
       "name": "Harry Kane",
       "team": "Inglaterra",
-      "odds": "13/1",
-      "prevOdds": "13/1"
-    },
-    {
-      "name": "Erling Haaland",
-      "team": "Noruega",
       "odds": "14/1",
-      "prevOdds": "14/1"
+      "prevOdds": "13/1"
     },
     {
       "name": "Lamine Yamal",
@@ -40,7 +40,7 @@
     {
       "name": "Vini Jr.",
       "team": "Brasil",
-      "odds": "14/1",
+      "odds": "16/1",
       "prevOdds": "14/1"
     }
   ]
