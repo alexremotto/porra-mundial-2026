@@ -1,128 +1,128 @@
 {
- "day": "2026-06-25",
- "prevDay": "2026-06-24",
- "generatedAt": "2026-06-26T10:35:05Z",
+ "day": "2026-06-26",
+ "prevDay": "2026-06-25",
+ "generatedAt": "2026-06-27T09:58:54Z",
  "results": [
   {
-   "home": "Curaçao",
-   "away": "Ivory Coast",
-   "gh": 0,
-   "ga": 2
-  },
-  {
-   "home": "Ecuador",
-   "away": "Germany",
-   "gh": 2,
-   "ga": 1
-  },
-  {
-   "home": "Japan",
-   "away": "Sweden",
+   "home": "Norway",
+   "away": "France",
    "gh": 1,
-   "ga": 1
+   "ga": 4
   },
   {
-   "home": "Tunisia",
-   "away": "Netherlands",
-   "gh": 1,
-   "ga": 3
+   "home": "Senegal",
+   "away": "Iraq",
+   "gh": 5,
+   "ga": 0
   },
   {
-   "home": "Paraguay",
-   "away": "Australia",
+   "home": "Cape Verde",
+   "away": "Saudi Arabia",
    "gh": 0,
    "ga": 0
   },
   {
-   "home": "Turkey",
-   "away": "United States",
-   "gh": 3,
-   "ga": 2
+   "home": "Uruguay",
+   "away": "Spain",
+   "gh": 0,
+   "ga": 1
+  },
+  {
+   "home": "Egypt",
+   "away": "Iran",
+   "gh": 1,
+   "ga": 1
+  },
+  {
+   "home": "New Zealand",
+   "away": "Belgium",
+   "gh": 1,
+   "ga": 5
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Abete",
-   "total": 198,
-   "deltaPts": 49,
-   "deltaPos": 1
+   "total": 256,
+   "deltaPts": 34,
+   "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Lagen",
-   "total": 189,
-   "deltaPts": 37,
-   "deltaPos": -1
+   "total": 244,
+   "deltaPts": 34,
+   "deltaPos": 1
   },
   {
    "pos": 3,
    "name": "JJ",
-   "total": 187,
-   "deltaPts": 48,
-   "deltaPos": 2
+   "total": 238,
+   "deltaPts": 27,
+   "deltaPos": -1
   },
   {
    "pos": 4,
    "name": "Quimnot",
-   "total": 172,
-   "deltaPts": 23,
-   "deltaPos": -2
+   "total": 227,
+   "deltaPts": 34,
+   "deltaPos": 0
   },
   {
    "pos": 5,
    "name": "Jonete",
-   "total": 169,
-   "deltaPts": 27,
-   "deltaPos": -1
+   "total": 225,
+   "deltaPts": 35,
+   "deltaPos": 0
   },
   {
    "pos": 6,
    "name": "Carrillo",
-   "total": 160,
-   "deltaPts": 21,
-   "deltaPos": -1
-  },
-  {
-   "pos": 7,
-   "name": "Graells",
-   "total": 155,
-   "deltaPts": 30,
-   "deltaPos": 1
+   "total": 210,
+   "deltaPts": 29,
+   "deltaPos": 0
   },
   {
    "pos": 7,
    "name": "P-man",
-   "total": 155,
-   "deltaPts": 28,
+   "total": 206,
+   "deltaPts": 30,
+   "deltaPos": 0
+  },
+  {
+   "pos": 8,
+   "name": "Graells",
+   "total": 198,
+   "deltaPts": 25,
    "deltaPos": 0
   },
   {
    "pos": 9,
-   "name": "Uri",
-   "total": 141,
-   "deltaPts": 28,
-   "deltaPos": 0
+   "name": "Guille",
+   "total": 197,
+   "deltaPts": 38,
+   "deltaPos": 1
   },
   {
    "pos": 10,
-   "name": "Guille",
-   "total": 135,
-   "deltaPts": 27,
-   "deltaPos": 0
+   "name": "Uri",
+   "total": 193,
+   "deltaPts": 31,
+   "deltaPos": -1
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 124,
-   "deltaPts": 25,
+   "total": 189,
+   "deltaPts": 41,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 123,
-   "deltaPts": 35,
+   "total": 172,
+   "deltaPts": 28,
    "deltaPos": 0
   }
  ],
@@ -134,123 +134,123 @@
  ],
  "topGainers": [
   {
-   "name": "Abete",
-   "deltaPts": 49
+   "name": "Edu",
+   "deltaPts": 41
   },
   {
-   "name": "JJ",
-   "deltaPts": 48
+   "name": "Guille",
+   "deltaPts": 38
   },
   {
-   "name": "Lagen",
-   "deltaPts": 37
+   "name": "Jonete",
+   "deltaPts": 35
   }
  ],
  "comments": [
   {
-   "text": "Com els 59 dislikes del comment d'ahir que olora heavy a.... #LagenImpostor ✋🏿✋🏿",
-   "ts": 1782372115028,
-   "likes": 4,
+   "text": "Forecast ahora mismo (guille al habla): graells top 2, yo farolillo claro. Esta porra no me mola #AppRillo top",
+   "ts": 1782520998945,
+   "likes": 8,
    "dislikes": 0,
-   "score": 4
+   "score": 8
   },
   {
-   "text": "No volem impostors al xat 👀",
-   "ts": 1782371487529,
+   "text": "Marc Graells: si tenemos en cuenta los puntos sumados entre las 22:37 y las 3:56 en los días pares en los cuales la luna se encuentra en cuarto menguante, iría líder de la clasificación!",
+   "ts": 1782498933970,
+   "likes": 6,
+   "dislikes": 0,
+   "score": 6
+  },
+  {
+   "text": "Pinchazo de rueda fuerte de Joan “nano” Carrillo",
+   "ts": 1782455236801,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "59 persones van donar la seva opinio. Llibertat presos politics 🎗️",
-   "ts": 1782378194545,
-   "likes": 3,
-   "dislikes": 1,
-   "score": 2
-  },
-  {
-   "text": "\"De farolillo a Top 1\", la historia de Lagen, un chico humilde de Tres Torres. #SantiSíSePuede",
-   "ts": 1782399142142,
+   "text": "Hola edu soc el doctor santi soldevila. Benvingut al farolillo!",
+   "ts": 1782504079024,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Se vienen días tochos de 6 partidos. Donde cojones está Curaçao?",
-   "ts": 1782377517717,
+   "text": "Grande CUCU",
+   "ts": 1782520447977,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Porra santi > Cannobio",
+   "ts": 1782526143151,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "El ocaso de carrillo es historico. Buenos dias",
+   "ts": 1782455335391,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Solicito incorporar una nueva funcionalidad en la app que permita restar puntos a una persona cuando haya decisión unánime (el implicado no puede votar)",
-   "ts": 1782423381101,
+   "text": "Alguien volo sobre el nido del Cucu",
+   "ts": 1782520528524,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Dato curioso: Gonzalo PLATA es el tercer jugador con nombre/apellido de elemento quimico que marca en toda la historia de la copa del mundo, tras Fernando HIERRO y HELIO Varela",
-   "ts": 1782430034973,
+   "text": "Soc el Guillem. Puc canviar la meva porra d’Espanya? Jugant així no arribem a vuitens",
+   "ts": 1782520935214,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "El que no envia els resultats a temps es JJ, ens volen fer el lio i que perdem el foco",
-   "ts": 1782430105911,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Dato curioso: Weghorst es el apellido mas largo de los 1248 jugadores del mundial cuyas letras no se cruzan consigo mismo en un circulo ordenado alfabeticamente (para los que no son Aula, orden alfabetico circular empezando por la W)",
-   "ts": 1782436140194,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "La gente hace comentarios haciendose pasar por Lagen. Pero se ve claramente que no es el. Lagen es muy humilde",
-   "ts": 1782444701441,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Enquesta anonima del dia: vota 👍 si vols Julian al Barsa, vota 👎 si no vols Julian al Barsa",
-   "ts": 1782388961192,
-   "likes": 3,
-   "dislikes": 3,
-   "score": 0
-  },
-  {
-   "text": "Lagen mano negra 🤚🏿 robo",
-   "ts": 1782402429210,
+   "text": "Joan = Huracan Condor",
+   "ts": 1782455544680,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Lagen encara no ha enviat tots els resultats de tothom (ni el seu) 🧐",
-   "ts": 1782423185070,
+   "text": "Avui juga Espanya. Vamos mi espanyita 👀 siuuu",
+   "ts": 1782463114739,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Només jo tinc la meva porra 👀 #LiderSiuuu",
-   "ts": 1782423971270,
-   "likes": 0,
+   "text": "Aseguro que ningun comentario escrito en castellano es mio (guille al habla), y que por el contrario todos mis comentarios son en catalan. Pero gracias por hablar en castellano equipo 😂😂",
+   "ts": 1782499362854,
+   "likes": 1,
    "dislikes": 1,
-   "score": -1
+   "score": 0
   },
   {
-   "text": "Nova jornada. Ja soc lider. Siuuuuu 🖕🏽",
-   "ts": 1782369235352,
+   "text": "🌋",
+   "ts": 1782513651766,
    "likes": 0,
-   "dislikes": 5,
-   "score": -5
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Quién ha hecho esta contramufa?? 🤝🤝",
+   "ts": 1782521021535,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Que preferis: 👍🏽 Pau gana la porra, sin hablar, sin molestar, coge el dinero y desaparece 4 años; o 👎🏽 Lagen gana la porra y lo escuchamos 4 años modo bluce",
+   "ts": 1782476700959,
+   "likes": 5,
+   "dislikes": 7,
+   "score": -2
   }
  ]
 }
