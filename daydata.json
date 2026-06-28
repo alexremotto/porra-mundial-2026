@@ -1,256 +1,270 @@
 {
- "day": "2026-06-26",
- "prevDay": "2026-06-25",
- "generatedAt": "2026-06-27T19:47:38Z",
+ "day": "2026-06-27",
+ "prevDay": "2026-06-26",
+ "generatedAt": "2026-06-28T06:49:55Z",
  "results": [
   {
-   "home": "Norway",
-   "away": "France",
-   "gh": 1,
-   "ga": 4
+   "home": "Croatia",
+   "away": "Ghana",
+   "gh": 2,
+   "ga": 1
   },
   {
-   "home": "Senegal",
-   "away": "Iraq",
-   "gh": 5,
-   "ga": 0
+   "home": "Panama",
+   "away": "England",
+   "gh": 0,
+   "ga": 2
   },
   {
-   "home": "Cape Verde",
-   "away": "Saudi Arabia",
+   "home": "Colombia",
+   "away": "Portugal",
    "gh": 0,
    "ga": 0
   },
   {
-   "home": "Uruguay",
-   "away": "Spain",
-   "gh": 0,
+   "home": "DR Congo",
+   "away": "Uzbekistan",
+   "gh": 3,
    "ga": 1
   },
   {
-   "home": "Egypt",
-   "away": "Iran",
-   "gh": 1,
-   "ga": 1
+   "home": "Algeria",
+   "away": "Austria",
+   "gh": 3,
+   "ga": 3
   },
   {
-   "home": "New Zealand",
-   "away": "Belgium",
+   "home": "Jordan",
+   "away": "Argentina",
    "gh": 1,
-   "ga": 5
+   "ga": 3
   }
  ],
  "standings": [
   {
    "pos": 1,
-   "name": "Abete",
-   "total": 256,
-   "deltaPts": 34,
-   "deltaPos": 0
-  },
-  {
-   "pos": 2,
    "name": "Lagen",
-   "total": 244,
-   "deltaPts": 34,
+   "total": 326,
+   "deltaPts": 49,
    "deltaPos": 1
   },
   {
-   "pos": 3,
-   "name": "JJ",
-   "total": 238,
-   "deltaPts": 27,
+   "pos": 2,
+   "name": "Abete",
+   "total": 322,
+   "deltaPts": 33,
    "deltaPos": -1
   },
   {
-   "pos": 4,
+   "pos": 3,
    "name": "Quimnot",
-   "total": 227,
+   "total": 306,
+   "deltaPts": 40,
+   "deltaPos": 1
+  },
+  {
+   "pos": 4,
+   "name": "JJ",
+   "total": 305,
    "deltaPts": 34,
-   "deltaPos": 0
+   "deltaPos": -1
   },
   {
    "pos": 5,
    "name": "Jonete",
-   "total": 225,
-   "deltaPts": 35,
+   "total": 284,
+   "deltaPts": 26,
    "deltaPos": 0
   },
   {
    "pos": 6,
-   "name": "Carrillo",
-   "total": 210,
-   "deltaPts": 29,
-   "deltaPos": 0
+   "name": "Graells",
+   "total": 277,
+   "deltaPts": 46,
+   "deltaPos": 2
   },
   {
    "pos": 7,
-   "name": "P-man",
-   "total": 206,
-   "deltaPts": 30,
-   "deltaPos": 0
+   "name": "Carrillo",
+   "total": 276,
+   "deltaPts": 27,
+   "deltaPos": -1
   },
   {
    "pos": 8,
-   "name": "Graells",
-   "total": 198,
-   "deltaPts": 25,
-   "deltaPos": 0
+   "name": "P-man",
+   "total": 275,
+   "deltaPts": 33,
+   "deltaPos": -1
   },
   {
    "pos": 9,
-   "name": "Guille",
-   "total": 197,
-   "deltaPts": 38,
-   "deltaPos": 1
+   "name": "Edu",
+   "total": 266,
+   "deltaPts": 44,
+   "deltaPos": 2
   },
   {
    "pos": 10,
    "name": "Uri",
-   "total": 193,
-   "deltaPts": 31,
-   "deltaPos": -1
+   "total": 265,
+   "deltaPts": 39,
+   "deltaPos": 0
   },
   {
    "pos": 11,
-   "name": "Edu",
-   "total": 189,
-   "deltaPts": 41,
-   "deltaPos": 0
+   "name": "Guille",
+   "total": 264,
+   "deltaPts": 37,
+   "deltaPos": -2
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 172,
+   "total": 230,
    "deltaPts": 28,
    "deltaPos": 0
   }
  ],
  "leader": [
-  "Abete"
+  "Lagen"
  ],
  "farolillo": [
   "Santi"
  ],
  "topGainers": [
   {
+   "name": "Lagen",
+   "deltaPts": 49
+  },
+  {
+   "name": "Graells",
+   "deltaPts": 46
+  },
+  {
    "name": "Edu",
-   "deltaPts": 41
-  },
-  {
-   "name": "Guille",
-   "deltaPts": 38
-  },
-  {
-   "name": "Jonete",
-   "deltaPts": 35
+   "deltaPts": 44
   }
  ],
  "comments": [
   {
-   "text": "Forecast ahora mismo (guille al habla): graells top 2, yo farolillo claro. Esta porra no me mola #AppRillo top",
-   "ts": 1782520998945,
-   "likes": 8,
+   "text": "Se tendria que mantener esta app y este chat anonimo durante el año con porra Champions",
+   "ts": 1782580426685,
+   "likes": 3,
    "dislikes": 0,
-   "score": 8
+   "score": 3
   },
   {
-   "text": "Marc Graells: si tenemos en cuenta los puntos sumados entre las 22:37 y las 3:56 en los días pares en los cuales la luna se encuentra en cuarto menguante, iría líder de la clasificación!",
-   "ts": 1782498933970,
-   "likes": 6,
-   "dislikes": 0,
-   "score": 6
-  },
-  {
-   "text": "Pinchazo de rueda fuerte de Joan “nano” Carrillo",
-   "ts": 1782455236801,
+   "text": "Cannobio asesino si quieres romper piernas ve a por el Perro Sanxe",
+   "ts": 1782558818727,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Hola edu soc el doctor santi soldevila. Benvingut al farolillo!",
-   "ts": 1782504079024,
+   "text": "+1",
+   "ts": 1782580614684,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Grande CUCU",
-   "ts": 1782520447977,
+   "text": "+1",
+   "ts": 1782580620681,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Porra santi > Cannobio",
-   "ts": 1782526143151,
+   "text": "+1",
+   "ts": 1782580625931,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "El ocaso de carrillo es historico. Buenos dias",
-   "ts": 1782455335391,
+   "text": "Molaria poder hacer bet de quien ha escrito cada comentario",
+   "ts": 1782588359271,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Si Paquito levantara la cabeza y viera la diversidad de razas que forman parte de la rojigualda se volvería a dormir. #Estaselecciónnomerepresenta. Orriols>Fallanttorres",
+   "ts": 1782572259198,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Alguien volo sobre el nido del Cucu",
-   "ts": 1782520528524,
+   "text": "Santi farolillo. Da igual cuando leas esto",
+   "ts": 1782619315305,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Soc el Guillem. Puc canviar la meva porra d’Espanya? Jugant així no arribem a vuitens",
-   "ts": 1782520935214,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Joan = Huracan Condor",
-   "ts": 1782455544680,
+   "text": "Graells 8… estimación 2n!!! Veremos",
+   "ts": 1782544800307,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Avui juga Espanya. Vamos mi espanyita 👀 siuuu",
-   "ts": 1782463114739,
+   "text": "Cuco torrente > Cucu cucurella",
+   "ts": 1782558783125,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Aseguro que ningun comentario escrito en castellano es mio (guille al habla), y que por el contrario todos mis comentarios son en catalan. Pero gracias por hablar en castellano equipo 😂😂",
-   "ts": 1782499362854,
+   "text": "(Parla (Guille) avui tanquem fase de grups i canviara la classificació notablement. Força Barça!",
+   "ts": 1782559402882,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Hay mafia en la estimada 🙃",
+   "ts": 1782564826877,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "¿Sabías que… Neghorst (Países Bajos) es el apellido más largo de todos los 1.248 jugadores del Mundial cuyas letras no se cruzan consigo mismo en un círculo ordenado alfabéticamente?",
+   "ts": 1782571256429,
    "likes": 1,
    "dislikes": 1,
    "score": 0
   },
   {
-   "text": "🌋",
-   "ts": 1782513651766,
+   "text": "Marc Graells: si tenemos en cuenta los puntos sumados solo en los terceros y quintos partidos de cada jornada y mientras me la estoy pelando en el lavabo con Cañi paseando al perro, iría líder de la clasificación",
+   "ts": 1782577075663,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Quién ha hecho esta contramufa?? 🤝🤝",
-   "ts": 1782521021535,
+   "text": "Tabla estimada futura esta trucada",
+   "ts": 1782580453904,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Que preferis: 👍🏽 Pau gana la porra, sin hablar, sin molestar, coge el dinero y desaparece 4 años; o 👎🏽 Lagen gana la porra y lo escuchamos 4 años modo bluce",
-   "ts": 1782476700959,
-   "likes": 5,
-   "dislikes": 7,
-   "score": -2
+   "text": "Este chat me anima mas que mi mujer",
+   "ts": 1782580588707,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Estimada final > Tabla actual",
+   "ts": 1782587802928,
+   "likes": 1,
+   "dislikes": 1,
+   "score": 0
   }
  ]
 }
