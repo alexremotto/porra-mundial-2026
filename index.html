@@ -587,7 +587,12 @@ function buildActual(espn){
       info[slot.key]={gh,ga,home:slot.home,away:slot.away,state:m.state,final,espn_date:m.date};
       if(played&&gh!=null&&ga!=null) actual.matches[slot.key]=[gh,ga,slot.home,slot.away];
     } else { const stage=stageOf((m.date||"").slice(0,10)); if(stage) koByStage[stage].push(m); } }
-  for(const s of P.koOrder){ const t=new Set(); for(const m of koByStage[s]){t.add(m.home);t.add(m.away);} actual.reached[s]=[...t]; }
+  // reached = equipos que llegan a cada ronda KO, contando SOLO partidos KO ya
+  // jugados (post/in). Los programados (pre) no cuentan: si una ronda no ha
+  // empezado, no da puntos. (reached.r32 de grupos se añade aparte vía qualifiedR32.)
+  for(const s of P.koOrder){ const t=new Set();
+    for(const m of koByStage[s]){ if(m.state==="post"||m.state==="in"){ if(m.home)t.add(m.home); if(m.away)t.add(m.away); } }
+    actual.reached[s]=[...t]; }
   for(const s of P.koOrder){ const slots=P.koSlots[s]||[]; const es=koByStage[s].slice().sort((a,b)=>a.date<b.date?-1:1);
     for(let i=0;i<Math.min(slots.length,es.length);i++){ const m=es[i];
       if((m.state==="in"||m.state==="post")&&m.gh!=null){ actual.matches[slots[i].key]=[m.gh,m.ga,m.home,m.away];
