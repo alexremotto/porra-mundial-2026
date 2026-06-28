@@ -595,8 +595,12 @@ function buildActual(espn){
     actual.reached[s]=[...t]; }
   for(const s of P.koOrder){ const slots=P.koSlots[s]||[]; const es=koByStage[s].slice().sort((a,b)=>a.date<b.date?-1:1);
     for(let i=0;i<Math.min(slots.length,es.length);i++){ const m=es[i];
-      if((m.state==="in"||m.state==="post")&&m.gh!=null){ actual.matches[slots[i].key]=[m.gh,m.ga,m.home,m.away];
-        info[slots[i].key]={gh:m.gh,ga:m.ga,home:m.home,away:m.away,state:m.state,final:m.state==="post",espn_date:m.date,stage:s}; } } }
+      const played=(m.state==="in"||m.state==="post")&&m.gh!=null;
+      // Muestra el emparejamiento (cruce) aunque el partido NO se haya jugado:
+      // info se rellena siempre con los equipos; el marcador solo si se ha jugado.
+      info[slots[i].key]={gh:played?m.gh:null, ga:played?m.ga:null, home:m.home, away:m.away,
+        state:m.state, final:m.state==="post", espn_date:m.date, stage:s};
+      if(played) actual.matches[slots[i].key]=[m.gh,m.ga,m.home,m.away]; } }
   for(const ltr in P.groupByLetter){ const order=groupStandings(P.groupByLetter[ltr],info);
     if(order) order.forEach((t,i)=>{ actual.positions[ltr+"-"+(i+1)]=t; }); }
   // Equipos YA clasificados a 1/16 según resultados reales -> aplica sus puntos
