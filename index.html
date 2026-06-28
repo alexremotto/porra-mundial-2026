@@ -578,7 +578,7 @@ function groupStandings(keys,info){ const st={}; let done=0;
   if(done<keys.length) return null;
   return Object.keys(st).sort((a,b)=> st[b][0]-st[a][0]||st[b][1]-st[a][1]||st[b][2]-st[a][2]||(a<b?-1:1)); }
 function buildActual(espn){
-  const actual={matches:{},positions:{},reached:{}}; const info={}; const koByStage={};
+  const actual={matches:{},positions:{},reached:{}}; const info={}; const koByStage={}, koAll=[];
   for(const s of P.koOrder) koByStage[s]=[];
   for(const m of espn){ if(!m.home||!m.away) continue;
     const played=m.state==="in"||m.state==="post"; const final=m.state==="post";
@@ -586,7 +586,13 @@ function buildActual(espn){
     if(slot){ let gh=m.gh,ga=m.ga; if(m.home!==slot.home){gh=m.ga;ga=m.gh;}
       info[slot.key]={gh,ga,home:slot.home,away:slot.away,state:m.state,final,espn_date:m.date};
       if(played&&gh!=null&&ga!=null) actual.matches[slot.key]=[gh,ga,slot.home,slot.away];
-    } else { const stage=stageOf((m.date||"").slice(0,10)); if(stage) koByStage[stage].push(m); } }
+    } else { koAll.push(m); } }
+  // Reparte los partidos KO por ORDEN cronológico según el nº de cada ronda
+  // (16 dieciseisavos, 8 octavos, 4 cuartos, 2 semis, 1+1). Las ventanas de
+  // fecha se solapan —el último 1/16 cae el día que empiezan los octavos—, así
+  // que por orden es robusto y no descoloca cruces.
+  koAll.sort((a,b)=> ((a.date||"z")<(b.date||"z"))?-1:(((a.date||"z")>(b.date||"z"))?1:0));
+  { let idx=0; for(const s of P.koOrder){ const n=(P.koSlots[s]||[]).length; koByStage[s]=koAll.slice(idx,idx+n); idx+=n; } }
   // reached = equipos que llegan a cada ronda KO, contando SOLO partidos KO ya
   // jugados (post/in). Los programados (pre) no cuentan: si una ronda no ha
   // empezado, no da puntos. (reached.r32 de grupos se añade aparte vía qualifiedR32.)
