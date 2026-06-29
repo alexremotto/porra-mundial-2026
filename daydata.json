@@ -1,7 +1,7 @@
 {
  "day": "2026-06-28",
  "prevDay": "2026-06-27",
- "generatedAt": "2026-06-29T10:35:06Z",
+ "generatedAt": "2026-06-29T16:35:06Z",
  "results": [
   {
    "home": "South Africa",
@@ -14,8 +14,8 @@
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 330,
-   "deltaPts": 4,
+   "total": 338,
+   "deltaPts": 6,
    "deltaPos": 0
   },
   {
@@ -28,71 +28,71 @@
   {
    "pos": 3,
    "name": "Quimnot",
-   "total": 310,
-   "deltaPts": 4,
-   "deltaPos": 0
+   "total": 309,
+   "deltaPts": 6,
+   "deltaPos": 1
   },
   {
    "pos": 4,
    "name": "JJ",
-   "total": 309,
-   "deltaPts": 4,
-   "deltaPos": 0
+   "total": 308,
+   "deltaPts": 0,
+   "deltaPos": -1
   },
   {
    "pos": 5,
    "name": "Jonete",
-   "total": 288,
-   "deltaPts": 4,
+   "total": 296,
+   "deltaPts": 6,
    "deltaPos": 0
   },
   {
    "pos": 6,
-   "name": "Carrillo",
-   "total": 280,
-   "deltaPts": 4,
-   "deltaPos": 1
+   "name": "Graells",
+   "total": 283,
+   "deltaPts": 0,
+   "deltaPos": 0
   },
   {
    "pos": 7,
-   "name": "Graells",
-   "total": 277,
-   "deltaPts": 0,
-   "deltaPos": -1
+   "name": "Guille",
+   "total": 280,
+   "deltaPts": 13,
+   "deltaPos": 4
   },
   {
    "pos": 8,
    "name": "P-man",
    "total": 275,
    "deltaPts": 0,
-   "deltaPos": 0
+   "deltaPos": -1
   },
   {
    "pos": 9,
-   "name": "Guille",
-   "total": 271,
-   "deltaPts": 7,
-   "deltaPos": 2
+   "name": "Carrillo",
+   "total": 273,
+   "deltaPts": 0,
+   "deltaPos": -1
   },
   {
    "pos": 10,
    "name": "Edu",
-   "total": 266,
+   "total": 272,
    "deltaPts": 0,
    "deltaPos": -1
   },
   {
    "pos": 11,
    "name": "Uri",
-   "total": 265,
+   "total": 268,
    "deltaPts": 0,
    "deltaPos": -1
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 234,
-   "deltaPts": 4,
+   "total": 239,
+   "deltaPts": 6,
    "deltaPos": 0
   }
  ],
@@ -105,15 +105,15 @@
  "topGainers": [
   {
    "name": "Guille",
-   "deltaPts": 7
+   "deltaPts": 13
   },
   {
    "name": "Lagen",
-   "deltaPts": 4
+   "deltaPts": 6
   },
   {
    "name": "Quimnot",
-   "deltaPts": 4
+   "deltaPts": 6
   }
  ],
  "comments": [
