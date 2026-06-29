@@ -593,12 +593,19 @@ function buildActual(espn){
   // que por orden es robusto y no descoloca cruces.
   koAll.sort((a,b)=> ((a.date||"z")<(b.date||"z"))?-1:(((a.date||"z")>(b.date||"z"))?1:0));
   { let idx=0; for(const s of P.koOrder){ const n=(P.koSlots[s]||[]).length; koByStage[s]=koAll.slice(idx,idx+n); idx+=n; } }
-  // reached = equipos que llegan a cada ronda KO, contando SOLO partidos KO ya
-  // jugados (post/in). Los programados (pre) no cuentan: si una ronda no ha
-  // empezado, no da puntos. (reached.r32 de grupos se añade aparte vía qualifiedR32.)
-  for(const s of P.koOrder){ const t=new Set();
-    for(const m of koByStage[s]){ if(m.state==="post"||m.state==="in"){ if(m.home)t.add(m.home); if(m.away)t.add(m.away); } }
-    actual.reached[s]=[...t]; }
+  // reached = equipos que LLEGAN a cada ronda KO. Un equipo llega a la ronda
+  // siguiente al GANAR su partido (clasifica). Así, en cuanto un equipo se
+  // clasifica, ya cuentan sus puntos. (reached.r32 = clasificados de grupos,
+  // se añade aparte vía qualifiedR32 más abajo.)
+  for(const s of P.koOrder) actual.reached[s]=[];
+  const _nextKO={r32:"r16",r16:"qf",qf:"sf",sf:"final"};
+  for(const s of P.koOrder){ for(const m of koByStage[s]){
+    if(m.state!=="post" || m.gh==null || m.ga==null || !m.home || !m.away) continue;
+    let w=null,l=null;
+    if(m.gh>m.ga){w=m.home;l=m.away;} else if(m.ga>m.gh){w=m.away;l=m.home;} else continue; // empate (penaltis): sin dato, no decide aún
+    const ns=_nextKO[s]; if(ns&&!actual.reached[ns].includes(w)) actual.reached[ns].push(w);
+    if(s==="sf"&&l&&!actual.reached.third.includes(l)) actual.reached.third.push(l);
+  } }
   for(const s of P.koOrder){ const slots=P.koSlots[s]||[]; const es=koByStage[s].slice().sort((a,b)=>a.date<b.date?-1:1);
     for(let i=0;i<Math.min(slots.length,es.length);i++){ const m=es[i];
       const played=(m.state==="in"||m.state==="post")&&m.gh!=null;
@@ -644,8 +651,11 @@ function scoreParticipant(part,S){ const A=S.actual; const b={}; for(const k in 
   const q32=inter(part.reached.r32,A.reached.r32); b.grupos_clasif=P.qualif.r32*q32;
   const koBlock={r32:"r32_partidos",r16:"r16_partidos",qf:"qf_partidos",sf:"sf_partidos",third:"third_partido",final:"final_partido"};
   const koW={r32:P.weights.r32,r16:P.weights.r16,qf:P.weights.qf,sf:P.weights.sf,third:P.weights.third,final:P.weights.final};
+  // KO: el "resultado" solo puntúa si se CLAVA el marcador exacto (sin parciales
+  // por signo/diferencia, a diferencia de la fase de grupos).
   for(const stage of P.koOrder){ for(const slot of (P.koSlots[stage]||[])){ const key=slot.key;
-    if(A.matches[key]&&part.matches[key]) b[koBlock[stage]]+=scoreMatch(part.matches[key],A.matches[key],koW[stage]); } }
+    const pm=part.matches[key], am=A.matches[key];
+    if(am&&pm&&pm[0]===am[0]&&pm[1]===am[1]){ const w=koW[stage]; b[koBlock[stage]]+=w[0]+w[1]+w[2]; } } }
   b.r32_clasif=P.qualif.r16*inter(part.reached.r16,A.reached.r16);
   b.r16_clasif=P.qualif.qf*inter(part.reached.qf,A.reached.qf);
   b.qf_clasif=P.qualif.sf*inter(part.reached.sf,A.reached.sf);
