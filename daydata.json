@@ -1,128 +1,98 @@
 {
- "day": "2026-06-27",
- "prevDay": "2026-06-26",
- "generatedAt": "2026-06-28T19:48:07Z",
+ "day": "2026-06-28",
+ "prevDay": "2026-06-27",
+ "generatedAt": "2026-06-29T06:48:43Z",
  "results": [
   {
-   "home": "Croatia",
-   "away": "Ghana",
-   "gh": 2,
-   "ga": 1
-  },
-  {
-   "home": "Panama",
-   "away": "England",
+   "home": "South Africa",
+   "away": "Canada",
    "gh": 0,
-   "ga": 2
-  },
-  {
-   "home": "Colombia",
-   "away": "Portugal",
-   "gh": 0,
-   "ga": 0
-  },
-  {
-   "home": "DR Congo",
-   "away": "Uzbekistan",
-   "gh": 3,
    "ga": 1
-  },
-  {
-   "home": "Algeria",
-   "away": "Austria",
-   "gh": 3,
-   "ga": 3
-  },
-  {
-   "home": "Jordan",
-   "away": "Argentina",
-   "gh": 1,
-   "ga": 3
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 326,
-   "deltaPts": 49,
-   "deltaPos": 1
+   "total": 330,
+   "deltaPts": 4,
+   "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Abete",
    "total": 322,
-   "deltaPts": 33,
-   "deltaPos": -1
+   "deltaPts": 0,
+   "deltaPos": 0
   },
   {
    "pos": 3,
    "name": "Quimnot",
-   "total": 306,
-   "deltaPts": 40,
-   "deltaPos": 1
+   "total": 310,
+   "deltaPts": 4,
+   "deltaPos": 0
   },
   {
    "pos": 4,
    "name": "JJ",
-   "total": 305,
-   "deltaPts": 34,
-   "deltaPos": -1
+   "total": 309,
+   "deltaPts": 4,
+   "deltaPos": 0
   },
   {
    "pos": 5,
    "name": "Jonete",
-   "total": 284,
-   "deltaPts": 26,
+   "total": 288,
+   "deltaPts": 4,
    "deltaPos": 0
   },
   {
    "pos": 6,
-   "name": "Graells",
-   "total": 277,
-   "deltaPts": 46,
-   "deltaPos": 2
+   "name": "Carrillo",
+   "total": 280,
+   "deltaPts": 4,
+   "deltaPos": 1
   },
   {
    "pos": 7,
-   "name": "Carrillo",
-   "total": 276,
-   "deltaPts": 27,
+   "name": "Graells",
+   "total": 277,
+   "deltaPts": 0,
    "deltaPos": -1
   },
   {
    "pos": 8,
    "name": "P-man",
    "total": 275,
-   "deltaPts": 33,
-   "deltaPos": -1
+   "deltaPts": 0,
+   "deltaPos": 0
   },
   {
    "pos": 9,
-   "name": "Edu",
-   "total": 266,
-   "deltaPts": 44,
+   "name": "Guille",
+   "total": 271,
+   "deltaPts": 7,
    "deltaPos": 2
   },
   {
    "pos": 10,
-   "name": "Uri",
-   "total": 265,
-   "deltaPts": 39,
-   "deltaPos": 0
+   "name": "Edu",
+   "total": 266,
+   "deltaPts": 0,
+   "deltaPos": -1
   },
   {
    "pos": 11,
-   "name": "Guille",
-   "total": 264,
-   "deltaPts": 37,
-   "deltaPos": -2
+   "name": "Uri",
+   "total": 265,
+   "deltaPts": 0,
+   "deltaPos": -1
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 230,
-   "deltaPts": 28,
+   "total": 234,
+   "deltaPts": 4,
    "deltaPos": 0
   }
  ],
@@ -134,136 +104,129 @@
  ],
  "topGainers": [
   {
+   "name": "Guille",
+   "deltaPts": 7
+  },
+  {
    "name": "Lagen",
-   "deltaPts": 49
+   "deltaPts": 4
   },
   {
-   "name": "Graells",
-   "deltaPts": 46
-  },
-  {
-   "name": "Edu",
-   "deltaPts": 44
+   "name": "Quimnot",
+   "deltaPts": 4
   }
  ],
  "comments": [
   {
-   "text": "Se tendria que mantener esta app y este chat anonimo durante el año con porra Champions",
-   "ts": 1782580426685,
+   "text": "Porra excel OG > AppRillo > AulApp",
+   "ts": 1782638423675,
+   "likes": 7,
+   "dislikes": 1,
+   "score": 6
+  },
+  {
+   "text": "Si en vez de Abete fuese Abeto estaria con Olmo, Pino, Cerezo y Del Bosque",
+   "ts": 1782686265314,
+   "likes": 5,
+   "dislikes": 0,
+   "score": 5
+  },
+  {
+   "text": "Dato curioso: por primera vez en toda la historia del mundial una seleccion consigue alinear dos jugadores con nombre de arbol (y no lo hizo Del Bosque):\nDani OLMO\nYeremy PINO",
+   "ts": 1782644175445,
+   "likes": 4,
+   "dislikes": 0,
+   "score": 4
+  },
+  {
+   "text": "Un día más sin comentario de Abete",
+   "ts": 1782647440748,
+   "likes": 4,
+   "dislikes": 0,
+   "score": 4
+  },
+  {
+   "text": "Quin drama nomes un partit avui.  Ara que faig?",
+   "ts": 1782684655429,
+   "likes": 4,
+   "dislikes": 0,
+   "score": 4
+  },
+  {
+   "text": "Abete pagó los 10€ de la porra y esa fue su unica interaccion hasta el momento.",
+   "ts": 1782651400289,
    "likes": 3,
    "dislikes": 0,
    "score": 3
   },
   {
-   "text": "Cannobio asesino si quieres romper piernas ve a por el Perro Sanxe",
-   "ts": 1782558818727,
+   "text": "Abete last seen 8 days ago",
+   "ts": 1782671105769,
+   "likes": 3,
+   "dislikes": 0,
+   "score": 3
+  },
+  {
+   "text": "Y de presidente enrique CEREZO",
+   "ts": 1782645320936,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "+1",
-   "ts": 1782580614684,
+   "text": "Certezas:\nFísica: Basada en las leyes de la naturaleza. Eg: El sol saldrá mañana.\nMoral: Basada en el comportamiento. Eg: mis amigos no me matarán.\nMetafísica: Absoluta e inmutable, basada en la esencia del objeto. Eg: Santi es farolillo",
+   "ts": 1782647323262,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "+1",
-   "ts": 1782580620681,
+   "text": "¿Sabías que… Maxence Lacroix (Francia) es el primer jugador desde 1994 (>30 años) en empezar un partido del Mundial con la letra 'X' en nombre y apellido? Aunque ese record podria haber sido de España con el hijo puta del PERRO SANXE.",
+   "ts": 1782664108934,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "+1",
-   "ts": 1782580625931,
+   "text": "Lamentable boda de paula bœsch amb el papanut aquell 👎🏽",
+   "ts": 1782669846186,
+   "likes": 3,
+   "dislikes": 1,
+   "score": 2
+  },
+  {
+   "text": "Abete el hombre invisible",
+   "ts": 1782686174698,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Molaria poder hacer bet de quien ha escrito cada comentario",
-   "ts": 1782588359271,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Si Paquito levantara la cabeza y viera la diversidad de razas que forman parte de la rojigualda se volvería a dormir. #Estaselecciónnomerepresenta. Orriols>Fallanttorres",
-   "ts": 1782572259198,
+   "text": "Nuevo dia, nuevo chat 🤚🏿",
+   "ts": 1782633307551,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Santi farolillo. Da igual cuando leas esto",
-   "ts": 1782619315305,
+   "text": "AppRrillo > AulApp",
+   "ts": 1782635304162,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Graells 8… estimación 2n!!! Veremos",
-   "ts": 1782544800307,
+   "text": "Ei no cardeu que parlo sempre però en mode incognit",
+   "ts": 1782680481847,
+   "likes": 2,
+   "dislikes": 2,
+   "score": 0
+  },
+  {
+   "text": "Esta app se ha liado completamente no? Actualización o fuga. (Apprrillo es tu momento)\nAulapp se ha desplomado en bolsa 📉",
+   "ts": 1782710352525,
    "likes": 0,
    "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Cuco torrente > Cucu cucurella",
-   "ts": 1782558783125,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "(Parla (Guille) avui tanquem fase de grups i canviara la classificació notablement. Força Barça!",
-   "ts": 1782559402882,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Hay mafia en la estimada 🙃",
-   "ts": 1782564826877,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "¿Sabías que… Neghorst (Países Bajos) es el apellido más largo de todos los 1.248 jugadores del Mundial cuyas letras no se cruzan consigo mismo en un círculo ordenado alfabéticamente?",
-   "ts": 1782571256429,
-   "likes": 1,
-   "dislikes": 1,
-   "score": 0
-  },
-  {
-   "text": "Marc Graells: si tenemos en cuenta los puntos sumados solo en los terceros y quintos partidos de cada jornada y mientras me la estoy pelando en el lavabo con Cañi paseando al perro, iría líder de la clasificación",
-   "ts": 1782577075663,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Tabla estimada futura esta trucada",
-   "ts": 1782580453904,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Este chat me anima mas que mi mujer",
-   "ts": 1782580588707,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Estimada final > Tabla actual",
-   "ts": 1782587802928,
-   "likes": 1,
-   "dislikes": 1,
    "score": 0
   }
  ]
