@@ -1,11 +1,11 @@
 {
-  "baseDate": "2026-06-29",
+  "baseDate": "2026-06-30",
   "players": [
     {
       "name": "Lionel Messi",
       "team": "Argentina",
       "odds": "3/1",
-      "prevOdds": "7/2"
+      "prevOdds": "3/1"
     },
     {
       "name": "Kylian Mbappé",
