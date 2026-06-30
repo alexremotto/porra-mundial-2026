@@ -317,6 +317,17 @@
   .cron-article p{margin:0 0 9px;} .cron-article p:last-child{margin-bottom:0;}
   .cron-article b{color:var(--teal);} .cron-article em{color:#c0392b; font-style:italic;}
   .cron-article .q{color:#445; font-style:italic;}
+  .cron-cmts{margin-top:11px; border-top:1px solid var(--sep); padding-top:8px;}
+  .cron-cmts summary{cursor:pointer; font-size:.82rem; font-weight:700; color:var(--teal);
+    list-style:none; -webkit-tap-highlight-color:transparent;}
+  .cron-cmts summary::-webkit-details-marker{display:none;}
+  .cron-cmts summary::before{content:"▸ "; font-weight:800;}
+  .cron-cmts[open] summary::before{content:"▾ ";}
+  .cron-cmts-body{margin-top:8px;}
+  .cmt-ro{display:flex; align-items:flex-start; gap:8px; padding:6px 2px; border-bottom:1px dotted #eef3f5; font-size:.84rem;}
+  .cmt-ro-t{flex:1; line-height:1.35;}
+  .cmt-ro-rx{flex-shrink:0; display:flex; gap:6px; font-size:.72rem; font-weight:700;}
+  .cmt-ro-rx .up{color:#0c7a52;} .cmt-ro-rx .dn{color:#b5392c;}
   .cron-pending{margin-top:9px; padding:14px 12px; text-align:center; color:#5a6b72;
     background:#f3f6f7; border:1px dashed #c4d0d4; border-radius:9px; font-size:.9rem;}
   .cron-pending small{color:#8a99a0; font-size:.76rem;}
@@ -635,6 +646,12 @@ function qualifiedR32(info){
     thirds.slice(0, Math.max(0, P.koSlots.r32.length*2-out.size)).forEach(x=> out.add(x.team)); }
   return out;
 }
+// KO exacto: el participante predijo ESE partido (mismos equipos) con el marcador
+// exacto. Acepta orientación invertida (home/away al revés con el marcador acorde).
+function koExact(pm,am){ if(!pm||!am||pm[0]==null||am[0]==null) return false;
+  if(pm[2]===am[2]&&pm[3]===am[3]) return pm[0]===am[0]&&pm[1]===am[1];
+  if(pm[2]===am[3]&&pm[3]===am[2]) return pm[0]===am[1]&&pm[1]===am[0];
+  return false; }
 function scoreMatch(pred,act,w){ const ph=pred[0],pa=pred[1],ah=act[0],aa=act[1];
   if(ph==null||pa==null||ah==null||aa==null) return 0; let pts=0;
   if(sign(ph-pa)===sign(ah-aa)){ pts+=w[0]; if((ph-pa)===(ah-aa)) pts+=w[1]; }
@@ -651,11 +668,15 @@ function scoreParticipant(part,S){ const A=S.actual; const b={}; for(const k in 
   const q32=inter(part.reached.r32,A.reached.r32); b.grupos_clasif=P.qualif.r32*q32;
   const koBlock={r32:"r32_partidos",r16:"r16_partidos",qf:"qf_partidos",sf:"sf_partidos",third:"third_partido",final:"final_partido"};
   const koW={r32:P.weights.r32,r16:P.weights.r16,qf:P.weights.qf,sf:P.weights.sf,third:P.weights.third,final:P.weights.final};
-  // KO: el "resultado" solo puntúa si se CLAVA el marcador exacto (sin parciales
-  // por signo/diferencia, a diferencia de la fase de grupos).
-  for(const stage of P.koOrder){ for(const slot of (P.koSlots[stage]||[])){ const key=slot.key;
-    const pm=part.matches[key], am=A.matches[key];
-    if(am&&pm&&pm[0]===am[0]&&pm[1]===am[1]){ const w=koW[stage]; b[koBlock[stage]]+=w[0]+w[1]+w[2]; } } }
+  // KO: el "resultado" solo puntúa si el participante predijo ESE partido EXACTO
+  // (equipos + marcador). Por partido, no por hueco (evita acertar por azar el
+  // marcador de un cruce que no predijo).
+  for(const stage of P.koOrder){
+    const acts=[], preds=[];
+    for(const slot of (P.koSlots[stage]||[])){ if(A.matches[slot.key]) acts.push(A.matches[slot.key]);
+      if(part.matches[slot.key]) preds.push(part.matches[slot.key]); }
+    const w=koW[stage], val=w[0]+w[1]+w[2];
+    for(const am of acts){ if(preds.some(pm=>koExact(pm,am))) b[koBlock[stage]]+=val; } }
   b.r32_clasif=P.qualif.r16*inter(part.reached.r16,A.reached.r16);
   b.r16_clasif=P.qualif.qf*inter(part.reached.qf,A.reached.qf);
   b.qf_clasif=P.qualif.sf*inter(part.reached.sf,A.reached.sf);
@@ -1188,6 +1209,20 @@ function _deltaAt(tl,i,name){ return _totAt(tl,i,name)-_totAt(tl,i-1,name); }
 function _coldStreak(tl,i,name){ let c=0; for(let j=i;j>=0;j--){ if(_deltaAt(tl,j,name)===0) c++; else break; } return c; }
 function _faroCountUpTo(tl,i,name){ let c=0; for(let j=0;j<=i;j++){ if(_faroDay(tl[j].st,name)) c++; } return c; }
 function _ord(n){ return n+"º"; }
+// Desplegable bajo la crónica con TODOS los comentarios del día y sus likes
+// (solo lectura: no se puede votar en días pasados).
+function dayCommentsHTML(dc){
+  const ent=Object.entries(dc||{}).filter(([id,c])=>c&&c.text&&c.mod!=="del");
+  if(!ent.length) return "";
+  const rows=ent.map(([id,c])=>{ const rx=c.reactions||{}; let up=0,down=0;
+    for(const k in rx){ if(rx[k]===1)up++; else if(rx[k]===-1)down++; }
+    return {text:c.text, up, down, score:up-down, ts:c.ts||0}; });
+  rows.sort((a,b)=> b.score-a.score || a.ts-b.ts);
+  const items=rows.map(r=>`<div class="cmt-ro"><span class="cmt-ro-t">${_esc(r.text)}</span>`
+    +`<span class="cmt-ro-rx"><span class="up">👍${r.up||0}</span><span class="dn">👎${r.down||0}</span></span></div>`).join("");
+  return `<details class="cron-cmts"><summary>💬 Ver los ${rows.length} comentarios del día</summary>`
+    +`<div class="cron-cmts-body">${items}</div></details>`;
+}
 function chronicleDay(tl, i, dayComments, article){
   const cur=tl[i], prev=i>0?tl[i-1]:null;
   const r=_seedRand(cur.day);
@@ -1213,7 +1248,8 @@ function chronicleDay(tl, i, dayComments, article){
       ${article.title?`<div class="cron-headline">${article.title}</div>`:""}
       <div class="cron-sub">${cur.matches.length} partidos · crónica del día</div>
       <div class="cron-res">${res}</div>
-      <div class="cron-txt cron-article">${article.body}</div></div>`;
+      <div class="cron-txt cron-article">${article.body}</div>
+      ${dayCommentsHTML(dayComments)}</div>`;
   }
   // Sin artículo redactado todavía: placeholder limpio (NUNCA la versión básica
   // con texto simple y los comentarios sueltos).
