@@ -225,6 +225,11 @@
   .pred .pp{width:54px; text-align:center; color:#445; font-weight:700; flex-shrink:0;}
   .pred .px{width:40px; text-align:right; font-weight:800; flex-shrink:0;}
   .pts-pos{color:#1e8e4e;} .pts-zero{color:#b0b8bc;}
+  .pred.ko .pn{flex:0 0 64px;}
+  .pred .pp-ko{flex:1; min-width:0; text-align:left; font-size:.8rem; color:#445; overflow-wrap:anywhere;}
+  .pred .pp-ko b{color:#16323a;}
+  .pred.cruce-ok{background:#eafaf1;} .pred.cruce-ok .pp-ko{color:#0c7a52;}
+  .pred.cruce-no{opacity:.5;}
   .hint{font-size:.7rem; color:#9aa7ad; padding:6px 4px 2px;}
 
   /* ---- Cabecera La Roja (countdown) ---- */
@@ -862,9 +867,11 @@ function matchesView(S){
     const home=a?a.home:fx.home,away=a?a.away:fx.away; const state=a?a.state:"pre";
     const score=(a&&(a.state==="in"||a.state==="post")&&a.gh!=null)?[a.gh,a.ga]:null;
     const w=wForKind(fx.kind);
+    const isKO=fx.kind!=="grupos";
     const preds=P.participants.map(part=>{ const pm=part.matches[fx.key];
       if(!pm) return {name:part.name,ph:null,pa:null,home:null,away:null,pts:null};
-      let pts=null; if(score) pts=scoreMatch(pm,score,w);
+      // En KO los puntos dependen del CRUCE (equipos), no solo del marcador.
+      let pts=null; if(score) pts = isKO ? koResult(pm,[a.gh,a.ga,a.home,a.away],w) : scoreMatch(pm,score,w);
       return {name:part.name,ph:pm[0],pa:pm[1],home:pm[2],away:pm[3],pts:pts}; });
     /* orden por diferencia de goles: mayor victoria local (10-0) → empates →
        mayor victoria visitante (0-10). Desempate: más goles, luego nombre. */
@@ -1006,10 +1013,19 @@ function fmtKick(it){ const iso=it.espn_date||it.kickoff; if(!iso) return "";
 function badge(state){ if(state==="in")return `<span class="m-badge b-live blink">● En juego</span>`;
   if(state==="post")return `<span class="m-badge b-final">Final</span>`; return `<span class="m-badge b-pre">Próximo</span>`; }
 function predHTML(it){ if(!it.predictions.length) return `<div class="hint">Sin participantes.</div>`;
-  const showPts=it.score!==null; let h=`<div class="hint">Pronósticos (por diferencia de goles)${showPts?" · puntos":""}:</div>`;
-  it.predictions.forEach(p=>{ const sc=(p.ph===null)?"—":`${p.ph}–${p.pa}`; let pts="";
+  const isKO=it.kind!=="grupos"; const showPts=it.score!==null;
+  const fl=t=>(P.flags&&P.flags[t])||"";
+  const realSet=(it.home&&it.away)?new Set([it.home,it.away]):null;  // cruce real (para marcar aciertos)
+  let h=`<div class="hint">${isKO?"Pronósticos (cruce + marcador)":"Pronósticos (por diferencia de goles)"}${showPts?" · puntos":""}:</div>`;
+  it.predictions.forEach(p=>{ let pts="";
     if(showPts&&p.pts!==null) pts=`<span class="px ${p.pts>0?'pts-pos':'pts-zero'}">+${p.pts}</span>`;
-    h+=`<div class="pred"><span class="pn">${p.name}</span><span class="pp">${sc}</span>${pts}</div>`; });
+    if(isKO){ const has=p.ph!==null&&p.home&&p.away;
+      const okCruce=has&&realSet&&realSet.has(p.home)&&realSet.has(p.away);
+      const mk=has?`${fl(p.home)} ${p.home} <b>${p.ph}–${p.pa}</b> ${p.away} ${fl(p.away)}`:"—";
+      const cls=okCruce?" cruce-ok":((realSet&&has)?" cruce-no":"");
+      h+=`<div class="pred ko${cls}"><span class="pn">${p.name}</span><span class="pp-ko">${mk}</span>${pts}</div>`;
+    } else { const sc=(p.ph===null)?"—":`${p.ph}–${p.pa}`;
+      h+=`<div class="pred"><span class="pn">${p.name}</span><span class="pp">${sc}</span>${pts}</div>`; } });
   return `<div class="m-detail">${h}</div>`; }
 function matchHTML(it,idx,focusIdx){
   const cls=[it.state==="in"?"live":(it.state==="post"?"final":""), idx===focusIdx?"focus":""].join(" ");
