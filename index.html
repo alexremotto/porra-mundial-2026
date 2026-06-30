@@ -560,11 +560,12 @@ async function fetchESPN(){
   const out=[];
   for(const ev of (data.events||[])){
     const comp=(ev.competitions||[{}])[0]; const cs=comp.competitors||[];
-    let home=null,away=null,gh=null,ga=null,homeId=null,awayId=null;
+    let home=null,away=null,gh=null,ga=null,homeId=null,awayId=null,winner=null;
     for(const c of cs){ const tn=(c.team||{}).displayName||(c.team||{}).name;
       const sc=(c.score==null||c.score==="")?null:parseInt(c.score,10);
       if(c.homeAway==="home"){home=mapTeam(tn);gh=sc;homeId=String((c.team||{}).id);}
-      else if(c.homeAway==="away"){away=mapTeam(tn);ga=sc;awayId=String((c.team||{}).id);} }
+      else if(c.homeAway==="away"){away=mapTeam(tn);ga=sc;awayId=String((c.team||{}).id);}
+      if(c.winner===true) winner=mapTeam(tn); }  // ganador (incluye penaltis en KO)
     const stt=comp.status||ev.status||{}; const t=stt.type||{};
     const scorers=[];
     for(const d of (comp.details||[])){
@@ -576,7 +577,7 @@ async function fetchESPN(){
         side: tid===homeId?"home":(tid===awayId?"away":""),
         pen:!!d.penaltyKick, og:!!d.ownGoal});
     }
-    out.push({date:ev.date,home,away,gh,ga,state:t.state,status:t.name,
+    out.push({date:ev.date,home,away,gh,ga,winner,state:t.state,status:t.name,
       clock:stt.displayClock||"", detail:t.shortDetail||"", scorers:scorers});
   }
   return out;
@@ -613,9 +614,10 @@ function buildActual(espn){
   for(const s of P.koOrder) actual.reached[s]=[];
   const _nextKO={r32:"r16",r16:"qf",qf:"sf",sf:"final"};
   for(const s of P.koOrder){ for(const m of koByStage[s]){
-    if(m.state!=="post" || m.gh==null || m.ga==null || !m.home || !m.away) continue;
-    let w=null,l=null;
-    if(m.gh>m.ga){w=m.home;l=m.away;} else if(m.ga>m.gh){w=m.away;l=m.home;} else continue; // empate (penaltis): sin dato, no decide aún
+    if(m.state!=="post" || !m.home || !m.away) continue;
+    let w=m.winner||null;   // ESPN marca el ganador, incluido penaltis en empates
+    if(!w){ if(m.gh>m.ga)w=m.home; else if(m.ga>m.gh)w=m.away; else continue; }
+    const l=(w===m.home)?m.away:m.home;
     const ns=_nextKO[s]; if(ns&&!actual.reached[ns].includes(w)) actual.reached[ns].push(w);
     if(s==="sf"&&l&&!actual.reached.third.includes(l)) actual.reached.third.push(l);
   } }
@@ -648,12 +650,13 @@ function qualifiedR32(info){
     thirds.slice(0, Math.max(0, P.koSlots.r32.length*2-out.size)).forEach(x=> out.add(x.team)); }
   return out;
 }
-// KO exacto: el participante predijo ESE partido (mismos equipos) con el marcador
-// exacto. Acepta orientación invertida (home/away al revés con el marcador acorde).
-function koExact(pm,am){ if(!pm||!am||pm[0]==null||am[0]==null) return false;
-  if(pm[2]===am[2]&&pm[3]===am[3]) return pm[0]===am[0]&&pm[1]===am[1];
-  if(pm[2]===am[3]&&pm[3]===am[2]) return pm[0]===am[1]&&pm[1]===am[0];
-  return false; }
+// KO resultado: solo puntúa si el participante acertó el CRUCE (mismos equipos);
+// dentro del cruce, puntúa parcial (signo/diferencia/exacto) como en grupos.
+// Acepta orientación home/away invertida (con el marcador acorde).
+function koResult(pm,am,w){ if(!pm||!am||pm[0]==null||am[0]==null) return 0;
+  if(pm[2]===am[2]&&pm[3]===am[3]) return scoreMatch([pm[0],pm[1]],[am[0],am[1]],w);
+  if(pm[2]===am[3]&&pm[3]===am[2]) return scoreMatch([pm[1],pm[0]],[am[0],am[1]],w);
+  return 0; }
 function scoreMatch(pred,act,w){ const ph=pred[0],pa=pred[1],ah=act[0],aa=act[1];
   if(ph==null||pa==null||ah==null||aa==null) return 0; let pts=0;
   if(sign(ph-pa)===sign(ah-aa)){ pts+=w[0]; if((ph-pa)===(ah-aa)) pts+=w[1]; }
@@ -670,15 +673,15 @@ function scoreParticipant(part,S){ const A=S.actual; const b={}; for(const k in 
   const q32=inter(part.reached.r32,A.reached.r32); b.grupos_clasif=P.qualif.r32*q32;
   const koBlock={r32:"r32_partidos",r16:"r16_partidos",qf:"qf_partidos",sf:"sf_partidos",third:"third_partido",final:"final_partido"};
   const koW={r32:P.weights.r32,r16:P.weights.r16,qf:P.weights.qf,sf:P.weights.sf,third:P.weights.third,final:P.weights.final};
-  // KO: el "resultado" solo puntúa si el participante predijo ESE partido EXACTO
-  // (equipos + marcador). Por partido, no por hueco (evita acertar por azar el
-  // marcador de un cruce que no predijo).
+  // KO: el "resultado" puntúa solo si aciertas el CRUCE (equipos); dentro de él,
+  // parcial (signo=1, diferencia=4, exacto=7) como en grupos. Por partido.
   for(const stage of P.koOrder){
     const acts=[], preds=[];
     for(const slot of (P.koSlots[stage]||[])){ if(A.matches[slot.key]) acts.push(A.matches[slot.key]);
       if(part.matches[slot.key]) preds.push(part.matches[slot.key]); }
-    const w=koW[stage], val=w[0]+w[1]+w[2];
-    for(const am of acts){ if(preds.some(pm=>koExact(pm,am))) b[koBlock[stage]]+=val; } }
+    const w=koW[stage];
+    for(const am of acts){ let best=0; for(const pm of preds){ const v=koResult(pm,am,w); if(v>best)best=v; }
+      b[koBlock[stage]]+=best; } }
   b.r32_clasif=P.qualif.r16*inter(part.reached.r16,A.reached.r16);
   b.r16_clasif=P.qualif.qf*inter(part.reached.qf,A.reached.qf);
   b.qf_clasif=P.qualif.sf*inter(part.reached.sf,A.reached.sf);
