@@ -1,12 +1,24 @@
 {
- "day": "2026-06-28",
- "prevDay": "2026-06-27",
- "generatedAt": "2026-06-29T19:35:52Z",
+ "day": "2026-06-29",
+ "prevDay": "2026-06-28",
+ "generatedAt": "2026-06-30T06:35:51Z",
  "results": [
   {
-   "home": "South Africa",
-   "away": "Canada",
-   "gh": 0,
+   "home": "Brazil",
+   "away": "Japan",
+   "gh": 2,
+   "ga": 1
+  },
+  {
+   "home": "Germany",
+   "away": "Paraguay",
+   "gh": 1,
+   "ga": 1
+  },
+  {
+   "home": "Netherlands",
+   "away": "Morocco",
+   "gh": 1,
    "ga": 1
   }
  ],
@@ -14,85 +26,85 @@
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 338,
+   "total": 344,
    "deltaPts": 6,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Abete",
-   "total": 322,
-   "deltaPts": 0,
+   "total": 335,
+   "deltaPts": 13,
    "deltaPos": 0
   },
   {
    "pos": 3,
    "name": "Quimnot",
-   "total": 309,
+   "total": 315,
    "deltaPts": 6,
-   "deltaPos": 1
+   "deltaPos": 0
   },
   {
    "pos": 4,
    "name": "JJ",
-   "total": 308,
-   "deltaPts": 0,
-   "deltaPos": -1
-  },
-  {
-   "pos": 5,
-   "name": "Jonete",
-   "total": 296,
+   "total": 314,
    "deltaPts": 6,
    "deltaPos": 0
   },
   {
-   "pos": 6,
-   "name": "Graells",
-   "total": 283,
-   "deltaPts": 0,
+   "pos": 5,
+   "name": "Jonete",
+   "total": 309,
+   "deltaPts": 13,
    "deltaPos": 0
   },
   {
-   "pos": 7,
+   "pos": 6,
    "name": "Guille",
-   "total": 280,
+   "total": 300,
+   "deltaPts": 20,
+   "deltaPos": 1
+  },
+  {
+   "pos": 7,
+   "name": "Graells",
+   "total": 296,
    "deltaPts": 13,
-   "deltaPos": 4
+   "deltaPos": -1
   },
   {
    "pos": 8,
    "name": "P-man",
-   "total": 275,
-   "deltaPts": 0,
-   "deltaPos": -1
+   "total": 288,
+   "deltaPts": 13,
+   "deltaPos": 0
   },
   {
    "pos": 9,
    "name": "Carrillo",
-   "total": 273,
-   "deltaPts": 0,
-   "deltaPos": -1
+   "total": 279,
+   "deltaPts": 6,
+   "deltaPos": 0
   },
   {
    "pos": 10,
    "name": "Edu",
-   "total": 272,
-   "deltaPts": 0,
-   "deltaPos": -1
+   "total": 278,
+   "deltaPts": 6,
+   "deltaPos": 0
   },
   {
    "pos": 11,
    "name": "Uri",
    "total": 268,
    "deltaPts": 0,
-   "deltaPos": -1
+   "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
    "total": 239,
-   "deltaPts": 6,
+   "deltaPts": 0,
    "deltaPos": 0
   }
  ],
@@ -105,129 +117,409 @@
  "topGainers": [
   {
    "name": "Guille",
+   "deltaPts": 20
+  },
+  {
+   "name": "Abete",
    "deltaPts": 13
   },
   {
-   "name": "Lagen",
-   "deltaPts": 6
-  },
-  {
-   "name": "Quimnot",
-   "deltaPts": 6
+   "name": "Jonete",
+   "deltaPts": 13
   }
  ],
  "comments": [
   {
-   "text": "Porra excel OG > AppRillo > AulApp",
-   "ts": 1782638423675,
-   "likes": 7,
-   "dislikes": 1,
-   "score": 6
-  },
-  {
-   "text": "Si en vez de Abete fuese Abeto estaria con Olmo, Pino, Cerezo y Del Bosque",
-   "ts": 1782686265314,
-   "likes": 5,
-   "dislikes": 0,
-   "score": 5
-  },
-  {
-   "text": "Dato curioso: por primera vez en toda la historia del mundial una seleccion consigue alinear dos jugadores con nombre de arbol (y no lo hizo Del Bosque):\nDani OLMO\nYeremy PINO",
-   "ts": 1782644175445,
-   "likes": 4,
-   "dislikes": 0,
-   "score": 4
-  },
-  {
-   "text": "Un día más sin comentario de Abete",
-   "ts": 1782647440748,
-   "likes": 4,
-   "dislikes": 0,
-   "score": 4
-  },
-  {
-   "text": "Quin drama nomes un partit avui.  Ara que faig?",
-   "ts": 1782684655429,
-   "likes": 4,
-   "dislikes": 0,
-   "score": 4
-  },
-  {
-   "text": "Abete pagó los 10€ de la porra y esa fue su unica interaccion hasta el momento.",
-   "ts": 1782651400289,
-   "likes": 3,
-   "dislikes": 0,
-   "score": 3
-  },
-  {
-   "text": "Abete last seen 8 days ago",
-   "ts": 1782671105769,
-   "likes": 3,
-   "dislikes": 0,
-   "score": 3
-  },
-  {
-   "text": "Y de presidente enrique CEREZO",
-   "ts": 1782645320936,
+   "text": "Lagen como nini tendriad que darle mas bola",
+   "ts": 1782737845359,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Certezas:\nFísica: Basada en las leyes de la naturaleza. Eg: El sol saldrá mañana.\nMoral: Basada en el comportamiento. Eg: mis amigos no me matarán.\nMetafísica: Absoluta e inmutable, basada en la esencia del objeto. Eg: Santi es farolillo",
-   "ts": 1782647323262,
+   "text": "Lagen presidente",
+   "ts": 1782742310013,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "¿Sabías que… Maxence Lacroix (Francia) es el primer jugador desde 1994 (>30 años) en empezar un partido del Mundial con la letra 'X' en nombre y apellido? Aunque ese record podria haber sido de España con el hijo puta del PERRO SANXE.",
-   "ts": 1782664108934,
+   "text": "Yo bajando a segunda",
+   "ts": 1782742594014,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Lamentable boda de paula bœsch amb el papanut aquell 👎🏽",
-   "ts": 1782669846186,
-   "likes": 3,
-   "dislikes": 1,
-   "score": 2
-  },
-  {
-   "text": "Abete el hombre invisible",
-   "ts": 1782686174698,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Nuevo dia, nuevo chat 🤚🏿",
-   "ts": 1782633307551,
+   "text": "El chat esta de lunes, tratemos de animarlo",
+   "ts": 1782737830823,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "AppRrillo > AulApp",
-   "ts": 1782635304162,
+   "text": "Acabant de dinar al nomo galvany, passeu a per niguiris i a saludar al ralph",
+   "ts": 1782742703722,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Ei no cardeu que parlo sempre però en mode incognit",
-   "ts": 1782680481847,
-   "likes": 2,
-   "dislikes": 2,
-   "score": 0
+   "text": "Dato curioso: Francia-Noruega es el primer partido del mundial en que la bandera de un país se puede hallar dentro de la del otro",
+   "ts": 1782743283552,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
   },
   {
-   "text": "Esta app se ha liado completamente no? Actualización o fuga. (Apprrillo es tu momento)\nAulapp se ha desplomado en bolsa 📉",
-   "ts": 1782710352525,
+   "text": "Vendo funda blackberry",
+   "ts": 1782746777605,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Avui es l’aniversari del molt honorable president Joan Laporta. Tots a luz de gas amb unes noies de companyia que tenen mes recorregut que la bici de JJ",
+   "ts": 1782746969624,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "¿Sabías que… Hansi ganó la porra del Mundial 2018 y Peman fue farolillo? Siendo el primer farolillo honorífico de la historia llevando el patch de LEGACY🏮FAROLILLO en la manga para siempre.",
+   "ts": 1782771162050,
+   "likes": 2,
+   "dislikes": 1,
+   "score": 1
+  },
+  {
+   "text": "Lagen presidente > Torrente presidente",
+   "ts": 1782772416284,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "سيجارة يا صديقي",
+   "ts": 1782774300812,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Orlando Gill es de la masia!",
+   "ts": 1782775560802,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Perico comenta algo no?? O solo miras?",
+   "ts": 1782775930105,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Guille no comenta. Guille el nuevo Abete??\nSi Guillermo fuese Guillomo estaria con Abeto, Olmo, Pino, Cerezo y Del Bosque",
+   "ts": 1782776261165,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Hi ha discrepancies entre PorraOG i AulApp. Pero no canvia ni lider ni obviament farolillo. Com quan el marca treu #ClasificacionSinVAR i el madrid amb tots els robos segueix en blanc",
+   "ts": 1782777242580,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Abete saluda quan passis per aqui!",
+   "ts": 1782742363978,
    "likes": 0,
    "dislikes": 0,
    "score": 0
+  },
+  {
+   "text": "Com va el dia? Moltes reunions??",
+   "ts": 1782742549797,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Jo he fet lapso al mati i despres una mica mes",
+   "ts": 1782742568864,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Jo estic amb el ibai menjant xocolata",
+   "ts": 1782742584472,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Ah doncs ara vinc a veuret al nomo en bici i porto uns vins naturals",
+   "ts": 1782742928167,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Jo no puc que tinc dinar familiar",
+   "ts": 1782742946796,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Un día más. One more day de debacle de Carrillo. Santi puede NO ser el más damnificado de esta porra.",
+   "ts": 1782743137822,
+   "likes": 1,
+   "dislikes": 1,
+   "score": 0
+  },
+  {
+   "text": "La debacle de Carrillo va començar amb AppRillo",
+   "ts": 1782745785550,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Dato curioso: França sempre juga de dia perque sino no veurien als jugadors",
+   "ts": 1782746573403,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Jo sortiria del farolillo, pero ja sabeu que diuen: tiran mas dos tetas que clavar algun partido. I de tetes en se",
+   "ts": 1782746701306,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Eeeep ja soc aquí. Soc Pau i gestiono anualment la renta de jugadors proyecto hombre. Hala Madrid!",
+   "ts": 1782750454672,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Vendo chocolates Lindt, % negro similar al de Francia",
+   "ts": 1782752416051,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Traemos chupetes el jueves?",
+   "ts": 1782752663470,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Veig que mooooolta gent d’aqui té molt poca feina… això ha aconseguit el PSOE, que sigueu tots uns vagos",
+   "ts": 1782760048167,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Silvia Orriols es la solucio!!",
+   "ts": 1782760882724,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Pim pam pum! Que no en quedi ni un!",
+   "ts": 1782760896487,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Abete al habla. Se viene impugnacion de porra por incongruencia entre Excel y resultado de partidos previsto",
+   "ts": 1782763148978,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Hola Tomàtic. Soc en Jon n° de soci 36521 i m’agradaria veure gratis l’OnlyFans de la @CocoContans.",
+   "ts": 1782771311974,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Perro Sanxe hijueputa. Farolillo de la politica. Ladron, corrupto. Woke. El doctor Soldevila es el mejor doctor del planeta. Viva NOX.",
+   "ts": 1782771370126,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Ei no cardem que avui també he parlat. Si me llamara Abeto tendria ruedas y seria una bicicleta.",
+   "ts": 1782771410449,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Deeeeeunido tenim prorroga",
+   "ts": 1782772394216,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Deeeeeunido avui prorroga i holanda-SouthSpain despres 3am. Vala valaaa",
+   "ts": 1782772587908,
+   "likes": 1,
+   "dislikes": 1,
+   "score": 0
+  },
+  {
+   "text": "Aviam el del vala valaa a dormir. No volem impostors a aquesta hora",
+   "ts": 1782773321856,
+   "likes": 1,
+   "dislikes": 1,
+   "score": 0
+  },
+  {
+   "text": "Penaltis.si/Penaltis.no",
+   "ts": 1782774531774,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Ja teniu el username a whatsapp?",
+   "ts": 1782774647346,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Jo si!",
+   "ts": 1782774670896,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Neuer no para un penalti desde hace 2 años y 4 meses, en la copa alemana contra el augsburgo\nParara algo ahora? O ya no para ni un taxi?\n#TerStegenMinusvalidoSeleccion",
+   "ts": 1782774867633,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Confirmem Penaltis.si\nSiempre positivo, nunca negativo",
+   "ts": 1782774958067,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Alemanya ha guanyat els dos sortejos de moneda, son senyals?\n#ElOraculo",
+   "ts": 1782775097446,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Lo de que tots els que fan paradinhas o mariconades fallin els penaltis tela. Aviam si serveix perque no ho fotin mes",
+   "ts": 1782775193418,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Molt actiu el xat",
+   "ts": 1782775232518,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Sisi tots veient el matx",
+   "ts": 1782775242740,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Pechofriada historica paraguay",
+   "ts": 1782775656282,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Vinicius: “TAH a segunda!”\nJose Canale: “TAH al carrer!”",
+   "ts": 1782775785836,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Rudiger ja de cami al zoo de Madrid",
+   "ts": 1782775817077,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Vaya, ya offline. Confirmamos que Guille solo mira",
+   "ts": 1782776064417,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Marruecos roba y sale corriendo",
+   "ts": 1782776652456,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Que alguien les cuente a los marroquis que los amegos holandeses no tienen cegarros sino porrillos",
+   "ts": 1782776699061,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "El mejor defensor de holanda para hoy es JanSinMiedo y su spray pimienta",
+   "ts": 1782776890886,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "ديما المغرب! 🇲🇦 سير سير يا أسود الأطلس! الله ينصركم ويحفظ المغرب وأهله. الإسلام دين الرحمة والسلام، والحمد لله على نعمة الإسلام. الله أكبر! ❤️💚",
+   "ts": 1782774154644,
+   "likes": 0,
+   "dislikes": 1,
+   "score": -1
+  },
+  {
+   "text": "🤲🏽 Dima l-Maghrib! Sir sir ya Ousoud al-Atlas! Allah yansorkom wa yahfaz al-Maghrib wa ahlah. Al-Islam din ar-rahma wa-s-salam, walhamdulillah ‘ala ni‘mat al-Islam. Allahu akbar! 🇲🇦💚❤️",
+   "ts": 1782774200314,
+   "likes": 0,
+   "dislikes": 1,
+   "score": -1
   }
  ]
 }
