@@ -1217,7 +1217,7 @@ function dayCommentsHTML(dc){
   const rows=ent.map(([id,c])=>{ const rx=c.reactions||{}; let up=0,down=0;
     for(const k in rx){ if(rx[k]===1)up++; else if(rx[k]===-1)down++; }
     return {text:c.text, up, down, score:up-down, ts:c.ts||0}; });
-  rows.sort((a,b)=> b.score-a.score || a.ts-b.ts);
+  rows.sort((a,b)=> a.ts-b.ts);   // cronológico, igual que se publican
   const items=rows.map(r=>`<div class="cmt-ro"><span class="cmt-ro-t">${_esc(r.text)}</span>`
     +`<span class="cmt-ro-rx"><span class="up">👍${r.up||0}</span><span class="dn">👎${r.down||0}</span></span></div>`).join("");
   return `<details class="cron-cmts"><summary>💬 Ver los ${rows.length} comentarios del día</summary>`
