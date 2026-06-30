@@ -1,7 +1,7 @@
 {
  "day": "2026-06-29",
  "prevDay": "2026-06-28",
- "generatedAt": "2026-06-30T10:35:07Z",
+ "generatedAt": "2026-06-30T16:35:07Z",
  "results": [
   {
    "home": "Brazil",
@@ -39,72 +39,72 @@
   },
   {
    "pos": 3,
-   "name": "Quimnot",
-   "total": 315,
-   "deltaPts": 6,
-   "deltaPos": 0
+   "name": "JJ",
+   "total": 321,
+   "deltaPts": 13,
+   "deltaPos": 1
   },
   {
    "pos": 4,
-   "name": "JJ",
-   "total": 314,
-   "deltaPts": 6,
-   "deltaPos": 0
+   "name": "Quimnot",
+   "total": 316,
+   "deltaPts": 7,
+   "deltaPos": -1
   },
   {
    "pos": 5,
    "name": "Jonete",
-   "total": 309,
-   "deltaPts": 13,
+   "total": 308,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 6,
    "name": "Guille",
-   "total": 300,
-   "deltaPts": 20,
+   "total": 298,
+   "deltaPts": 25,
+   "deltaPos": 2
+  },
+  {
+   "pos": 7,
+   "name": "Carrillo",
+   "total": 295,
+   "deltaPts": 22,
    "deltaPos": 1
   },
   {
    "pos": 7,
    "name": "Graells",
-   "total": 296,
-   "deltaPts": 13,
+   "total": 295,
+   "deltaPts": 12,
    "deltaPos": -1
   },
   {
-   "pos": 8,
-   "name": "P-man",
+   "pos": 9,
+   "name": "Edu",
    "total": 288,
-   "deltaPts": 13,
-   "deltaPos": 0
+   "deltaPts": 16,
+   "deltaPos": 1
   },
   {
    "pos": 9,
-   "name": "Carrillo",
-   "total": 279,
-   "deltaPts": 6,
-   "deltaPos": 0
-  },
-  {
-   "pos": 10,
-   "name": "Edu",
-   "total": 278,
-   "deltaPts": 6,
-   "deltaPos": 0
+   "name": "P-man",
+   "total": 288,
+   "deltaPts": 13,
+   "deltaPos": -2
   },
   {
    "pos": 11,
    "name": "Uri",
-   "total": 268,
-   "deltaPts": 0,
+   "total": 274,
+   "deltaPts": 6,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 239,
-   "deltaPts": 0,
+   "total": 245,
+   "deltaPts": 6,
    "deltaPos": 0
   }
  ],
@@ -117,15 +117,15 @@
  "topGainers": [
   {
    "name": "Guille",
-   "deltaPts": 20
+   "deltaPts": 25
   },
   {
-   "name": "Abete",
-   "deltaPts": 13
+   "name": "Carrillo",
+   "deltaPts": 22
   },
   {
-   "name": "Jonete",
-   "deltaPts": 13
+   "name": "Edu",
+   "deltaPts": 16
   }
  ],
  "comments": [
