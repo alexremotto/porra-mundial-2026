@@ -868,9 +868,14 @@ function matchesView(S){
     const score=(a&&(a.state==="in"||a.state==="post")&&a.gh!=null)?[a.gh,a.ga]:null;
     const w=wForKind(fx.kind);
     const isKO=fx.kind!=="grupos";
-    const preds=P.participants.map(part=>{ const pm=part.matches[fx.key];
+    const koTeams=(isKO&&a&&a.home&&a.away)?[a.home,a.away]:null;
+    const preds=P.participants.map(part=>{ let pm=part.matches[fx.key];
+      // En KO, muestra la predicción del participante para ESTE cruce (equipos),
+      // esté en el hueco del bracket que esté (así se ve quién predijo el partido).
+      if(koTeams){ pm=null;
+        for(const sl of (P.koSlots[fx.kind]||[])){ const c=part.matches[sl.key];
+          if(c&&((c[2]===koTeams[0]&&c[3]===koTeams[1])||(c[2]===koTeams[1]&&c[3]===koTeams[0]))){ pm=c; break; } } }
       if(!pm) return {name:part.name,ph:null,pa:null,home:null,away:null,pts:null};
-      // En KO los puntos dependen del CRUCE (equipos), no solo del marcador.
       let pts=null; if(score) pts = isKO ? koResult(pm,[a.gh,a.ga,a.home,a.away],w) : scoreMatch(pm,score,w);
       return {name:part.name,ph:pm[0],pa:pm[1],home:pm[2],away:pm[3],pts:pts}; });
     /* orden por diferencia de goles: mayor victoria local (10-0) → empates →
