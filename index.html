@@ -274,6 +274,7 @@
   .lead .lr{width:30px; font-weight:800; color:#7a888e; text-align:center; flex-shrink:0;}
   .lead .ln{flex:1; min-width:0; font-weight:600; overflow-wrap:anywhere;}
   .lead .lt{font-size:.75rem; color:#7a888e; margin-left:6px; font-weight:500;}
+  .lead .voters{display:block; margin-top:3px; font-size:.68rem; font-weight:600; color:#6b5b95; line-height:1.35;}
   .lead .lv{font-weight:800; color:var(--teal); flex-shrink:0;}
   .lead.top1 .lr{color:var(--gold); font-size:1.1rem;}
   .lead.top2 .lr{color:#9aa7ad;} .lead.top3 .lr{color:#cd7f32;}
@@ -880,11 +881,11 @@ function matchesView(S){
         if(nq && (part.reached[nq[0]]||[]).includes(koWinner)) clasif+=nq[1];
         if(fx.kind==="sf"){ const loser=(koWinner===a.home)?a.away:a.home;
           if((part.reached.third||[]).includes(loser)) clasif+=P.qualif.third; } }
+      // KO: por defecto la predicción del hueco (para que TODOS muestren su
+      // pronóstico aunque no puntúe); si el participante predijo ESTE cruce en
+      // otro hueco del bracket, se usa esa (así se ve su acierto y puntúa).
       let pm=part.matches[fx.key];
-      // En KO, muestra la predicción del participante para ESTE cruce (equipos),
-      // esté en el hueco del bracket que esté (así se ve quién predijo el partido).
-      if(koTeams){ pm=null;
-        for(const sl of (P.koSlots[fx.kind]||[])){ const c=part.matches[sl.key];
+      if(koTeams){ for(const sl of (P.koSlots[fx.kind]||[])){ const c=part.matches[sl.key];
           if(c&&((c[2]===koTeams[0]&&c[3]===koTeams[1])||(c[2]===koTeams[1]&&c[3]===koTeams[0]))){ pm=c; break; } } }
       if(!pm) return {name:part.name,ph:null,pa:null,home:null,away:null,pts:null,clasif};
       let pts=null; if(score) pts = isKO ? koResult(pm,[a.gh,a.ga,a.home,a.away],w) : scoreMatch(pm,score,w);
@@ -1627,6 +1628,27 @@ function oddsToPct(o){                   // cuota fraccional "13/2" -> % implíc
   const a=parseFloat(m[0]), b=parseFloat(m[1]); if(!(a>0&&b>0)) return null;
   return b/(a+b)*100;
 }
+/* Votantes de premios: qué participantes eligieron a cada jugador (Bota/Balón).
+   Matching tolerante a faltas de ortografía (Mbape/Mbappé, etc.). */
+function _normNm(s){ return String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z]/g,""); }
+function _lastNm(s){ const p=String(s||"").trim().split(/\s+/).filter(Boolean); return _normNm(p[p.length-1]||""); }
+function _lev(a,b){ const m=a.length,n=b.length; if(!m)return n; if(!n)return m;
+  let prev=Array.from({length:n+1},(_,j)=>j), cur=Array(n+1).fill(0);
+  for(let i=1;i<=m;i++){ cur[0]=i; for(let j=1;j<=n;j++){ const c=a[i-1]===b[j-1]?0:1;
+    cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+c); } [prev,cur]=[cur,prev]; } return prev[n]; }
+function nameMatch(pick, full){ const p=_normNm(pick), f=_normNm(full); if(!p||!f) return false;
+  if(f.includes(p)||p.includes(f)) return true;
+  const pl=_lastNm(pick), fl=_lastNm(full); if(!pl||!fl) return false;
+  if(fl.includes(pl)||pl.includes(fl)) return true;
+  const L=Math.max(pl.length,fl.length); return L>=4 && _lev(pl,fl)<=(L>=7?2:1); }
+const _MEDAL={gold:"🥇",silver:"🥈",bronze:"🥉"};
+function votersHTML(player, kind){   // kind: "boot" | "ball"
+  const out=[];
+  for(const part of (P.participants||[])){ const aw=part.awards||{};
+    for(const m of ["gold","silver","bronze"]){ const pick=aw[kind+"_"+m];
+      if(pick && nameMatch(pick, player)){ out.push(part.name+_MEDAL[m]); break; } } }
+  return out.length ? `<span class="voters">🗳️ ${out.join(" · ")}</span>` : "";
+}
 async function loadBallon(){
   const el=document.getElementById("ballon"); if(!el) return;
   let list=window.BALLON_FAV||[];
@@ -1643,7 +1665,7 @@ async function loadBallon(){
         if(Math.abs(d)>=0.1){ const up=d>0;
           delta=`<span class="bdelta ${up?'bu':'bd'}">${up?'▲':'▼'}${Math.abs(d)}</span>`; } } }
     return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
-      <span class="ln">${p.name}<span class="lt">${p.team}</span></span>
+      <span class="ln">${p.name}<span class="lt">${p.team}</span>${votersHTML(p.name,"ball")}</span>
       <span class="lv">${val}${delta}</span></div>`; }).join("");
 }
 async function loadScorers(){
@@ -1658,7 +1680,7 @@ async function loadScorers(){
     const rows=await Promise.all(gl.map(async L=>({...await nameTeam(L), goals:L.value})));
     const rowHTML=(r,i)=>{ const cls=i<3?`top${i+1}`:"";
       return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
-        <span class="ln">${r.name}<span class="lt">${r.team}</span></span>
+        <span class="ln">${r.name}<span class="lt">${r.team}</span>${votersHTML(r.name,"boot")}</span>
         <span class="lv">${r.goals} ⚽</span></div>`; };
     function paint(n){
       cont.innerHTML = rows.slice(0,n).map(rowHTML).join("") +
