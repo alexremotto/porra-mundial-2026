@@ -230,6 +230,7 @@
   .pred .pp-ko b{color:#16323a;}
   .pred.cruce-ok{background:#eafaf1;} .pred.cruce-ok .pp-ko{color:#0c7a52;}
   .pred.cruce-no{opacity:.5;}
+  .pred .px-cl{width:48px; text-align:right; font-weight:800; font-size:.76rem; color:#8a6d1a; flex-shrink:0;}
   .hint{font-size:.7rem; color:#9aa7ad; padding:6px 4px 2px;}
 
   /* ---- Cabecera La Roja (countdown) ---- */
@@ -490,12 +491,6 @@
 
   <section class="panel" id="panel-premios">
     <div class="pcard">
-      <h3>🔮 Grupos — clasificación y aciertos</h3>
-      <div class="psub">Toca un grupo para ver su clasificación y quién la está clavando</div>
-      <div id="grp-list"></div>
-      <div id="grp-detail"></div>
-    </div>
-    <div class="pcard">
       <h3>👟 Bota de Oro — Máximos goleadores</h3>
       <div class="psub">Datos en vivo de ESPN · World Cup 2026</div>
       <div id="scorers"><div class="empty">Cargando goleadores…</div></div>
@@ -503,6 +498,12 @@
     <div class="pcard">
       <h3>🏅 Balón de Oro — Mejor jugador</h3>
       <div id="ballon"><div class="empty">Cargando…</div></div>
+    </div>
+    <div class="pcard">
+      <h3>🔮 Grupos — clasificación y aciertos</h3>
+      <div class="psub">Toca un grupo para ver su clasificación y quién la está clavando</div>
+      <div id="grp-list"></div>
+      <div id="grp-detail"></div>
     </div>
   </section>
 </div>
@@ -632,7 +633,7 @@ function buildActual(espn){
       // Muestra el emparejamiento (cruce) aunque el partido NO se haya jugado:
       // info se rellena siempre con los equipos; el marcador solo si se ha jugado.
       info[slots[i].key]={gh:played?m.gh:null, ga:played?m.ga:null, home:m.home, away:m.away,
-        state:m.state, final:m.state==="post", espn_date:m.date, stage:s};
+        winner:m.winner||null, state:m.state, final:m.state==="post", espn_date:m.date, stage:s};
       if(played) actual.matches[slots[i].key]=[m.gh,m.ga,m.home,m.away]; } }
   for(const ltr in P.groupByLetter){ const order=groupStandings(P.groupByLetter[ltr],info);
     if(order) order.forEach((t,i)=>{ actual.positions[ltr+"-"+(i+1)]=t; }); }
@@ -869,15 +870,25 @@ function matchesView(S){
     const w=wForKind(fx.kind);
     const isKO=fx.kind!=="grupos";
     const koTeams=(isKO&&a&&a.home&&a.away)?[a.home,a.away]:null;
-    const preds=P.participants.map(part=>{ let pm=part.matches[fx.key];
+    const _nq={r32:["r16",P.qualif.r16],r16:["qf",P.qualif.qf],qf:["sf",P.qualif.sf],sf:["final",P.qualif.final]};
+    const koWinner=(a&&a.state==="post"&&a.winner)?a.winner:null;
+    const preds=P.participants.map(part=>{
+      // Puntos de CLASIFICACIÓN del equipo (independiente del marcador): si el
+      // ganador avanza y el participante lo tenía en la ronda siguiente.
+      let clasif=0;
+      if(koWinner){ const nq=_nq[fx.kind];
+        if(nq && (part.reached[nq[0]]||[]).includes(koWinner)) clasif+=nq[1];
+        if(fx.kind==="sf"){ const loser=(koWinner===a.home)?a.away:a.home;
+          if((part.reached.third||[]).includes(loser)) clasif+=P.qualif.third; } }
+      let pm=part.matches[fx.key];
       // En KO, muestra la predicción del participante para ESTE cruce (equipos),
       // esté en el hueco del bracket que esté (así se ve quién predijo el partido).
       if(koTeams){ pm=null;
         for(const sl of (P.koSlots[fx.kind]||[])){ const c=part.matches[sl.key];
           if(c&&((c[2]===koTeams[0]&&c[3]===koTeams[1])||(c[2]===koTeams[1]&&c[3]===koTeams[0]))){ pm=c; break; } } }
-      if(!pm) return {name:part.name,ph:null,pa:null,home:null,away:null,pts:null};
+      if(!pm) return {name:part.name,ph:null,pa:null,home:null,away:null,pts:null,clasif};
       let pts=null; if(score) pts = isKO ? koResult(pm,[a.gh,a.ga,a.home,a.away],w) : scoreMatch(pm,score,w);
-      return {name:part.name,ph:pm[0],pa:pm[1],home:pm[2],away:pm[3],pts:pts}; });
+      return {name:part.name,ph:pm[0],pa:pm[1],home:pm[2],away:pm[3],pts:pts,clasif}; });
     /* orden por diferencia de goles: mayor victoria local (10-0) → empates →
        mayor victoria visitante (0-10). Desempate: más goles, luego nombre. */
     preds.sort((x,y)=>{ const xn=x.ph==null, yn=y.ph==null; if(xn||yn) return xn-yn;
@@ -1021,14 +1032,16 @@ function predHTML(it){ if(!it.predictions.length) return `<div class="hint">Sin 
   const isKO=it.kind!=="grupos"; const showPts=it.score!==null;
   const fl=t=>(P.flags&&P.flags[t])||"";
   const realSet=(it.home&&it.away)?new Set([it.home,it.away]):null;  // cruce real (para marcar aciertos)
-  let h=`<div class="hint">${isKO?"Pronósticos (cruce + marcador)":"Pronósticos (por diferencia de goles)"}${showPts?" · puntos":""}:</div>`;
+  const anyClasif=isKO&&it.predictions.some(p=>p.clasif>0);
+  let h=`<div class="hint">${isKO?"Pronósticos: cruce · resultado"+(anyClasif?" · 🎟️ clasificación del equipo":""):"Pronósticos (por diferencia de goles)"}${(showPts&&!isKO)?" · puntos":""}:</div>`;
   it.predictions.forEach(p=>{ let pts="";
     if(showPts&&p.pts!==null) pts=`<span class="px ${p.pts>0?'pts-pos':'pts-zero'}">+${p.pts}</span>`;
     if(isKO){ const has=p.ph!==null&&p.home&&p.away;
       const okCruce=has&&realSet&&realSet.has(p.home)&&realSet.has(p.away);
       const mk=has?`${fl(p.home)} ${p.home} <b>${p.ph}–${p.pa}</b> ${p.away} ${fl(p.away)}`:"—";
       const cls=okCruce?" cruce-ok":((realSet&&has)?" cruce-no":"");
-      h+=`<div class="pred ko${cls}"><span class="pn">${p.name}</span><span class="pp-ko">${mk}</span>${pts}</div>`;
+      const clH=anyClasif?`<span class="px-cl">${p.clasif>0?"🎟️+"+p.clasif:""}</span>`:"";
+      h+=`<div class="pred ko${cls}"><span class="pn">${p.name}</span><span class="pp-ko">${mk}</span>${clH}${pts}</div>`;
     } else { const sc=(p.ph===null)?"—":`${p.ph}–${p.pa}`;
       h+=`<div class="pred"><span class="pn">${p.name}</span><span class="pp">${sc}</span>${pts}</div>`; } });
   return `<div class="m-detail">${h}</div>`; }
@@ -1599,7 +1612,7 @@ function showCronPopup(){
 
 /* ---- Premios: goleadores + balón de oro (goles + asistencias), en vivo ---- */
 const ESPN_CORE="https://sports.core.api.espn.com/v2/sports/soccer/leagues/fifa.world/seasons/2026";
-let _scorersLoaded=false, _refCache={};
+let _scorersAt=0, _refCache={};
 async function getRef(ref){ if(_refCache[ref]) return _refCache[ref];
   const r=await (await fetch(ref.replace(/^http:/,"https:"),{cache:"no-store"})).json();
   _refCache[ref]=r; return r; }
@@ -1635,7 +1648,7 @@ async function loadBallon(){
 }
 async function loadScorers(){
   loadBallon();                         // Balón de Oro: % desde balon.json (24h)
-  if(_scorersLoaded) return; _scorersLoaded=true;
+  if(Date.now()-_scorersAt < 180000) return; _scorersAt=Date.now();   // refresca cada 3 min
   const cont=document.getElementById("scorers");
   try{
     const d=await (await fetch(ESPN_CORE+"/types/1/leaders",{cache:"no-store"})).json();
@@ -1653,7 +1666,7 @@ async function loadScorers(){
       const mb=document.getElementById("scorers-more"); if(mb) mb.addEventListener("click",()=>paint(rows.length));
     }
     paint(10);
-  }catch(e){ cont.innerHTML=`<div class="empty">No se pudieron cargar los goleadores.</div>`; }
+  }catch(e){ _scorersAt=0; if(!cont.querySelector(".lead")) cont.innerHTML=`<div class="empty">No se pudieron cargar los goleadores.</div>`; }
 }
 
 /* ---- Intro Farolillo Rojo ---- */
