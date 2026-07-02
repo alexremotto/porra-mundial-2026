@@ -1,23 +1,23 @@
 {
- "day": "2026-06-30",
- "prevDay": "2026-06-29",
- "generatedAt": "2026-07-01T19:36:54Z",
+ "day": "2026-07-01",
+ "prevDay": "2026-06-30",
+ "generatedAt": "2026-07-02T06:50:48Z",
  "results": [
   {
-   "home": "Ivory Coast",
-   "away": "Norway",
-   "gh": 1,
+   "home": "England",
+   "away": "DR Congo",
+   "gh": 2,
+   "ga": 1
+  },
+  {
+   "home": "Belgium",
+   "away": "Senegal",
+   "gh": 3,
    "ga": 2
   },
   {
-   "home": "France",
-   "away": "Sweden",
-   "gh": 3,
-   "ga": 0
-  },
-  {
-   "home": "Mexico",
-   "away": "Ecuador",
+   "home": "United States",
+   "away": "Bosnia and Herzegovina",
    "gh": 2,
    "ga": 0
   }
@@ -26,85 +26,85 @@
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 362,
+   "total": 380,
    "deltaPts": 18,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Abete",
-   "total": 352,
-   "deltaPts": 17,
+   "total": 364,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 3,
    "name": "JJ",
-   "total": 334,
-   "deltaPts": 13,
+   "total": 352,
+   "deltaPts": 18,
    "deltaPos": 0
   },
   {
    "pos": 4,
    "name": "Quimnot",
-   "total": 328,
-   "deltaPts": 12,
+   "total": 347,
+   "deltaPts": 19,
    "deltaPos": 0
   },
   {
    "pos": 5,
    "name": "Jonete",
-   "total": 326,
+   "total": 344,
    "deltaPts": 18,
    "deltaPos": 0
   },
   {
    "pos": 6,
-   "name": "Carrillo",
-   "total": 313,
+   "name": "Graells",
+   "total": 325,
    "deltaPts": 18,
-   "deltaPos": 1
+   "deltaPos": 3
   },
   {
    "pos": 6,
    "name": "P-man",
-   "total": 313,
-   "deltaPts": 25,
-   "deltaPos": 3
+   "total": 325,
+   "deltaPts": 12,
+   "deltaPos": 0
   },
   {
    "pos": 8,
    "name": "Guille",
-   "total": 310,
-   "deltaPts": 12,
-   "deltaPos": -2
+   "total": 323,
+   "deltaPts": 13,
+   "deltaPos": 0
   },
   {
    "pos": 9,
-   "name": "Graells",
-   "total": 307,
-   "deltaPts": 12,
-   "deltaPos": -2
+   "name": "Carrillo",
+   "total": 319,
+   "deltaPts": 6,
+   "deltaPos": -3
   },
   {
    "pos": 10,
    "name": "Uri",
-   "total": 296,
-   "deltaPts": 22,
-   "deltaPos": 1
+   "total": 314,
+   "deltaPts": 18,
+   "deltaPos": 0
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 294,
-   "deltaPts": 6,
-   "deltaPos": -2
+   "total": 306,
+   "deltaPts": 12,
+   "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 258,
-   "deltaPts": 13,
+   "total": 270,
+   "deltaPts": 12,
    "deltaPos": 0
   }
  ],
@@ -116,221 +116,74 @@
  ],
  "topGainers": [
   {
-   "name": "P-man",
-   "deltaPts": 25
-  },
-  {
-   "name": "Uri",
-   "deltaPts": 22
+   "name": "Quimnot",
+   "deltaPts": 19
   },
   {
    "name": "Lagen",
+   "deltaPts": 18
+  },
+  {
+   "name": "JJ",
    "deltaPts": 18
   }
  ],
  "comments": [
   {
-   "text": "Dato curioso: la ultima vez que japon y alemania perdieron el mismo dia fue en 1945",
-   "ts": 1782817833913,
-   "likes": 7,
-   "dislikes": 0,
-   "score": 7
-  },
-  {
-   "text": "Comunicat de Mossos d’Esquadra: Durant aquesta matinada no s’ha produit cap robatori entre les 3:00 i les 6:00. Causes desconegudes",
-   "ts": 1782809142607,
-   "likes": 6,
-   "dislikes": 0,
-   "score": 6
-  },
-  {
-   "text": "Dato curioso: Valverde va sortir de l’hospital amb mes punts que del mundial",
-   "ts": 1782808683688,
-   "likes": 5,
-   "dislikes": 0,
-   "score": 5
-  },
-  {
-   "text": "Hola",
-   "ts": 1782823286721,
-   "likes": 3,
-   "dislikes": 0,
-   "score": 3
-  },
-  {
-   "text": "Arriba españa y abajo Santi",
-   "ts": 1782800237116,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Dato curioso: El partido Ghana-Panama fue el primer partido de la historia del mundial en contener solo una vocal (para los que no son del Aula, la A)",
-   "ts": 1782811478661,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Virupada: Cuando veas la sombra de un gigante no te asustes, fijate donde esta puesto el sol, porque podria ser la sombra que proyecta un enano",
-   "ts": 1782823219184,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Avui juga França dues vegades? Suma el doble de punts a la porra?",
-   "ts": 1782833378692,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Vicky 👁️ observer",
-   "ts": 1782846517155,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Vini🐒Jr bailando anuncio airpods > regateando en el campo (aunque mejor comiendo platanos puto mono de mierda orangutan retrasado)",
-   "ts": 1782860607921,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "No se quien es, fan de datos curiosos 😂",
-   "ts": 1782841641486,
+   "text": "Dato curioso: nunca nadie habia ido mas calent jugando a padel que MG ayer con las niñas Lindt",
+   "ts": 1782885755391,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Estimada final > Tabla actual",
-   "ts": 1782844953182,
+   "text": "Sabías que… el mundial dura 39 días  así que si todo va bien, podremos decir que Santi habrá realizado una buena Cuarentena en el puesto de farolillo?",
+   "ts": 1782910810214,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Dato curioso: la ultima vez que un farolillo empezaba por la letra A fue alez peman en 2018",
-   "ts": 1782850322941,
+   "text": "Un dia que estic poc ficat i aixo sembla cornella-el prat",
+   "ts": 1782948177897,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Se recomienda seguir nuevo talento: Ella Alexandra. Juega bien arriba. Bien con ambas piernas y de cabeza.",
-   "ts": 1782853357354,
+   "text": "Esto es una biblioteca o el campo del espanyol?",
+   "ts": 1782948215596,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Dato curioso: El bicho no ha marcado nunca pasada la fase de grupos. Solo dos jugadores en la historia han jugado 6 mundiales sin meter un gol en fase de eliminarorias. El portero de Mexico el Memo Ochoa y CR0",
-   "ts": 1782860028884,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Sabias que… Santi lleva 17 dias con un farolillo rojo en la mano?",
-   "ts": 1782860226368,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Avui un padel solidari de lindt i despres mexic ecuador. Tocar canviar la xocolata per uns tacos al pastor",
-   "ts": 1782860579593,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Dato curioso: En la Guerra Civil española, hubo un batallon de voluntarios mexicanos que se autodenominó \"Batallón Pancho Villa\" y se hacian llamar \"los panchos\". Esto ha derivado con el paso de los años a llamar \"panchitos” a los panchitos",
-   "ts": 1782860957616,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Sabias que…. El origen del nombre de la ciudadela inca Machu Picchu, situada a 2430m de altura en los andes peruanos, se debe al camarero del bar de Mauricio Colmenero?",
-   "ts": 1782861517271,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Dato curioso: Jonete se pedia hamburguesas de postre en el Panchito",
-   "ts": 1782861575266,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Que asco Marruecos…. Que ganas tenia de que se fueran a su casa a robar carteras",
-   "ts": 1782799804063,
+   "text": "He vist alguna guineu al padel de lindt que deu ni do. Graells presenta ja als solters i para de fer boicot",
+   "ts": 1782887128871,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Dia nuevo. Toca levantar el país. Buenos días chat.",
-   "ts": 1782799811980,
+   "text": "Boicots Graells >>> boicot a barça por Negreira #Negraellra",
+   "ts": 1782888583292,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "A su casa Alemania, ridiculo mundial que me alegra demasiado",
-   "ts": 1782801658667,
+   "text": "Chat muerto? Aulapp en declibe? Todos a la Apprrillo ya.",
+   "ts": 1782938468592,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Como me alegra el dia este chat, mas que mi mujer",
-   "ts": 1782841606300,
+   "text": "Palmada forta de Belgica??",
+   "ts": 1782941961331,
    "likes": 0,
    "dislikes": 0,
    "score": 0
-  },
-  {
-   "text": "Gracies gracies. Agraeixo la valoracio positiva",
-   "ts": 1782843346994,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Javi coba guineuada > Lucas Digne LI France",
-   "ts": 1782852944217,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Y si no fuera por el amigo del fax, De Gea, que se dejo un hattricki, CR0 solo habria marcado a equipos de costellada",
-   "ts": 1782860102624,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Dato curioso: MG son las iniciales mas temidas",
-   "ts": 1782884859873,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Me huelo gol del bicho que nos elimina en octavos, miedito",
-   "ts": 1782848616343,
-   "likes": 0,
-   "dislikes": 1,
-   "score": -1
   }
  ]
 }
