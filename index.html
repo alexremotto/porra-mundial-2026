@@ -874,19 +874,23 @@ function matchesView(S){
     const _nq={r32:["r16",P.qualif.r16],r16:["qf",P.qualif.qf],qf:["sf",P.qualif.sf],sf:["final",P.qualif.final]};
     const koWinner=(a&&a.state==="post"&&a.winner)?a.winner:null;
     const preds=P.participants.map(part=>{
-      // Puntos de CLASIFICACIÓN del equipo (independiente del marcador): si el
-      // ganador avanza y el participante lo tenía en la ronda siguiente.
-      let clasif=0;
-      if(koWinner){ const nq=_nq[fx.kind];
-        if(nq && (part.reached[nq[0]]||[]).includes(koWinner)) clasif+=nq[1];
-        if(fx.kind==="sf"){ const loser=(koWinner===a.home)?a.away:a.home;
-          if((part.reached.third||[]).includes(loser)) clasif+=P.qualif.third; } }
       // KO: por defecto la predicción del hueco (para que TODOS muestren su
       // pronóstico aunque no puntúe); si el participante predijo ESTE cruce en
       // otro hueco del bracket, se usa esa (así se ve su acierto y puntúa).
       let pm=part.matches[fx.key];
       if(koTeams){ for(const sl of (P.koSlots[fx.kind]||[])){ const c=part.matches[sl.key];
           if(c&&((c[2]===koTeams[0]&&c[3]===koTeams[1])||(c[2]===koTeams[1]&&c[3]===koTeams[0]))){ pm=c; break; } } }
+      // ¿acertó el CRUCE de este partido? (los dos equipos, en cualquier orden)
+      const cruceOK = !!(koTeams && pm && pm[2]!=null &&
+        ((pm[2]===koTeams[0]&&pm[3]===koTeams[1])||(pm[2]===koTeams[1]&&pm[3]===koTeams[0])));
+      // Puntos de CLASIFICACIÓN del equipo: SOLO se muestran en este partido si
+      // el participante acertó el cruce. Si no es "su" partido no se cuelga aquí
+      // (los puntos siguen contando en el total y en "clasificación del equipo").
+      let clasif=0;
+      if(koWinner && cruceOK){ const nq=_nq[fx.kind];
+        if(nq && (part.reached[nq[0]]||[]).includes(koWinner)) clasif+=nq[1];
+        if(fx.kind==="sf"){ const loser=(koWinner===a.home)?a.away:a.home;
+          if((part.reached.third||[]).includes(loser)) clasif+=P.qualif.third; } }
       if(!pm) return {name:part.name,ph:null,pa:null,home:null,away:null,pts:null,clasif};
       let pts=null; if(score) pts = isKO ? koResult(pm,[a.gh,a.ga,a.home,a.away],w) : scoreMatch(pm,score,w);
       return {name:part.name,ph:pm[0],pa:pm[1],home:pm[2],away:pm[3],pts:pts,clasif}; });
