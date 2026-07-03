@@ -4,7 +4,7 @@
     {
       "name": "Kylian Mbappé",
       "team": "Francia",
-      "odds": "2/1",
+      "odds": "7/4",
       "prevOdds": "2/1"
     },
     {
@@ -20,27 +20,33 @@
       "prevOdds": "24/5"
     },
     {
+      "name": "Harry Kane",
+      "team": "Inglaterra",
+      "odds": "9/1",
+      "prevOdds": "9/1"
+    },
+    {
       "name": "Ousmane Dembélé",
       "team": "Francia",
-      "odds": "14/1",
+      "odds": "16/1",
       "prevOdds": "14/1"
     },
     {
       "name": "Erling Haaland",
       "team": "Noruega",
-      "odds": "14/1",
+      "odds": "18/1",
       "prevOdds": "14/1"
     },
     {
       "name": "Lamine Yamal",
       "team": "España",
-      "odds": "16/1",
+      "odds": "18/1",
       "prevOdds": "16/1"
     },
     {
       "name": "Vini Jr.",
       "team": "Brasil",
-      "odds": "16/1",
+      "odds": "18/1",
       "prevOdds": "16/1"
     }
   ]
