@@ -1,23 +1,23 @@
 {
- "day": "2026-07-01",
- "prevDay": "2026-06-30",
- "generatedAt": "2026-07-02T15:35:39Z",
+ "day": "2026-07-02",
+ "prevDay": "2026-07-01",
+ "generatedAt": "2026-07-03T07:17:17Z",
  "results": [
   {
-   "home": "England",
-   "away": "DR Congo",
+   "home": "Spain",
+   "away": "Austria",
+   "gh": 3,
+   "ga": 0
+  },
+  {
+   "home": "Portugal",
+   "away": "Croatia",
    "gh": 2,
    "ga": 1
   },
   {
-   "home": "Belgium",
-   "away": "Senegal",
-   "gh": 3,
-   "ga": 2
-  },
-  {
-   "home": "United States",
-   "away": "Bosnia and Herzegovina",
+   "home": "Switzerland",
+   "away": "Algeria",
    "gh": 2,
    "ga": 0
   }
@@ -26,84 +26,84 @@
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 380,
-   "deltaPts": 18,
+   "total": 400,
+   "deltaPts": 20,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Abete",
-   "total": 364,
-   "deltaPts": 12,
-   "deltaPos": 0
-  },
-  {
-   "pos": 3,
-   "name": "JJ",
-   "total": 352,
-   "deltaPts": 18,
-   "deltaPos": 0
-  },
-  {
-   "pos": 4,
-   "name": "Quimnot",
-   "total": 347,
+   "total": 383,
    "deltaPts": 19,
    "deltaPos": 0
   },
   {
+   "pos": 3,
+   "name": "Quimnot",
+   "total": 366,
+   "deltaPts": 19,
+   "deltaPos": 1
+  },
+  {
+   "pos": 4,
+   "name": "JJ",
+   "total": 364,
+   "deltaPts": 12,
+   "deltaPos": -1
+  },
+  {
    "pos": 5,
    "name": "Jonete",
-   "total": 344,
+   "total": 362,
    "deltaPts": 18,
    "deltaPos": 0
   },
   {
    "pos": 6,
    "name": "Graells",
-   "total": 325,
-   "deltaPts": 18,
-   "deltaPos": 3
+   "total": 351,
+   "deltaPts": 26,
+   "deltaPos": 0
   },
   {
-   "pos": 6,
+   "pos": 7,
    "name": "P-man",
-   "total": 325,
-   "deltaPts": 12,
-   "deltaPos": 0
+   "total": 344,
+   "deltaPts": 19,
+   "deltaPos": -1
   },
   {
    "pos": 8,
    "name": "Guille",
-   "total": 323,
-   "deltaPts": 13,
+   "total": 341,
+   "deltaPts": 18,
    "deltaPos": 0
   },
   {
    "pos": 9,
    "name": "Carrillo",
-   "total": 319,
-   "deltaPts": 6,
-   "deltaPos": -3
+   "total": 338,
+   "deltaPts": 19,
+   "deltaPos": 0
   },
   {
    "pos": 10,
    "name": "Uri",
-   "total": 314,
-   "deltaPts": 18,
+   "total": 333,
+   "deltaPts": 19,
    "deltaPos": 0
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 306,
-   "deltaPts": 12,
+   "total": 325,
+   "deltaPts": 19,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 270,
+   "total": 282,
    "deltaPts": 12,
    "deltaPos": 0
   }
@@ -116,74 +116,151 @@
  ],
  "topGainers": [
   {
-   "name": "Quimnot",
-   "deltaPts": 19
+   "name": "Graells",
+   "deltaPts": 26
   },
   {
    "name": "Lagen",
-   "deltaPts": 18
+   "deltaPts": 20
   },
   {
-   "name": "JJ",
-   "deltaPts": 18
+   "name": "Abete",
+   "deltaPts": 19
   }
  ],
  "comments": [
   {
-   "text": "Dato curioso: nunca nadie habia ido mas calent jugando a padel que MG ayer con las niñas Lindt",
-   "ts": 1782885755391,
+   "text": "Ojala eliminen a marruecos, y del mundial tambien",
+   "ts": 1782989815830,
+   "likes": 4,
+   "dislikes": 0,
+   "score": 4
+  },
+  {
+   "text": "Els que han marxat abans del plat fort del dia, i no parlo del suissa-algeria de les 5, -50 punts",
+   "ts": 1783032290987,
+   "likes": 3,
+   "dislikes": 0,
+   "score": 3
+  },
+  {
+   "text": "Si Hitler jugara aun con Austria y viera el panorama de escasez de blancos, otro tipo de mundial cantaria…",
+   "ts": 1782986280174,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Dato curioso: la Estimada preve que el actual campeon sera farolillo y que el actual farolillo sera campeon",
+   "ts": 1782986420212,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Estoy en la consulta del dr, llevo menos prendas que el farolillo",
+   "ts": 1783023108922,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Edu passa ubicació de les bequis 🔎📍",
+   "ts": 1783025390877,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Netflix games > Mundial 2026",
+   "ts": 1783031647390,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Austriaco desde chiquitito",
+   "ts": 1782979348903,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Sabías que… el mundial dura 39 días  así que si todo va bien, podremos decir que Santi habrá realizado una buena Cuarentena en el puesto de farolillo?",
-   "ts": 1782910810214,
+   "text": "Aixo es desinfla com la segona volta del espanyol",
+   "ts": 1782992044921,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Un dia que estic poc ficat i aixo sembla cornella-el prat",
-   "ts": 1782948177897,
+   "text": "↖️ hola pauete",
+   "ts": 1783031496393,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Esto es una biblioteca o el campo del espanyol?",
-   "ts": 1782948215596,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "He vist alguna guineu al padel de lindt que deu ni do. Graells presenta ja als solters i para de fer boicot",
-   "ts": 1782887128871,
+   "text": "Si esto sigue así de muerto podríamos poner la crónica cada 3 días",
+   "ts": 1782989959666,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Boicots Graells >>> boicot a barça por Negreira #Negraellra",
-   "ts": 1782888583292,
+   "text": "Lamentable chat. El que mes parla es abete ara.",
+   "ts": 1782999641363,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Chat muerto? Aulapp en declibe? Todos a la Apprrillo ya.",
-   "ts": 1782938468592,
+   "text": "A un lindo pintor austriaco no le gustaria ver que alaba es capitan",
+   "ts": 1782999656659,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Palmada forta de Belgica??",
-   "ts": 1782941961331,
+   "text": "El glovo no llega nunca. Giovanillos era mejor opcion.",
+   "ts": 1783023431762,
    "likes": 0,
    "dislikes": 0,
    "score": 0
+  },
+  {
+   "text": "Holi",
+   "ts": 1783028027186,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Guanyar 2/3 Netflix games > guanyar porrassu",
+   "ts": 1783032179353,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "I came for the pizza, stayed for netflix games",
+   "ts": 1783032225894,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "DJ MVP",
+   "ts": 1783033800642,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "El partit de croacia es lamintable",
+   "ts": 1783035052368,
+   "likes": 0,
+   "dislikes": 1,
+   "score": -1
   }
  ]
 }
