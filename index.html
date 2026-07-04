@@ -228,6 +228,7 @@
   .pred.ko .pn{flex:0 0 64px;}
   .pred .pp-ko{flex:1; min-width:0; text-align:left; font-size:.8rem; color:#445; overflow-wrap:anywhere;}
   .pred .pp-ko b{color:#16323a;}
+  .pred .pp-adv{display:inline-block; margin-left:6px; font-size:.72rem; font-weight:700; color:#a67c00; white-space:nowrap;}
   .pred.cruce-ok{background:#eafaf1;} .pred.cruce-ok .pp-ko{color:#0c7a52;}
   .pred.cruce-no{opacity:.5;}
   .pred .px-cl{width:48px; text-align:right; font-weight:800; font-size:.76rem; color:#8a6d1a; flex-shrink:0;}
@@ -889,9 +890,15 @@ function matchesView(S){
       let pm=part.matches[fx.key];
       if(koTeams){ for(const sl of (P.koSlots[fx.kind]||[])){ const c=part.matches[sl.key];
           if(c&&((c[2]===koTeams[0]&&c[3]===koTeams[1])||(c[2]===koTeams[1]&&c[3]===koTeams[0]))){ pm=c; break; } } }
-      if(!pm) return {name:part.name,ph:null,pa:null,home:null,away:null,pts:null,clasif,clFlags};
+      // Si el pronóstico es EMPATE en un KO, ¿a quién hace pasar (su "ganador por
+      // penaltis")? = el equipo de este cruce que puso en la ronda siguiente.
+      let adv=null;
+      if(isKO && pm && pm[0]!=null && pm[0]===pm[1]){ const ns=(_nq[fx.kind]||[])[0];
+        if(ns){ const R=part.reached[ns]||[];
+          adv = R.includes(pm[2])?pm[2] : (R.includes(pm[3])?pm[3] : null); } }
+      if(!pm) return {name:part.name,ph:null,pa:null,home:null,away:null,pts:null,clasif,clFlags,adv:null};
       let pts=null; if(score) pts = isKO ? koResult(pm,[a.gh,a.ga,a.home,a.away],w) : scoreMatch(pm,score,w);
-      return {name:part.name,ph:pm[0],pa:pm[1],home:pm[2],away:pm[3],pts:pts,clasif,clFlags}; });
+      return {name:part.name,ph:pm[0],pa:pm[1],home:pm[2],away:pm[3],pts:pts,clasif,clFlags,adv}; });
     /* orden por diferencia de goles: mayor victoria local (10-0) → empates →
        mayor victoria visitante (0-10). Desempate: más goles, luego nombre. */
     preds.sort((x,y)=>{ const xn=x.ph==null, yn=y.ph==null; if(xn||yn) return xn-yn;
@@ -1042,9 +1049,11 @@ function predHTML(it){ if(!it.predictions.length) return `<div class="hint">Sin 
     if(isKO){ const has=p.ph!==null&&p.home&&p.away;
       const okCruce=has&&realSet&&realSet.has(p.home)&&realSet.has(p.away);
       const mk=has?`${fl(p.home)} ${p.home} <b>${p.ph}–${p.pa}</b> ${p.away} ${fl(p.away)}`:"—";
+      // Empate pronosticado en KO → a quién hace pasar en penaltis (su cuadro).
+      const advM=(has&&p.ph===p.pa&&p.adv)?`<span class="pp-adv">🥅 pasa ${fl(p.adv)} ${p.adv}</span>`:"";
       const cls=okCruce?" cruce-ok":((realSet&&has)?" cruce-no":"");
       const clH=anyClasif?`<span class="px-cl">${p.clasif>0?"🎟️"+(p.clFlags||"")+"+"+p.clasif:""}</span>`:"";
-      h+=`<div class="pred ko${cls}"><span class="pn">${p.name}</span><span class="pp-ko">${mk}</span>${clH}${pts}</div>`;
+      h+=`<div class="pred ko${cls}"><span class="pn">${p.name}</span><span class="pp-ko">${mk}${advM}</span>${clH}${pts}</div>`;
     } else { const sc=(p.ph===null)?"—":`${p.ph}–${p.pa}`;
       h+=`<div class="pred"><span class="pn">${p.name}</span><span class="pp">${sc}</span>${pts}</div>`; } });
   return `<div class="m-detail">${h}</div>`; }
