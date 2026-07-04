@@ -1,24 +1,24 @@
 {
- "day": "2026-07-02",
- "prevDay": "2026-07-01",
- "generatedAt": "2026-07-04T05:55:19Z",
+ "day": "2026-07-03",
+ "prevDay": "2026-07-02",
+ "generatedAt": "2026-07-04T06:55:24Z",
  "results": [
   {
-   "home": "Spain",
-   "away": "Austria",
-   "gh": 3,
-   "ga": 0
-  },
-  {
-   "home": "Portugal",
-   "away": "Croatia",
-   "gh": 2,
+   "home": "Australia",
+   "away": "Egypt",
+   "gh": 1,
    "ga": 1
   },
   {
-   "home": "Switzerland",
-   "away": "Algeria",
-   "gh": 2,
+   "home": "Argentina",
+   "away": "Cape Verde",
+   "gh": 3,
+   "ga": 2
+  },
+  {
+   "home": "Colombia",
+   "away": "Ghana",
+   "gh": 1,
    "ga": 0
   }
  ],
@@ -26,84 +26,84 @@
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 400,
-   "deltaPts": 20,
+   "total": 406,
+   "deltaPts": 6,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Abete",
-   "total": 383,
-   "deltaPts": 19,
+   "total": 395,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 3,
    "name": "Quimnot",
-   "total": 366,
-   "deltaPts": 19,
-   "deltaPos": 1
-  },
-  {
-   "pos": 4,
-   "name": "JJ",
-   "total": 364,
-   "deltaPts": 12,
-   "deltaPos": -1
-  },
-  {
-   "pos": 5,
-   "name": "Jonete",
-   "total": 362,
+   "total": 384,
    "deltaPts": 18,
    "deltaPos": 0
   },
   {
-   "pos": 6,
-   "name": "Graells",
-   "total": 351,
-   "deltaPts": 26,
+   "pos": 4,
+   "name": "JJ",
+   "total": 376,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
-   "pos": 7,
+   "pos": 5,
+   "name": "Jonete",
+   "total": 368,
+   "deltaPts": 6,
+   "deltaPos": 0
+  },
+  {
+   "pos": 6,
    "name": "P-man",
-   "total": 344,
-   "deltaPts": 19,
+   "total": 362,
+   "deltaPts": 18,
+   "deltaPos": 1
+  },
+  {
+   "pos": 7,
+   "name": "Graells",
+   "total": 357,
+   "deltaPts": 6,
    "deltaPos": -1
   },
   {
    "pos": 8,
    "name": "Guille",
-   "total": 341,
-   "deltaPts": 18,
+   "total": 353,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 9,
    "name": "Carrillo",
-   "total": 338,
-   "deltaPts": 19,
+   "total": 344,
+   "deltaPts": 6,
    "deltaPos": 0
   },
   {
    "pos": 10,
    "name": "Uri",
-   "total": 333,
-   "deltaPts": 19,
+   "total": 339,
+   "deltaPts": 6,
    "deltaPos": 0
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 325,
-   "deltaPts": 19,
+   "total": 331,
+   "deltaPts": 6,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 282,
+   "total": 294,
    "deltaPts": 12,
    "deltaPos": 0
   }
@@ -116,151 +116,186 @@
  ],
  "topGainers": [
   {
-   "name": "Graells",
-   "deltaPts": 26
+   "name": "Quimnot",
+   "deltaPts": 18
   },
   {
-   "name": "Lagen",
-   "deltaPts": 20
+   "name": "P-man",
+   "deltaPts": 18
   },
   {
    "name": "Abete",
-   "deltaPts": 19
+   "deltaPts": 12
   }
  ],
  "comments": [
   {
-   "text": "Ojala eliminen a marruecos, y del mundial tambien",
-   "ts": 1782989815830,
-   "likes": 4,
+   "text": "En la vida hay 3 cosas seguras, gol de messi, hacienda y santi farolillo",
+   "ts": 1783126289634,
+   "likes": 6,
    "dislikes": 0,
-   "score": 4
+   "score": 6
   },
   {
-   "text": "Els que han marxat abans del plat fort del dia, i no parlo del suissa-algeria de les 5, -50 punts",
-   "ts": 1783032290987,
+   "text": "Like👍🏽 si quieres que P-man tenga patch Farolillo 2018. Democracia.",
+   "ts": 1783065974068,
+   "likes": 6,
+   "dislikes": 1,
+   "score": 5
+  },
+  {
+   "text": "Que hacia MG despierto 3am? Cuantas pajas se hizo?",
+   "ts": 1783067615357,
    "likes": 3,
    "dislikes": 0,
    "score": 3
   },
   {
-   "text": "Si Hitler jugara aun con Austria y viera el panorama de escasez de blancos, otro tipo de mundial cantaria…",
-   "ts": 1782986280174,
+   "text": "Un respeto también para Ferran Torres que el tío lo está pasando mal. Todos hemos fallado goles en la Guineuada. Todos hemos desarrollado apps que no usa nadie. Un abrazo para Ferran.",
+   "ts": 1783072644647,
+   "likes": 3,
+   "dislikes": 0,
+   "score": 3
+  },
+  {
+   "text": "Algu despert per uns netflix games?",
+   "ts": 1783126458011,
+   "likes": 3,
+   "dislikes": 0,
+   "score": 3
+  },
+  {
+   "text": "Dato curioso: sabias que el bicho no habia marcado nunca en fase final mundial (eliminatorias) hasta ayer y fue de penalti",
+   "ts": 1783067538980,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Dato curioso: la Estimada preve que el actual campeon sera farolillo y que el actual farolillo sera campeon",
-   "ts": 1782986420212,
+   "text": "Fallan Torres no seria titular ni en el Espanyol, verguenza nacional, expulsado ya",
+   "ts": 1783067581576,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Estoy en la consulta del dr, llevo menos prendas que el farolillo",
-   "ts": 1783023108922,
+   "text": "Vamos D10S!!!!",
+   "ts": 1783115870253,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Edu passa ubicació de les bequis 🔎📍",
-   "ts": 1783025390877,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Netflix games > Mundial 2026",
-   "ts": 1783031647390,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Austriaco desde chiquitito",
-   "ts": 1782979348903,
+   "text": "2 mínimo, pensando en pe",
+   "ts": 1783067802151,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Aixo es desinfla com la segona volta del espanyol",
-   "ts": 1782992044921,
+   "text": "Dato curioso: Unai Simon tiene el record de imbatibilidad en la historia de los mundiales, 519 minutos. Completan el podio Walter Zenga 517 (Italia 1990) y Peter Shilton 500 (Inglaterra 1982-1986). Todo esto siendo un patan en la porteria",
+   "ts": 1783084113905,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "↖️ hola pauete",
-   "ts": 1783031496393,
+   "text": "Tiene pinta a Penelope Cruz \"Pe\" comentario 100% de GUILLE – Retratado 🖐️",
+   "ts": 1783100064112,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Si esto sigue así de muerto podríamos poner la crónica cada 3 días",
-   "ts": 1782989959666,
+   "text": "Muchaaaaachoooos ahora nos volvimos a ilusionaaar!!!",
+   "ts": 1783116692698,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Heavy poca confiança en el profeta. Blasfemia",
+   "ts": 1783118491395,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Despres daixo, argentina campio",
+   "ts": 1783125973702,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Anulo mufa",
+   "ts": 1783125980954,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Buenos dias grupo. Hoy juega el pequeño dictador contra la todopoderosa cabo verde. Mundial regalado al enano hormonado.",
+   "ts": 1783061015745,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Lamentable chat. El que mes parla es abete ara.",
-   "ts": 1782999641363,
+   "text": "Qui es la pajilla amb pe? pau ebete?",
+   "ts": 1783095974230,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "A un lindo pintor austriaco no le gustaria ver que alaba es capitan",
-   "ts": 1782999656659,
+   "text": "Alguien vera los Faraones vs Canguros?",
+   "ts": 1783101228218,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "El glovo no llega nunca. Giovanillos era mejor opcion.",
-   "ts": 1783023431762,
+   "text": "Jajajajajaja increible lo de Pe, Guille tio es evidente que solo has podido escribirlo tu",
+   "ts": 1783102563490,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Holi",
-   "ts": 1783028027186,
+   "text": "Es raro que “Mo-sah”lah tenga pelo aún no?",
+   "ts": 1783109332653,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Guanyar 2/3 Netflix games > guanyar porrassu",
-   "ts": 1783032179353,
+   "text": "Se ha avistado en Barcelona a Mousah en la presentacion del Tour con el equipo Movistar",
+   "ts": 1783113429625,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "I came for the pizza, stayed for netflix games",
-   "ts": 1783032225894,
+   "text": "Graaaaaande Carrillo que te derrota d’Argentina",
+   "ts": 1783116807482,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "DJ MVP",
-   "ts": 1783033800642,
+   "text": "Confirmo pe guille y tambien la anterior",
+   "ts": 1783121785459,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "El partit de croacia es lamintable",
-   "ts": 1783035052368,
+   "text": "Miedo al bicho",
+   "ts": 1783067462597,
    "likes": 0,
-   "dislikes": 1,
-   "score": -1
+   "dislikes": 4,
+   "score": -4
   }
  ]
 }
