@@ -1,110 +1,104 @@
 {
- "day": "2026-07-03",
- "prevDay": "2026-07-02",
- "generatedAt": "2026-07-04T10:57:44Z",
+ "day": "2026-07-04",
+ "prevDay": "2026-07-03",
+ "generatedAt": "2026-07-05T07:02:51Z",
  "results": [
   {
-   "home": "Australia",
-   "away": "Egypt",
-   "gh": 1,
+   "home": "Canada",
+   "away": "Morocco",
+   "gh": 0,
+   "ga": 3
+  },
+  {
+   "home": "Paraguay",
+   "away": "France",
+   "gh": 0,
    "ga": 1
-  },
-  {
-   "home": "Argentina",
-   "away": "Cape Verde",
-   "gh": 3,
-   "ga": 2
-  },
-  {
-   "home": "Colombia",
-   "away": "Ghana",
-   "gh": 1,
-   "ga": 0
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 406,
-   "deltaPts": 6,
+   "total": 418,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Abete",
-   "total": 395,
+   "total": 407,
    "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 3,
    "name": "Quimnot",
-   "total": 384,
-   "deltaPts": 18,
-   "deltaPos": 0
-  },
-  {
-   "pos": 4,
-   "name": "JJ",
-   "total": 376,
+   "total": 396,
    "deltaPts": 12,
    "deltaPos": 0
   },
   {
-   "pos": 5,
+   "pos": 4,
    "name": "Jonete",
-   "total": 368,
-   "deltaPts": 6,
-   "deltaPos": 0
+   "total": 393,
+   "deltaPts": 25,
+   "deltaPos": 1
+  },
+  {
+   "pos": 5,
+   "name": "JJ",
+   "total": 388,
+   "deltaPts": 12,
+   "deltaPos": -1
   },
   {
    "pos": 6,
-   "name": "P-man",
-   "total": 362,
-   "deltaPts": 18,
+   "name": "Graells",
+   "total": 381,
+   "deltaPts": 24,
    "deltaPos": 1
   },
   {
    "pos": 7,
-   "name": "Graells",
-   "total": 357,
-   "deltaPts": 6,
+   "name": "P-man",
+   "total": 374,
+   "deltaPts": 12,
    "deltaPos": -1
   },
   {
    "pos": 8,
    "name": "Guille",
-   "total": 353,
+   "total": 365,
    "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 9,
-   "name": "Carrillo",
-   "total": 344,
-   "deltaPts": 6,
-   "deltaPos": 0
+   "name": "Uri",
+   "total": 363,
+   "deltaPts": 24,
+   "deltaPos": 1
   },
   {
    "pos": 10,
-   "name": "Uri",
-   "total": 339,
-   "deltaPts": 6,
-   "deltaPos": 0
+   "name": "Carrillo",
+   "total": 356,
+   "deltaPts": 12,
+   "deltaPos": -1
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 331,
-   "deltaPts": 6,
+   "total": 343,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 294,
-   "deltaPts": 12,
+   "total": 318,
+   "deltaPts": 24,
    "deltaPos": 0
   }
  ],
@@ -116,186 +110,207 @@
  ],
  "topGainers": [
   {
-   "name": "Quimnot",
-   "deltaPts": 18
+   "name": "Jonete",
+   "deltaPts": 25
   },
   {
-   "name": "P-man",
-   "deltaPts": 18
+   "name": "Graells",
+   "deltaPts": 24
   },
   {
-   "name": "Abete",
-   "deltaPts": 12
+   "name": "Uri",
+   "deltaPts": 24
   }
  ],
  "comments": [
   {
-   "text": "En la vida hay 3 cosas seguras, gol de messi, hacienda y santi farolillo",
-   "ts": 1783126289634,
-   "likes": 6,
+   "text": "Lamentable los nuevos Patch 👎🏽",
+   "ts": 1783153274444,
+   "likes": 3,
    "dislikes": 0,
-   "score": 6
+   "score": 3
   },
   {
-   "text": "Like👍🏽 si quieres que P-man tenga patch Farolillo 2018. Democracia.",
-   "ts": 1783065974068,
-   "likes": 6,
+   "text": "Dato curioso: Vozinha (1) lleva mas regates que Cristiano (0) en el mundial",
+   "ts": 1783151206455,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Vingegaard comença fort. Afegim pestanya porra Tour?",
+   "ts": 1783191453074,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Collons com madruga la cronica avui",
+   "ts": 1783151097916,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Sabias que…. Despues de tocar solo una vez la pelota dentro el area en todo el partido, y fue chutando un penalti, le dieron el MVP del partido contra Croacia a Penaldo porque dijo que sino “me enfado y no respiro”",
+   "ts": 1783151328996,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "(1/2) Dato curioso: el aficionado Michael Hewitt de 65 años viajaba al mundial, hizo escala en Barcelona y desaparecio durante 10 dias. La busqueda era ferrea y sin fisuras, con incluso la Interpol de por medio. (Continua)",
+   "ts": 1783151882998,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "(2/2) Finalmente el bueno de Michael ha aparecido en Barcelona. Simplemente perdio el telefono donde tenia los billetes de avion y se quedo en la ciudad condal viendo los partidos en bares. Lo encontraron alojado en un hotel tan tranquilo",
+   "ts": 1783151984599,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Volem patch farolillo 2018, no els boniatos aquests",
+   "ts": 1783187900646,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Poco se habla de leo en general y lo que esta haciendo",
+   "ts": 1783193914678,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Countdown fuerte 2 dias lamine - bicho",
+   "ts": 1783151727918,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Lo del Leo este Mundial está siendo extraterrestre, es humano?",
+   "ts": 1783151820422,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Vozinha > Unai Simon",
+   "ts": 1783157643805,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Hoy juega nuestra vecina Le Maroc 🚬",
+   "ts": 1783162713167,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "CANADA CANADA CANADA",
+   "ts": 1783162802986,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Los de Marruecos roban y salen corriendo",
+   "ts": 1783188002446,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Argentina sin Messi es como Portugal con Ronaldo",
+   "ts": 1783190550431,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Morocco en cuartos, hola",
+   "ts": 1783192306215,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Todos los mensajes deberian empezar o acabar con hala leo",
+   "ts": 1783193936743,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Privilegiados y nostalgicos de ver su ultimo mundial",
+   "ts": 1783193950698,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Podre decir que vi al Leo",
+   "ts": 1783193959897,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Por favor, sed mas conscientes de lo que esta pasando grupo",
+   "ts": 1783193987404,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "No creo Paraguay no?",
+   "ts": 1783197526359,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "No volem saber res de les bicis, gracies",
+   "ts": 1783205065096,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Ni bicis ni moros",
+   "ts": 1783205075136,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Ni francesos",
+   "ts": 1783205080901,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "👍mujer retransmitiendote un partido 👎que te folle el ojal un negro",
+   "ts": 1783206074079,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Dale like👎🏽 si quieres eliminar los nuevos boniatos de patch💻",
+   "ts": 1783190324785,
+   "likes": 0,
    "dislikes": 1,
-   "score": 5
-  },
-  {
-   "text": "Que hacia MG despierto 3am? Cuantas pajas se hizo?",
-   "ts": 1783067615357,
-   "likes": 3,
-   "dislikes": 0,
-   "score": 3
-  },
-  {
-   "text": "Un respeto también para Ferran Torres que el tío lo está pasando mal. Todos hemos fallado goles en la Guineuada. Todos hemos desarrollado apps que no usa nadie. Un abrazo para Ferran.",
-   "ts": 1783072644647,
-   "likes": 3,
-   "dislikes": 0,
-   "score": 3
-  },
-  {
-   "text": "Algu despert per uns netflix games?",
-   "ts": 1783126458011,
-   "likes": 3,
-   "dislikes": 0,
-   "score": 3
-  },
-  {
-   "text": "Dato curioso: sabias que el bicho no habia marcado nunca en fase final mundial (eliminatorias) hasta ayer y fue de penalti",
-   "ts": 1783067538980,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Fallan Torres no seria titular ni en el Espanyol, verguenza nacional, expulsado ya",
-   "ts": 1783067581576,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Vamos D10S!!!!",
-   "ts": 1783115870253,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "2 mínimo, pensando en pe",
-   "ts": 1783067802151,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Dato curioso: Unai Simon tiene el record de imbatibilidad en la historia de los mundiales, 519 minutos. Completan el podio Walter Zenga 517 (Italia 1990) y Peter Shilton 500 (Inglaterra 1982-1986). Todo esto siendo un patan en la porteria",
-   "ts": 1783084113905,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Tiene pinta a Penelope Cruz \"Pe\" comentario 100% de GUILLE – Retratado 🖐️",
-   "ts": 1783100064112,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Muchaaaaachoooos ahora nos volvimos a ilusionaaar!!!",
-   "ts": 1783116692698,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Heavy poca confiança en el profeta. Blasfemia",
-   "ts": 1783118491395,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Despres daixo, argentina campio",
-   "ts": 1783125973702,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Anulo mufa",
-   "ts": 1783125980954,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Buenos dias grupo. Hoy juega el pequeño dictador contra la todopoderosa cabo verde. Mundial regalado al enano hormonado.",
-   "ts": 1783061015745,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Qui es la pajilla amb pe? pau ebete?",
-   "ts": 1783095974230,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Alguien vera los Faraones vs Canguros?",
-   "ts": 1783101228218,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Jajajajajaja increible lo de Pe, Guille tio es evidente que solo has podido escribirlo tu",
-   "ts": 1783102563490,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Es raro que “Mo-sah”lah tenga pelo aún no?",
-   "ts": 1783109332653,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Se ha avistado en Barcelona a Mousah en la presentacion del Tour con el equipo Movistar",
-   "ts": 1783113429625,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Graaaaaande Carrillo que te derrota d’Argentina",
-   "ts": 1783116807482,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Confirmo pe guille y tambien la anterior",
-   "ts": 1783121785459,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Miedo al bicho",
-   "ts": 1783067462597,
-   "likes": 0,
-   "dislikes": 4,
-   "score": -4
+   "score": -1
   }
  ]
 }
