@@ -1,104 +1,104 @@
 {
- "day": "2026-07-04",
- "prevDay": "2026-07-03",
- "generatedAt": "2026-07-05T07:02:51Z",
+ "day": "2026-07-05",
+ "prevDay": "2026-07-04",
+ "generatedAt": "2026-07-06T16:31:31Z",
  "results": [
   {
-   "home": "Canada",
-   "away": "Morocco",
-   "gh": 0,
-   "ga": 3
+   "home": "Brazil",
+   "away": "Norway",
+   "gh": 1,
+   "ga": 2
   },
   {
-   "home": "Paraguay",
-   "away": "France",
-   "gh": 0,
-   "ga": 1
+   "home": "Mexico",
+   "away": "England",
+   "gh": 2,
+   "ga": 3
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 418,
-   "deltaPts": 12,
+   "total": 431,
+   "deltaPts": 13,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Abete",
-   "total": 407,
+   "total": 419,
    "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 3,
    "name": "Quimnot",
-   "total": 396,
-   "deltaPts": 12,
+   "total": 412,
+   "deltaPts": 16,
    "deltaPos": 0
   },
   {
    "pos": 4,
    "name": "Jonete",
-   "total": 393,
-   "deltaPts": 25,
-   "deltaPos": 1
+   "total": 406,
+   "deltaPts": 13,
+   "deltaPos": 0
   },
   {
    "pos": 5,
-   "name": "JJ",
-   "total": 388,
-   "deltaPts": 12,
-   "deltaPos": -1
+   "name": "Graells",
+   "total": 394,
+   "deltaPts": 13,
+   "deltaPos": 1
   },
   {
    "pos": 6,
-   "name": "Graells",
-   "total": 381,
-   "deltaPts": 24,
+   "name": "P-man",
+   "total": 390,
+   "deltaPts": 16,
    "deltaPos": 1
   },
   {
    "pos": 7,
-   "name": "P-man",
-   "total": 374,
-   "deltaPts": 12,
-   "deltaPos": -1
+   "name": "JJ",
+   "total": 388,
+   "deltaPts": 0,
+   "deltaPos": -2
   },
   {
    "pos": 8,
    "name": "Guille",
-   "total": 365,
-   "deltaPts": 12,
+   "total": 381,
+   "deltaPts": 16,
    "deltaPos": 0
   },
   {
    "pos": 9,
    "name": "Uri",
-   "total": 363,
-   "deltaPts": 24,
-   "deltaPos": 1
+   "total": 376,
+   "deltaPts": 13,
+   "deltaPos": 0
   },
   {
    "pos": 10,
    "name": "Carrillo",
-   "total": 356,
-   "deltaPts": 12,
-   "deltaPos": -1
+   "total": 375,
+   "deltaPts": 19,
+   "deltaPos": 0
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 343,
+   "total": 355,
    "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 318,
-   "deltaPts": 24,
+   "total": 334,
+   "deltaPts": 16,
    "deltaPos": 0
   }
  ],
@@ -110,207 +110,158 @@
  ],
  "topGainers": [
   {
-   "name": "Jonete",
-   "deltaPts": 25
+   "name": "Carrillo",
+   "deltaPts": 19
   },
   {
-   "name": "Graells",
-   "deltaPts": 24
+   "name": "Quimnot",
+   "deltaPts": 16
   },
   {
-   "name": "Uri",
-   "deltaPts": 24
+   "name": "P-man",
+   "deltaPts": 16
   }
  ],
  "comments": [
   {
-   "text": "Lamentable los nuevos Patch 👎🏽",
-   "ts": 1783153274444,
+   "text": "Poc es parla del maillot de carrillo de punts vermells tipo varicela",
+   "ts": 1783296360402,
+   "likes": 4,
+   "dislikes": 0,
+   "score": 4
+  },
+  {
+   "text": "Si Apprillo tingues chat….",
+   "ts": 1783284326910,
    "likes": 3,
    "dislikes": 0,
    "score": 3
   },
   {
-   "text": "Dato curioso: Vozinha (1) lleva mas regates que Cristiano (0) en el mundial",
-   "ts": 1783151206455,
+   "text": "Vicky te veo",
+   "ts": 1783269368488,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Vingegaard comença fort. Afegim pestanya porra Tour?",
-   "ts": 1783191453074,
+   "text": "Avistadas las VINAGRE de san ignacio REUNITED. Dan sueño de verlas.",
+   "ts": 1783269476607,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Collons com madruga la cronica avui",
-   "ts": 1783151097916,
+   "text": "Fuck el tour de france",
+   "ts": 1783300616232,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Ola wenos dias a to2",
+   "ts": 1783237295377,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Sabias que…. Despues de tocar solo una vez la pelota dentro el area en todo el partido, y fue chutando un penalti, le dieron el MVP del partido contra Croacia a Penaldo porque dijo que sino “me enfado y no respiro”",
-   "ts": 1783151328996,
+   "text": "AulApp morta i Apprrillo treu fum",
+   "ts": 1783277948591,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "(1/2) Dato curioso: el aficionado Michael Hewitt de 65 años viajaba al mundial, hizo escala en Barcelona y desaparecio durante 10 dias. La busqueda era ferrea y sin fisuras, con incluso la Interpol de por medio. (Continua)",
-   "ts": 1783151882998,
+   "text": "Llueve en el azteca, bellingham triste porque no es J&B",
+   "ts": 1783300961438,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "(2/2) Finalmente el bueno de Michael ha aparecido en Barcelona. Simplemente perdio el telefono donde tenia los billetes de avion y se quedo en la ciudad condal viendo los partidos en bares. Lo encontraron alojado en un hotel tan tranquilo",
-   "ts": 1783151984599,
+   "text": "Tacos > fish and chips",
+   "ts": 1783300992502,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Volem patch farolillo 2018, no els boniatos aquests",
-   "ts": 1783187900646,
+   "text": "Lo de que tomen viagra en la pausa de hidratacion que es??? Bellingham ya las tomaba al salir del after y no era a tanta altura",
+   "ts": 1783301158736,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Poco se habla de leo en general y lo que esta haciendo",
-   "ts": 1783193914678,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Countdown fuerte 2 dias lamine - bicho",
-   "ts": 1783151727918,
+   "text": "Messi",
+   "ts": 1783243727231,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Lo del Leo este Mundial está siendo extraterrestre, es humano?",
-   "ts": 1783151820422,
+   "text": "Salu2",
+   "ts": 1783249801627,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Vozinha > Unai Simon",
-   "ts": 1783157643805,
+   "text": "I mes i mes",
+   "ts": 1783249808375,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Hoy juega nuestra vecina Le Maroc 🚬",
-   "ts": 1783162713167,
+   "text": "Esto esta demasiado parado en la vispera del partidazo de mañana",
+   "ts": 1783260890559,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "CANADA CANADA CANADA",
-   "ts": 1783162802986,
+   "text": "Si el bicho marca un gol que nos elimina, borramos Portugal del mapa",
+   "ts": 1783260954139,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Los de Marruecos roban y salen corriendo",
-   "ts": 1783188002446,
+   "text": "CR0",
+   "ts": 1783260985065,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Argentina sin Messi es como Portugal con Ronaldo",
-   "ts": 1783190550431,
+   "text": "Pues yo le tengo miedo al bicho 🙊",
+   "ts": 1783261017656,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Morocco en cuartos, hola",
-   "ts": 1783192306215,
+   "text": "Dato curioso: gane quien gane el jueves entre Francia o Marruecos, los moros saldrán a quemar Paris",
+   "ts": 1783280063143,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Todos los mensajes deberian empezar o acabar con hala leo",
-   "ts": 1783193936743,
+   "text": "Nuevo post Dr.soldevila… PURO CINE",
+   "ts": 1783290005332,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Privilegiados y nostalgicos de ver su ultimo mundial",
-   "ts": 1783193950698,
+   "text": "Farolillo en porra pero MVP en la consulta",
+   "ts": 1783290031410,
    "likes": 0,
    "dislikes": 0,
    "score": 0
-  },
-  {
-   "text": "Podre decir que vi al Leo",
-   "ts": 1783193959897,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Por favor, sed mas conscientes de lo que esta pasando grupo",
-   "ts": 1783193987404,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "No creo Paraguay no?",
-   "ts": 1783197526359,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "No volem saber res de les bicis, gracies",
-   "ts": 1783205065096,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Ni bicis ni moros",
-   "ts": 1783205075136,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Ni francesos",
-   "ts": 1783205080901,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "👍mujer retransmitiendote un partido 👎que te folle el ojal un negro",
-   "ts": 1783206074079,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Dale like👎🏽 si quieres eliminar los nuevos boniatos de patch💻",
-   "ts": 1783190324785,
-   "likes": 0,
-   "dislikes": 1,
-   "score": -1
   }
  ]
 }
