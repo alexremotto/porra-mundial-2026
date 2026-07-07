@@ -1,104 +1,104 @@
 {
- "day": "2026-07-05",
- "prevDay": "2026-07-04",
- "generatedAt": "2026-07-06T16:31:31Z",
+ "day": "2026-07-06",
+ "prevDay": "2026-07-05",
+ "generatedAt": "2026-07-07T08:40:02Z",
  "results": [
   {
-   "home": "Brazil",
-   "away": "Norway",
-   "gh": 1,
-   "ga": 2
+   "home": "Portugal",
+   "away": "Spain",
+   "gh": 0,
+   "ga": 1
   },
   {
-   "home": "Mexico",
-   "away": "England",
-   "gh": 2,
-   "ga": 3
+   "home": "United States",
+   "away": "Belgium",
+   "gh": 1,
+   "ga": 4
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 431,
-   "deltaPts": 13,
+   "total": 455,
+   "deltaPts": 24,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Abete",
-   "total": 419,
-   "deltaPts": 12,
+   "total": 443,
+   "deltaPts": 24,
    "deltaPos": 0
   },
   {
    "pos": 3,
    "name": "Quimnot",
-   "total": 412,
-   "deltaPts": 16,
+   "total": 424,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 4,
-   "name": "Jonete",
-   "total": 406,
-   "deltaPts": 13,
-   "deltaPos": 0
+   "name": "Graells",
+   "total": 418,
+   "deltaPts": 24,
+   "deltaPos": 1
   },
   {
-   "pos": 5,
-   "name": "Graells",
-   "total": 394,
-   "deltaPts": 13,
-   "deltaPos": 1
+   "pos": 4,
+   "name": "Jonete",
+   "total": 418,
+   "deltaPts": 12,
+   "deltaPos": 0
   },
   {
    "pos": 6,
    "name": "P-man",
-   "total": 390,
-   "deltaPts": 16,
-   "deltaPos": 1
+   "total": 414,
+   "deltaPts": 24,
+   "deltaPos": 0
   },
   {
    "pos": 7,
    "name": "JJ",
-   "total": 388,
-   "deltaPts": 0,
-   "deltaPos": -2
+   "total": 413,
+   "deltaPts": 25,
+   "deltaPos": 0
   },
   {
    "pos": 8,
    "name": "Guille",
-   "total": 381,
-   "deltaPts": 16,
+   "total": 405,
+   "deltaPts": 24,
    "deltaPos": 0
   },
   {
    "pos": 9,
    "name": "Uri",
-   "total": 376,
-   "deltaPts": 13,
+   "total": 388,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 10,
    "name": "Carrillo",
-   "total": 375,
-   "deltaPts": 19,
+   "total": 387,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 355,
-   "deltaPts": 12,
+   "total": 379,
+   "deltaPts": 24,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 334,
-   "deltaPts": 16,
+   "total": 358,
+   "deltaPts": 24,
    "deltaPos": 0
   }
  ],
@@ -110,155 +110,99 @@
  ],
  "topGainers": [
   {
-   "name": "Carrillo",
-   "deltaPts": 19
+   "name": "JJ",
+   "deltaPts": 25
   },
   {
-   "name": "Quimnot",
-   "deltaPts": 16
+   "name": "Lagen",
+   "deltaPts": 24
   },
   {
-   "name": "P-man",
-   "deltaPts": 16
+   "name": "Abete",
+   "deltaPts": 24
   }
  ],
  "comments": [
   {
-   "text": "Poc es parla del maillot de carrillo de punts vermells tipo varicela",
-   "ts": 1783296360402,
-   "likes": 4,
+   "text": "Dato matematico: muere un joven en Algeciras al engancharse en su moto la bandera de marruecos que llevaba al cuello durante la celebracion del pase a cuartos. -1",
+   "ts": 1783375801594,
+   "likes": 5,
    "dislikes": 0,
-   "score": 4
+   "score": 5
   },
   {
-   "text": "Si Apprillo tingues chat….",
-   "ts": 1783284326910,
+   "text": "Messi: Gols 7. Haaland: Gols 7. Mbappe: Gols 7. Cristiano: CR7",
+   "ts": 1783361986960,
    "likes": 3,
    "dislikes": 0,
    "score": 3
   },
   {
-   "text": "Vicky te veo",
-   "ts": 1783269368488,
-   "likes": 2,
+   "text": "Dato curioso: España con EL🐼PANDA en el cesped y Lagen animandl La Roja, España ha ganado el 100% de los partidos del Mundial 2026",
+   "ts": 1783373863566,
+   "likes": 3,
    "dislikes": 0,
-   "score": 2
+   "score": 3
   },
   {
-   "text": "Avistadas las VINAGRE de san ignacio REUNITED. Dan sueño de verlas.",
-   "ts": 1783269476607,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Fuck el tour de france",
-   "ts": 1783300616232,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Ola wenos dias a to2",
-   "ts": 1783237295377,
+   "text": "Hay menos luz en el partido de españa que en el salon de guillermo",
+   "ts": 1783367289483,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "AulApp morta i Apprrillo treu fum",
-   "ts": 1783277948591,
+   "text": "Es darwin pur",
+   "ts": 1783376845522,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Llueve en el azteca, bellingham triste porque no es J&B",
-   "ts": 1783300961438,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Tacos > fish and chips",
-   "ts": 1783300992502,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Lo de que tomen viagra en la pausa de hidratacion que es??? Bellingham ya las tomaba al salir del after y no era a tanta altura",
-   "ts": 1783301158736,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Messi",
-   "ts": 1783243727231,
+   "text": "Las 2 de la tarde y seguimos sin cronica…",
+   "ts": 1783338123541,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Salu2",
-   "ts": 1783249801627,
+   "text": "Sin cronica y santi de farolillo. Cuantos dias llevamos asi??",
+   "ts": 1783341505062,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "I mes i mes",
-   "ts": 1783249808375,
+   "text": "Dia de partido. Chat muerto. Cronica pendiente. Fin de ciclo.",
+   "ts": 1783350625591,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Esto esta demasiado parado en la vispera del partidazo de mañana",
-   "ts": 1783260890559,
+   "text": "Eso significa que AP aun no ha abierto su PC a las 17:30 de un lunes cualquiera. Así se “trabaja” en las start-ups.",
+   "ts": 1783351815659,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Si el bicho marca un gol que nos elimina, borramos Portugal del mapa",
-   "ts": 1783260954139,
+   "text": "Ojo golito de Ferran (22:44)",
+   "ts": 1783370653751,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "CR0",
-   "ts": 1783260985065,
+   "text": "Asistencia del amic Ferran 😎",
+   "ts": 1783371292440,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Pues yo le tengo miedo al bicho 🙊",
-   "ts": 1783261017656,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Dato curioso: gane quien gane el jueves entre Francia o Marruecos, los moros saldrán a quemar Paris",
-   "ts": 1783280063143,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Nuevo post Dr.soldevila… PURO CINE",
-   "ts": 1783290005332,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Farolillo en porra pero MVP en la consulta",
-   "ts": 1783290031410,
+   "text": "Doctor Soldevila, ¿ por qué el PP es la izquierda marica? ¿A quien recomienda votar cuando el Perro Sanxe esté encarcelado?",
+   "ts": 1783385095170,
    "likes": 0,
    "dislikes": 0,
    "score": 0
