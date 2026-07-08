@@ -4,44 +4,38 @@
     {
       "name": "Kylian Mbappé",
       "team": "Francia",
-      "odds": "7/4",
+      "odds": "33/20",
       "prevOdds": "7/4"
     },
     {
       "name": "Lionel Messi",
       "team": "Argentina",
-      "odds": "31/10",
+      "odds": "7/4",
       "prevOdds": "31/10"
-    },
-    {
-      "name": "Michael Olise",
-      "team": "Francia",
-      "odds": "7/1",
-      "prevOdds": "7/1"
     },
     {
       "name": "Erling Haaland",
       "team": "Noruega",
-      "odds": "9/1",
+      "odds": "15/2",
       "prevOdds": "9/1"
     },
     {
       "name": "Harry Kane",
       "team": "Inglaterra",
-      "odds": "19/2",
+      "odds": "9/1",
       "prevOdds": "19/2"
+    },
+    {
+      "name": "Michael Olise",
+      "team": "Francia",
+      "odds": "12/1",
+      "prevOdds": "7/1"
     },
     {
       "name": "Jude Bellingham",
       "team": "Inglaterra",
       "odds": "12/1",
       "prevOdds": "12/1"
-    },
-    {
-      "name": "Ousmane Dembélé",
-      "team": "Francia",
-      "odds": "20/1",
-      "prevOdds": "20/1"
     }
   ]
 }
