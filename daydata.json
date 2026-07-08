@@ -1,104 +1,104 @@
 {
- "day": "2026-07-06",
- "prevDay": "2026-07-05",
- "generatedAt": "2026-07-07T08:40:02Z",
+ "day": "2026-07-07",
+ "prevDay": "2026-07-06",
+ "generatedAt": "2026-07-08T07:15:38Z",
  "results": [
   {
-   "home": "Portugal",
-   "away": "Spain",
-   "gh": 0,
-   "ga": 1
+   "home": "Argentina",
+   "away": "Egypt",
+   "gh": 3,
+   "ga": 2
   },
   {
-   "home": "United States",
-   "away": "Belgium",
-   "gh": 1,
-   "ga": 4
+   "home": "Switzerland",
+   "away": "Colombia",
+   "gh": 0,
+   "ga": 0
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 455,
-   "deltaPts": 24,
+   "total": 467,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Abete",
-   "total": 443,
-   "deltaPts": 24,
+   "total": 456,
+   "deltaPts": 13,
    "deltaPos": 0
   },
   {
    "pos": 3,
    "name": "Quimnot",
-   "total": 424,
+   "total": 436,
    "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 4,
    "name": "Graells",
-   "total": 418,
-   "deltaPts": 24,
-   "deltaPos": 1
-  },
-  {
-   "pos": 4,
-   "name": "Jonete",
-   "total": 418,
+   "total": 430,
    "deltaPts": 12,
    "deltaPos": 0
   },
   {
-   "pos": 6,
-   "name": "P-man",
-   "total": 414,
-   "deltaPts": 24,
+   "pos": 4,
+   "name": "Jonete",
+   "total": 430,
+   "deltaPts": 12,
    "deltaPos": 0
+  },
+  {
+   "pos": 4,
+   "name": "P-man",
+   "total": 430,
+   "deltaPts": 16,
+   "deltaPos": 2
   },
   {
    "pos": 7,
    "name": "JJ",
-   "total": 413,
-   "deltaPts": 25,
+   "total": 426,
+   "deltaPts": 13,
    "deltaPos": 0
   },
   {
    "pos": 8,
    "name": "Guille",
-   "total": 405,
-   "deltaPts": 24,
+   "total": 417,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 9,
    "name": "Uri",
-   "total": 388,
+   "total": 400,
    "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 10,
    "name": "Carrillo",
-   "total": 387,
+   "total": 399,
    "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 379,
-   "deltaPts": 24,
+   "total": 391,
+   "deltaPts": 12,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 358,
-   "deltaPts": 24,
+   "total": 370,
+   "deltaPts": 12,
    "deltaPos": 0
   }
  ],
@@ -110,99 +110,183 @@
  ],
  "topGainers": [
   {
-   "name": "JJ",
-   "deltaPts": 25
-  },
-  {
-   "name": "Lagen",
-   "deltaPts": 24
+   "name": "P-man",
+   "deltaPts": 16
   },
   {
    "name": "Abete",
-   "deltaPts": 24
+   "deltaPts": 13
+  },
+  {
+   "name": "JJ",
+   "deltaPts": 13
   }
  ],
  "comments": [
   {
-   "text": "Dato matematico: muere un joven en Algeciras al engancharse en su moto la bandera de marruecos que llevaba al cuello durante la celebracion del pase a cuartos. -1",
-   "ts": 1783375801594,
-   "likes": 5,
+   "text": "Avui juga Lionel Andres Messi Cuccitini",
+   "ts": 1783409858234,
+   "likes": 2,
    "dislikes": 0,
-   "score": 5
+   "score": 2
   },
   {
-   "text": "Messi: Gols 7. Haaland: Gols 7. Mbappe: Gols 7. Cristiano: CR7",
-   "ts": 1783361986960,
-   "likes": 3,
+   "text": "Donde esta CR7??? CR7 donde estaa???",
+   "ts": 1783409891092,
+   "likes": 2,
    "dislikes": 0,
-   "score": 3
+   "score": 2
   },
   {
-   "text": "Dato curioso: España con EL🐼PANDA en el cesped y Lagen animandl La Roja, España ha ganado el 100% de los partidos del Mundial 2026",
-   "ts": 1783373863566,
-   "likes": 3,
+   "text": "Dato curioso: Cristiano lidera la lista de partidos perdidos en la historia de los mundiales con 8. CR8",
+   "ts": 1783415684728,
+   "likes": 2,
    "dislikes": 0,
-   "score": 3
+   "score": 2
   },
   {
-   "text": "Hay menos luz en el partido de españa que en el salon de guillermo",
-   "ts": 1783367289483,
+   "text": "Perque la cronica censura el dato matematico d’ahir??\nLlibertat d’expressio",
+   "ts": 1783420746627,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Es darwin pur",
-   "ts": 1783376845522,
+   "text": "Fan del dato matematico",
+   "ts": 1783420762216,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Las 2 de la tarde y seguimos sin cronica…",
-   "ts": 1783338123541,
+   "text": "Dato curioso: Bob Martinez cree en la numerologia y el 6 iba a traer cosas buenas: 2006 portugal llego a semis, 2016 ganan la euro y 2026 el 6o mundial de CR0. El partido se jugo dia 6 y los elimino el numero 6 Mikel Merino a pase de FT7 🦈",
+   "ts": 1783421335744,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Glovo mata (y mata de hambre)",
+   "ts": 1783440226929,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Que baje D10S y lo vea",
+   "ts": 1783450310944,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Sabias que… mañana no hay partido de mundial y eso no sucedia desde el 14 de junio de 2026?",
+   "ts": 1783452470755,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Por favor que alguien quite los boniatos de patch de las apps y P-man se ponga el farolillo rojo de 2018",
+   "ts": 1783452571563,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Si mañana no hay partido significa un dia mas de farolillo",
+   "ts": 1783452916028,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Suiza lleno de negros. Hasta cuando dejaremos pasar esta invasion silenciosa? Suplantacion de la poblacion?",
+   "ts": 1783453070566,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Vozinha > Messi el Falla Penaltis",
+   "ts": 1783460837137,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "EL🐼PANDA > Messi hormonado pequeño dictador",
+   "ts": 1783462356106,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "A cada cual mas malo. Partido y penaltis horribles. Guineuada merece plaza en Cuartos.",
+   "ts": 1783464447698,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Lo repetitivo es Messi siendo el mejor del mundo tantos años",
+   "ts": 1783476114150,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Lo de que los arbitros sean franceses???? Infantinada historica",
+   "ts": 1783440041260,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Sin cronica y santi de farolillo. Cuantos dias llevamos asi??",
-   "ts": 1783341505062,
+   "text": "Muchaaaachoooooos ahora nos volvimos a ilusionaaaar",
+   "ts": 1783440194991,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Dia de partido. Chat muerto. Cronica pendiente. Fin de ciclo.",
-   "ts": 1783350625591,
+   "text": "Pel team de Netflix Games: https://www.instagram.com/reel/Dad2QRcobXp/?igsh=eWNmOTUxdTlveTE1",
+   "ts": 1783449564201,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Eso significa que AP aun no ha abierto su PC a las 17:30 de un lunes cualquiera. Así se “trabaja” en las start-ups.",
-   "ts": 1783351815659,
+   "text": "Se acabó la mano negra🤚🏿 de Apprillo. Huele ya a color Rojo🚨",
+   "ts": 1783449796742,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Ojo golito de Ferran (22:44)",
-   "ts": 1783370653751,
+   "text": "Este chat esta bastante repetitivo ya… D10S, patches",
+   "ts": 1783455826175,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Asistencia del amic Ferran 😎",
-   "ts": 1783371292440,
+   "text": "Donde está penaldo hoy que se le necesita en el Colombia-Suiza?",
+   "ts": 1783463776847,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Doctor Soldevila, ¿ por qué el PP es la izquierda marica? ¿A quien recomienda votar cuando el Perro Sanxe esté encarcelado?",
-   "ts": 1783385095170,
+   "text": "Negros de colombia > negros de suiza",
+   "ts": 1783464020152,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Balon de oro para el Leo si gana Mundial 🙏🏼",
+   "ts": 1783490380724,
    "likes": 0,
    "dislikes": 0,
    "score": 0
