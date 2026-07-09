@@ -1297,7 +1297,7 @@ function chronicleDay(tl, i, dayComments, article){
   if(article && article.body){
     return `<div class="cron-day"><h3>📅 ${title0}</h3>
       ${article.title?`<div class="cron-headline">${article.title}</div>`:""}
-      <div class="cron-sub">${cur.matches.length} partidos · crónica del día</div>
+      <div class="cron-sub">${cur.matches.length?cur.matches.length+" partidos":"Día de descanso"} · crónica del día</div>
       <div class="cron-res">${res}</div>
       <div class="cron-txt cron-article">${article.body}</div>
       ${dayCommentsHTML(dayComments)}</div>`;
@@ -1588,13 +1588,31 @@ function renderCommentBox(){
   }
   renderTodayComments();
 }
+/* Línea temporal para la CRÓNICA: la de partidos + los días que tienen crónica
+   publicada aunque NO hubiera partidos (días de descanso). Para esos días la
+   clasificación es la del último día jugado anterior (no cambió). */
+function cronTimeline(espn){
+  const tl=dailyTimeline(espn||window._espn||[]);
+  const cr=window._cronicas||{};
+  if(!tl.length) return tl;
+  const have=new Set(tl.map(x=>x.day));
+  const first=tl[0].day, today=_todayMx();
+  const extra=[];
+  for(const day in cr){
+    if(have.has(day) || day<first || day>=today) continue;   // solo días cerrados sin partidos
+    let base=tl[0]; for(const e of tl){ if(e.day<day) base=e; else break; }
+    extra.push({day, st:base.st, matches:[]});
+  }
+  if(!extra.length) return tl;
+  return tl.concat(extra).sort((a,b)=> a.day<b.day?-1:(a.day>b.day?1:0));
+}
 async function renderCronica(espn){
   const el=document.getElementById("cronica"); if(!el) return;
   renderCommentBox();
   window._comments = await fetchComments();
   window._cronicas = await fetchCronicas();
   renderTodayComments();
-  const tl=dailyTimeline(espn||window._espn||[]);
+  const tl=cronTimeline(espn);
   if(!tl.length){ el.innerHTML=`<div class="empty">Aún no ha cerrado ninguna jornada. La primera crónica saldrá al terminar el día (23:59 hora de México).</div>`; return; }
   let html="";
   for(let i=tl.length-1;i>=0;i--) html+=chronicleDay(tl, i, (window._comments[tl[i].day]||{}), (window._cronicas[tl[i].day]||null));
@@ -1603,12 +1621,12 @@ async function renderCronica(espn){
 }
 
 /* ---- Aviso de crónica nueva: badge en la pestaña + popup SOLO al clicar Crónica ---- */
-function latestCronDay(){ const tl=dailyTimeline(window._espn||[]); return tl.length?tl[tl.length-1].day:null; }
+function latestCronDay(){ const tl=cronTimeline(window._espn||[]); return tl.length?tl[tl.length-1].day:null; }
 function cronUnseen(){ const l=latestCronDay(); return !!(l && l!==localStorage.getItem("porra_cron_seen")); }
 function updateCronBadge(){ const b=document.getElementById("cron-badge"); if(b) b.style.display=cronUnseen()?"block":"none"; }
 function markCronSeen(){ const l=latestCronDay(); if(l) localStorage.setItem("porra_cron_seen",l); updateCronBadge(); }
 function showCronPopup(){
-  const tl=dailyTimeline(window._espn||[]); if(!tl.length) return;
+  const tl=cronTimeline(window._espn||[]); if(!tl.length) return;
   const i=tl.length-1;
   const body=document.getElementById("cron-modal-body"); if(!body) return;
   body.innerHTML=chronicleDay(tl, i, (window._comments&&window._comments[tl[i].day])||{}, (window._cronicas&&window._cronicas[tl[i].day])||null);
