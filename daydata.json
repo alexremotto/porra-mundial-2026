@@ -1,18 +1,12 @@
 {
- "day": "2026-07-07",
- "prevDay": "2026-07-06",
- "generatedAt": "2026-07-09T07:18:46Z",
+ "day": "2026-07-09",
+ "prevDay": "2026-07-07",
+ "generatedAt": "2026-07-10T07:00:02Z",
  "results": [
   {
-   "home": "Argentina",
-   "away": "Egypt",
-   "gh": 3,
-   "ga": 2
-  },
-  {
-   "home": "Switzerland",
-   "away": "Colombia",
-   "gh": 0,
+   "home": "France",
+   "away": "Morocco",
+   "gh": 2,
    "ga": 0
   }
  ],
@@ -20,85 +14,85 @@
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 467,
-   "deltaPts": 12,
+   "total": 487,
+   "deltaPts": 20,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "Abete",
-   "total": 456,
-   "deltaPts": 13,
+   "total": 476,
+   "deltaPts": 20,
    "deltaPos": 0
   },
   {
    "pos": 3,
-   "name": "Quimnot",
-   "total": 436,
-   "deltaPts": 12,
-   "deltaPos": 0
-  },
-  {
-   "pos": 4,
    "name": "Graells",
-   "total": 430,
-   "deltaPts": 12,
-   "deltaPos": 0
+   "total": 457,
+   "deltaPts": 27,
+   "deltaPos": 1
   },
   {
-   "pos": 4,
+   "pos": 3,
    "name": "Jonete",
-   "total": 430,
-   "deltaPts": 12,
-   "deltaPos": 0
+   "total": 457,
+   "deltaPts": 27,
+   "deltaPos": 1
   },
   {
-   "pos": 4,
+   "pos": 5,
+   "name": "Quimnot",
+   "total": 456,
+   "deltaPts": 20,
+   "deltaPos": -2
+  },
+  {
+   "pos": 6,
    "name": "P-man",
-   "total": 430,
-   "deltaPts": 16,
-   "deltaPos": 2
+   "total": 450,
+   "deltaPts": 20,
+   "deltaPos": -2
   },
   {
    "pos": 7,
    "name": "JJ",
    "total": 426,
-   "deltaPts": 13,
+   "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 8,
-   "name": "Guille",
-   "total": 417,
-   "deltaPts": 12,
-   "deltaPos": 0
+   "name": "Uri",
+   "total": 420,
+   "deltaPts": 20,
+   "deltaPos": 1
   },
   {
    "pos": 9,
-   "name": "Uri",
-   "total": 400,
-   "deltaPts": 12,
-   "deltaPos": 0
+   "name": "Carrillo",
+   "total": 419,
+   "deltaPts": 20,
+   "deltaPos": 1
   },
   {
    "pos": 10,
-   "name": "Carrillo",
-   "total": 399,
-   "deltaPts": 12,
-   "deltaPos": 0
+   "name": "Guille",
+   "total": 417,
+   "deltaPts": 0,
+   "deltaPos": -2
   },
   {
    "pos": 11,
    "name": "Edu",
-   "total": 391,
-   "deltaPts": 12,
+   "total": 411,
+   "deltaPts": 20,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
    "total": 370,
-   "deltaPts": 12,
+   "deltaPts": 0,
    "deltaPos": 0
   }
  ],
@@ -110,186 +104,123 @@
  ],
  "topGainers": [
   {
-   "name": "P-man",
-   "deltaPts": 16
+   "name": "Graells",
+   "deltaPts": 27
   },
   {
-   "name": "Abete",
-   "deltaPts": 13
+   "name": "Jonete",
+   "deltaPts": 27
   },
   {
-   "name": "JJ",
-   "deltaPts": 13
+   "name": "Lagen",
+   "deltaPts": 20
   }
  ],
  "comments": [
   {
-   "text": "Avui juga Lionel Andres Messi Cuccitini",
-   "ts": 1783409858234,
+   "text": "Hoy negros vs moros el derbi de la sociedad actual",
+   "ts": 1783613176570,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Donde esta CR7??? CR7 donde estaa???",
-   "ts": 1783409891092,
+   "text": "Quins equips mes fastigosos. Ojala perdin els dos",
+   "ts": 1783626773825,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Dato curioso: Cristiano lidera la lista de partidos perdidos en la historia de los mundiales con 8. CR8",
-   "ts": 1783415684728,
+   "text": "Silvia Orriols no aprova aquest partit. I jo tampoc",
+   "ts": 1783626871262,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Perque la cronica censura el dato matematico d’ahir??\nLlibertat d’expressio",
-   "ts": 1783420746627,
+   "text": "Algu ha dit bomba?",
+   "ts": 1783626786161,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Fan del dato matematico",
-   "ts": 1783420762216,
+   "text": "Odio eterno a francia, marruecos, real mandril y espanyol de cornella. Todos en el mismo saco de mierda. Exterminio ya.",
+   "ts": 1783630479130,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Dato curioso: Bob Martinez cree en la numerologia y el 6 iba a traer cosas buenas: 2006 portugal llego a semis, 2016 ganan la euro y 2026 el 6o mundial de CR0. El partido se jugo dia 6 y los elimino el numero 6 Mikel Merino a pase de FT7 🦈",
-   "ts": 1783421335744,
+   "text": "Mbappe i dembou. Quines dos rates fastigoses",
+   "ts": 1783632686459,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Glovo mata (y mata de hambre)",
-   "ts": 1783440226929,
+   "text": "Deixarem que Abete guanyi la porra sense haver parlat, ni assistir a partits o donar show pel chat? Aquesta es la essencia que volem? Mercernaris que venen aqui pels diners?",
+   "ts": 1783636946790,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Que baje D10S y lo vea",
-   "ts": 1783450310944,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Sabias que… mañana no hay partido de mundial y eso no sucedia desde el 14 de junio de 2026?",
-   "ts": 1783452470755,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Por favor que alguien quite los boniatos de patch de las apps y P-man se ponga el farolillo rojo de 2018",
-   "ts": 1783452571563,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Si mañana no hay partido significa un dia mas de farolillo",
-   "ts": 1783452916028,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Suiza lleno de negros. Hasta cuando dejaremos pasar esta invasion silenciosa? Suplantacion de la poblacion?",
-   "ts": 1783453070566,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Vozinha > Messi el Falla Penaltis",
-   "ts": 1783460837137,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "EL🐼PANDA > Messi hormonado pequeño dictador",
-   "ts": 1783462356106,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "A cada cual mas malo. Partido y penaltis horribles. Guineuada merece plaza en Cuartos.",
-   "ts": 1783464447698,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Lo repetitivo es Messi siendo el mejor del mundo tantos años",
-   "ts": 1783476114150,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Lo de que los arbitros sean franceses???? Infantinada historica",
-   "ts": 1783440041260,
+   "text": "La crónica con estilo Argentino pa cuando? Aguante Talleres!",
+   "ts": 1783581019519,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Muchaaaachoooooos ahora nos volvimos a ilusionaaaar",
-   "ts": 1783440194991,
+   "text": "Del partit d’aquesta nit el resultat és incert. Però una cosa és segura: disturbis a Paris guanyi qui guanyi",
+   "ts": 1783587582780,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Pel team de Netflix Games: https://www.instagram.com/reel/Dad2QRcobXp/?igsh=eWNmOTUxdTlveTE1",
-   "ts": 1783449564201,
+   "text": "No havia vist el meme de ❄️❄️❄️",
+   "ts": 1783587691700,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Se acabó la mano negra🤚🏿 de Apprillo. Huele ya a color Rojo🚨",
-   "ts": 1783449796742,
+   "text": "Eeeeeeeh i els meus datos curiosos d’ahir??? Una mini cronica o algo n??",
+   "ts": 1783591323222,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Este chat esta bastante repetitivo ya… D10S, patches",
-   "ts": 1783455826175,
+   "text": "Exigimos la cronica de ayer. Esto en la AppRrillo no pasa.",
+   "ts": 1783606199345,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Donde está penaldo hoy que se le necesita en el Colombia-Suiza?",
-   "ts": 1783463776847,
+   "text": "Sabies que… Hay mas moros nacidos en marruecos en las calles del Raval de Barcelona que moros nacidos en marruecos en la seleccion de marruecos?",
+   "ts": 1783630808480,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Negros de colombia > negros de suiza",
-   "ts": 1783464020152,
+   "text": "Soc conscient que queda poc liderat. Abete no parla pero sumara punts",
+   "ts": 1783631351622,
    "likes": 0,
-   "dislikes": 0,
-   "score": 0
+   "dislikes": 1,
+   "score": -1
   },
   {
-   "text": "Balon de oro para el Leo si gana Mundial 🙏🏼",
-   "ts": 1783490380724,
+   "text": "Querido Juan Lagen. Esto es una carta de mi para ti. Saborea tus ultimos dias de liderato. De hoy en adelante toca abandonar el podio y volver a la oscura cueva de donde nunca tendrias que haber salido. Firmado: P-man, el farolillo 2018.",
+   "ts": 1783630692479,
    "likes": 0,
-   "dislikes": 0,
-   "score": 0
+   "dislikes": 2,
+   "score": -2
   }
  ]
 }
