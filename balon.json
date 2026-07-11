@@ -1,41 +1,41 @@
 {
-  "baseDate": "2026-07-10",
+  "baseDate": "2026-07-11",
   "players": [
     {
       "name": "Kylian Mbappé",
       "team": "Francia",
       "odds": "5/4",
-      "prevOdds": "33/20"
+      "prevOdds": "5/4"
     },
     {
       "name": "Lionel Messi",
       "team": "Argentina",
-      "odds": "2/1",
-      "prevOdds": "7/4"
+      "odds": "23/10",
+      "prevOdds": "2/1"
+    },
+    {
+      "name": "Erling Haaland",
+      "team": "Noruega",
+      "odds": "8/1",
+      "prevOdds": "11/1"
+    },
+    {
+      "name": "Harry Kane",
+      "team": "Inglaterra",
+      "odds": "9/1",
+      "prevOdds": "12/1"
+    },
+    {
+      "name": "Jude Bellingham",
+      "team": "Inglaterra",
+      "odds": "9/1",
+      "prevOdds": "12/1"
     },
     {
       "name": "Michael Olise",
       "team": "Francia",
       "odds": "11/1",
-      "prevOdds": "12/1"
-    },
-    {
-      "name": "Erling Haaland",
-      "team": "Noruega",
-      "odds": "11/1",
-      "prevOdds": "15/2"
-    },
-    {
-      "name": "Harry Kane",
-      "team": "Inglaterra",
-      "odds": "12/1",
-      "prevOdds": "9/1"
-    },
-    {
-      "name": "Jude Bellingham",
-      "team": "Inglaterra",
-      "odds": "12/1",
-      "prevOdds": "12/1"
+      "prevOdds": "11/1"
     }
   ]
 }
