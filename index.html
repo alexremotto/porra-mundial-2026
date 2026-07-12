@@ -467,7 +467,7 @@
       <button class="ttg active" data-mode="actual">🏆 Actual</button>
       <button class="ttg" data-mode="forecast">🔮 Estimada final</button>
     </div>
-    <div id="fc-note" class="fc-note" style="display:none">Estimación de la clasificación <b>al final del torneo</b> según el escenario de <b>consenso</b> de la peña (lo que falta se proyecta con el 1X2 y los clasificados más votados). Son los puntos del torneo completo, por eso mucho más altos que los actuales. ▲▼ = puestos que ganaría/perdería respecto a ahora.
+    <div id="fc-note" class="fc-note" style="display:none">Estimación de la clasificación <b>al final del torneo</b> según el escenario de <b>consenso</b> de la peña (lo que falta se proyecta con el 1X2 y los clasificados más votados). Incluye una estimación de <b>bota de oro</b> (goleadores en vivo) y <b>balón de oro</b> (cuotas), en oro/plata/bronce, cruzada con lo que apostó cada uno; el campeón/podio no se estima. Son los puntos del torneo completo, por eso mucho más altos que los actuales. ▲▼ = puestos que ganaría/perdería respecto a ahora.
       <div id="fc-pred" class="fc-pred"></div></div>
     <table>
       <thead><tr>
@@ -798,6 +798,20 @@ const _KO_BLOCKS=["r32_partidos","r32_clasif","r16_partidos","r16_clasif","qf_pa
 // KO completo = ha puesto todos los marcadores KO y los reached al completo
 function _koComplete(p){ for(const st of P.koOrder){ if((p.reached[st]||[]).length < _stageCap(st)) return false;
     for(const slot of (P.koSlots[st]||[])) if(!p.matches[slot.key]) return false; } return true; }
+// Premios ESTIMADOS para la porra final: BOTA de oro (goleadores en vivo de ESPN)
+// y BALÓN de oro (cuotas de balon.json), en oro/plata/bronce. Se cruzan con los
+// picks de cada participante por nombre (tolerante a la ortografía). El campeón y
+// el podio NO se estiman aquí (demasiado especulativo). Requiere que loadScorers/
+// loadBallon hayan cargado (cachean window._scorersTop / _ballonTop).
+function _projAwards(part){
+  const aw=part.awards||{}; let pts=0;
+  const src={boot:window._scorersTop||[], ball:window._ballonTop||[]};
+  const pos=["gold","silver","bronze"];
+  for(const kind of ["boot","ball"]){ const top=src[kind];
+    for(let i=0;i<3;i++){ const pick=aw[kind+"_"+pos[i]], player=top[i];
+      if(pick && player && nameMatch(pick,player)) pts+=P.awardPts[kind+"_"+pos[i]]||0; } }
+  return pts;
+}
 function forecastStandings(){
   const S=forecastActual();
   const base=P.participants.map(p=>({name:p.name, br:scoreParticipant(p,S).breakdown, p}));
@@ -806,6 +820,7 @@ function forecastStandings(){
   const avg={}; for(const k of _KO_BLOCKS) avg[k]= complete.length ? complete.reduce((s,x)=>s+(x.br[k]||0),0)/complete.length : 0;
   const rows=base.map(({name,br,p})=>{ const inc=!_koComplete(p); const b=Object.assign({},br);
     if(inc) for(const k of _KO_BLOCKS) b[k]=avg[k];     // a los incompletos: media de los demás en KO
+    b.premios=_projAwards(p);                           // bota/balón de oro estimados (oro/plata/bronce)
     let total=0; for(const k in b) total+=b[k];
     const det=[]; for(const k in P.blockLabels){ const v=Math.round(b[k]||0); if(v>0) det.push({label:P.blockLabels[k],n:null,pts:v}); }
     return {name, total:Math.round(total), breakdown:b, det, filled:inc}; });
@@ -1704,6 +1719,8 @@ async function loadBallon(){
     if(r.ok){ const j=await r.json(); const arr=Array.isArray(j)?j:((j&&j.players)||[]);
       if(arr.length) list=arr; }
   }catch(e){}
+  window._ballonTop=list.slice(0,3).map(p=>p.name);   // balón de oro estimado (oro/plata/bronce)
+  if(window._tableMode==="forecast"&&typeof renderTable==="function"){ window._csForecast=forecastStandings(); renderTable(); }
   el.innerHTML=list.map((p,i)=>{ const cls=i<3?`top${i+1}`:"";
     const pct=oddsToPct(p.odds);
     const val = pct!=null ? (Math.round(pct*10)/10)+"%" : (p.pct||"");
@@ -1726,6 +1743,8 @@ async function loadScorers(){
     const gl=(cats.goalsLeaders||[]).filter(L=>L.value>0).slice(0,20);
     if(!gl.length){ cont.innerHTML=`<div class="empty">Aún no hay goles en el Mundial.</div>`; return; }
     const rows=await Promise.all(gl.map(async L=>({...await nameTeam(L), goals:L.value})));
+    window._scorersTop=rows.slice(0,3).map(r=>r.name);   // bota de oro estimada (oro/plata/bronce)
+    if(window._tableMode==="forecast"&&typeof renderTable==="function"){ window._csForecast=forecastStandings(); renderTable(); }
     const rowHTML=(r,i)=>{ const cls=i<3?`top${i+1}`:"";
       return `<div class="lead ${cls}"><span class="lr">${i+1}</span>
         <span class="ln">${r.name}<span class="lt">${r.team}</span>${votersHTML(r.name,"boot")}</span>
@@ -1792,6 +1811,9 @@ async function tick(){
     const mv=matchesView(S); window._mv=mv; renderMatches(mv); setupTopBanner(espn);
     renderLiveBanner(espn, mv); renderLanternRecord(espn); checkGlovo();
     if(document.getElementById("panel-premios").classList.contains("active")) refreshFuturosLive();
+    // Carga inicial de goleadores/balón (para estimar bota/balón en la porra final,
+    // aunque no se visite la pestaña Futuros). Solo una vez; luego se autorrefresca.
+    if(!window._awardsInit){ window._awardsInit=1; loadScorers(); }
     if((P.features||{}).chronicle) renderCronica(espn);
     if(!didFocus){ didFocus=true;
       if(document.querySelector('.tab[data-tab=partidos]').classList.contains("active")) setTimeout(scrollToFocus,150); }
