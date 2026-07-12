@@ -562,11 +562,30 @@ function mapTeam(name){ if(!name) return null; const n=norm(name);
 function pairKey(a,b){ return [a,b].sort().join("|"); }
 function sign(x){ return x>0?1:(x<0?-1:0); }
 
+// La API scoreboard de ESPN CAPA la respuesta por rango a ~100 eventos y corta
+// los últimos días del torneo (¡las semis y la final se quedaban fuera!). Por eso
+// troceamos el rango en subrangos cortos (<100 eventos cada uno) y los unimos.
+function _espnChunks(range, step){
+  const [a,b]=(range||"").split("-");
+  if(!a||!b) return [[a||"",b||""]];
+  const toD=s=>new Date(Date.UTC(+s.slice(0,4),+s.slice(4,6)-1,+s.slice(6,8)));
+  const fmt=d=>d.getUTCFullYear()+String(d.getUTCMonth()+1).padStart(2,"0")+String(d.getUTCDate()).padStart(2,"0");
+  const out=[]; let cur=toD(a); const end=toD(b);
+  while(cur<=end){ const e=new Date(cur); e.setUTCDate(e.getUTCDate()+step-1); if(e>end) e.setTime(end.getTime());
+    out.push([fmt(cur),fmt(e)]); const n=new Date(e); n.setUTCDate(n.getUTCDate()+1); cur=n; }
+  return out;
+}
 async function fetchESPN(){
-  const url="https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates="+P.dateRange;
-  const data=await (await fetch(url,{cache:"no-store"})).json();
+  const base="https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates=";
+  const evs=[], seen=new Set();
+  for(const [cs,ce] of _espnChunks(P.dateRange,10)){
+    try{ const d=await (await fetch(base+cs+"-"+ce,{cache:"no-store"})).json();
+      for(const ev of (d.events||[])){ const id=ev.id||ev.uid||(ev.date+"|"+cs);
+        if(!seen.has(id)){ seen.add(id); evs.push(ev); } } }
+    catch(_){}
+  }
   const out=[];
-  for(const ev of (data.events||[])){
+  for(const ev of evs){
     const comp=(ev.competitions||[{}])[0]; const cs=comp.competitors||[];
     let home=null,away=null,gh=null,ga=null,homeId=null,awayId=null,winner=null;
     for(const c of cs){ const tn=(c.team||{}).displayName||(c.team||{}).name;
