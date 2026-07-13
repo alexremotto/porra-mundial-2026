@@ -307,6 +307,8 @@
     text-align:center;}
   .dn{display:inline-block; min-width:18px; font-weight:800; color:#37474f;
     background:#eef3f5; border-radius:8px; padding:0 6px; margin-left:5px; font-size:.76rem;}
+  .dsub{font-size:.68rem; font-weight:600; color:#6b5b95; margin-top:2px; line-height:1.3;}
+  .drow-est .val{color:#8a6d1a;}
   .poschart{padding:4px 16px 0;}
   .poschart svg{width:100%; height:auto; display:block;}
   .poschart-x{text-align:center; font-size:.66rem; color:#9aa7ad; margin-top:1px;}
@@ -467,7 +469,7 @@
       <button class="ttg active" data-mode="actual">🏆 Actual</button>
       <button class="ttg" data-mode="forecast">🔮 Estimada final</button>
     </div>
-    <div id="fc-note" class="fc-note" style="display:none">Estimación de la clasificación <b>al final del torneo</b> según el escenario de <b>consenso</b> de la peña (lo que falta se proyecta con el 1X2 y los clasificados más votados). Incluye una estimación de <b>bota de oro</b> (goleadores en vivo) y <b>balón de oro</b> (cuotas), en oro/plata/bronce, cruzada con lo que apostó cada uno; el campeón/podio no se estima. Son los puntos del torneo completo, por eso mucho más altos que los actuales. ▲▼ = puestos que ganaría/perdería respecto a ahora.
+    <div id="fc-note" class="fc-note" style="display:none">Estimación de la clasificación <b>al final del torneo</b> según el escenario de <b>consenso</b> de la peña al desplegar cada uno verás <b>✅ lo ya conseguido</b> y, aparte, los bloques de lo que <b>queda por resolver</b>, ponderados por probabilidad: pase a final / 3º-4º, campeón / subcampeón / 3º (según las <b>cuotas</b> de los 4 semifinalistas) y bota / balón de oro (goleadores en vivo y cuotas). Los bloques con <b>~</b> son estimados. Son los puntos del torneo completo, por eso más altos que los actuales. ▲▼ = puestos que ganaría/perdería respecto a ahora.
       <div id="fc-pred" class="fc-pred"></div></div>
     <table>
       <thead><tr>
@@ -788,8 +790,10 @@ function forecastActual(){
   const caps={r16:16,qf:8,sf:4,third:2,final:2};
   for(const st in caps) A.reached[st]=consensusReached(st,caps[st]);
   for(const st of P.koOrder){ for(const slot of (P.koSlots[st]||[])){ if(A.matches[slot.key]) continue;
-    const c=consensusScore(slot.key); if(c) A.matches[slot.key]=[c[0],c[1],"",""]; } }
-  // Premios (Bota/Balón/campeón) NO se proyectan: pura especulación a futuro -> 0 para todos.
+    const c=consensusScore(slot.key); if(!c) continue;
+    const inf=real.info[slot.key]; const hm=(inf&&inf.home)||"", aw=(inf&&inf.away)||"";
+    A.matches[slot.key]=[c[0],c[1],hm,aw]; } }   // usa equipos reales si el cruce ya se conoce (p.ej. semis)
+  // Premios (Bota/Balón/campeón) se estiman aparte con cuotas en forecastStandings.
   return {actual:A,info:real.info};
 }
 function _stageCap(st){ return (P.koSlots[st]||[]).length*2; }
@@ -812,21 +816,64 @@ function _projAwards(part){
       if(pick && player && nameMatch(pick,player)) pts+=P.awardPts[kind+"_"+pos[i]]||0; } }
   return pts;
 }
+// ===== Cuotas de la FASE FINAL (ACTUALIZABLES cuando avance el torneo) =====
+// win = ganar el Mundial (campeón); fin = llegar a la FINAL. Cuota americana.
+const SEMI_ODDS={ France:{win:150,fin:-160}, Spain:{win:320,fin:125},
+                  England:{win:340,fin:-135}, Argentina:{win:360,fin:110} };
+const SEMI_PAIRS=[["France","Spain"],["England","Argentina"]];   // cruces de semifinales
+function _amProb(o){ return o<0 ? (-o)/((-o)+100) : 100/(o+100); }
+// Probabilidades por equipo: llegar a final, ir al 3º-4º, campeón, subcampeón, 3º.
+// Incorpora resultados reales de semis si ya se jugaron (certeza 0/1).
+function _semiProbs(real){
+  const rf=(real&&real.actual.reached.final)||[], r3=(real&&real.actual.reached.third)||[];
+  const win={}, finRaw={};
+  for(const t in SEMI_ODDS){ win[t]=_amProb(SEMI_ODDS[t].win); finRaw[t]=_amProb(SEMI_ODDS[t].fin); }
+  const reachFinal={}, reachPO={};
+  for(const [a,b] of SEMI_PAIRS){ const s=(finRaw[a]+finRaw[b])||1;   // normaliza el par (uno pasa)
+    reachFinal[a]=finRaw[a]/s; reachFinal[b]=finRaw[b]/s; reachPO[a]=1-reachFinal[a]; reachPO[b]=1-reachFinal[b]; }
+  for(const t in SEMI_ODDS){ if(rf.includes(t)){reachFinal[t]=1;reachPO[t]=0;} else if(r3.includes(t)){reachFinal[t]=0;reachPO[t]=1;} }
+  const cb={}; for(const t in win) cb[t]=win[t]*(reachFinal[t]>0?1:0);
+  const sw=Object.values(cb).reduce((x,y)=>x+y,0)||1; const champ={}; for(const t in win) champ[t]=cb[t]/sw;
+  const runner={}; for(const t in reachFinal) runner[t]=Math.max(0, reachFinal[t]-champ[t]);
+  const third={};   // gana el playoff entre los 2 perdedores de semis (fuerza ~ cuota de campeón)
+  for(const [ia,ib] of [[0,1],[1,0]]){ const side=SEMI_PAIRS[ia], other=SEMI_PAIRS[ib];
+    for(const t of side){ let p=0; for(const opp of other){ p+=reachPO[opp]*(win[t]/((win[t]+win[opp])||1)); } third[t]=reachPO[t]*p; } }
+  return {reachFinal,reachPO,champ,runner,third};
+}
 function forecastStandings(){
-  const S=forecastActual();
-  const base=P.participants.map(p=>({name:p.name, br:scoreParticipant(p,S).breakdown, p}));
-  // media de los bloques KO entre quienes SÍ tienen el bracket completo (referencia)
-  const complete=base.filter(x=>_koComplete(x.p));
-  const avg={}; for(const k of _KO_BLOCKS) avg[k]= complete.length ? complete.reduce((s,x)=>s+(x.br[k]||0),0)/complete.length : 0;
-  const rows=base.map(({name,br,p})=>{ const inc=!_koComplete(p); const b=Object.assign({},br);
-    if(inc) for(const k of _KO_BLOCKS) b[k]=avg[k];     // a los incompletos: media de los demás en KO
-    b.premios=_projAwards(p);                           // bota/balón de oro estimados (oro/plata/bronce)
-    let total=0; for(const k in b) total+=b[k];
-    const det=[]; for(const k in P.blockLabels){ const v=Math.round(b[k]||0); if(v>0) det.push({label:P.blockLabels[k],n:null,pts:v}); }
-    return {name, total:Math.round(total), breakdown:b, det, filled:inc}; });
+  const real=buildActual(window._espn||[]);
+  const cons=forecastActual();                 // consenso: puntos de PARTIDO que faltan (con equipos reales)
+  const pr=_semiProbs(real);
+  const SF=Object.keys(SEMI_ODDS);
+  const mapT=s=>{ const c=mapTeam(s||""); return SF.indexOf(c)>=0?c:null; };
+  const pctT=(t,pv)=>t+" "+Math.round((pv[t]||0)*100)+"%";
+  const rows=P.participants.map(p=>{
+    const lockedBd=scoreParticipant(p,real).breakdown;
+    let locked=0; for(const k in lockedBd) locked+=lockedBd[k];      // = puntos YA conseguidos
+    const cbd=scoreParticipant(p,cons).breakdown;
+    const matchEV=(cbd.sf_partidos||0)+(cbd.third_partido||0)+(cbd.final_partido||0);
+    // Pase a FINAL (45) / a 3º-4º (30), ponderado por cuotas
+    let evFinal=0, finP=[]; for(const t of (p.reached.final||[])){ if(pr.reachFinal[t]>0){ evFinal+=P.qualif.final*pr.reachFinal[t]; finP.push("🎟️"+pctT(t,pr.reachFinal)); } }
+    let ev34=0; for(const t of (p.reached.third||[])){ if(pr.reachPO[t]>0) ev34+=P.qualif.third*pr.reachPO[t]; }
+    const qualEV=evFinal+ev34;
+    // Campeón / subcampeón / 3º, ponderado por cuotas
+    const cT=mapT(p.awards&&p.awards.champion), rT=mapT(p.awards&&p.awards.runnerup), tT=mapT(p.awards&&p.awards.third_place);
+    let titleEV=0, tSub=[];
+    if(cT&&pr.champ[cT]>0){ titleEV+=P.awardPts.champion*pr.champ[cT]; tSub.push("🏆"+pctT(cT,pr.champ)); }
+    if(rT&&pr.runner[rT]>0){ titleEV+=P.awardPts.runnerup*pr.runner[rT]; tSub.push("🥈"+pctT(rT,pr.runner)); }
+    if(tT&&pr.third[tT]>0){ titleEV+=P.awardPts.third_place*pr.third[tT]; tSub.push("🥉"+pctT(tT,pr.third)); }
+    const awardEV=_projAwards(p);                 // bota/balón de oro (oro/plata/bronce)
+    const total=locked+matchEV+qualEV+titleEV+awardEV;
+    const det=[{label:"✅ Ya conseguido", pts:Math.round(locked)}];
+    if(matchEV>0.5) det.push({label:"⚽ Semis · final · 3º (resultado)", pts:Math.round(matchEV), est:1});
+    if(qualEV>0.5) det.push({label:"🎟️ Pase a final / 3º-4º", pts:Math.round(qualEV), est:1, sub:finP.join(" · ")});
+    if(titleEV>0.5) det.push({label:"🏆 Campeón · subcampeón · 3º", pts:Math.round(titleEV), est:1, sub:tSub.join(" · ")});
+    if(awardEV>0.5) det.push({label:"🥇 Bota / Balón de oro", pts:Math.round(awardEV), est:1});
+    return {name:p.name, total:Math.round(total), det, filled:false};
+  });
   rows.sort((a,b)=> b.total-a.total || a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
   let lastPts=null,lastPos=0; rows.forEach((r,i)=>{ if(r.total!==lastPts){lastPos=i+1;lastPts=r.total;} r.pos=lastPos; });
-  let played=0; for(const k in S.info){ const st=S.info[k].state; if(st==="in"||st==="post") played++; }
+  let played=0; for(const k in real.info){ const st=real.info[k].state; if(st==="in"||st==="post") played++; }
   return {standings:rows,block_labels:P.blockLabels,
     meta:{participants:rows.length,matches_played:played,matches_total:P.meta.matches_total}}; }
 
@@ -1017,7 +1064,9 @@ function detailHTML(r){
   if((P.detailMode||"blocks")==="concepts" && r.det){
     if(!r.det.length) rows=`<div class="row zero"><span>Aún sin puntos</span><span class="val">0</span></div>`;
     r.det.forEach(d=>{ const c = d.n!=null ? `<span class="dn">${d.n}</span>` : "";
-      rows+=`<div class="row"><span>${d.label} ${c}</span><span class="val">+${d.pts}</span></div>`; });
+      const sub = d.sub ? `<div class="dsub">${d.sub}</div>` : "";
+      const val = d.est ? `~+${d.pts}` : `+${d.pts}`;
+      rows+=`<div class="row${d.est?' drow-est':''}"><span>${d.label} ${c}${sub}</span><span class="val">${val}</span></div>`; });
   } else {
     for(const key in labels){ const v=r.breakdown[key]||0;
       rows+=`<div class="row ${v===0?'zero':''}"><span>${labels[key]}</span><span class="val">${v}</span></div>`; }
@@ -1048,7 +1097,7 @@ function renderStandings(data, mode){
     openName=(openName===tr.dataset.name)?null:tr.dataset.name; renderStandings(data,mode); }));
   const m=data.meta||{};
   document.getElementById("meta").innerHTML = mode==="forecast"
-    ? `🔮 estimación final · consenso`
+    ? `🔮 estimación final · cuotas + consenso`
     : `${m.participants||0} jugadores · ${m.matches_played||0}/${m.matches_total||0} partidos`;
 }
 function renderTable(){
