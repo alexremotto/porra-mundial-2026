@@ -4,38 +4,38 @@
     {
       "name": "Lionel Messi",
       "team": "Argentina",
-      "odds": "7/5",
+      "odds": "3/2",
       "prevOdds": "23/10"
     },
     {
       "name": "Jude Bellingham",
       "team": "Inglaterra",
-      "odds": "9/4",
+      "odds": "11/5",
       "prevOdds": "13/1"
     },
     {
       "name": "Rodri",
       "team": "España",
-      "odds": "7/2",
+      "odds": "43/10",
       "prevOdds": "7/2"
     },
     {
       "name": "Harry Kane",
       "team": "Inglaterra",
-      "odds": "8/1",
+      "odds": "11/1",
       "prevOdds": "12/1"
     },
     {
       "name": "Lamine Yamal",
       "team": "España",
-      "odds": "9/1",
+      "odds": "11/1",
       "prevOdds": "9/1"
     },
     {
-      "name": "Kylian Mbappé",
-      "team": "Francia",
-      "odds": "16/1",
-      "prevOdds": "5/4"
+      "name": "Mikel Oyarzabal",
+      "team": "España",
+      "odds": "30/1",
+      "prevOdds": "30/1"
     }
   ]
 }
