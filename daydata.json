@@ -1,104 +1,98 @@
 {
- "day": "2026-07-11",
- "prevDay": "2026-07-10",
- "generatedAt": "2026-07-15T19:39:44Z",
+ "day": "2026-07-14",
+ "prevDay": "2026-07-11",
+ "generatedAt": "2026-07-15T19:41:25Z",
  "results": [
   {
-   "home": "Norway",
-   "away": "England",
-   "gh": 1,
+   "home": "France",
+   "away": "Spain",
+   "gh": 0,
    "ga": 2
-  },
-  {
-   "home": "Argentina",
-   "away": "Switzerland",
-   "gh": 3,
-   "ga": 1
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 528,
-   "deltaPts": 20,
+   "total": 604,
+   "deltaPts": 76,
    "deltaPos": 0
   },
   {
    "pos": 2,
-   "name": "Abete",
-   "total": 520,
-   "deltaPts": 20,
-   "deltaPos": 0
+   "name": "P-man",
+   "total": 587,
+   "deltaPts": 76,
+   "deltaPos": 1
   },
   {
    "pos": 3,
-   "name": "P-man",
-   "total": 511,
-   "deltaPts": 40,
-   "deltaPos": 3
-  },
-  {
-   "pos": 4,
-   "name": "Graells",
-   "total": 498,
-   "deltaPts": 20,
-   "deltaPos": -1
-  },
-  {
-   "pos": 5,
    "name": "Quimnot",
-   "total": 496,
-   "deltaPts": 20,
-   "deltaPos": 0
-  },
-  {
-   "pos": 6,
-   "name": "Uri",
-   "total": 480,
-   "deltaPts": 40,
+   "total": 572,
+   "deltaPts": 76,
    "deltaPos": 2
   },
   {
-   "pos": 7,
-   "name": "Edu",
-   "total": 478,
-   "deltaPts": 40,
-   "deltaPos": 3
+   "pos": 4,
+   "name": "Uri",
+   "total": 556,
+   "deltaPts": 76,
+   "deltaPos": 2
   },
   {
-   "pos": 8,
-   "name": "Jonete",
-   "total": 477,
-   "deltaPts": 0,
-   "deltaPos": -4
-  },
-  {
-   "pos": 9,
-   "name": "Carrillo",
-   "total": 459,
-   "deltaPts": 20,
-   "deltaPos": 0
-  },
-  {
-   "pos": 10,
-   "name": "JJ",
-   "total": 453,
+   "pos": 5,
+   "name": "Abete",
+   "total": 520,
    "deltaPts": 0,
    "deltaPos": -3
   },
   {
-   "pos": 11,
-   "name": "Guille",
-   "total": 438,
+   "pos": 6,
+   "name": "Graells",
+   "total": 498,
    "deltaPts": 0,
-   "deltaPos": -1
+   "deltaPos": -2
+  },
+  {
+   "pos": 6,
+   "name": "JJ",
+   "total": 498,
+   "deltaPts": 45,
+   "deltaPos": 4
+  },
+  {
+   "pos": 8,
+   "name": "Guille",
+   "total": 483,
+   "deltaPts": 45,
+   "deltaPos": 3
+  },
+  {
+   "pos": 9,
+   "name": "Edu",
+   "total": 478,
+   "deltaPts": 0,
+   "deltaPos": -2
+  },
+  {
+   "pos": 10,
+   "name": "Jonete",
+   "total": 477,
+   "deltaPts": 0,
+   "deltaPos": -2
+  },
+  {
+   "pos": 11,
+   "name": "Carrillo",
+   "total": 459,
+   "deltaPts": 0,
+   "deltaPos": -2
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 391,
-   "deltaPts": 0,
+   "total": 436,
+   "deltaPts": 45,
    "deltaPos": 0
   }
  ],
@@ -110,312 +104,123 @@
  ],
  "topGainers": [
   {
+   "name": "Lagen",
+   "deltaPts": 76
+  },
+  {
    "name": "P-man",
-   "deltaPts": 40
+   "deltaPts": 76
   },
   {
-   "name": "Uri",
-   "deltaPts": 40
-  },
-  {
-   "name": "Edu",
-   "deltaPts": 40
+   "name": "Quimnot",
+   "deltaPts": 76
   }
  ],
  "comments": [
   {
-   "text": "Tots amb Noruega! Aguante Lagen",
-   "ts": 1783769669410,
+   "text": "Fun Fact: Humans and sharks have something in common: the great ones are white",
+   "ts": 1784029727487,
+   "likes": 3,
+   "dislikes": 0,
+   "score": 3
+  },
+  {
+   "text": "Avui es blancs+lamine contra negres?",
+   "ts": 1784029715446,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Hem normalitzat que a les 16:45 no tinguem cronica",
-   "ts": 1783781173759,
-   "likes": 2,
-   "dislikes": 0,
+   "text": "Escuchen, corran la bola, juegan en Francia, pero son todos de Angola. Que lindo eees, van a correeer, son come-trabas como el puto Mbappe. Su vieja es nigerianaaa, su viejo cameruneees, pero en el documento: nacionalidad francés",
+   "ts": 1784030031573,
+   "likes": 3,
+   "dislikes": 1,
    "score": 2
   },
   {
-   "text": "Unai simon das puta pena y has jodido la porra a mas de uno. Desgraciado.",
-   "ts": 1783763766893,
+   "text": "Han declarado culpable al hermano del Perro Sanxe. Primera victoria del dia ya. Arrancamos las semis 1-0.",
+   "ts": 1784045469502,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Harald III era gay",
-   "ts": 1783775985166,
+   "text": "ESTA ES LA JUVENTUD DE ESPAÑA 🇪🇸 YO SOY ESPAÑOL ESPAÑOL ESPAÑOL 🇪🇸 A MI NADIE ME ENGAÑA, CATALUÑA ES ESPAÑA",
+   "ts": 1784048110200,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Quin robo a noruega",
-   "ts": 1783812703850,
+   "text": "¿Sabias que… una chica ha venido a ver el futbol solo por el famoso doctor Soldevila y este hace caso omiso?",
+   "ts": 1784061277563,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Ojala es mori bellingham",
-   "ts": 1783812714538,
+   "text": "Dato curioso: Carrillo puede quedar farolillo y poco se habla. Patch🏮2026 ya?",
+   "ts": 1784064647457,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Son les 4:27 am i seguim sense cronica. Apostoflant",
-   "ts": 1783823251396,
+   "text": "Contribuciones a que España este en la final: Ester Exposito > Cubarsi&Cucurella",
+   "ts": 1784064776974,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Venga, el negre al carrer",
-   "ts": 1783823599262,
+   "text": "Viva España, viva El Rey, viva el orden y la ley. Francia juega con africanos. Firmado anonimamente: M. Rajoy",
+   "ts": 1784011237890,
    "likes": 1,
-   "dislikes": 0,
-   "score": 1
+   "dislikes": 1,
+   "score": 0
   },
   {
-   "text": "El partit de Nico Gonzalez es perque mai mes torni a jugar a futbol",
-   "ts": 1783824907543,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Podem parlar del robo a noruega??? Que la pilota toca el cable de la spidercam en el primer gol del subnormal i aqui no passa res??? El sensor detecta un cabell quan volen pero un cable no?? Infantinada historica",
-   "ts": 1783828312743,
-   "likes": 1,
-   "dislikes": 0,
-   "score": 1
-  },
-  {
-   "text": "Va a volver a maravillar al mundo Ejpaña?",
-   "ts": 1783758227321,
+   "text": "Lo de la cronica ja es descarat. No posa ni “redactando”",
+   "ts": 1784013192342,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Orgullo de país",
-   "ts": 1783758237576,
+   "text": "Segon cop que vull que el rival d'espanya perdi. Confiem en Leo i que sigui la ultma vegada",
+   "ts": 1784028958061,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Vamos carajo, que esta copa es nuestra",
-   "ts": 1783758258426,
+   "text": "Dato curioso: el medico de la seleccion de Senegal en el mundial esta especializado en ginecologia",
+   "ts": 1784044488118,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "La roja orgullo nacional, vamos ESPAÑA",
-   "ts": 1783764508573,
+   "text": "Dato curioso: Cañiells, cuantos mas en casa mejor",
+   "ts": 1784058404873,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "Y la crónica?",
-   "ts": 1783773299162,
+   "text": "Dato curioso: la profesión más odiada de los startuperos es el periodismo deportivo",
+   "ts": 1784058848972,
    "likes": 0,
    "dislikes": 0,
    "score": 0
   },
   {
-   "text": "“Todo el mundo sabe el fichaje de Ferran Torres al PSG no es casualidad. Sira Martinez, hija de Luis Enrique, habría pedido el fichaje para volver con el antiguo noviazgo del actual culer.” Via @gerardromero",
-   "ts": 1783774241709,
+   "text": "VIVA ESPAÑA JODER 🇪🇸 A LA FINAL. VIVA EL REY Y LA INFANTA. VIVA LA PATRIA.",
+   "ts": 1784065614035,
    "likes": 0,
    "dislikes": 0,
    "score": 0
-  },
-  {
-   "text": "¿Sabías que… Harald III Hardrada, rey de Noruega, reclamó el trono inglés tras la muerte de Eduardo el Confesor y desembarcó con unos 300 barcos y entre 10.000 y 15.000 hombres?",
-   "ts": 1783775124366,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Al principio obtuvo una victoria en la batalla de Fulford, cerca de York. Cinco días después fue sorprendido por Harold II en la batalla de Stamford Bridge, donde Hardrada murió y el ejército noruego fue prácticamente destruido.",
-   "ts": 1783775193744,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Por Harald III Hardrada, rey de Noruega! A conquistar Inglaterra!!!!!",
-   "ts": 1783775340096,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Si a las 17h no hay cronica me paso a la Apprrillo",
-   "ts": 1783781828852,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Noruega con 0 jugadores negros da esperanza al mundo occidental. No esta todo perdido. Noruega a semis.",
-   "ts": 1783805938874,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Noruega juega como los angeles. Aunque para angeles todas las rubias que me follaria una noche en Oslo.",
-   "ts": 1783809844855,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Es dramatic el partit d’argentina…. Pero confiem en D10S",
-   "ts": 1783824150055,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Quin poc compromis amb la albiceleste. Aqui ningu mirant el matx",
-   "ts": 1783824335636,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Min 85 No entenc la que ha fallat messi. Que esta passant??",
-   "ts": 1783824428054,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Tenim prorroga. Recordar que suissa juga amb 10 pero argentina amb 8: Julian, Lautaro i Nico nomes resten",
-   "ts": 1783825362364,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "He comentat ja que Nico es molt dolent? Doncs ara va coix, encara mes dolent",
-   "ts": 1783826583555,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Pero la pregunta real es si dema ho haura cronica o tampoc",
-   "ts": 1783826603483,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "5:25am i seguim sense cronica del partit d’espanya. Apelem al espiritu de Juanito?",
-   "ts": 1783826673313,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Com guanyi suissa mai mes tornare a menjar raclette ni a esquiar al seu pais de merda",
-   "ts": 1783826859232,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Insisteixo que Nico, Lautaro i Julian son uns petardos",
-   "ts": 1783827024458,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Min 111 i aixo pinta penaltis. Seguim confiant",
-   "ts": 1783827107377,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Algu ha parlat malament de Julian?? Quin xixaaarroooo",
-   "ts": 1783827181108,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Muchaaaachooooooooooooos",
-   "ts": 1783827188754,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Tipic gol que ens costara 150 millons. Ojala hagues marcat el coix del Nico",
-   "ts": 1783827250283,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Aguante Lioneeeel",
-   "ts": 1783827277350,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Argentina jugava amb 2-0-8. Ara aviam com es posen",
-   "ts": 1783827348022,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Doncs ja ho tindriem aixoooo",
-   "ts": 1783827736059,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Inclus aquesta la toca malament Lautaro. Si la toca be la falla. Es malissim",
-   "ts": 1783827884711,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Siuuuuuuuuuu. Al carreeeeer",
-   "ts": 1783827909657,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Que siguin casi les 6am i no tinguem cronica es lamentable. Es parla de possibles sancions",
-   "ts": 1783828019234,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Hoy lagen puede perder el liderato. ABT sigue sin decir nada. Aupa Balliu",
-   "ts": 1783764023619,
-   "likes": 0,
-   "dislikes": 2,
-   "score": -2
   }
  ]
 }
