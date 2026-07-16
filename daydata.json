@@ -1,12 +1,12 @@
 {
- "day": "2026-07-14",
- "prevDay": "2026-07-11",
- "generatedAt": "2026-07-15T19:41:25Z",
+ "day": "2026-07-15",
+ "prevDay": "2026-07-14",
+ "generatedAt": "2026-07-16T07:00:11Z",
  "results": [
   {
-   "home": "France",
-   "away": "Spain",
-   "gh": 0,
+   "home": "England",
+   "away": "Argentina",
+   "gh": 1,
    "ga": 2
   }
  ],
@@ -14,85 +14,85 @@
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 604,
-   "deltaPts": 76,
+   "total": 649,
+   "deltaPts": 45,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "P-man",
    "total": 587,
-   "deltaPts": 76,
-   "deltaPos": 1
+   "deltaPts": 0,
+   "deltaPos": 0
   },
   {
    "pos": 3,
    "name": "Quimnot",
    "total": 572,
-   "deltaPts": 76,
-   "deltaPos": 2
+   "deltaPts": 0,
+   "deltaPos": 0
   },
   {
    "pos": 4,
    "name": "Uri",
    "total": 556,
-   "deltaPts": 76,
-   "deltaPos": 2
+   "deltaPts": 0,
+   "deltaPos": 0
   },
   {
    "pos": 5,
    "name": "Abete",
-   "total": 520,
-   "deltaPts": 0,
-   "deltaPos": -3
+   "total": 550,
+   "deltaPts": 30,
+   "deltaPos": 0
   },
   {
    "pos": 6,
    "name": "Graells",
-   "total": 498,
-   "deltaPts": 0,
-   "deltaPos": -2
+   "total": 528,
+   "deltaPts": 30,
+   "deltaPos": 0
   },
   {
-   "pos": 6,
+   "pos": 7,
    "name": "JJ",
    "total": 498,
-   "deltaPts": 45,
-   "deltaPos": 4
+   "deltaPts": 0,
+   "deltaPos": -1
   },
   {
    "pos": 8,
-   "name": "Guille",
-   "total": 483,
-   "deltaPts": 45,
+   "name": "Carrillo",
+   "total": 489,
+   "deltaPts": 30,
    "deltaPos": 3
   },
   {
    "pos": 9,
-   "name": "Edu",
-   "total": 478,
+   "name": "Guille",
+   "total": 483,
    "deltaPts": 0,
-   "deltaPos": -2
+   "deltaPos": -1
   },
   {
    "pos": 10,
-   "name": "Jonete",
-   "total": 477,
+   "name": "Edu",
+   "total": 478,
    "deltaPts": 0,
-   "deltaPos": -2
+   "deltaPos": -1
   },
   {
    "pos": 11,
-   "name": "Carrillo",
-   "total": 459,
+   "name": "Jonete",
+   "total": 477,
    "deltaPts": 0,
-   "deltaPos": -2
+   "deltaPos": -1
   },
   {
    "pos": 12,
    "name": "Santi",
    "total": 436,
-   "deltaPts": 45,
+   "deltaPts": 0,
    "deltaPos": 0
   }
  ],
@@ -105,122 +105,241 @@
  "topGainers": [
   {
    "name": "Lagen",
-   "deltaPts": 76
+   "deltaPts": 45
   },
   {
-   "name": "P-man",
-   "deltaPts": 76
+   "name": "Abete",
+   "deltaPts": 30
   },
   {
-   "name": "Quimnot",
-   "deltaPts": 76
+   "name": "Graells",
+   "deltaPts": 30
   }
  ],
  "comments": [
   {
-   "text": "Fun Fact: Humans and sharks have something in common: the great ones are white",
-   "ts": 1784029727487,
+   "text": "Por Malvinas, por el Diego, por la ultima de Leo, argentina quiero verte bicampeoooon!!",
+   "ts": 1784117423803,
+   "likes": 4,
+   "dislikes": 0,
+   "score": 4
+  },
+  {
+   "text": "Lagen ya ha ganado? De ser asi le podriamos dar el patch ya",
+   "ts": 1784150851244,
+   "likes": 5,
+   "dislikes": 1,
+   "score": 4
+  },
+  {
+   "text": "De nou un dia mes de rutina, santi farolillo i sense cronica a les 20:53",
+   "ts": 1784141590218,
    "likes": 3,
    "dislikes": 0,
    "score": 3
   },
   {
-   "text": "Avui es blancs+lamine contra negres?",
-   "ts": 1784029715446,
+   "text": "¿Sabías que… si los partidos duraran hasta el minuto 80, Graells sería líder y Lagen farolillo rojo?",
+   "ts": 1784148528345,
+   "likes": 4,
+   "dislikes": 1,
+   "score": 3
+  },
+  {
+   "text": "Dato curioso: el chocolate blanco se creo para que los negros tambien se mancharan",
+   "ts": 1784151980471,
+   "likes": 3,
+   "dislikes": 0,
+   "score": 3
+  },
+  {
+   "text": "Envia un SMS con la palabra SAVEQUIMNOT al 55665 si quieres que liberen y le dejen ver algun partido del Mundial 2026 a Quim Tarrats.",
+   "ts": 1784153123299,
+   "likes": 3,
+   "dislikes": 0,
+   "score": 3
+  },
+  {
+   "text": "Dato curioso: si cruzas un pulpo con un africano seria el messi de recoger algodon",
+   "ts": 1784157225016,
+   "likes": 3,
+   "dislikes": 0,
+   "score": 3
+  },
+  {
+   "text": "Ei no cardem que sóc el amuleto. Quan el ABT ve, mi Espanyita guanya. Vamos!!! El primo de Pau > El primo de Jon",
+   "ts": 1784125149974,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Escuchen, corran la bola, juegan en Francia, pero son todos de Angola. Que lindo eees, van a correeer, son come-trabas como el puto Mbappe. Su vieja es nigerianaaa, su viejo cameruneees, pero en el documento: nacionalidad francés",
-   "ts": 1784030031573,
-   "likes": 3,
-   "dislikes": 1,
+   "text": "La tenes adentro Inglaterra",
+   "ts": 1784134355525,
+   "likes": 2,
+   "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Han declarado culpable al hermano del Perro Sanxe. Primera victoria del dia ya. Arrancamos las semis 1-0.",
-   "ts": 1784045469502,
+   "text": "Bellingham mueretee bellingham muerete bellingham muereteeeee",
+   "ts": 1784143444310,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Lo bueno de argentina en la final es que tienen 0 negros",
+   "ts": 1784151847540,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Se exige que la final y el tercer puesto se jueguen con el Patch🏮Farolillo 2018. Stop Infantino🤚🏿Peman.",
+   "ts": 1784152470134,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Quimnot sap quina es la final?",
+   "ts": 1784153213144,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Demanaria 1 minut de silenci pel partit de 3r i 4r lloc que Dr Soldevila va preveure Netherlands vs Morocco.",
+   "ts": 1784154305115,
+   "likes": 2,
+   "dislikes": 0,
+   "score": 2
+  },
+  {
+   "text": "Da igual quien es mejor si Messi o Cristiano. Lo importante es no ser subnormal de izquierdas, maricon y besanegros.",
+   "ts": 1784134722594,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "ESTA ES LA JUVENTUD DE ESPAÑA 🇪🇸 YO SOY ESPAÑOL ESPAÑOL ESPAÑOL 🇪🇸 A MI NADIE ME ENGAÑA, CATALUÑA ES ESPAÑA",
-   "ts": 1784048110200,
+   "text": "Y ya lo veees ya lo veeees el que no saltaaa es un ingleees",
+   "ts": 1784141477491,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "¿Sabias que… una chica ha venido a ver el futbol solo por el famoso doctor Soldevila y este hace caso omiso?",
-   "ts": 1784061277563,
+   "text": "Muchaaaachoooooos",
+   "ts": 1784142045264,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Dato curioso: Carrillo puede quedar farolillo y poco se habla. Patch🏮2026 ya?",
-   "ts": 1784064647457,
+   "text": "Thanos > Puigdemont > Perro Sanxe > Infantino > Florentino > Satanas > Bordalas > Cholo Simenoe > Rufian > Moros y Menas > Chipis pacientes Dr Soldevila",
+   "ts": 1784145902068,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Contribuciones a que España este en la final: Ester Exposito > Cubarsi&Cucurella",
-   "ts": 1784064776974,
+   "text": "D10S",
+   "ts": 1784149889549,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Viva España, viva El Rey, viva el orden y la ley. Francia juega con africanos. Firmado anonimamente: M. Rajoy",
-   "ts": 1784011237890,
+   "text": "Una final que no perdrem en cap possible escenari. Visca Espanya i t’estimem Leo.",
+   "ts": 1784150262969,
    "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Dato curioso: Argentina ha tenido el 88% de la posesion desde el 1-0 hasta el 1-2",
+   "ts": 1784152012205,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Siempre con la Scaloneta",
+   "ts": 1784152365090,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "No te lo puedo explicar, porque no vas a entender, las finales que perdimos cuantos años las llore",
+   "ts": 1784152451077,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Dato curioso: Messi igualara a Cafu como unico jugador en disputar 3 finales del mundial",
+   "ts": 1784153155610,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "O frances",
+   "ts": 1784141442944,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Thiago pitarch > Giuliano",
+   "ts": 1784143257909,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "La Guineueta B guanya a l’argentina sense messi",
+   "ts": 1784146251999,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Amigas de cañi vinieron ayer a por Dr Soldevila??",
+   "ts": 1784146528727,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Curios que nomes una persona clavi la final",
+   "ts": 1784151466968,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Las Malvinas son Argentinas",
+   "ts": 1784154649792,
+   "likes": 0,
+   "dislikes": 0,
+   "score": 0
+  },
+  {
+   "text": "Vamos Inglaterra. IT’S COMING HOME. Se acabó ya el Infantinazo y el pequeño dictador hormonado.",
+   "ts": 1784097329378,
+   "likes": 0,
    "dislikes": 1,
-   "score": 0
+   "score": -1
   },
   {
-   "text": "Lo de la cronica ja es descarat. No posa ni “redactando”",
-   "ts": 1784013192342,
+   "text": "Cañi: y santi no les hizo ni caso",
+   "ts": 1784147429713,
    "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Segon cop que vull que el rival d'espanya perdi. Confiem en Leo i que sigui la ultma vegada",
-   "ts": 1784028958061,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Dato curioso: el medico de la seleccion de Senegal en el mundial esta especializado en ginecologia",
-   "ts": 1784044488118,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Dato curioso: Cañiells, cuantos mas en casa mejor",
-   "ts": 1784058404873,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Dato curioso: la profesión más odiada de los startuperos es el periodismo deportivo",
-   "ts": 1784058848972,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "VIVA ESPAÑA JODER 🇪🇸 A LA FINAL. VIVA EL REY Y LA INFANTA. VIVA LA PATRIA.",
-   "ts": 1784065614035,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
+   "dislikes": 2,
+   "score": -2
   }
  ]
 }
