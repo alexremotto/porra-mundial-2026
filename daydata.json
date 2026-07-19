@@ -1,97 +1,97 @@
 {
- "day": "2026-07-15",
- "prevDay": "2026-07-14",
- "generatedAt": "2026-07-18T07:00:08Z",
+ "day": "2026-07-18",
+ "prevDay": "2026-07-15",
+ "generatedAt": "2026-07-19T07:16:27Z",
  "results": [
   {
-   "home": "England",
-   "away": "Argentina",
-   "gh": 1,
-   "ga": 2
+   "home": "France",
+   "away": "England",
+   "gh": 4,
+   "ga": 6
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 649,
-   "deltaPts": 45,
+   "total": 380,
+   "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 2,
-   "name": "P-man",
-   "total": 587,
+   "name": "Abete",
+   "total": 370,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 3,
-   "name": "Quimnot",
-   "total": 572,
+   "name": "JJ",
+   "total": 352,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 4,
-   "name": "Uri",
-   "total": 556,
+   "name": "Quimnot",
+   "total": 346,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 5,
-   "name": "Abete",
-   "total": 550,
-   "deltaPts": 30,
+   "name": "Jonete",
+   "total": 344,
+   "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 6,
-   "name": "Graells",
-   "total": 528,
-   "deltaPts": 30,
+   "name": "P-man",
+   "total": 331,
+   "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 7,
-   "name": "JJ",
-   "total": 498,
+   "name": "Guille",
+   "total": 328,
    "deltaPts": 0,
-   "deltaPos": -1
+   "deltaPos": 0
   },
   {
    "pos": 8,
    "name": "Carrillo",
-   "total": 489,
-   "deltaPts": 30,
-   "deltaPos": 3
+   "total": 325,
+   "deltaPts": 0,
+   "deltaPos": 0
   },
   {
-   "pos": 9,
-   "name": "Guille",
-   "total": 483,
+   "pos": 8,
+   "name": "Graells",
+   "total": 325,
    "deltaPts": 0,
-   "deltaPos": -1
+   "deltaPos": 0
   },
   {
    "pos": 10,
-   "name": "Edu",
-   "total": 478,
+   "name": "Uri",
+   "total": 314,
    "deltaPts": 0,
-   "deltaPos": -1
+   "deltaPos": 0
   },
   {
    "pos": 11,
-   "name": "Jonete",
-   "total": 477,
+   "name": "Edu",
+   "total": 312,
    "deltaPts": 0,
-   "deltaPos": -1
+   "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 436,
+   "total": 276,
    "deltaPts": 0,
    "deltaPos": 0
   }
@@ -102,244 +102,154 @@
  "farolillo": [
   "Santi"
  ],
- "topGainers": [
-  {
-   "name": "Lagen",
-   "deltaPts": 45
-  },
-  {
-   "name": "Abete",
-   "deltaPts": 30
-  },
-  {
-   "name": "Graells",
-   "deltaPts": 30
-  }
- ],
+ "topGainers": [],
  "comments": [
   {
-   "text": "Por Malvinas, por el Diego, por la ultima de Leo, argentina quiero verte bicampeoooon!!",
-   "ts": 1784117423803,
-   "likes": 4,
-   "dislikes": 0,
-   "score": 4
-  },
-  {
-   "text": "Lagen ya ha ganado? De ser asi le podriamos dar el patch ya",
-   "ts": 1784150851244,
+   "text": "Bellingham, que no ha ganado nada esta temporada, y Mbappe, que tampoco ha ganado nada, se enfrentan en un partido para no ganar nada",
+   "ts": 1784408596810,
    "likes": 5,
-   "dislikes": 1,
-   "score": 4
+   "dislikes": 0,
+   "score": 5
   },
   {
-   "text": "De nou un dia mes de rutina, santi farolillo i sense cronica a les 20:53",
-   "ts": 1784141590218,
+   "text": "Que dema hi hagi gent del barça que despres de tants anys plens d’afanys, tantes nits magiques, tants gols historics, tants dits aixecats al cel, tants petons a l’escut, vagin en contra de qui te tatuat l’escut a la cama esquerra…. D10S FCB",
+   "ts": 1784417612476,
+   "likes": 5,
+   "dislikes": 0,
+   "score": 5
+  },
+  {
+   "text": "Tiñamos can carrillo de albiceleste",
+   "ts": 1784418162136,
+   "likes": 5,
+   "dislikes": 0,
+   "score": 5
+  },
+  {
+   "text": "Ya no soprende que en el partido de 3r y 4o puesto el unico que clave algo sea Lagen (Francia 4a)",
+   "ts": 1784418436657,
+   "likes": 5,
+   "dislikes": 0,
+   "score": 5
+  },
+  {
+   "text": "Dato curioso: para la FIFA cucurella esta inscrito como jugador del chelsea. El madrid ha aportado 0 jugadores a seleccion española campeona del mundial 2026.",
+   "ts": 1784378484442,
    "likes": 3,
    "dislikes": 0,
    "score": 3
   },
   {
-   "text": "¿Sabías que… si los partidos duraran hasta el minuto 80, Graells sería líder y Lagen farolillo rojo?",
-   "ts": 1784148528345,
-   "likes": 4,
-   "dislikes": 1,
-   "score": 3
-  },
-  {
-   "text": "Dato curioso: el chocolate blanco se creo para que los negros tambien se mancharan",
-   "ts": 1784151980471,
+   "text": "Espanya: 0 tatuatges del barça. Argentina: 1 tatuatge del barça a la millor cama esquerra que ha trepitjat aquest planeta",
+   "ts": 1784417732259,
    "likes": 3,
    "dislikes": 0,
    "score": 3
   },
   {
-   "text": "Envia un SMS con la palabra SAVEQUIMNOT al 55665 si quieres que liberen y le dejen ver algun partido del Mundial 2026 a Quim Tarrats.",
-   "ts": 1784153123299,
-   "likes": 3,
-   "dislikes": 0,
-   "score": 3
-  },
-  {
-   "text": "Dato curioso: si cruzas un pulpo con un africano seria el messi de recoger algodon",
-   "ts": 1784157225016,
-   "likes": 3,
-   "dislikes": 0,
-   "score": 3
-  },
-  {
-   "text": "Ei no cardem que sóc el amuleto. Quan el ABT ve, mi Espanyita guanya. Vamos!!! El primo de Pau > El primo de Jon",
-   "ts": 1784125149974,
+   "text": "Otro dia sin cronico? En serio? 🤚🏿",
+   "ts": 1784364251736,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "La tenes adentro Inglaterra",
-   "ts": 1784134355525,
+   "text": "Dato curioso: los jugadores de francia todos son unos negros asquerosos de mierda mal nacidos por error siendo raza inferior cercanos al mono",
+   "ts": 1784412879467,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Bellingham mueretee bellingham muerete bellingham muereteeeee",
-   "ts": 1784143444310,
+   "text": "No oblidem que puta real madrid",
+   "ts": 1784417931329,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Lo bueno de argentina en la final es que tienen 0 negros",
-   "ts": 1784151847540,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Se exige que la final y el tercer puesto se jueguen con el Patch🏮Farolillo 2018. Stop Infantino🤚🏿Peman.",
-   "ts": 1784152470134,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Quimnot sap quina es la final?",
-   "ts": 1784153213144,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Demanaria 1 minut de silenci pel partit de 3r i 4r lloc que Dr Soldevila va preveure Netherlands vs Morocco.",
-   "ts": 1784154305115,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Da igual quien es mejor si Messi o Cristiano. Lo importante es no ser subnormal de izquierdas, maricon y besanegros.",
-   "ts": 1784134722594,
+   "text": "Gol de inglaterra en el minuto 2, Tuchelada y se van a  cerrar atras?",
+   "ts": 1784408644127,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Y ya lo veees ya lo veeees el que no saltaaa es un ingleees",
-   "ts": 1784141477491,
+   "text": "Dato curioso by Chapi Ferrer: sabias que la mayor goleada de la historia de este partido de consolacion se produjo entre Suecia y la Bulgaria del GOAT Hristo Stoichkov, 4-0 perdio el GOAT. Media parte y mismo resultado. Veremos el Dictado…",
+   "ts": 1784411797919,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Muchaaaachoooooos",
-   "ts": 1784142045264,
+   "text": "Dato curioso: nuestro querido Dr Soldevila habia augurado para este partido de 3º y 4° puesto un holanda - marruecos. Pitoniso? Genio? Show para la grada?",
+   "ts": 1784415206474,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Thanos > Puigdemont > Perro Sanxe > Infantino > Florentino > Satanas > Bordalas > Cholo Simenoe > Rufian > Moros y Menas > Chipis pacientes Dr Soldevila",
-   "ts": 1784145902068,
+   "text": "Mañana gana argentina. Y sino que baje D10S y lo vea",
+   "ts": 1784417751774,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "D10S",
-   "ts": 1784149889549,
+   "text": "Quins nerviiits! Muchaaaachooooooosssss",
+   "ts": 1784417769218,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Una final que no perdrem en cap possible escenari. Visca Espanya i t’estimem Leo.",
-   "ts": 1784150262969,
+   "text": "Por Malvinas, por el Diego, por la ultima de Leo",
+   "ts": 1784417811596,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Dato curioso: Argentina ha tenido el 88% de la posesion desde el 1-0 hasta el 1-2",
-   "ts": 1784152012205,
+   "text": "Dema a can carrillo el que no salta es un ingles",
+   "ts": 1784417877243,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Siempre con la Scaloneta",
-   "ts": 1784152365090,
+   "text": "Madrid y espanyol, la misma mierda son",
+   "ts": 1784417944070,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "No te lo puedo explicar, porque no vas a entender, las finales que perdimos cuantos años las llore",
-   "ts": 1784152451077,
+   "text": "Quines ganes de posarme la albiceleste dema. Puc deixar alguna samarreta en cas que alguna persona tingui criteri pero no equipacio",
+   "ts": 1784418148243,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Dato curioso: Messi igualara a Cafu como unico jugador en disputar 3 finales del mundial",
-   "ts": 1784153155610,
+   "text": "“No esque jo vaig amb espanya perque te jugadors del barça i cap del madrid”. Mhi pixuuuu.  Sempre Lionel",
+   "ts": 1784418243334,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "O frances",
-   "ts": 1784141442944,
+   "text": "Ultimo mundial de Leo, y para alguno ultimo mundial con pelo",
+   "ts": 1784418292979,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Mañana Santi abandonara su tan querido farolillo o se consagrara como el mayor farolillo de la historia de las porras? Necesita que pierda D10S",
+   "ts": 1784418877830,
    "likes": 0,
    "dislikes": 0,
    "score": 0
-  },
-  {
-   "text": "Thiago pitarch > Giuliano",
-   "ts": 1784143257909,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "La Guineueta B guanya a l’argentina sense messi",
-   "ts": 1784146251999,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Amigas de cañi vinieron ayer a por Dr Soldevila??",
-   "ts": 1784146528727,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Curios que nomes una persona clavi la final",
-   "ts": 1784151466968,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Las Malvinas son Argentinas",
-   "ts": 1784154649792,
-   "likes": 0,
-   "dislikes": 0,
-   "score": 0
-  },
-  {
-   "text": "Vamos Inglaterra. IT’S COMING HOME. Se acabó ya el Infantinazo y el pequeño dictador hormonado.",
-   "ts": 1784097329378,
-   "likes": 0,
-   "dislikes": 1,
-   "score": -1
-  },
-  {
-   "text": "Cañi: y santi no les hizo ni caso",
-   "ts": 1784147429713,
-   "likes": 0,
-   "dislikes": 2,
-   "score": -2
   }
  ]
 }
