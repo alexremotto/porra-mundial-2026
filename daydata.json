@@ -1,97 +1,97 @@
 {
- "day": "2026-07-18",
- "prevDay": "2026-07-15",
- "generatedAt": "2026-07-19T07:16:27Z",
+ "day": "2026-07-19",
+ "prevDay": "2026-07-18",
+ "generatedAt": "2026-07-20T06:49:28Z",
  "results": [
   {
-   "home": "France",
-   "away": "England",
-   "gh": 4,
-   "ga": 6
+   "home": "Spain",
+   "away": "Argentina",
+   "gh": 1,
+   "ga": 0
   }
  ],
  "standings": [
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 380,
-   "deltaPts": 0,
+   "total": 664,
+   "deltaPts": 15,
    "deltaPos": 0
   },
   {
    "pos": 2,
-   "name": "Abete",
-   "total": 370,
+   "name": "P-man",
+   "total": 587,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 3,
-   "name": "JJ",
-   "total": 352,
+   "name": "Quimnot",
+   "total": 572,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 4,
-   "name": "Quimnot",
-   "total": 346,
+   "name": "Uri",
+   "total": 556,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 5,
-   "name": "Jonete",
-   "total": 344,
+   "name": "Abete",
+   "total": 550,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 6,
-   "name": "P-man",
-   "total": 331,
+   "name": "Graells",
+   "total": 528,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 7,
-   "name": "Guille",
-   "total": 328,
+   "name": "JJ",
+   "total": 498,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 8,
    "name": "Carrillo",
-   "total": 325,
+   "total": 489,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
-   "pos": 8,
-   "name": "Graells",
-   "total": 325,
+   "pos": 9,
+   "name": "Guille",
+   "total": 483,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 10,
-   "name": "Uri",
-   "total": 314,
+   "name": "Edu",
+   "total": 478,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 11,
-   "name": "Edu",
-   "total": 312,
+   "name": "Jonete",
+   "total": 477,
    "deltaPts": 0,
    "deltaPos": 0
   },
   {
    "pos": 12,
    "name": "Santi",
-   "total": 276,
+   "total": 436,
    "deltaPts": 0,
    "deltaPos": 0
   }
@@ -102,154 +102,166 @@
  "farolillo": [
   "Santi"
  ],
- "topGainers": [],
+ "topGainers": [
+  {
+   "name": "Lagen",
+   "deltaPts": 15
+  }
+ ],
  "comments": [
   {
-   "text": "Bellingham, que no ha ganado nada esta temporada, y Mbappe, que tampoco ha ganado nada, se enfrentan en un partido para no ganar nada",
-   "ts": 1784408596810,
-   "likes": 5,
+   "text": "Hi ha doble rasero a l’hora de dir coses a can carrillo",
+   "ts": 1784497515773,
+   "likes": 4,
    "dislikes": 0,
-   "score": 5
+   "score": 4
   },
   {
-   "text": "Que dema hi hagi gent del barça que despres de tants anys plens d’afanys, tantes nits magiques, tants gols historics, tants dits aixecats al cel, tants petons a l’escut, vagin en contra de qui te tatuat l’escut a la cama esquerra…. D10S FCB",
-   "ts": 1784417612476,
-   "likes": 5,
-   "dislikes": 0,
-   "score": 5
-  },
-  {
-   "text": "Tiñamos can carrillo de albiceleste",
-   "ts": 1784418162136,
-   "likes": 5,
-   "dislikes": 0,
-   "score": 5
-  },
-  {
-   "text": "Ya no soprende que en el partido de 3r y 4o puesto el unico que clave algo sea Lagen (Francia 4a)",
-   "ts": 1784418436657,
-   "likes": 5,
-   "dislikes": 0,
-   "score": 5
-  },
-  {
-   "text": "Dato curioso: para la FIFA cucurella esta inscrito como jugador del chelsea. El madrid ha aportado 0 jugadores a seleccion española campeona del mundial 2026.",
-   "ts": 1784378484442,
-   "likes": 3,
-   "dislikes": 0,
-   "score": 3
-  },
-  {
-   "text": "Espanya: 0 tatuatges del barça. Argentina: 1 tatuatge del barça a la millor cama esquerra que ha trepitjat aquest planeta",
-   "ts": 1784417732259,
-   "likes": 3,
-   "dislikes": 0,
-   "score": 3
-  },
-  {
-   "text": "Otro dia sin cronico? En serio? 🤚🏿",
-   "ts": 1784364251736,
+   "text": "Poc es parla de lo tens que va Carrillo",
+   "ts": 1784492229443,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "Dato curioso: los jugadores de francia todos son unos negros asquerosos de mierda mal nacidos por error siendo raza inferior cercanos al mono",
-   "ts": 1784412879467,
+   "text": "Tensillo?",
+   "ts": 1784492235162,
    "likes": 2,
    "dislikes": 0,
    "score": 2
   },
   {
-   "text": "No oblidem que puta real madrid",
-   "ts": 1784417931329,
-   "likes": 2,
-   "dislikes": 0,
-   "score": 2
-  },
-  {
-   "text": "Gol de inglaterra en el minuto 2, Tuchelada y se van a  cerrar atras?",
-   "ts": 1784408644127,
+   "text": "The last dance",
+   "ts": 1784446128969,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Dato curioso by Chapi Ferrer: sabias que la mayor goleada de la historia de este partido de consolacion se produjo entre Suecia y la Bulgaria del GOAT Hristo Stoichkov, 4-0 perdio el GOAT. Media parte y mismo resultado. Veremos el Dictado…",
-   "ts": 1784411797919,
+   "text": "Lionel Andres Messi Cuccittini, una mes",
+   "ts": 1784446190969,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Dato curioso: nuestro querido Dr Soldevila habia augurado para este partido de 3º y 4° puesto un holanda - marruecos. Pitoniso? Genio? Show para la grada?",
-   "ts": 1784415206474,
+   "text": "39 dies despres i santi segueix farolillo",
+   "ts": 1784446310889,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Mañana gana argentina. Y sino que baje D10S y lo vea",
-   "ts": 1784417751774,
+   "text": "Tradicio vs la estimada. Nostalgia vs novetat. Santi vs jonete. Qui sera farolillo? Hagan sus apuestas",
+   "ts": 1784446475573,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Quins nerviiits! Muchaaaachooooooosssss",
-   "ts": 1784417769218,
+   "text": "Santi farolillo",
+   "ts": 1784446484373,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Por Malvinas, por el Diego, por la ultima de Leo",
-   "ts": 1784417811596,
+   "text": "Peman + infantino = Pemantinazo🤚🏿",
+   "ts": 1784449295391,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Dema a can carrillo el que no salta es un ingles",
-   "ts": 1784417877243,
+   "text": "Dato curioso: nunca un seleccionador calvo ha ganado el mundial",
+   "ts": 1784451932624,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Madrid y espanyol, la misma mierda son",
-   "ts": 1784417944070,
+   "text": "Dada curiosa: El dictador general Primo de Rivera va tancar l’estadi de les Corts durant 6 mesos despres que els aficionats culers xiulessin l’himne espanyol en un partit d’homenatge a l’orfeo catala",
+   "ts": 1784452193693,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Quines ganes de posarme la albiceleste dema. Puc deixar alguna samarreta en cas que alguna persona tingui criteri pero no equipacio",
-   "ts": 1784418148243,
+   "text": "Dada curiosa: Arran del tancament, Josep Sunyol es va fer soci del Barça. 10 anys mes tard va ser president. Republicà i defensor de l’autonomia catalana va ser afusellat per les forces franquistes l’agost del 1936",
+   "ts": 1784452319994,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "“No esque jo vaig amb espanya perque te jugadors del barça i cap del madrid”. Mhi pixuuuu.  Sempre Lionel",
-   "ts": 1784418243334,
+   "text": "Aguante Lioneeeel",
+   "ts": 1784452465999,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Ultimo mundial de Leo, y para alguno ultimo mundial con pelo",
-   "ts": 1784418292979,
+   "text": "Y 32 años despues, la Scaloneta va a vengar, la copa que le robaron al 10, la que no lo dejaron levantar. Quiero ver la cuarta estrella brillar en la camiseta, soy argento de la cuna hasta el cajoooon",
+   "ts": 1784452642393,
    "likes": 1,
    "dislikes": 0,
    "score": 1
   },
   {
-   "text": "Mañana Santi abandonara su tan querido farolillo o se consagrara como el mayor farolillo de la historia de las porras? Necesita que pierda D10S",
-   "ts": 1784418877830,
+   "text": "Por Malvinas por el Diego, por la ultima de Leeeo. Argentina quiero verte bicampeoooon",
+   "ts": 1784452668447,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Can Carrillo es albiceleste",
+   "ts": 1784452686629,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "“Jo vaig amb espanya perque la majoria son del Barça” pero si guanyen semblara una festa de l’aficio del madrid i l’espanyol amb tanta bandera, o inclus un meeting del psc",
+   "ts": 1784453105527,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Avui es dia de tornar a llegir el text (o veure el video pels que no son de l’Aula) d’Hernan Casciari “Messi es un perro”",
+   "ts": 1784453477961,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Com es nota el canguelo dels espanyolets",
+   "ts": 1784477609707,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Ultim dia de mundial i hi ha coses que no canvien: 18:15 sense cronica, Lagen lider i Santi farolillo",
+   "ts": 1784477699875,
+   "likes": 1,
+   "dislikes": 0,
+   "score": 1
+  },
+  {
+   "text": "Hoy no se juega la final españa argentina. Hoy se juega el farolillo santi vs jonete.",
+   "ts": 1784449023916,
    "likes": 0,
    "dislikes": 0,
    "score": 0
+  },
+  {
+   "text": "Jonete farolillo",
+   "ts": 1784446491545,
+   "likes": 0,
+   "dislikes": 1,
+   "score": -1
   }
  ]
 }
