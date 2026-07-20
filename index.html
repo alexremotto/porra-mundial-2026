@@ -662,7 +662,12 @@ function buildActual(espn){
     if(order) order.forEach((t,i)=>{ actual.positions[ltr+"-"+(i+1)]=t; }); }
   // Equipos YA clasificados a 1/16 según resultados reales -> aplica sus puntos
   for(const t of qualifiedR32(info)) if(!actual.reached.r32.includes(t)) actual.reached.r32.push(t);
-  actual.awards=P.realAwards||{};   // premios oficiales (inyectados al cerrar el torneo)
+  // Premios oficiales: SOLO si la final ya se ha jugado en este conjunto de
+  // partidos. dailyTimeline reconstruye la clasificación de días pasados con
+  // subconjuntos históricos, y los premios no deben puntuar retroactivamente
+  // (rompería los días de farolillo, la evolución de posición, etc.).
+  const _finalM=(koByStage.final||[])[0];
+  actual.awards=(_finalM&&_finalM.state==="post")?(P.realAwards||{}):{};
   return {actual,info};
 }
 /* Clasificados confirmados a 1/16 (R32): SOLO el top-2 de los grupos ya CERRADOS
