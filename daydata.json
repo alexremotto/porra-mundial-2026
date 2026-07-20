@@ -1,7 +1,7 @@
 {
  "day": "2026-07-19",
  "prevDay": "2026-07-18",
- "generatedAt": "2026-07-20T07:00:09Z",
+ "generatedAt": "2026-07-20T07:06:08Z",
  "results": [
   {
    "home": "Spain",
@@ -14,98 +14,106 @@
   {
    "pos": 1,
    "name": "Lagen",
-   "total": 664,
-   "deltaPts": 15,
+   "total": 794,
+   "deltaPts": 145,
    "deltaPos": 0
   },
   {
    "pos": 2,
    "name": "P-man",
-   "total": 587,
-   "deltaPts": 0,
+   "total": 637,
+   "deltaPts": 50,
    "deltaPos": 0
   },
   {
    "pos": 3,
-   "name": "Quimnot",
-   "total": 572,
-   "deltaPts": 0,
-   "deltaPos": 0
+   "name": "Uri",
+   "total": 636,
+   "deltaPts": 80,
+   "deltaPos": 1
   },
   {
    "pos": 4,
-   "name": "Uri",
-   "total": 556,
-   "deltaPts": 0,
-   "deltaPos": 0
+   "name": "Quimnot",
+   "total": 622,
+   "deltaPts": 50,
+   "deltaPos": -1
   },
   {
    "pos": 5,
    "name": "Abete",
-   "total": 550,
-   "deltaPts": 0,
+   "total": 565,
+   "deltaPts": 15,
    "deltaPos": 0
   },
   {
    "pos": 6,
-   "name": "Graells",
-   "total": 528,
-   "deltaPts": 0,
-   "deltaPos": 0
+   "name": "JJ",
+   "total": 563,
+   "deltaPts": 65,
+   "deltaPos": 1
   },
   {
    "pos": 7,
-   "name": "JJ",
-   "total": 498,
-   "deltaPts": 0,
-   "deltaPos": 0
+   "name": "Guille",
+   "total": 533,
+   "deltaPts": 50,
+   "deltaPos": 2
   },
   {
    "pos": 8,
-   "name": "Carrillo",
-   "total": 489,
+   "name": "Graells",
+   "total": 528,
    "deltaPts": 0,
-   "deltaPos": 0
+   "deltaPos": -2
   },
   {
    "pos": 9,
-   "name": "Guille",
-   "total": 483,
-   "deltaPts": 0,
-   "deltaPos": 0
+   "name": "Santi",
+   "total": 501,
+   "deltaPts": 65,
+   "deltaPos": 3
   },
   {
    "pos": 10,
    "name": "Edu",
-   "total": 478,
-   "deltaPts": 0,
+   "total": 493,
+   "deltaPts": 15,
    "deltaPos": 0
   },
   {
    "pos": 11,
    "name": "Jonete",
-   "total": 477,
-   "deltaPts": 0,
+   "total": 492,
+   "deltaPts": 15,
    "deltaPos": 0
   },
   {
    "pos": 12,
-   "name": "Santi",
-   "total": 436,
+   "name": "Carrillo",
+   "total": 489,
    "deltaPts": 0,
-   "deltaPos": 0
+   "deltaPos": -4
   }
  ],
  "leader": [
   "Lagen"
  ],
  "farolillo": [
-  "Santi"
+  "Carrillo"
  ],
  "topGainers": [
   {
    "name": "Lagen",
-   "deltaPts": 15
+   "deltaPts": 145
+  },
+  {
+   "name": "Uri",
+   "deltaPts": 80
+  },
+  {
+   "name": "JJ",
+   "deltaPts": 65
   }
  ],
  "comments": [
